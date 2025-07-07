@@ -21,13 +21,37 @@
 \usepackage{pbox}
 \usepackage{hyperref}
 \usepackage{upquote}
+\usepackage{xcolor}  % for coloring
+\usepackage{enumitem}
+
+% For pretty code blocks
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{bgdark}{rgb}{0.25,0.25,0.25}
+\definecolor{lighttext}{rgb}{0.95,0.95,0.95}
+\definecolor{bashgreen}{rgb}{0.5,1.0,0.5}
+\definecolor{bashblue}{rgb}{0.5,0.8,1.0}
+\definecolor{bashcomment}{rgb}{0.6,0.6,0.6}
+\definecolor{bashstring}{rgb}{1.0,0.6,0.6}
+
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small\color{lighttext},
+  backgroundcolor=\color{bgdark},
+  keywordstyle=\color{bashblue},
+  commentstyle=\color{bashcomment},
+  stringstyle=\color{bashstring},
+  numbers=left,
+  numberstyle=\tiny\color{bashcomment},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+%%%
 
 
-% \newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
-% \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-%\renewcommand{\labelenumi}{\alph{enumi})}
-% \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
-% \newcommand\apjs{Ap. J. Suppl.}
 
 \begin{document}
 
@@ -45,7 +69,7 @@
 %\subsection*{What are the advantages?}
 \bigskip\noindent
 The advantages of \texttt{MESA} are listed on the website of the code and the key points are given below:
-\begin{itemize}
+\begin{itemize}[noitemsep]
 \item Open source
 \item Independent modules
 \item Wide applicability
@@ -60,29 +84,29 @@ The advantages of \texttt{MESA} are listed on the website of the code and the ke
 
 %%%  Instructions for installation on computers in Huygens building are moved to end of this file. 
 \texttt{MESA} has already been installed on the Science Faculty computer system of Radboud University. This section will explain how to access this. The \texttt{MESA} installation is not the newest version, but an older one named \texttt{r12778} which is found at \url{https://zenodo.org/record/3698354#.Yyxmg3ZBxPZ}, because this release runs stably for the computer exercises you will perform during this course.
-\footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/stable/installation.html}). The corresponding \texttt{MESA SDK} (software development kit) is the Linux version with a release date of March 25 2020, which can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}. }
+\footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/stable/installation.html}). The corresponding \texttt{MESA SDK} (software development kit) can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}, making sure that your SDK matches the `MESA Version at Release' you just downloaded. }
 
 \bigskip\noindent
 To access the \texttt{MESA} installation, you first need to log in on the Linux environment of the university computers at the Science Faculty. If you cannot manage to log in with your science account, you can find helpful information here: \url{https://wiki.cncz.science.ru.nl/Login}. 
 
 \bigskip\noindent
-Once logged in, open a terminal and run the following 5 lines of code. These lines will have to be run in every new terminal you open to make \texttt{MESA} work. To avoid having to do this every time, you can edit your Linux shell start-up file and add these lines to that file.\footnote{More information can be found in the subsection \texttt{Set your environment variables} on \url{https://docs.mesastar.org/en/release-r22.05.1/installation.html\#}.}
+Once logged in, open a terminal and run the following lines of code. 
 
-\begin{verbatim}
+\begin{lstlisting}
+#This line defines the path where MESA is located 
 export MESA_DIR=/vol/cursus/astro/ASBE/MESA/mesa-r12778
-\end{verbatim}
-This line defines the path where \texttt{MESA} is located in the computer system.
 
-\begin{verbatim}
+# Number of cores the computer has for MESA to use
 export OMP_NUM_THREADS=4
-\end{verbatim}
-This defines the number of cores the computer has for \texttt{MESA} to use, which for the university computers is 4. If you are unsure about this number, use the \texttt{lscpu} command in the terminal and check the number of CPUs of your machine.
 
-\begin{verbatim}
+# path to the MESA SDK
 export MESASDK_ROOT=/vol/cursus/astro/ASBE/MESA/mesasdk
 source $MESASDK_ROOT/bin/mesasdk_init.sh
 \end{verbatim}
 These 2 lines define the path where the \texttt{MESA SDK} (Software Development Kit) is located and initialise this \texttt{SDK}. 
+
+These lines will \textbf{have to be run in every new terminal you open} to make \texttt{MESA} work. To avoid having to do this every time, you can edit your Linux shell start-up file and add these lines to that file.\footnote{More information can be found in the subsection \texttt{Set your environment variables} on \url{https://docs.mesastar.org/en/release-r22.05.1/installation.html\#}.}
+
 
 \begin{verbatim}
 export MESA_CACHES_DIR=/scratch/$USER/MESA/caches
