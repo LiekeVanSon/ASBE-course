@@ -1,1 +1,5 @@
 .DS_Store
+# these files are too large for git
+lecture notes
+lectures
+*.tar
