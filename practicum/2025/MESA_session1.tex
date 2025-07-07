@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+Z\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{authblk}
 \usepackage{natbib} 
@@ -22,11 +22,11 @@
 \usepackage{hyperref}
 \usepackage{upquote}
 
-\newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+% \newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
+% \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 %\renewcommand{\labelenumi}{\alph{enumi})}
-\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
-\newcommand\apjs{Ap. J. Suppl.}
+% \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+% \newcommand\apjs{Ap. J. Suppl.}
 
 \begin{document}
 
@@ -35,6 +35,8 @@
 \date{}
 \maketitle
 
+
+%%%%%%%%%%%%%%%%
 \section{What is \texttt{MESA}?}
 
 \texttt{MESA} stands for Modules for Experiments in Stellar Astrophysics. It is an open-source stellar astrophysics code consisting of different modules. Each module is responsible for a different aspect of the numerics or physics required to construct computational models for stellar astrophysics. At the core of it all is the most important module: \texttt{MESA star}. \texttt{MESA star} is a one-dimensional stellar evolution code and is designed for a wide range of stellar physics applications. You can find more information on the website \url{https://docs.mesastar.org/}, and also in the first \texttt{MESA} instrument paper by \href{https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P/abstract}{Paxton et al. (2011)}. 
@@ -56,7 +58,8 @@ The advantages of \texttt{MESA} are listed on the website of the code and the ke
 
 %%%  Instructions for installation on computers in Huygens building are moved to end of this file. 
 
-\texttt{MESA} has already been installed on the Science Faculty computer system of Radboud University. This section will explain how to access this. The \texttt{MESA} installation is not the newest version, but an older one named \texttt{r12778} which is found at \url{https://zenodo.org/record/3698354#.Yyxmg3ZBxPZ}, because this release runs stably for the computer exercises you will perform during this course.\footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/release-r22.05.1/installation.html\#}). The corresponding \texttt{MESA SDK} (software development kit) is the Linux version with a release date of March 25 2020, which can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}. }
+\texttt{MESA} has already been installed on the Science Faculty computer system of Radboud University. This section will explain how to access this. The \texttt{MESA} installation is not the newest version, but an older one named \texttt{r12778} which is found at \url{https://zenodo.org/record/3698354#.Yyxmg3ZBxPZ}, because this release runs stably for the computer exercises you will perform during this course.
+\footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/stable/installation.html}). The corresponding \texttt{MESA SDK} (software development kit) is the Linux version with a release date of March 25 2020, which can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}. }
 
 \bigskip\noindent
 To access the \texttt{MESA} installation, you first need to log in on the Linux environment of the university computers at the Science Faculty. If you cannot manage to log in with your science account, you can find helpful information here: \url{https://wiki.cncz.science.ru.nl/Login}. 
@@ -242,8 +245,11 @@ mp4 movie.mp4
 Note that if you want to have several graphs in one png output file (e.g.
 not only the HR diagram but also \verb|TRho_profile| or a Kippenhahn plot) then
 you should make use of the \verb|Grid_*| controls of the \texttt{PGSTAR} module.
-
 \end{enumerate}
+
+
+
+
 
 \bibliographystyle{aa}
 \bibliography{gmlib.bib}
