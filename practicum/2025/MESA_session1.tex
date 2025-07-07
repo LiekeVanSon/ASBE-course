@@ -1,4 +1,4 @@
-Z\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{authblk}
 \usepackage{natbib} 
@@ -22,6 +22,7 @@ Z\documentclass[11pt,a4paper]{article}
 \usepackage{hyperref}
 \usepackage{upquote}
 
+
 % \newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
 % \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 %\renewcommand{\labelenumi}{\alph{enumi})}
@@ -35,11 +36,11 @@ Z\documentclass[11pt,a4paper]{article}
 \date{}
 \maketitle
 
-
 %%%%%%%%%%%%%%%%
 \section{What is \texttt{MESA}?}
 
-\texttt{MESA} stands for Modules for Experiments in Stellar Astrophysics. It is an open-source stellar astrophysics code consisting of different modules. Each module is responsible for a different aspect of the numerics or physics required to construct computational models for stellar astrophysics. At the core of it all is the most important module: \texttt{MESA star}. \texttt{MESA star} is a one-dimensional stellar evolution code and is designed for a wide range of stellar physics applications. You can find more information on the website \url{https://docs.mesastar.org/}, and also in the first \texttt{MESA} instrument paper by \href{https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P/abstract}{Paxton et al. (2011)}. 
+\texttt{MESA} stands for Modules for Experiments in Stellar Astrophysics. It is an open-source stellar astrophysics code consisting of different modules. Each module is responsible for a different aspect of the numerics or physics required to construct computational models for stellar astrophysics. At the core of it all is the most important module: \texttt{MESA star}. \texttt{MESA star} is a one-dimensional stellar evolution code and is designed for a wide range of stellar physics applications. You can find more information on the website \url{https://docs.mesastar.org/}, and also in the first \texttt{MESA} instrument paper by \cite{Paxton2011} %2011ApJS..192....3P}
+% \href{https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P/abstract}{Paxton et al. (2011)}. 
 
 %\subsection*{What are the advantages?}
 \bigskip\noindent
@@ -54,10 +55,10 @@ The advantages of \texttt{MESA} are listed on the website of the code and the ke
 \end{itemize}
 
 
+
 \section{Getting started}
 
 %%%  Instructions for installation on computers in Huygens building are moved to end of this file. 
-
 \texttt{MESA} has already been installed on the Science Faculty computer system of Radboud University. This section will explain how to access this. The \texttt{MESA} installation is not the newest version, but an older one named \texttt{r12778} which is found at \url{https://zenodo.org/record/3698354#.Yyxmg3ZBxPZ}, because this release runs stably for the computer exercises you will perform during this course.
 \footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/stable/installation.html}). The corresponding \texttt{MESA SDK} (software development kit) is the Linux version with a release date of March 25 2020, which can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}. }
 
@@ -249,9 +250,7 @@ you should make use of the \verb|Grid_*| controls of the \texttt{PGSTAR} module.
 
 
 
-
-
-\bibliographystyle{aa}
-\bibliography{gmlib.bib}
+\bibliographystyle{plain}
+\bibliography{gmlib}
 
 \end{document}

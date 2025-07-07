@@ -1,8 +1,8 @@
-PWD /Users/lvanson/surfdrive/Shared/ASBE course/practicum/2025
+PWD /Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025
 INPUT /usr/local/texlive/2023/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/lvanson/surfdrive/Shared/ASBE course/practicum/2025/MESA_session1.tex
+INPUT /Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session1.tex
 OUTPUT latex_output/MESA_session1.log
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
@@ -851,6 +851,10 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT latex_output/MESA_session1.bbl
+INPUT latex_output/MESA_session1.bbl
+INPUT latex_output/MESA_session1.bbl
+INPUT latex_output/MESA_session1.bbl
 INPUT latex_output/MESA_session1.aux
 INPUT latex_output/MESA_session1.out
 INPUT latex_output/MESA_session1.out
