@@ -1,0 +1,119 @@
+\documentclass[11pt,a4paper,fleqn]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{11}
+
+\begin{enumerate}
+
+\item {\bf Core mass luminosity relation for AGB stars}\\
+
+  \begin{enumerate}
+
+  \item Take the time derivative of the Paczynski relation
+    \[
+    \frac{\dot L}{\Lsun}=5.9\times 10^4 \left(\frac{\dot M_c}{\Msun}\right)
+    = 5.9\times 10^{-7} \mathrm{yr}^{-1} 
+    \left(\frac{L}{\Lsun }\right) \quad \Rightarrow
+    \]
+
+    \[
+    \int_{L(t_0)}^{L(t)} \left( \frac{L}{\Lsun} \right)^{-1} \der \left(
+      \frac{L}{\Lsun} \right) = \int_{t_0}^{t} 5.9\times 10^{-7}
+    \mathrm{yr}^{-1} \der t \quad \Rightarrow
+    \]
+
+    \[
+    \ln \left( \frac{L(t)}{\Lsun} \right) = \ln \left(
+      \frac{L(t_0)}{\Lsun} \right) + 5.9\times 10^{-7} (t - t_0)/\mathrm{yr}
+    \quad \Rightarrow
+    \]
+    
+    \[
+    \frac{L(t)}{\Lsun} = 10^3\, \exp \left(
+      \frac{t-t_0}{1.69\times10^6\,\mathrm{yr}} \right)
+    \]
+
+  \item $L = 4 \pi R^2 \sigma T_{\rm eff}^4$
+    \[
+    R(t) = \left[ \frac{L(t)}{4 \pi \sigma T_{\rm eff}^4}
+    \right]^{1/2} = 120\, \Rsun\, \exp
+    \left( \frac{t-t_0}{3.38\times10^6\,\mathrm{yr}} \right)
+    \]
+
+  \item Rewrite Paczynski relation and insert the expression for
+    $L(t)$.
+    \[
+    \left( \frac{\dot M_c}{\Msun} \right) = 5.9 \times 10^{-7} 
+    \mathrm{yr}^{-1} \left( \frac{M_c}{\Msun} - 0.52 \right) \Rightarrow
+    \]
+
+    \[
+    \int_{M_c(t_0)}^{M_c(t)} \left( \frac{M_c}{\Msun} - 0.52 \right)^{-1}
+    \der \left( \frac{M_c}{\Msun} \right) = \int_{t_0}^{t} 5.9\times
+    10^{-7}\mathrm{yr}^{-1}\, \der t \Rightarrow
+    \]
+    Paczynski relation: $t_0$: $L/\Lsun = 10^3$
+    $\Rightarrow$ $M_c/\Msun = 0.537$
+    \[
+    \frac{M_c(t)}{\Msun} = 0.52 + 0.017\exp \left(
+      \frac{t-t_0}{1.69\times10^6\,\mathrm{yr}} \right)
+    \]
+
+  \end{enumerate}
+
+
+\item {\bf Mass loss of AGB stars} 
+
+  \begin{enumerate}
+
+  \item Insert $L(t)$ and $R(t)$ from the previous question into the
+    Reimers relation, keeping $\eta$ as a free parameter:
+    \[ 
+    \frac{\dot M}{\Msun}= -4\times 10^{-13}\mathrm{yr}^{-1} \times \eta 
+    \times 10^3 \times 120 \times \exp \left[ \left(1+\frac{1}{2}\right) 
+      \frac{t-t_0}{1.69\times10^6\,\mathrm{yr}} \right] 
+    \left( \frac{M}{\Msun} \right)^{-1}
+    \]
+    Now rewrite and use the hint
+    \[
+    - 4.8\times10^{-8}\,\mathrm{yr}^{-1} \, \eta\, \exp \left[
+      \frac{3(t-t_0)}{2\times1.69\times10^6\,\mathrm{yr}} \right] 
+    = \left( \frac{\dot M}{\Msun} \right) \left( \frac{M}{\Msun} \right)
+    = \frac{1}{2} \frac{\der}{\der t} 
+    \left[\left( \frac{M}{\Msun} \right)^2 \right]
+    \]
+    Rewrite and integrate this expression, then take the square root
+    to obtain $M(t)$
+    \[
+    \frac{M(t)}{\Msun} = \left\{ \left( \frac{M_0}{\Msun} \right)^2 - 
+      0.108\, \eta\, \left[ \exp \left(
+          \frac{t-t_0}{1.13\times10^6\,\mathrm{yr}} \right) - 1 \right] 
+    \right\} ^ {1/2}
+    \]
+
+
+  \item Answer these questions for example by plotting $M_c(t)$ and
+    $M(t)$ and estimating the answer from your plot. For $\eta = 3$:
+    $\Delta t \approx 2.82 \times 10^6$~yrs, $L \approx 5.31\times
+    10^3 \Lsun$, $M_{\rm WD} \approx 0.610\,\Msun$.
+
+%c) Derive the same quantities in the cases when the mass loss rate on the AGB
+%is three times larger, i.e., $\eta_R=9$, and when it is three times smaller,
+%i.e., $\eta_R=1$.
+
+  \item For $\eta = 1$: $\Delta t \approx 3.96 \times 10^6$~yrs, $L
+    \approx 1.04\times 10^4 \Lsun$, $M_{\rm WD} \approx 0.697\,\Msun$. \\
+    For $\eta = 9$: $\Delta t \approx 1.76 \times 10^6$~yrs, $L
+    \approx 2.83\times 10^3 \Lsun$, $M_{\rm WD} \approx 0.568\,\Msun$.
+
+  \end{enumerate} 
+
+
+\end{enumerate} 
+
+\end{document}
+
+   

@@ -1,0 +1,9 @@
+export MESA_DIR=/vol/cursus/astro/ASBE/MESA/mesa-r12778
+OMP_NUM_THREADS=4
+export MESASDK_ROOT=/vol/cursus/astro/ASBE/MESA/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+export MESA_CACHES_DIR=/scratch/$USER/MESA/caches
+mkdir /scratch/$USER
+mkdir /scratch/$USER/MESA
+mkdir /scratch/$USER/MESA/caches
+

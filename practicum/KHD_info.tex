@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\usepackage{natbib} 
+\usepackage[english]{babel}
+\pagenumbering{arabic}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{float}
+%\usepackage{indentfirst}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{longtable}
+%\graphicspath{{C:/Users/glenn-michael/Documents/ExercisesAstronomy/}}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{pbox}
+\usepackage{url}
+
+\usepackage{hyperref}
+\usepackage{upquote}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+%\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand\mnras{MNRAS}
+
+
+\begin{document}
+
+\title{\textbf{Making Kippenhahn diagrams using \texttt{MESA} output}}
+\author{}
+\date{}
+\maketitle
+
+\noindent
+\section{Introduction}
+Kippenhahn diagrams (KHDs), as discussed in the lecture notes and the lectures, are plots showing the internal structure of a star with time. These plots can be useful for your final reports of the \texttt{MESA} projects you will be conducting for this course. Instead of making a screenshot of the KDHs that \texttt{MESA} outputs on the screen via \texttt{PGSTAR} as you run it, which might not always illustrate the information you want or not be very clear, you can use a \texttt{Python} script known as \texttt{mkipp}\footnote{\url{https://github.com/orlox/mkipp}} that makes plotting your own KHDs quite easy. However, you do have to turn on the right output columns for your \texttt{history.data} and \texttt{profile.data} files. This document will help you set up \texttt{mkipp}, get the right \texttt{MESA} output, and become familiar with the scripts.
+
+\section{Setting up}
+Download the zip file from \url{https://github.com/orlox/mkipp} by pressing the green \texttt{Code} button and choosing the \texttt{Download ZIP} option. Extract the 3 \texttt{Python} scripts titled \texttt{mkipp.py}, \texttt{mesa\_data.py}, and \texttt{kipp\_data.py} from this zip file to the directory you plan to make plots in. In addition, extract the \texttt{Python} script \texttt{example.py} there too, along with the directory \texttt{LOGS}\footnote{Do not confuse this with the other \texttt{LOGS} directories mentioned later on, this is \texttt{example.py}'s \texttt{LOGS} directory.}. The first 3 of these scripts are integral parts of \texttt{mkipp}, the latter \texttt{example.py} file gives you example lines of code on how to make KHDs employing \texttt{mkipp} while using the data from its \texttt{LOGS} directory. If you want to clean up your working environment a bit, you can put \texttt{mkipp.py}, \texttt{mesa\_data.py}, and \texttt{kipp\_data.py} each into their own directory of the same name (without the \texttt{.py} extension of course) inside your plotting directory, and changing the names of each of the files to \texttt{\_\_init\_\_.py} where \_\_ is a double underscore. 
+
+\subsection{Setting \texttt{MESA} output}
+As you can read in \texttt{mkipp.py}, to use \texttt{mkipp} you need to have the following \texttt{MESA} output available:
+\begin{verbatim}
+Requirements: history.data and profiles.data containing 
+              History (star_age,model_number,star_mass,photosphere_r,
+              mixing_regions,mix_relr_regions)
+              Profile (mass,radius,eps_nuc)
+\end{verbatim}
+This entails editing the two files inside your \texttt{MESA} model titled \texttt{history\_columns.list} and \texttt{profile\_columns.list}\footnote{Examples of these files are included in the session2.tar file.}. These files specify what columns of data \texttt{MESA} will output into the \texttt{history.data} and \texttt{profile.data} files inside the \texttt{LOGS} directory. Open these files and uncomment the columns mentioned above by removing the `!' in front of the variable. When you uncomment \texttt{mix\_relr\_regions}, it will most likely say \texttt{<integer>} after it. You should change this to 10, so that it has the same value as for \texttt{mixing\_regions}.
+
+\bigskip\noindent
+For \texttt{MESA} to use the columns you have specified in these 2 files instead of the default set of columns, we have to make sure \texttt{MESA} knows that it needs to read these 2 files. To do this, we have to open \texttt{inlist\_project} and include the following under \texttt{\&star\_job}:
+\begin{verbatim}
+! to specify which output columns we want in history.data and profile.data
+    history_columns_file = 'history_columns.list'
+    profile_columns_file = 'profile_columns.list'
+\end{verbatim}
+
+\section{Making plots}
+Now that we know the required output will actually be present in the output files, we have to write scripts to make the KHDs. The \texttt{MESA} output inside the \texttt{LOGS} directory after you have run your model needs to be moved to the same directory as where your 3 \texttt{Python} scripts of \texttt{mkipp} reside. It is recommended to run \texttt{example.py}, to see if everything is working properly for you and to understand how to write the code that makes KHDs. You can do this by copying its content, pasting it into a \texttt{Jupyter Notebook}\footnote{Accessed on the university computers via \url{https://jupyterhub.science.ru.nl/}.}, and running it. Furthermore, read through \texttt{mkipp.py} to see how the input parameters and functions are designed. The most important object you need to look at is \texttt{Kipp\_Args} in \texttt{mkipp.py}, because this shows the default input parameters for \texttt{mkipp.kipp\_plot} as shown in \texttt{example.py}. If you just want to make a KHD with these parameters, you should execute example 1 in \texttt{example.py}. If you want to plot, for example, time in Myr instead of model number along the x-axis, this is done in example 3 in \texttt{example.py} (this one shows the He abundance instead of the energy production). Try to understand at least the first four examples in \texttt{example.py}, the other examples you probably will not need. 
+
+\bigskip\noindent
+Any \texttt{Python} script you write that uses \texttt{mkipp} needs to be in the same place as where the three \texttt{Python} scripts \texttt{mkipp.py}, \texttt{mesa\_data.py}, and \texttt{kipp\_data.py} are located (or in the directory containing the correspondingly named subdirectories that contain these three files, as previously mentioned). In your \texttt{Python} script you will need to at least add the following line: 
+\begin{verbatim}
+import mkipp
+\end{verbatim}
+Furthermore, to use the functions inside the other 2 scripts for yourself, you need the following lines of code too:
+\begin{verbatim}
+import kipp_data
+import mesa_data
+\end{verbatim}
+
+\bigskip\noindent
+As shown by \texttt{example.py}, the \texttt{mkipp} scripts, in particular \texttt{Kipp\_Args}, expect the \texttt{MESA} output data to be in a directory titled \texttt{LOGS} where these scripts are. However, if you want to plot more models with the same scripts in the same location, you can put your \texttt{MESA} output data in a directory with a name pertaining to the \texttt{MESA} model (e.g. \texttt{model1}) inside a directory titled for example \texttt{data} as to have a clear overview of what data you are exactly plotting. You will only need to define the \texttt{logs\_dir} argument of the \texttt{Kipp\_Args} function as the path of the output data from the script's location as a string inside a list. An example of this is given below:
+\begin{verbatim}
+mkipp.Kipp_Args(logs_dirs = ['data/model1'])
+\end{verbatim}
+
+\subsection{Binary stars}
+If you want to make a KHD of one of the stars in a binary system, you will also have to change the folder in which the code looks for the \texttt{history.data} and \texttt{profile.data} files, e.g. defining the proper path for \texttt{logs\_dir}. The primary of the binary is found in \texttt{LOGS1}, and the secondary in \texttt{LOGS2}. You will see this first-hand during \texttt{MESA} session 3.
+
+
+\bibliographystyle{aa}
+\bibliography{gmlib.bib}
+\end{document}

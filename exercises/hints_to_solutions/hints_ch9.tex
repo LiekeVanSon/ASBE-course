@@ -1,0 +1,147 @@
+\documentclass[11pt,a4paper,fleqn]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{9}
+
+\begin{enumerate}
+  
+\item {\bf Kippenhahn diagram of ZAMS}
+
+  Discuss your answers to this question with your fellow students or
+  with the teaching assistant.
+
+  \begin{enumerate}
+
+  \item Hint: Low-mass stars are dominated by bound-free and free-free
+    absorption, for which $\kappa$ is higher the lower the
+    temperature.
+
+  \item Hint: for $M > 1.3 \Msun$ the CNO-cycle dominates (see Section
+    9.2.2).
+
+  \item See Section 9.2.2.
+
+  \end{enumerate}
+
+
+\item {\bf Conceptual questions}
+
+  \begin{enumerate}
+	
+  \item See Section 9.1.1.  Convection is so efficient that a fully
+    convective star is capable of transporting any luminosity,
+    independent of its structure -- unlike a radiative star where $L$
+    is strongly coupled to the $T$-gradient.
+    
+  \item See Section 9.1.1.
+
+  \item See Sections 7.4.1 and 9.2.
+
+  \item See Section 9.2.
+
+  \end{enumerate} 
+
+
+\item { \bf Central Temperature vs Mass}
+
+  First derive the homology relation for the radius, eq.~(7.36),
+  assuming that the stars are homogeneous and have constant opacity,
+  i.e.\ by using (7.32) for the luminosity and equating this to the
+  luminosity produced by nuclear reactions. Then substitute the radius
+  into the homology relation (7.28) for the central temperature to
+  find (7.38), i.e.\ $T_c \propto \mu^{7/(\nu +3)} M^{4/(\nu +3)}$.
+  Take $\nu = 4$ for pp burning ($M \leq 1.3 \Msun$) and $\nu = 18$
+  for CNO burning ($M \geq 1.3 \Msun$).
+
+  To find the proportionality constant use solar values for pp burning
+  and demand that $T_c$ is a continous function to match the pp and
+  CNO parts of the relation. In detail: for $M \leq 1.3 \Msun$, $T_c =
+  T_{c,\odot}\, (M/\Msun)^{4/7}$ and for $M \geq 1.3 \Msun$, $T_c = C\,
+  (M/\Msun)^{4/21}$. Find a numerical expression for $C$ by demanding
+  that $T_{\rm pp} = T_{\rm CNO}$ for $M = 1.3\Msun$, which gives $C =
+  1.43\times10^7$\,K.
+  \[
+  T = \begin{cases}
+    1.30 \times 10^7\, (M/\Msun)^{4/7}~\mathrm{K} & \text{if $M \leq 1.3 
+      \Msun$},\\
+    1.43 \times 10^7\, (M/\Msun)^{4/21}~\mathrm{K} & \text{if $M > 1.3
+      \Msun$}.
+  \end{cases}
+  \]
+
+
+\item {\bf Mass-luminosity relation}
+
+  Assuming energy transport by radiation gives $T \propto M \kappa l
+  /(T^3 R^4)$ (eq.~7.29). Substitute $\kappa \propto \rho T^{-7/2}$;
+  eliminate $\rho$ by $\rho \propto M/R^3$; and eliminate $T$ using $T
+  \propto \mu M/R$ (eq.~7.28).  This altogether will give you
+  eq.~(7.33), i.e.\
+  \begin{equation}
+    L \propto \mu^{7.5} M^{5.5} R^{-0.5}. \label{eq:l1}
+  \end{equation}
+  Now obtain a homology relation for $R$ using $\der l/\der m =
+  \epsilon \propto \rho T^4$, i.e.\ $L \propto M \rho T^4$, again
+  eliminating $T$ and $\rho$. This will give you $R \propto \mu^{0}
+  M^{3/7}$ (compare to eq.~7.36). Use this relation to express
+  (\ref{eq:l1}) in terms of $M$ and $\mu$ only:
+  \[ L \propto \mu^{7.5} M^{5.3}. \]
+
+
+\end{enumerate} 
+
+\end{document}
+
+
+%%%%%%%%%%%%%%%
+
+
+  \item {\bf Homology relation: more formal derivation}
+    Now we will derive one of the homology
+    relations from the hydrostatic equilibrium equation step by step:
+    \begin{equation}
+      \frac{dP}{dm} = -\frac{G}{4\pi}\frac{m}{r^4} \label{he}
+    \end{equation}
+    Let $\xi$ be the relative mass coordinate, $\xi = \frac{m}{M}$.
+    
+    \begin{enumerate}
+    \item Show that you can rewrite equation~\ref{he} as:
+      \[
+      \frac{dP}{d\xi} = -\frac{G}{4\pi}\frac{\xi M^2}{r^4}
+      \]
+      Now define
+     % \[
+     $ \frac{M}{M'} = x, \,\, \frac{r}{r'} = z, \,\, \frac{P}{P'} = p.$
+     % \]
+    \item Show that you can rewrite equation~\ref{he} as:
+      \[
+      \frac{dP'}{d\xi} = -\frac{G}{4\pi}\frac{\xi M'^2}{r'^4} \biggl[  \frac{x^2}{z^4 p} \biggl]
+      \]
+    \item Explain why $\frac{x^2}{z^4 p} = 1$. 
+    \item For homologous stars
+      $\frac{r}{r'} = \frac{R}{R'}$. Use iii) to express $P/P'$ as function of
+      $M/M'$ and $R/R'$.
+  
+  \item Use the same method to derive an expression for $\rho/\rho'$ from the
+    equation of mass conservation.
+    
+  \item (At home) Read page 191 of Kippenhahn and Weigert. Convince
+    yourself that the homology condition, equation 20.2, for a Star $S$
+    and a Star $S'$ comes down to saying that Star $S$ and Star $S'$ have
+    a similar density distribution.
+
+    \end{enumerate}  
+
+
+\item Show that the above relation is valid for all polytropes
+      $P = K \rho^\gamma =  K \rho^{(n+1)/n}$.
+
+      \item Give an expression for $C$ as function of $n$.
+
+      \item In the practicum 2 you saw that polytropic models with
+      index n in the range 1.5 ... 3 are a reasonable approximation
+      for most (detailed models of) actual stars. Between what
+      numerical values will $C$ vary for actual stars.

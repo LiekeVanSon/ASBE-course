@@ -1,0 +1,302 @@
+\documentclass[11pt,a4paper]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{2}
+
+\begin{enumerate}
+
+\item {\bf Density profile}
+  \begin{enumerate}
+    \item $m(r) = 4\pi\rho_cr^3[\frac{1}{3} - \frac{1}{5}(r/R)^2]$
+    \item $M = \frac{8}{15} \pi \rho_c R^3$ 
+    \item Hint: density = mass/volume
+ \end{enumerate}
+
+  
+\item {\bf Hydrostatic equilibrium}
+
+ \begin{enumerate}
+    
+ \item Gravity, pressure gradient.
+
+ \item See Section~2.2.
+   
+ \item Hint: take limit for $dr \rightarrow 0$.
+   
+ \item Hint: use $P(R) = 0$ and the fact that $r \leq R$.
+   
+ \item Hint: calculate $m(r)$, substitute it directly in the equation
+   for hydrostatic equilibrium and integrate from the surface to the
+   center to obtain $P_c$. Answer: $P_c = \frac{15}{16\pi} GM^2/R^4$.
+   
+ \end{enumerate}
+
+
+\item {\bf The virial theorem}  
+
+  \begin{enumerate}
+
+  \item Use eq.~(2.20) and the appropriate expression for $m(r)$.
+    You should get: \\[1ex]
+    for constant density: ~ 
+    $E_{\rm gr} = \displaystyle -\frac{3}{5} \frac{G M^2}{R}$ \\[1ex]
+    for $\rho(r)$ as in Ex.~2.1: ~
+    $E_{\rm gr} = \displaystyle -\frac{5}{7} \frac{G M^2}{R}$
+
+%    \begin {eqnarray*}
+%      E_{\rm gr} &=& -\int_0^{M_*} \frac{G m(r)}{r}dm  \\
+%      &=& -\int_0^{R_*} \frac{G \frac{4}{3}\pi r^3 \rho}{r} 4 \pi r^2 
+%      \rho dr \,\,\rm{assuming}\,\,\rm{constant} \,\, \rho  \\
+%      &=& -\frac{3}{5} \frac{G M_*^2}{R_*} \approx  -2.3.10^{48} \rm{erg}    \\
+%    \end{eqnarray*}
+    
+  \item Hint: The internal kinetic energy per particle for an ideal
+    gas is $\frac{3}{2}kT$ and the number of particles per unit volume
+    can be written as $\rho/(\mu m_u)$, where $\mu$ is the mean
+    molecular weight expressed in atomic units and $m_u$ the mass of
+    one atomic unit.
+    
+    Now express the kinetic internal energy per volume. Integrate this
+    over the full star.
+    
+  
+  \item $E_{\mathrm{int},\odot} = \frac{3}{2} (k / m_u \mu) M \langle T
+    \rangle \approx 2.1\times10^{48}$ erg, assuming $\mu = 0.6$. 
+
+    $E_{\mathrm{gr},\odot} \approx -2.3 \times 10^{48}$~erg.
+
+    $E_{\mathrm{tot},\odot} \approx -2\times 10^{47}$~erg, and the Sun would be
+    (barely) bound. (Note that these estimates are very rough and can
+    only be trusted to an order of magnitude!)
+    
+  \item -
+    
+  \item For the left-hand side of equation (2.40) substitute $P$ using the
+  ideal gas law: $P = \rho k T / (\mu m_u) $, now compare with
+  equation (2.39). 
+  
+  \item Use equation (2.40).
+    
+  \item Use (c) to estimate $\Delta E_{\rm int}$ and the virial theorem
+  to estimate $\Delta E_{\rm tot}$.
+
+ 
+
+ %   \item   $E_{\rm gr} = -E_{\rm int}$
+      
+ %   \item  $E_{\rm tot} = 0$, the star is not bound.
+
+  \end{enumerate}
+  
+\item {\bf Conceptual questions}
+  \begin{enumerate}
+  \item {\it Use the virial theorem to explain why stars are hot,
+    i.e. have a high internal temperature and therefore radiate energy.}
+    
+    For the gravitational energy $E_{\rm gr}$ of a star we know that 
+    \begin{equation}
+      E_{\rm gr} = -\alpha\frac{G M^2}{R} < 0,
+    \end{equation}
+    were $\alpha>0$ depends on the density distribution $\rho(r)$. Using
+    the virial theorem $E_{\rm int} = -0.5 E_{\rm gr} > 0$, therefore
+    $T>0$. Stellar gas is hot, therefore it must radiate, i.e.\ lose
+    energy form its surface.
+
+  \item {\it What are the consequences of energy loss for the star,
+      especially for its temperature?}
+    
+    Energy loss: $\displaystyle \frac{dE_{\rm tot}}{dt} = -L < 0$.
+    Using the virial theorem:
+    \begin{equation}
+      \begin{array}{lccccl}
+        \displaystyle
+        \frac{dE_{\rm gr}}{dt} &=& -2L& <& 0& \,\,\rm{star \, \,contracts} \\[2ex]
+        \displaystyle
+        \frac{dE_{\rm int}}{dt}& =& L&  >& 0& \,\,\rm{star} \,\, \rm{heats} \,\, \rm {up} \\
+      \end{array}
+    \end{equation}
+    The energy liberated from contraction is used for heating the star,
+    the other half is radiated away.
+
+  \item {\it Most stars are in thermal equilibrium. What is
+      compensating for the energy loss?}
+    
+    Energy liberated in nuclear reactions, $L =
+    \displaystyle\frac{dE_{\rm nuc}}{dt}$.
+    
+  \item {\it What happens to a star in thermal equilibrium (and in
+      hydrostatic equilibrium ) if the energy production by nuclear
+      reactions in a star drops (slowly enough to maintain hydrostatic
+      equilibrium)?}
+    
+    If $|dE_{\rm nuc}/dt| < L$ then $E_{\rm tot} \downarrow $. Using
+    the virial theorem (which we can use because the star is still in
+    hydrostatic equilibrium), also $|E_{\rm gr}| \uparrow $ (the star
+    contracts) and $E_{\rm int} \uparrow $ (the star heats up).
+
+  \item {\it Why does this have a stabilizing effect? On what time
+      scale does the change take place.}
+
+    The temperature increase will accelerate the nuclear reactions
+    until $L = |dE_{\rm nuc}/dt|$ again. The changes take place on the
+    Kelvin Helmholtz timescale.
+
+  \item {\it What happens if hydrostatic equilibrium is violated, e.g.
+      by a sudden increase of the pressure.}
+    
+    The virial theorem does not hold any longer and $d^2r/dt^2$ in the
+    equation of motion is not zero anymore.  An increase in pressure
+    will lift the gas elements outwards, i.e.  the star expands.  In a
+    normal star the expansion will lead to a shallower pressure
+    gradient. At the same time the gravitional acceleration is
+    reduced. If hydrostatical equilibrium can be restored or not
+    depends on the equation of state (see coming lectures). In a
+    normal main sequence star equilibrium is restored on the
+    hydrodynamical timescale.
+
+    In extreme cases the star will explode. (For example when nuclear
+    burning starts in a degenerate star, leading to a thermal nuclear
+    runaway which suddenly lifts the degeneracy, such that the
+    pressure becomes temperature dependent, which leads to an enormous
+    increase of pressure; see coming lectures).
+
+
+
+
+  \end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+
+\item {\bf Three important timescales in stellar evolution}
+  
+  \begin{enumerate}
+  \item  {\it Nuclear timescale $\tau_{\rm n}$} 
+    \begin{enumerate}
+    \item Derive an expression for the nuclear timescale in solar
+      units, i.e. expressed in terms of $R/\Rsun$, $M/\Msun$ and
+      $L/\Lsun$. Show your derivation and your assumptions. 
+      
+    \item Use the mass-radius and mass-luminosity relations for main
+      sequence stars express the nuclear timescale of main-sequence
+      stars as function of the mass of the star only.
+      
+    \item Describe in your own words the meaning of the nuclear
+      timescale.       
+
+    \end{enumerate}
+
+  \item {\it Thermal timescale $\tau_{\rm KH}$} 
+    \begin{enumerate}
+      
+      In the time of Kelvin (1862) the energy source of the sun was
+      unknown and the gravitational potential energy of the sun was
+      proposed to be the main energy source. William Thomson (better
+      known as Lord Kelvin) estimated the age of the sun and imposed
+      an upper limit to the age of the earth which was in conflict
+      with the new theory put forward by Charles Darwin (in
+      1859). This theory required that the earth had to be much older,
+      to account for the slow evolution of species. After a long and
+      intense debate between the two scientist Darwin remained
+      convinced that, in time, physicists would change their minds.
+
+    \item Answer question a) i, ii and iii for the thermal timescale
+      and calculate the age of the sun according to Kelvin.
+      \addtocounter{enumiii}{2}
+      
+    \item Why are most stars observed to be main-sequence stars and
+      why is the Hertzsprung-gap called a gap?
+
+    \end{enumerate}
+
+  \item  {\it Dynamical timescale $\tau_{\rm d}$} 
+    \begin{enumerate}
+
+    \item Answer question a) i, ii and iii for the dynamical timescale.
+      \addtocounter{enumiii}{2}
+
+    \item In stellar evolution models one often assumes that stars
+      evolve {\it quasi-statically}, i.e. that the star is in
+      hydrostatic equilibrium throughout. Why can we make that assumption?
+
+    \item Rapid changes that are some ties observed in stars may
+      indicate that dynamical processes are taking place. From the
+      timescales of such changes - usually oscillations with a
+      characteristic period - we may roughly estimate the average
+      density of the Star. The sun has been observed to oscillate with
+      a period of minutes, white dwarfs with periods of a few tens of
+      seconds. Estimate the average density for the sun and for white
+      dwarfs.
+    \end{enumerate}
+
+  \item {\it Comparison}
+    \begin{enumerate}
+    \item Summarize your results of the questions above by completing
+      Table~\ref{tab:timescales} the timescale for a $1, 10, 25 \Msun$
+      star in Table~\ref{tab:timescales}.
+	
+      \begin{table}[h]
+	\center  
+	\begin{tabular*}{0.75\textwidth}%
+	  {@{\extracolsep{\fill}} ||l|l|l|l||}
+
+	  \hline
+	  \hline
+	  & $\tau_{\rm n}$ & $\tau_{\rm_{\rm KH}}$ & $\tau_{\rm d}$
+	  \\ 
+	  \hline
+	  & & &  \\
+	  $1 \Msun$ & & &  \\
+	   & & &  \\
+	  \hline
+	  & & &  \\
+	  $10 \Msun$ & & &  \\
+	  & & &  \\
+	  \hline
+	  & & &  \\
+	  $25 \Msun$ & & &  \\
+	  & & &  \\
+	  \hline 
+	  & & &  \\
+	  $\rm{RG}~~ 1 \Msun$ & & &  \\
+	  & & &  \\
+	  \hline
+	  \hline
+	  
+	\end {tabular*}
+	\caption{\label{tab:timescales}}
+      \end{table}
+
+      
+    \item For each of the following evolutionary stages indicate on
+      which timescale they occur: {\it pre-main sequence contraction,
+      supernova explosion, core hydrogen burning, core helium burning}.
+
+      
+    \item When the Sun becomes a red giant (RG), its radius will
+      increase to $200\Rsun$ and its luminosity to
+      $3000\Lsun$. Estimate $\tau_{hyd}$ and $\tau_{KH}$ for such a
+      RG.
+
+    \item How large would such a RG have to become for
+      $\tau_{hyd}>\tau_{KH}$?  Assume both R and L increase at constant
+      effective temperature ($T_{eff}$).
+      
+    \end{enumerate}
+  \end{enumerate}
+  
+
+
+
+%\item {\bf (extra) Virial Theorem for Stars dominated by radiation pressure}
+%  \begin{enumerate}
+
+%  \end{enumerate}
+
+
+
+

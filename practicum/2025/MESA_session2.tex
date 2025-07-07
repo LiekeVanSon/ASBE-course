@@ -1,0 +1,80 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\usepackage{natbib} 
+\usepackage[english]{babel}
+\pagenumbering{arabic}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{float}
+%\usepackage{indentfirst}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{longtable}
+%\graphicspath{{C:/Users/glenn-michael/Documents/ExercisesAstronomy/}}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{pbox}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+%\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+
+\usepackage{hyperref}
+\usepackage{upquote}
+
+\begin{document}
+
+\title{\textbf{\texttt{MESA} tutorial: session 2}}
+\author{}
+\date{}
+\maketitle
+
+\section{Overshooting in an intermediate-mass star}
+
+In this first exercise, we will investigate the effect of overshooting. In order to do this, we evolve an intermediate-mass star for different levels of convective overshooting.
+\begin{enumerate}
+\item Instead of starting from the beginning and copying the model work directory like last time to edit, a \texttt{MESA} model has largely been constructed for you already. Download the tar file from Brightspace and unpack it. This can be done using the archive manager by extracting the contents to your desired location on the \texttt{scratch} disc, or using the terminal by typing \verb|tar -xvf session2.tar| in the directory where you downloaded the tar file and then moving the directory to your desired location on the \texttt{scratch} disc using a \texttt{cp -R} command. This file contains a \texttt{MESA} work folder in which we will work. Once you open the \verb|inlist_project| file, you will find a number of controls available for the model. First, choose a mass for the star between 2.5 M$_\odot$ and 10 M$_\odot$, and modify the inlist accordingly. Note that the stopping condition allows the star to evolve up to the end of core helium burning. 
+%Finally, open the \verb|inlist_pgstar| file. You will see that the settings for a Kippenhahn-diagram are included. This provides some interesting information about the structure of the star as it evolves. 
+\item We will run several models for different values of the overshooting parameter. First, compile (\verb|./mk|) and run (\verb|./rn|) the model without any overshooting. Use the various \texttt{PGSTAR} windows to follow and understand the evolution of this star, as in the first \texttt{MESA} session. One of the \texttt{PGSTAR} windows is a Kippenhahn diagram, which shows information about the structure of the star as it evolves. Also try to understand this plot. 
+%\emph{Note:} You can zoom in and out on the time axis of the Kippenhahn plot by changing \verb|Kipp_max_width| in \verb|inlist_pgstar| and saving the file. You may also have to change the limits of the HRD plot.
+\item After the model finishes, create a new copy of the work folder and rename the old folder to an appropriate name (e.g. identify it by the mass and overshoot value used, for example \verb|M3.0ov0|). In the new work folder, uncomment the lines relating to convective overshooting in your inlist and change the overshooting parameter \verb|overshoot_f(1)| to 0.25. (N.B. Look for the meaning of this and other overshooting parameters in the file \verb|$MESA_DIR/star/defaults/controls.defaults| or by checking online\footnote{\url{https://docs.mesastar.org/en/latest/reference/controls.html}}.) Then compile and run the code again, and repeat this process for an overshooting parameter of 0.5.
+\item We can now analyse the data in the 3 history files. To do this, go to the website under the tab `using \texttt{MESA} output'. Go to the section on \texttt{MESA Reader}\footnote{\url{https://docs.mesastar.org/en/latest/using_mesa/output.html\#plotting-mesa-output}} and download the code from the project's Github repository\footnote{\url{https://github.com/wmwolf/py_mesa_reader}} by clicking on the green \texttt{Code} button and choosing \texttt{Download ZIP}. \texttt{MESA Reader} is a \texttt{Python} framework with which one can easily plot data from the history and profile files. Read through the section on \texttt{MESA Reader} on the website to get familiar with its capabilities. \\[1ex]
+Extract the folder titled \texttt{mesa\_reader} from the zip file and place it somewhere in your \texttt{home} directory where you will keep your course-related plots (e.g. \verb|~/MESA/MESA_plotting|)\footnote{Note that the symbol \texttt{\~} has the same meaning as \texttt{\$HOME}, and points to your home directory.}. In this plotting folder, create your own \texttt{Python} script and import \texttt{MESA Reader} as follows:
+\begin{verbatim}
+import mesa_reader as mr
+\end{verbatim}
+You can use \texttt{Jupyter Notebook} for this\footnote{This is accessed via \url{https://jupyterhub.science.ru.nl/} and logging in with your science account. Make sure your notebook is inside your plotting folder as to be able to access \texttt{MESA Reader}.}, or \texttt{Spyder3}\footnote{When running scripts in \texttt{Spyder}, you need to change the working directory as to have access to \texttt{MESA Reader} by going to \texttt{Run}, \texttt{Configuration per file...}, and changing \texttt{Working Directory settings} by putting in the correct path to your plotting folder with the \texttt{The following directory} option.}. To read in the data, you need to move the \texttt{history.data} files from your \texttt{scratch} directory to somewhere in your plotting folder, for example inside a folder called \texttt{data} and there inside a folder called after its run (e.g. \texttt{M3.0ov0}). For this example, you use the following line in your \texttt{Python} script:
+\begin{verbatim}
+f0 = mr.MesaData('data/M3.0ov0/history.data')
+\end{verbatim}
+\emph{\textbf{Note:}} As explained in section 2.2 of the first tutorial, it is a very good idea to copy your work folder from the \verb|/scratch| directory to your home directory, after the \texttt{MESA} run has finished. This allows you to analyse your results using \texttt{MESA Reader} from any computer in the Faculty, not just the computer you ran your \texttt{MESA} models on! \\[1ex]
+\emph{\textbf{Note:}} It is also a good idea to organise your \texttt{MESA} work folders in a logical directory structure, in order to not make your home directory a mess. Just make sure you change the path in your \texttt{Python} script, such that it points to the right file. \\[1ex]
+To invoke the columns you want from the read-in data, in this case \texttt{f0}, you use \texttt{f0.X}, where X is the name of one of the columns of data inside \texttt{history.data}. The names of the columns can be found inside \texttt{history.data}, or inside \texttt{history\_columns.list} when available by the uncommented variables which at times also include units. 
+\item Make an HR diagram containing the 3 models. What changes do you see in the main-sequence evolution? What changes appear in the evolution \emph{after} the main sequence? Can you explain these changes?
+\item Make a plot of $\rho_c$ vs $T_c$. How do the evolution tracks in this diagram change for different levels of overshooting?
+\item Construct a plot of the central helium abundance vs age for all 3 models and explain your findings. 
+\item By what fraction is the main sequence lifetime increased for an overshooting parameter of 0.25 compared to the model without overshooting? By what fraction does the \emph{helium burning} lifetime change? Compare your findings with your neighbours who, hopefully, have chosen a star of different mass.
+\end{enumerate}
+
+\section{Evolution of massive stars with mass loss}
+
+In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
+\begin{enumerate}
+\item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
+\item Make a \texttt{Python} script to plot all 3 evolutionary tracks on an HR diagram. Can you explain the difference in the tracks? Discuss again with your neighbours to compare stars of different mass.
+\item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
+\item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+
+\item EXTRA: After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
+\end{enumerate}
+
+\bibliographystyle{aa}
+\bibliography{gmlib.bib}
+
+\end{document}

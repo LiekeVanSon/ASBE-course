@@ -1,0 +1,96 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{txfonts}
+\usepackage{fancybox}
+\usepackage{epsfig}
+\textwidth 16cm
+\textheight 24cm
+\oddsidemargin 0.0cm
+\topmargin -1cm
+
+\newcommand{\Msun}{\ensuremath{{M}_\odot}}
+\newcommand{\Rsun}{\ensuremath{{R}_\odot}}
+\newcommand{\Lsun}{\ensuremath{{L}_\odot}}
+\newcommand{\gammad}{\ensuremath{\gamma_\mathrm{a}}}
+\newcommand\der{\ensuremath{\mathrm{d}}}
+
+%\newcounter{exercise}
+%\renewcommand{\theexercise}{\arabic{exercise}}
+%\newcommand{\exercise}[1]{\refstepcounter{exercise}
+%    \section*{Exercise \theexercise:~~ {\it #1}}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large\bf Advanced Stellar and Binary Evolution} \\ [1ex]
+{\large hand-in exercise, week 4}
+
+\end{center}
+
+\subsection*{1.~~Evolution of AGB stars}
+\label{ex:AGB-evol}
+
+The luminosity of an AGB star is related to its core mass via the
+Paczynski relation~(eq.~11.1),
+\[
+    {L\over\Lsun}=5.9\times 10^4 \left({M_c\over\Msun} - 0.52\right).
+\]
+Assume that a star enters the AGB with a luminosity of $3.0\times10^3~\Lsun$, effective temperature of 3000~K and a total mass of 2~$\Msun$.
+    
+\begin{enumerate}
+
+\item[(a)] Mass is gradually added to the core by nuclear burning in the H- and He-burning shells. Assuming for the moment that both shells burn at a steady rate (i.e.\ ignoring thermal pulses), and assuming that the envelope of the star has a hydrogen mass fraction $X=0.7$, show that the core mass grows at a rate of about 
+\[ \dot M_c = 1.2\times 10^{-11} \left(L\over\Lsun\right)~\Msun/\mathrm{yr}. \]
+
+(Hint: see Sect.~6.4.1-2 for the energy released by H- and He-burning. You can assume He-burning occurs by the $3\alpha$ reaction.)
+
+
+\item[(b)] Derive an expression for the luminosity as a function of time
+  after the star entered the AGB phase.
+    
+\item[(c)] Assume that $T_{\rm eff}$ remains constant at 3000~K and derive an
+  expression for the radius as a function of time.
+    
+\item[(d)] Derive an expression for the core mass as a function of time.
+    
+\end{enumerate}
+    
+\noindent
+The masses of white dwarfs and the luminosity on the tip of the AGB
+are mostly determined by \emph{mass loss} during the AGB phase. The mass-loss 
+rate is uncertain, but for this exercise assume it is given by the Reimers
+relation, eq.~(10.3),
+\[
+      {\dot M\over\Msun\,\mathrm{yr}^{-1}}= 4\times 10^{-13}\eta
+      \left({L\over\Lsun}\right)
+      \left({R\over\Rsun}\right)\left({\Msun\over M}\right),      
+\]
+with $\eta\approx3$ for AGB stars. 
+      
+\begin{enumerate}
+
+\item[(e)] Derive an expression for the mass of the AGB star as a function of
+  time, using $L(t)$ and $R(t)$ from the previous questions.
+  (Hint: $-\dot{M} M = \frac{1}{2}\der(M^2)/\der t$).
+      
+\item[(f)] Use the expression from (e) and the one for $M_c(t)$ from
+  (d) to derive:
+  \begin{itemize}
+
+  \item the time when the star leaves the AGB ($M_\mathrm{env}\simeq
+    0$),
+
+  \item the luminosity at the tip of the AGB,
+
+  \item the mass of the resulting white dwarf.
+
+  \end{itemize}
+  This requires a numerical solution of a simple equation, but you can
+  also solve it graphically by plotting the two relations.
+     
+\item[(g)] In the above calculations, we have ignored the fact that \emph{thermal pulses} occur during the AGB, i.e.\ we have assumed that the AGB star undergoes steady H- and He-shell burning.  Discuss qualitatively how the answers to the above questions will change if thermal pulses are taken into account, in particular the \emph{dredge-up} episodes that follow each thermal pulse.
+	
+\end{enumerate} 
+            
+\end{document} 
+

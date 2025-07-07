@@ -1,0 +1,196 @@
+\documentclass[11pt,a4paper,fleqn]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{7}
+
+\begin{enumerate}
+
+
+\item {\bf General understanding of the stellar evolution equations} 
+
+  Most answers can be found in the lecture notes, Section 7.1 and 7.3.
+
+
+
+\item {\bf Dynamical Stability} 
+
+  \begin{enumerate}
+
+  \item See Section 7.4.
+    
+  \item See Section 7.5.1.
+    
+  \item Stars dominated by radiation pressure (high $T$ / low $\rho$)
+    or stars where the electrons are extremely relativistic and
+    degenerate. Small disturbances can lead to either collapse or
+    explosion of the star.
+    
+  \item Partial ionization can lead to $\gamma_{\rm ad} < 4/3$.
+   
+  \item Fe photo-disintegration can occur in all massive stars that
+    form an Fe core after going through successive nuclear burning
+    cycles, and initiates the collapse of the core and a supernova
+    explosion. Pair creation can occur in extremely massive stars.
+
+  \end{enumerate}
+
+
+\item {\bf Mass radius relation for degenerate stars}
+  \begin{enumerate}
+
+  \item $\displaystyle P_c = b\, \frac{G M^2}{R^4}$ \quad and also
+    \quad $\displaystyle P_c = K_\mathrm{NR}\,
+    \Bigg(\frac{\rho_c}{\mu_e}\Bigg)^{5/3} = K_\mathrm{NR}\,
+    \Bigg(\frac{a\,\bar{\rho}}{\mu_e}\Bigg)^{5/3} = K_\mathrm{NR}\,
+    \Bigg(\frac{a}{\mu_e}\,\frac{3 M}{4\pi R^3}\Bigg)^{5/3} $.
+
+    Equating the two expressions gives \quad $\displaystyle R =
+    \frac{K_\mathrm{NR}}{b G}\, \Bigg( \frac{3a}{4\pi\mu_e}
+    \Bigg)^{5/3}\, M^{-1/3}$. 
+
+    Therefore $R \propto M^{-1/3}$: the more massive the white dwarf,
+    the smaller its radius.  (Note that $a$ and $b$ in this case
+    correspond to the values for a $n=1.5$ polytrope, and can be found
+    in Table~4.1.)
+
+  \item A silimar derivation as above shows that the radius drops out,
+    and \quad $\displaystyle M = \Bigg( \frac{K_\mathrm{NR}}{b G}
+    \Bigg)^{3/2} \Bigg( \frac{3a}{4\pi\mu_e} \Bigg)^2$ is constant.
+    Taking $a$ and $b$ for an $N=3$ polytrope (Table~4.1) gives the
+    Cahndrasekhar mass, $M_{\rm Ch} = 1.46\, (2/\mu_e)^2\, \Msun$.
+
+  \item SNe Ia are thought to occur in binaries where a white dwarf
+    with a mass lower than $M_{\rm Ch}$ accretes from a companion
+    star. As its mass increases and it radius decreases, the white
+    dwarf becomes more dense, until all the electrons become extremely
+    relativistic degenarate. The electron pressure cannot support more
+    weight than $M_{\rm Ch}$ and the star collapses, ....
+
+  \end{enumerate}
+
+
+\item {\bf Main-sequence homology relations}
+
+%  Discuss your answers to this question with your fellow students or
+%  with the teaching assistant.
+  \begin {enumerate}	
+    \addtocounter{enumii}{1}
+	
+  \item Low-mass stars with $M \lsim 0.25\,\Msun$. Stars with $M \gsim
+    1\,\Msun$ also have a roughly similar density dirtribution.
+	
+  \item An ideal gas is assumed, which breaks down for the
+    highest-mass stars where radiation pressure is important.
+    Radiative energy transport is assumed, which is not valid for
+    low-mass stars which have large convective envelopes. $\kappa$ is
+    assumed to be constant which is in reality a function of density
+    and temperature.
+	
+  \item Use $a=1$ and $b= -3.5$ in equation (6.30). Use equation
+    (6.30) and (6.31) to calculate the relation.
+	
+  \item $R \propto M^{0.7} \Rightarrow L \propto \mu^{7.5} M^{5.15}$.
+    Opacity that follows Kramers' law is mostly due to free-free
+    absorption. This is the main source of opacity inside low-mass
+    stars. In more massive stars electron scattering is the main
+    opacity source.
+	
+  \end{enumerate}
+  
+
+\item {\bf Central behaviour of the stellar structure equations}
+  \begin{enumerate}
+   
+  \item For a variable $A$ write $\der A/\der r = \der A/\der m \cdot
+    \der m/\der r$ with $\der m/\der r = 4\pi r^2 \rho$, etc. Apply
+    this to eqs.~(7.12)--(7.15).
+
+  \item Write each quantity $A$ as a Taylor expansion around the centre
+    \[
+    A(r) = A(0) + \frac{\der A}{\der r}\Bigg|_{r=0} \,r
+    + \frac{1}{2} \frac{\der^2 A}{\der r^2}\Bigg|_{r=0} \,r^2
+    + \frac{1}{6} \frac{\der^3 A}{\der r^3}\Bigg|_{r=0} \,r^3 
+    + \dots
+    \]
+    and keep only the lowest-order term with $r^n$.
+    % Hint: take $\rho \approx \rho_c$ close to the center
+    
+    \begin {itemize} 
+
+    \item For the mass $m(r)$, use $\der m/\der r = 4\pi r^2 \rho$.
+      Verify that $\der m/\der r$ and $\der^2 m/\der r^2$ both vanish
+      at $r=0$, and that $\der^3 m/\der r^3 = 8\pi \rho_c$. Since
+      $m(0) = 0$ you get
+      \[
+      m(r) = \frac{4}{3}\pi \rho_c\, r^3 + \ldots
+      \]
+      which  is simply the mass of a small sphere with constant
+      density $\rho_c$.
+
+    \item For the luminosity $\lum(r)$, it is easier to use
+      $\der\lum/\der m = \epsilon \equiv \epsilon_\mathrm{nuc} -
+      \epsilon_\nu + \epsilon_\mathrm{gr}$, and use a Taylor expansion
+      in $m$ rather than $r$. This gives $\lum(r) = \epsilon_c\, m(r)
+      + \ldots$ because $\lum(0) = 0$.  Then combine with the
+      expansion for $m(r)$:
+      \[
+      \lum(r) = \frac{4}{3}\pi \rho_c\,\epsilon_c\, r^3 + \ldots
+      \]
+
+    \item For the pressure $P(r)$, use $\der P/\der r = Gm\rho/r^2$.
+      Verify that $\der P/\der r = 0$ and $\der^2 P/\der r^2 =
+      -\frac{4}{3}\pi G \rho_c^2$ at $r=0$. At the centre $P(0) = P_c$
+      so that
+      \[
+      P(r) = P_c - \frac{2}{3}\pi G \rho_c^2 \, r^2 + \ldots
+      \]
+
+    \item For the temperature $T(r)$ we have to distinguish between
+      radiative and convective transport.  In case of \emph{radiative
+        transport}, take eq.~(5.16) for $\der T/\der r$ which you can
+      write as
+      \[
+      \frac{\der (T^4)}{\der r} = 
+      -\frac{3}{4\pi a c}\,\frac{\kappa\rho\lum}{r^2}
+      \]
+      which vanishes in the centre, since $\lum \propto r^3$ and both
+      $\kappa_c$ and $\rho_c$ are finite. The second derivative of
+      $T^4$ in the centre is
+      \[
+      \frac{\der^2 (T^4)}{\der r^2} = -\frac{3\kappa_c\rho_c}{4\pi a c}\,
+      \Bigg(\frac{1}{r^2}\frac{\der\lum}{\der r} 
+      - \frac{2}{r^3}\,\lum \Bigg)_{r=0}
+      = -\frac{\kappa_c\,\rho_c^2\,\epsilon_c}{ac}
+      \]
+      so that
+      \[
+      T^4(r) = T_c^4 - \frac{\kappa_c\, \rho_c^2\,
+        \epsilon_c}{2ac}\,r^2 + \ldots
+      \]
+      
+    \item In case of \emph{convective energy transport} write $\der
+      T/\der r = -(T/P) \, \gradad\, \der P/\der r$ which can be
+      written as
+      \[
+      \frac{\der\ln T}{\der r} = \frac{\gradad}{P}\,\frac{\der P}{\der r}
+      \]
+      which vanishes in the centre because $\der P/\der r = 0$. The
+      second derivative of $\ln T$ in the centre equals $\der^2 \ln
+      T/\der r^2 = (\gradad/P)_c\,\der^2 P/\der r^2 = (\gradad/P)_c\,
+      \frac{4}{3}\pi G \rho_c^2$, so that
+      \[
+      \ln T(r) = \ln T_c - \frac{2\pi G\, \rho_c^2\,
+        \nabla_\mathrm{ad,c}}{3 P_c}\,r^2 + \ldots
+      \]
+
+    \end{itemize}
+
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

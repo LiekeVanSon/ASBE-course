@@ -1,0 +1,91 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{txfonts}
+\usepackage{fancybox}
+\usepackage{epsfig}
+\textwidth 16cm
+\textheight 24cm
+\oddsidemargin 0.0cm
+\topmargin -1cm
+
+\newcommand{\Msun}{\ensuremath{{M}_\odot}}
+\newcommand{\Rsun}{\ensuremath{{R}_\odot}}
+\newcommand{\Lsun}{\ensuremath{{L}_\odot}}
+\newcommand{\gammad}{\ensuremath{\gamma_\mathrm{a}}}
+\newcommand\der{\ensuremath{\mathrm{d}}}
+\newcommand{\Si}[1]{\ensuremath{{^{#1}\mathrm{Si}}}}
+\newcommand{\Fe}[1]{\ensuremath{{^{#1}\mathrm{Fe}}}}
+\newcommand{\el}[2]{\ensuremath{{^{#2}\mathrm{#1}}}}
+\newcommand{\e}{\ensuremath{\mathrm{e}}}
+
+%\newcounter{exercise}
+%\renewcommand{\theexercise}{\arabic{exercise}}
+%\newcommand{\exercise}[1]{\refstepcounter{exercise}
+%    \section*{Exercise \theexercise:~~ {\it #1}}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large\bf Advanced Stellar and Binary Evolution} \\ [1ex]
+{\large hand-in exercises, week 6}
+
+\end{center}
+
+\subsection*{1.~~Neutrino luminosity by Si burning}
+\label{ex:Si-burning}
+  
+Silicon burning forms iron out of silicon. Assume that 5\,MeV of energy
+is liberated by creating one \Fe{56} nucleus from silicon, and that
+the final result of this burning is an iron core of about
+$1.4\,\Msun$. Silicon burning only lasts for about one day, as most of the
+liberated energy is converted into neutrinos (of about 5\,MeV each).
+
+\begin{enumerate}
+
+\item[a)] Compute the neutrino luminosity of a star undergoing Si burning.
+Compare this to the neutrino luminosity of the Sun. (Hint: use the fraction of energy released by H-burning in the Sun that is in the form of neutrinos, see Section 6.4.1).
+
+\item[b)] About 20 neutrinos were detected from supernova 1987A, located in the Large Magellanic Cloud at a distance of 50 kpc, during about 10 seconds. At what distance does the silicon burning star have to be, such that we can detect its neutrino emission at the same flux level as for SN 1987A? (Hint: use the total energy released during a core-collapse supernova, which you calculated in Exercise 13.1a).
+
+\end{enumerate} 
+
+\subsection*{2.~~Thermonuclear supernovae} 
+\label{ex:C-ignition-wd}
+
+When a white dwarf approaches the Chandrasekhar mass, and its central
+density exceeds $2\times10^9$ g/cm$^3$, carbon is ignited under
+degenerate conditions. This will quickly burn the whole white dwarf to
+iron-group elements (mainly $^{56}$Ni).  
+
+\begin{enumerate}
+
+\item[a)] Compute the radius and the gravitational binding energy of such a white dwarf, using the polytropic relations from Chapter 4, and assuming that the structure of a white dwarf near $M_\mathrm{Ch}$ is given by an $n = 3$ polytrope (why?).
+
+\item[b)] Compare this to the amount of energy released when the white dwarf is completely incinerated to $^{56}$Ni. Use the masses of $^{12}$C, $^{16}$O and $^{56}$Ni nuclei in Table~6.1, and assume that the white dwarf is 
+composed of equal mass fractions of $^{12}$C and $^{16}$O.
+
+\item[c)] Considering that the internal energy of the white dwarf (total kinetic energy of the constituent particles) is about half the gravitational binding energy, what will be the outcome?
+
+\item[d)] The light curve of a thermonuclear supernova is dominated by
+the release of energy in the radioactive decay sequence:
+    \[
+    \el{Ni}{56} + \e^- \rightarrow \el{Co}{56} + \nu +
+    1.72\,\mathrm{MeV} \qquad (\tau_{1/2} = 6.1\,\mathrm{d}),
+    \]
+    \[
+    \el{Co}{56} + \e^- \rightarrow \el{Fe}{56} + \nu +
+    3.59\,\mathrm{MeV} \qquad (\tau_{1/2} = 77\,\mathrm{d}).
+    \]
+Assume that $\approx 0.6\,\Msun$ of \el{Ni}{56} is produced per
+supernova. How bright (in \Lsun) is the supernova initially, and
+how bright is it after 365 days?
+
+%(Make use of the polytropic relations to answer this question.
+%Use the masses of $^{12}$C, $^{16}$O and $^{56}$Ni nuclei in 
+%Table~\ref{tab:atomic-masses}, and assume that the white dwarf is 
+%composed of equal mass fractions of \C{12} and \O{16}.)
+
+\end{enumerate} 
+            
+\end{document} 
+

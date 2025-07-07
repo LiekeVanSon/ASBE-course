@@ -1,0 +1,106 @@
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{txfonts}
+
+\textwidth 15.5cm
+\textheight 23.0cm
+\oddsidemargin 0cm
+\evensidemargin 0cm
+\topmargin 0cm
+
+\pagestyle{empty}
+
+\newcommand{\hints}[1]{\centerline{{\large\bf 
+      Stellar Evolution -- Hints to exercises -- Chapter #1}} \bigskip
+\renewcommand{\labelenumi}{#1.\arabic{enumi}}}
+
+% for making counters of style 1.1, 1.2, etc
+%\renewcommand{\labelenumi}{1.\arabic{enumi}}
+
+% symbol definitions:
+\newcommand{\Msun}{\ensuremath{{M}_\odot}}
+\newcommand{\Lsun}{\ensuremath{{L}_\odot}}
+\newcommand{\Rsun}{\ensuremath{{R}_\odot}}
+\newcommand{\Mcore}{\ensuremath{M_\mathrm{c}}}
+\newcommand{\MCh}{\ensuremath{M_\mathrm{Ch}}}
+\newcommand{\Teff}{\ensuremath{T_\mathrm{eff}}}
+\newcommand{\lum}{\ensuremath{l}}
+\newcommand{\ledd}{\ensuremath{l_\mathrm{Edd}}}
+\newcommand{\Ledd}{\ensuremath{L_\mathrm{Edd}}}
+\newcommand{\Prad}{\ensuremath{P_\mathrm{rad}}}
+\newcommand{\Pgas}{\ensuremath{P_\mathrm{gas}}}
+\newcommand{\Pion}{\ensuremath{P_\mathrm{ion}}}
+\newcommand{\Prot}{\ensuremath{P_\mathrm{rot}}}
+\newcommand{\GammaC}{\ensuremath{{\Gamma_\mathrm{C}}}}
+\newcommand{\gammad}{\ensuremath{{\gamma_\mathrm{ad}}}}
+\newcommand{\gradad}{\ensuremath{{\nabla_\mathrm{ad}}}}
+\newcommand{\gradrad}{\ensuremath{{\nabla_\mathrm{rad}}}}
+\newcommand{\tdyn}{\ensuremath{{\tau_\mathrm{dyn}}}}
+\newcommand{\tKH}{\ensuremath{{\tau_\mathrm{KH}}}}
+\newcommand{\tnuc}{\ensuremath{{\tau_\mathrm{nuc}}}}
+\newcommand{\tms}{\ensuremath{{\tau_\mathrm{MS}}}}
+\newcommand{\enuc}{\ensuremath{{\epsilon_\mathrm{nuc}}}}
+\newcommand{\eneu}{\ensuremath{{\epsilon_\nu}}}
+\newcommand{\egrav}{\ensuremath{{\epsilon_\mathrm{gr}}}}
+\newcommand{\cP}{\ensuremath{{c_{\scriptstyle P}}}}
+\newcommand{\cV}{\ensuremath{{c_{\scriptstyle V}}}}
+\newcommand{\lmix}{\ensuremath{{\ell_\mathrm{m}}}}
+\newcommand{\HP}{\ensuremath{{H_{\scriptstyle P}}}}
+\newcommand{\vel}{\ensuremath{{\upsilon}}}
+\newcommand{\vconv}{\ensuremath{{\vel_\mathrm{c}}}}
+\newcommand{\vsound}{\ensuremath{{\vel_\mathrm{s}}}}
+\newcommand{\veq}{\ensuremath{{\vel_\mathrm{eq}}}}
+\newcommand{\vect}[1]{\mbox{\boldmath $#1$}}
+\newcommand{\gradient}{\mbox{\boldmath $\nabla$}}
+
+\newcommand{\Chi}{\ensuremath{\raisebox{0.4ex}{$\chi$}}}
+
+\newcommand{\kmsMpc}{\ensuremath{%
+  \mathrm{km}\,\mathrm{s}^{-1}\,\mathrm{Mpc}^{-1}}}
+
+\newcommand{\arrow}{\ensuremath{\Rightarrow}}
+\newcommand{\lsim}{\mathrel{\hbox{\rlap{\lower.55ex \hbox {$\sim$}}
+ \kern-.3em \raise.4ex \hbox{$<$}}}}
+\newcommand{\gsim}{\mathrel{\hbox{\rlap{\lower.55ex \hbox {$\sim$}}
+ \kern-.3em \raise.4ex \hbox{$>$}}}}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqar}{\begin{eqnarray}}
+\newcommand{\eeqar}{\end{eqnarray}}
+\newcommand{\der}{\ensuremath{\mathrm{d}}}
+\newcommand{\dd}{\partial}
+
+\newcommand{\half}{\ensuremath{{\textstyle\frac{1}{2}}}}
+\newcommand{\third}{\ensuremath{{\textstyle\frac{1}{3}}}}
+\newcommand{\onesixth}{\ensuremath{{\textstyle\frac{1}{6}}}}
+
+\newcommand{\amu}{\ensuremath{m_\mathrm{u}}}
+\newcommand{\e}{\ensuremath{\mathrm{e}}}
+\newcommand{\n}{\ensuremath{\mathrm{n}}}
+\newcommand{\p}{\ensuremath{\mathrm{p}}}
+\renewcommand{\H}[1]{\ensuremath{{^{#1}\mathrm{H}}}}
+\newcommand{\D}{\ensuremath{\mathrm{D}}}
+\newcommand{\He}[1]{\ensuremath{{^{#1}\mathrm{He}}}}
+\newcommand{\Li}[1]{\ensuremath{{^{#1}\mathrm{Li}}}}
+\newcommand{\Be}[1]{\ensuremath{{^{#1}\mathrm{Be}}}}
+\newcommand{\B}[1]{\ensuremath{{^{#1}\mathrm{B}}}}
+\newcommand{\C}[1]{\ensuremath{{^{#1}\mathrm{C}}}}
+\newcommand{\N}[1]{\ensuremath{{^{#1}\mathrm{N}}}}
+\renewcommand{\O}[1]{\ensuremath{{^{#1}\mathrm{O}}}}
+\newcommand{\F}[1]{\ensuremath{{^{#1}\mathrm{F}}}}
+\newcommand{\Na}[1]{\ensuremath{{^{#1}\mathrm{Na}}}}
+\newcommand{\Ne}[1]{\ensuremath{{^{#1}\mathrm{Ne}}}}
+\newcommand{\Mg}[1]{\ensuremath{{^{#1}\mathrm{Mg}}}}
+\newcommand{\Al}[1]{\ensuremath{{^{#1}\mathrm{\!Al}}}}
+\newcommand{\Si}[1]{\ensuremath{{^{#1}\mathrm{Si}}}}
+\newcommand{\Fe}[1]{\ensuremath{{^{#1}\mathrm{Fe}}}}
+\newcommand{\el}[2]{\ensuremath{{^{#2}\mathrm{#1}}}}
+\newcommand{\avg}[1]{\ensuremath{\langle#1\rangle}}
+\newcommand{\rate}[1]{\ensuremath{r_\mathrm{#1}}}
+\newcommand{\sv}[1]{\ensuremath{\langle\sigma v\rangle_{#1}}}
+\newcommand{\svpp}{\ensuremath{\langle\sigma v\rangle_\mathrm{pp}}}
+\newcommand{\svpD}{\ensuremath{\langle\sigma v\rangle_\mathrm{pD}}}
+\newcommand{\life}[2]{\ensuremath{\tau_\mathrm{#1}(\mathrm{#2})}}
+\newcommand{\fpp}[1]{\ensuremath{f_\mathrm{pp#1}}}

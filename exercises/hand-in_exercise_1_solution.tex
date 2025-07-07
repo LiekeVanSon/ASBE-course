@@ -1,0 +1,84 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{txfonts}
+\usepackage{fancybox}
+\usepackage{epsfig}
+\textwidth 16cm
+\textheight 24cm
+\oddsidemargin 0.0cm
+\topmargin -1cm
+
+\newcommand{\Msun}{\ensuremath{{M}_\odot}}
+\newcommand{\Rsun}{\ensuremath{{R}_\odot}}
+\newcommand{\Lsun}{\ensuremath{{L}_\odot}}
+\newcommand{\gammad}{\ensuremath{\gamma_\mathrm{a}}}
+\newcommand\der{\ensuremath{\mathrm{d}}}
+
+%\newcounter{exercise}
+%\renewcommand{\theexercise}{\arabic{exercise}}
+%\newcommand{\exercise}[1]{\refstepcounter{exercise}
+%    \section*{Exercise \theexercise:~~ {\it #1}}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large\bf Advanced Stellar and Binary Evolution} \\ [1ex]
+{\large hand-in exercise, week 2}
+
+\end{center}
+
+\begin{itemize}
+\item[a)] Because the star is undergoing H-burning and is therefore in TE, we can use
+\[ \frac{\der l}{\der m} = \epsilon_\mathrm{nuc} = \epsilon_c\left( 1-\frac{m}{0.1M}\right) \qquad \mathrm{for}\ m < 0.1M. \]
+Integrate over $m$ to get $l(m)$, using the boundary condition that $l=0$ at $m=0$:
+\begin{equation} \label{eq:lm1}
+l(m) = \int_0^m \epsilon_c\left(1 - 10\frac{m'}{M}\right) \der m' = \epsilon_c\left(m - 5\frac{m^2}{M}\right) \qquad \mathrm{for}\ m < 0.1M. 
+\end{equation}
+Note that for $m \geq 0.1M$, $\epsilon_{nuc} = 0$ and therefore $l(m) = \mathrm{constant} = L$, because $l(M)$ must be equal to the total luminosity. Thus,
+\begin{equation} \label{eq:lm2}
+l(m) = L  \qquad \mathrm{for}\ m \geq 0.1M.
+\end{equation}
+Combining eqs.~(\ref{eq:lm1}) and (\ref{eq:lm2}) gives $L = l(0.1M) = 0.05\epsilon_c M \quad\Rightarrow$
+\begin{equation} \label{eq:epsc}
+\epsilon_c = 20\frac{L}{M} 
+\end{equation}
+Putting in the given $L$ and $M$ gives $\epsilon_c = 1.03\times10^3$\,erg\,g$^{-1}$\,s$^{-1}$.
+
+\item[b)] With radiative energy transport no mixing occurs, so changes in $X$ are only due to nuclear reactions. We use eq.~(6.43) from the lecture notes, rewriiten for this exercise as
+\[
+\frac{\der X}{\der t} = - \frac{\epsilon_\mathrm{nuc}}{Q_\mathrm{H}}.
+\]
+Since the right-hand side is independent of time, we can simply integrate to find
+\[
+X(m,t) - X_0 = -\int_0^t \frac{\epsilon_\mathrm{nuc}}{Q_\mathrm{H}} \der t = - \frac{\epsilon_c}{Q_\mathrm{H}}\, \left( 1 - 10\frac{m}{M} \right)\,t
+\]
+with the initial value $X_0=0.7$, so
+\[
+X(m,t) = 0.7 - \frac{\epsilon_c}{Q_\mathrm{H}}\, \left( 1 - 10\frac{m}{M} \right)\,t.
+\]
+With $\epsilon_c$ from question (a) and $Q_\mathrm{H}$ as given, $\epsilon_c/Q_\mathrm{H} = 1.64\times10^{-16}$\,s$^{-1} = 5.16\times10^{-9}$\,yr$^{-1}$. At $t=100$\,Myr we then find a central value of $X_c = 0.184$, with $X$ linearly increasing to 0.7 at $m=0.1M$.
+
+
+\item[d)] The Schwarzschild criterion (eq. 5.52 in the lecture notes) tells us convection occurs wherever
+\[
+\nabla_\mathrm{rad} = \frac{3}{16\pi acG} \frac{P}{T^4} \frac{\kappa l}{m} > 
+\nabla_\mathrm{ad}.
+\]
+Noting that $P_\mathrm{rad} = \frac{1}{3}aT^4$ we can rewrite this as
+\begin{equation} \label{eq:schw}
+\nabla_\mathrm{rad} = \frac{\kappa}{16\pi cG} \frac{P}{P_\mathrm{rad}} \frac{l}{m} >  \nabla_\mathrm{ad}.
+\end{equation}
+Applying the additional  assumptions, we have $\kappa = \kappa_\mathrm{es} = 0.2(1+X)$\,cm$^{2}$\,g$^{-1}$, $P/P_\mathrm{rad} = 500$, and $\nabla_\mathrm{ad} = 0.4$ for an (ionized) ideal gas. From eqs.~(\ref{eq:lm1}--\ref{eq:epsc}) in exercise (a) we find:
+\begin{equation} \label{eq:loverm}
+\frac{l}{m} = \frac{L}{M}\,f(m) \qquad \mathrm{with} \qquad f(m) = \left\{ 
+\begin{array}{l@{\quad}l}
+\displaystyle 20\,\left(1 - 5\frac{m}{M}\right) & m/M < 0.1 \\
+\displaystyle \frac{M}{m} & m/M \geq 0.1 \\
+\end{array} \right.
+\end{equation}
+with $L/M = 51.5$\,erg\,g$^{-1}$\,s$^{-1}$. Expressing $16\pi cG$ in cgs units, and taking $X=0.7$, we can then write the Schwarzschild criterion (eq.~\ref{eq:schw}) as
+\[ \nabla_\mathrm{rad} = 0.0871\,f(m) > 0.4. \]
+Noting that $f(m) = 20$ in the centre and $f(m) = 10$ at $m/M = 0.1$, we see that the inner 10\% of the mass is convective, and the Schwarzschild boundary must lie in the region $m/M > 0.1$. Using $f(m) = M/m$, we find the boundary is at $m/M = 0.218$. The star therefore has a convective core of mass $m_\mathrm{core} = 0.654\,\Msun$.
+
+\end{itemize}
+\end{document}

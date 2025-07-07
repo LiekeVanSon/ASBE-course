@@ -1,0 +1,251 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\usepackage{natbib} 
+\usepackage[english]{babel}
+\pagenumbering{arabic}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{float}
+%\usepackage{indentfirst}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{longtable}
+%\graphicspath{{C:/Users/glenn-michael/Documents/ExercisesAstronomy/}}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{pbox}
+\usepackage{hyperref}
+\usepackage{upquote}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+%\renewcommand{\labelenumi}{\alph{enumi})}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand\apjs{Ap. J. Suppl.}
+
+\begin{document}
+
+\title{\textbf{\texttt{MESA} tutorial: session 1}}
+\author{}
+\date{}
+\maketitle
+
+\section{What is \texttt{MESA}?}
+
+\texttt{MESA} stands for Modules for Experiments in Stellar Astrophysics. It is an open-source stellar astrophysics code consisting of different modules. Each module is responsible for a different aspect of the numerics or physics required to construct computational models for stellar astrophysics. At the core of it all is the most important module: \texttt{MESA star}. \texttt{MESA star} is a one-dimensional stellar evolution code and is designed for a wide range of stellar physics applications. You can find more information on the website \url{https://docs.mesastar.org/}, and also in the first \texttt{MESA} instrument paper by \href{https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P/abstract}{Paxton et al. (2011)}. 
+
+%\subsection*{What are the advantages?}
+\bigskip\noindent
+The advantages of \texttt{MESA} are listed on the website of the code and the key points are given below:
+\begin{itemize}
+\item Open source
+\item Independent modules
+\item Wide applicability
+\item High performance
+\item Modern techniques
+\item Comprehensive microphysics
+\end{itemize}
+
+
+\section{Getting started}
+
+%%%  Instructions for installation on computers in Huygens building are moved to end of this file. 
+
+\texttt{MESA} has already been installed on the Science Faculty computer system of Radboud University. This section will explain how to access this. The \texttt{MESA} installation is not the newest version, but an older one named \texttt{r12778} which is found at \url{https://zenodo.org/record/3698354#.Yyxmg3ZBxPZ}, because this release runs stably for the computer exercises you will perform during this course.\footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/release-r22.05.1/installation.html\#}). The corresponding \texttt{MESA SDK} (software development kit) is the Linux version with a release date of March 25 2020, which can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}. }
+
+\bigskip\noindent
+To access the \texttt{MESA} installation, you first need to log in on the Linux environment of the university computers at the Science Faculty. If you cannot manage to log in with your science account, you can find helpful information here: \url{https://wiki.cncz.science.ru.nl/Login}. 
+
+\bigskip\noindent
+Once logged in, open a terminal and run the following 5 lines of code. These lines will have to be run in every new terminal you open to make \texttt{MESA} work. To avoid having to do this every time, you can edit your Linux shell start-up file and add these lines to that file.\footnote{More information can be found in the subsection \texttt{Set your environment variables} on \url{https://docs.mesastar.org/en/release-r22.05.1/installation.html\#}.}
+
+\begin{verbatim}
+export MESA_DIR=/vol/cursus/astro/ASBE/MESA/mesa-r12778
+\end{verbatim}
+This line defines the path where \texttt{MESA} is located in the computer system.
+
+\begin{verbatim}
+export OMP_NUM_THREADS=4
+\end{verbatim}
+This defines the number of cores the computer has for \texttt{MESA} to use, which for the university computers is 4. If you are unsure about this number, use the \texttt{lscpu} command in the terminal and check the number of CPUs of your machine.
+
+\begin{verbatim}
+export MESASDK_ROOT=/vol/cursus/astro/ASBE/MESA/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+\end{verbatim}
+These 2 lines define the path where the \texttt{MESA SDK} (Software Development Kit) is located and initialise this \texttt{SDK}. 
+
+\begin{verbatim}
+export MESA_CACHES_DIR=/scratch/$USER/MESA/caches
+\end{verbatim}
+This line defines the path where \texttt{MESA} will store its cache information, which in this case will be somewhere in the local \texttt{scratch} directory of the specific machine you are using. This directory is used instead of your own \texttt{home} directory (invoked with \texttt{\$HOME}) to make \texttt{MESA} run much faster due to it being run locally instead of in the computer system where your \texttt{home} directory resides. Furthermore, there is more space available on \texttt{scratch} than on your \texttt{home} directory. If you are using a machine you have not used before, or the local \texttt{scratch} directory has been wiped, or just to be on the safe side, run the following lines of code. 
+
+\begin{verbatim}
+mkdir /scratch/$USER
+mkdir /scratch/$USER/MESA
+mkdir /scratch/$USER/MESA/caches
+\end{verbatim}
+These lines create a personal directory (using the \texttt{mkdir} command) named after your science account username (invoked with \texttt{\$USER}) on the \texttt{scratch} directory, a directory named \texttt{MESA} inside that directory, and a directory named \texttt{caches} where \texttt{MESA} will store its cache information as was defined in the previous line with the \texttt{MESA\_CACHES\_DIR} path variable.
+
+\bigskip\noindent
+The 8 lines of code mentioned above have been put for your convenience in a text file titled \texttt{MESA\_startup\_script}, which is on Brightspace with this document. You can copy the entire contents of that text file and paste it in the terminal (by right clicking the terminal window and selecting paste) for it to run. This will make your terminal window ready to run \texttt{MESA}. The possible errors from the \texttt{mkdir} commands which say that the file already exists are no problem. You need to run these lines for every new terminal window you want to run \texttt{MESA} in.
+
+\subsection{Using \texttt{MESA}}
+
+%\bigskip\noindent
+It is a good idea to create a new work folder for every new \texttt{MESA} calculation you do. To do this initially, you copy the model work folder from the \texttt{MESA} installation to a new directory with a name of your choice (in this example \texttt{project1}) inside your \texttt{MESA} directory on the local \texttt{scratch} disk. This is done via the recursive copy command invoked via \texttt{cp -R}. An example line is given below:
+
+\begin{verbatim}
+cp -R $MESA_DIR/star/work /scratch/$USER/MESA/project1
+\end{verbatim}
+
+\noindent
+For each \texttt{MESA} project, create a separate work folder in this way. To run your new \texttt{MESA} project, first go to its directory. This is done via the change directory command invoked via \texttt{cd}. An example line is given below:
+
+\begin{verbatim}
+cd /scratch/$USER/MESA/project1
+\end{verbatim}
+
+\noindent
+Inside this directory, you first need to assemble the code because \texttt{MESA} uses a compiled programming language called \texttt{Fortran}. This is done via a make command using the following line of code: 
+
+\begin{verbatim}
+./mk
+\end{verbatim}
+
+\noindent
+Afterwards, the code can be run using the following line of code: 
+
+\begin{verbatim}
+./rn
+\end{verbatim}
+
+\noindent
+To make changes to the \texttt{MESA} model, you will need to edit the inlist files that live inside the project directory (e.g. \texttt{inlist\_project} and \texttt{inlist\_pgstar}). This can be done via the file manager by accessing your work folders on the local \texttt{scratch} directory underneath the following chain: \texttt{Other Locations}, \texttt{On This Computer}, \texttt{Computer}, \texttt{scratch}. It can also be done via the terminal using the \texttt{xdg-open} command which opens a file with the machine's preferred application. An example line (in this case to open \texttt{inlist\_project}) is given below:
+
+\begin{verbatim}
+xdg-open inlist_project &
+\end{verbatim}
+
+\noindent
+The \texttt{\&} symbol at the end allows you to keep the editor window open while typing further Linux commands in the terminal.
+
+\bigskip\noindent
+For more on how to use \texttt{MESA}, you can find information here: \url{https://docs.mesastar.org/en/release-r22.05.1/using_mesa.html}. Furthermore, more information on simulating different stellar evolution problems in \texttt{MESA} can be found here: \url{https://docs.mesastar.org/en/release-r22.05.1/test_suite.html#}.
+
+\subsection{Saving your work}
+
+After you have finished using \texttt{MESA} for the current session, you will need to migrate your project directories from the local \texttt{scratch} directory to prevent you from losing them. This can be done using the file manager and copying directories from \texttt{scratch} to your \texttt{home} directory, or via the terminal using the following example lines of code, which create a \texttt{MESA} directory in your \texttt{home} directory and copies your project there:
+
+\begin{verbatim}
+mkdir $HOME/MESA
+cp -R /scratch/$USER/MESA/project1 $HOME/MESA/project1
+\end{verbatim}
+
+\noindent
+Note that you will have to make a copy for \emph{every} project directory you have worked on during the session! It is also important to note that you only have limited space in your \texttt{home} directory (about 7 Gb). Thus, it will be useful to migrate your \texttt{MESA} projects to a personal external storage device or to cloud storage (e.g. the OneDrive that comes with your Radboud e-mail, or a Google Drive). 
+
+
+\section{Evolving a 1 \texorpdfstring{M$_\odot$}{Msun} star}
+
+\begin{enumerate}
+
+\item Create a copy of the work folder and give it a suitable name, then compile the code. For example:
+\begin{verbatim}
+cp -R $MESA_DIR/star/work /scratch/$USER/MESA/session1
+cd /scratch/$USER/MESA/session1
+./mk
+\end{verbatim}
+
+\item Change the \verb|inlist_project| file to evolve a 1 M$_\odot$ model. Do this by changing the \texttt{initial\_mass} value in \verb|inlist_project|:
+\begin{verbatim}
+initial_mass = 1 ! in Msun units
+\end{verbatim}
+With the default settings, the model will start on the pre-main sequence and will stop when it reaches the zero-age main sequence (ZAMS), where hydrogen burning starts. Let's evolve the model a bit further than that, to the current age of the Sun: 4.6 Gyrs. Edit \verb|inlist_project| and change the stopping conditions. First set:
+\begin{verbatim}
+stop_near_zams = .false.
+\end{verbatim}
+and add the lines:
+\begin{verbatim}
+! stop when the age of the Sun is reached
+max_age = 4.6d9
+\end{verbatim}
+\textit{Tip:} to be able to see the plots after the run finishes, also add these lines to \verb|inlist_project| in the \verb|&star_job| section:
+\begin{verbatim}
+! stop before terminating such that you can see the plots
+pause_before_terminate = .true.
+\end{verbatim}
+Note: when adding new lines to your inlist files, make a habit out of also adding a comment (by using the !-sign) to explain what the parameter setting does. This will help you in the future.
+\begin{enumerate}
+\item Now compile again (\verb|./mk|) and run the model. First concentrate on the HR plot. You will notice the model (red circle) starts at the bottom of the plot and quickly disappears out of sight. To remedy this, change the limits of the plot window by editing the file \verb|inlist_pgstar|. Good values for this model are $\log L$ between $-$1 and 3, and $\log T$ between 3.5 and 4. Save the changes to \verb|inlist_pgstar| and you should see the changes taking effect immediately! Of course, if the model has already finished, simply run it again. \\[1ex]
+\textit{Tip:} if you want to temporarily pause your model to have more time to look at a plot, you can suspend the job by pressing Ctrl + Z. To resume the model, type \texttt{fg} in the prompt. If you want to terminate your model, press Ctrl + C. If you want to terminate a paused model, first type \texttt{fg} in the terminal and then press Ctrl + C; this prevents the uncloseable \texttt{MESA} plot windows from staying open and piling up. 
+\item After adjusting the HR plot, try to understand what happens. Can you explain the movement (i.e. the evolution history) of the star in the HR diagram? Is the star expanding or contracting? And how do you explain this behaviour? (Note: ignore the first horizontal part in the HR diagram where the star is still relaxing into hydrostatic equilibrium.)
+\item The \verb|TRho_Profile| plot shows the entire stellar model, from centre to surface, as it evolves. Can you identify the centre and the surface? What is the meaning of the other (dashed) lines in the plot? Does the ideal gas law hold everywhere in the star?
+\item Colours indicate in which regions of the star convection (or some other mixing processes) occurs, and where nuclear energy is produced. Initially, almost the entire model is light blue, i.e. convective. Can you explain why? And how is this related to the star's location in the HR diagram?
+\item At later times, the central portion of the star becomes green, i.e. radiative. At the same time the effective temperature in the HR diagram increases. Can you explain this? Consult section 9.1 in the lecture notes to answer these questions, if necessary.
+\item When the model stops after 4.6 Gyrs, the star is undergoing hydrogen fusion in its core. How can you identify this from the plots? Also compare the location in the HR diagram to the current parameters of the Sun. Do they agree?
+\item You will have noticed it takes several hundreds of steps to reach the main sequence (start of hydrogen fusion), while subsequently it takes much fewer steps to reach the current age of the Sun. What would you have expected if the number of steps is proportional to the actual time the star takes to evolve? (i.e. compare to the appropriate stellar time scales.)
+\end{enumerate}
+The reason is that the structure of the star changes rapidly when the star contracts to the main sequence, so many small time steps are needed for \texttt{MESA} to resolve these changes. Once the star is on the main sequence, its structure hardly changes, so the code can take much longer time steps to evolve the star through the main sequence phase.
+
+\item Now let's evolve the model further to the red giant branch phase. Remove the stopping condition for the age in \verb|inlist_project| and instead add the lines:
+\begin{verbatim}
+! stop when helium core reaches this limit
+he_core_mass_limit = 0.25
+\end{verbatim}
+Do not forget to remove (or comment out) any other stopping condition that we do not need. We can also examine some other \texttt{PGSTAR} plots. Edit \verb|inlist_pgstar| and add:
+\begin{verbatim}
+Summary_Burn_win_flag = .true.
+Abundance_win_flag = .true.
+\end{verbatim}
+Now restart the model from a saved `photo' from the previous run (type \verb|./re x***|, where the \verb|***| are the final three digits of the previous model; you can check the exact three digits of the last photo in the \texttt{photos} directory inside your \texttt{MESA} model).
+
+\begin{enumerate}
+\item Take some time to understand what is plotted in these panels, and identify each line in the plots. Note that the vertical scales are logarithmic in both panels, and that they represent many orders of magnitude, especially in \verb|Summary_Burn|. You can correlate the $T$ and $\rho$ profiles in \verb|Summary_Burn| with the curve plotted in the \verb|TRho_profile| panel. Note that most of the change in density and temperature occurs in the outer few percent of mass of the star. N.B. the colours along the bottom of these panels correspond to those plotted in \verb|TRho_profile|, and can be used to identify convective regions.
+\item As the star evolves through the main sequence, the abundance profiles change. Which processes cause these abundance changes? Consult/refresh chapter 6.4 of the lecture notes if necessary. Can you explain all the changes from the nuclear reactions taking place? (Take into account the logarithmic scale: the changes in the bottom part of the plot look dramatic but only involve small values of the mass fraction.)
+\item At what age (approximately) does the star reach the end of the main sequence? How can you tell from the \texttt{PGSTAR} panels? (Several plots show an indicator of this!)
+\item Observe the changes in the $T$ and $\rho$ profiles as the star moves from the main sequence to the giant branch. Can you explain these changes? Does the core become degenerate, and if so, in which point in the evolution? Can you explain why the temperature profile in the core becomes flat?
+\item As the star evolves along the red giant branch, convection reaches deeper and deeper in the envelope of the star. Note how this affects the abundance profiles. Which elements/isotopes are most affected? Do their surface abundances increase or decrease? This process of convection changing the surface abundances is called `dredge-up'.
+\end{enumerate}
+As the helium core mass increases, notice how the burning shell becomes thinner in mass. This requires \texttt{MESA} to take smaller time steps, so that it will take thousands of steps to reach the end of the RGB. The observable changes between each time step become smaller and smaller. That is why we stop the model at a core mass of 0.25 M$_\odot$.
+
+\item Many other details of the models can be shown using \texttt{PGSTAR}. Read the \texttt{MESA} website page \texttt{Using PGSTAR} (\url{https://docs.mesastar.org/en/release-r22.05.1/using_mesa/using_pgstar.html#}) to get an idea of the possibilities, and experiment with different options. Simply run the same model again, or try a different stellar mass. (In the latter case, create a new work folder for your stellar models, as in step 1 above.)
+
+\item \textit{Tip:} In order to be able to easily inspect the plots created in
+real-time by the \texttt{PGSTAR} module \emph{after} the end of the simulation you can
+opt to save every $N$'th plot to a file in a separate directory. This can
+be done by adding several controls to the \verb|inlist_pgstar| file, for
+example:
+\begin{verbatim}
+HR_file_flag = .true.
+HR_file_dir =  'png'
+HR_file_prefix = 'hr_'
+HR_file_interval = 5
+HR_file_width = 16
+HR_file_aspect_ratio = 1
+\end{verbatim}
+This will save a HR diagram every 5 steps into a directory \verb'png' giving
+it a name starting with \verb"hr_".
+You can then combine a series of png images into a short movie using
+ffmpeg, for instance by executing the following in terminal when in the
+\verb'png' directory (do remove the spaces between the 3 lines to make it 1 line in the terminal):
+\begin{verbatim}
+ffmpeg -f image2 -pattern_type glob -framerate 5 -i "*.png" -filter:v
+scale=1680*1080 -preset:v slow -pix_fmt yuv420p -c:v libx264 -b:v 4M -f
+mp4 movie.mp4
+\end{verbatim}
+Note that if you want to have several graphs in one png output file (e.g.
+not only the HR diagram but also \verb|TRho_profile| or a Kippenhahn plot) then
+you should make use of the \verb|Grid_*| controls of the \texttt{PGSTAR} module.
+
+\end{enumerate}
+
+\bibliographystyle{aa}
+\bibliography{gmlib.bib}
+
+\end{document}

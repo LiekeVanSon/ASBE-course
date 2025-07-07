@@ -1,0 +1,112 @@
+\documentclass[11pt,a4paper,fleqn]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{13}
+
+\begin{enumerate}
+
+
+\item {\bf Energy budget of core-collapse supernovae}
+
+  \begin{enumerate}
+
+  \item $E_{\rm gr} \approx \displaystyle \frac{G M_c^2}{R_f} = 5.2
+    \times 10^{53}$ erg \quad (since $R_i \approx R_\mathrm{WD} \gg R_f$)
+
+  \item $E_{\rm kin} = \frac{1}{2}\, M_{\rm env}\, v^2$, \quad with
+    $M_{\rm env} = M_i - M_{\rm c} = 8.6\,\Msun$) ~$\Rightarrow~ v =
+    3.4\times 10^8$\,cm/s (3400\,km/s)
+
+  \item $E_{\rm ph} \approx L\, \Delta t = 4\times 10^{48}$\,erg
+
+  \item Neutrinos take away the largest fraction of the energy
+    released in the collapse.
+
+    Number of neutrinos = $E_{\rm grav}/E_{\nu}$ (with E$_{\nu}$ the
+    average energy of one neutrino) $\approx 6.5 \times 10^{58}$.
+
+\end{enumerate} 
+
+
+\item {\bf Neutrino luminosity by Si burning}
+
+  \begin{enumerate}
+
+
+  \item Number of \Fe{56} nuclei: $N$(Fe) = $\displaystyle
+    \frac{M_{c}}{m_{\rm Fe}} = 4.3\times 10^{55}$.
+    \[
+    L_{\nu,\mathrm{Si}} = \frac{N(\mathrm{Fe}) \times 
+      E_{\rm nuc,\mathrm{Fe}}}{t} = 4 \times 10^{45}\, \rm erg/s.
+    \]
+    The neutrinos in a supernova are emitted during about 10 seconds
+    $\Rightarrow$
+    \[
+    L_{\nu,\mathrm{SN1987A}} = \frac{E_{\rm grav}}{10\,\mathrm{sec}} 
+    = 5.2 \times 10^{52}\, \rm erg/s.
+    \]
+
+  \item $L_\nu = 4\pi d^2\, F_\nu$ (with $F_\nu$ the neutrino flux and
+    $d$ the distance between the object and the observer).
+    If the neutrino flux measured on earth is equal for both cases,
+    \[
+    \frac{L_{\rm SN1987A}}{L_{\rm Si}} = 
+    \frac{d^2_{\rm SN1987A}}{d^2_{\rm Si}} ~\Rightarrow~ 
+    d_{\rm Si} = 14\,\mathrm{pc}.
+    \] 
+
+\end{enumerate} 
+
+
+\item {\bf Carbon ignition of a white dwarf}
+
+  To compute the radius and gravitational potential energy of the
+  white dwarf, use the fact that a WD close to the Chandrasekhar limit
+  is approximately described by a $n=3$ polytrope (relativistic
+  degeneracy!). 
+
+  Chapter 4, Table 4.1: \quad $\rho_c = 54.2\, \bar{\rho} = 54.2\,
+  \displaystyle \frac{M_{\rm WD}}{\frac{4\pi}{3}R_{\rm WD}^3}$, \\[1ex]
+  with $M_{\rm WD} = M_\mathrm{Ch} \approx 1.4\,\Msun$ and $\rho_c =
+  2\times10^9$\,g/cm$^3~~\Rightarrow~ R_{\rm WD} = 2.6\times10^8$\,cm
+  \[
+  E_{\rm gr} = -\frac{3}{5-n}\,\frac{G M_{\rm WD}^2}{R_\mathrm{WD}}
+  \approx -\frac{3}{2}\,\frac{G M_{\rm Ch}^2}{R_\mathrm{WD}}
+  = -3.0\times 10^{51}\,{\rm erg} 
+  \]
+  
+  To compute $E_{\rm nuc}$, consider that:
+  \begin{itemize}
+  \item
+    Fusion of \C{12} into \el{Ni}{56} releases ~ $Q_1 = [m(\el{Ni}{56}) -
+    \frac{56}{12}m(\C{12})]\,c^2$ ~ per \el{Ni}{56} nucleus.
+  \item
+    Fusion of \O{16} into \el{Ni}{56} releases ~ $Q_2 = [m(\el{Ni}{56}) -
+    \frac{56}{16}m(\O{16})]\,c^2$ ~ per \el{Ni}{56} nucleus.
+  \item
+    Total number of \el{Ni}{56} nuclei created is 
+    $M_\mathrm{Ch}/m(\el{Ni}{56})$.
+  \end{itemize}
+  With equal mass fractions of C and O:
+  \[
+  E_{\rm nuc} = \frac{M_\mathrm{Ch}}{m(\el{Ni}{56})}\times 0.5 (Q_1 + Q_2) 
+  = 2.2\times 10^{51}\,\mathrm{erg}.
+  \]
+
+  Hence we conclude that $E_{\rm nuc} < |E_{\rm gr}|$. 
+
+  However, keep in mind that the \emph{total} binding energy of the WD
+  is $E_{\rm tot} = E_{\rm gr} + E_{\rm int}$. In this case $E_{\rm
+    int}$ is provided by the Fermi energies of the degenerate
+  electrons in the white dwarf. If this is taken into account, then
+  $|E_{\rm tot}| \ll |E_{\rm gr}|$ and $E_{\rm nuc} > |E_{\rm tot}|$,
+  i.e.\ enough energy is generated to unbind the WD.
+
+  
+\end{enumerate} 
+
+
+\end{document}

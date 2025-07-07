@@ -1,0 +1,183 @@
+\documentclass[11pt,a4paper]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{6}
+
+\begin{enumerate}
+
+
+\item {\bf Conceptual questions: Gamow peak} 
+
+  \begin{enumerate}
+  \item $e^{-b/E^{1/2}}$ is the energy dependence of the tunnelling
+    probability; $e^{-E/kT}$ is the tail of the Maxwell-Boltzmann
+    distribution.
+
+  \item See Figure 6.4.
+
+  \item See Figure 6.4.
+
+  \item The Coulomb barrier is lower for hydrogen burning (smaller $Z$ and
+    smaller $A$).
+
+  \item Hint: the neutron has no charge.
+
+\end{enumerate}
+
+
+\item{\bf Hydrogen burning}
+
+  See Table~6.1 for the atomic masses of the nuclei involved.
+  \begin{enumerate}
+  \item $m_\mathrm{u} c^2 = 931.49$\,MeV. \\
+    Energy release per reaction in each step of the pp1 chain: 1.44,
+    5.49 and 12.85\,MeV.
+
+  \item $2\times(1.44 - 0.263) + 2\times 5.49 + 12.85 = 26.21$\,MeV.
+
+  \item $26.21$\,MeV$/(4m_{\rm H}) = 3.91\times10^{24}$\,MeV/g $=
+    6.3\times10^{18}$\,erg/gram H.
+
+  \end{enumerate}
+
+
+%(a) Calculate the energy released per reaction in MeV (the $Q$-value) for the
+%three reactions in the pp1 chain. (Hint: first calculate the equivalent
+%of $m_\mathrm{u} c^2$ in MeV.)  \\
+%(b) What is the total effective $Q$-value for the conversion of four 
+%H nuclei into \He{4} by the pp1 chain? Note that in the first reaction
+%($\H{1} + \H{1} \rightarrow \H{2} + \e^+ + \nu$) a neutrino is
+%released with (on average) an energy of 0.263 MeV.\\
+%(c) Calculate the energy released by the pp1-chain in ergs/gram. \\
+%(b) Will the answer you get in (c) be different for the pp2 chain, the 
+%pp3 chain or the CNO cycle? If so, why? If not, why not?
+
+\item {\bf Relative abundances for CN equilibrium}
+
+  $X_{\N{15}} : X_{\C{13}} : X_{\C{12}} : X_{\N{14}} = \tau(\N{15}) :
+  \tau(\C{13}) : \tau(\C{12}) : \tau(\N{14}) $
+
+%Estimate the
+%CN-equilibrium relative abundances if their lifetimes before proton
+%capture at $T=2\times10^7$ are:
+%\\
+%- $\tau (^{15}N)\approx30{\rm~yr}$.\\
+%- $\tau (^{13}C)\approx1600{\rm~yr}$.\\
+%- $\tau (^{12}C)\approx6600{\rm~yr}$.\\
+%- $\tau (^{14}N)\approx6\times10^5{\rm~yr}$.
+
+
+\item {\bf Helium burning}
+
+  To produce \C{12} you need 3 $\alpha$'s: 7.28 MeV per reaction $=
+  3.65 \times 10^{23}$\,MeV/gram \C{12}.
+
+  To procuce \O{16} you need 4 $\alpha$'s:
+
+  \begin{tabular}{rclcl}
+    $3 \alpha$ &$\rightarrow$&$ ^{12}\rm{C}$ && $7.28\,\rm{MeV}$\\
+    $ \alpha +  \C{12}$&$\rightarrow$&$ ^{16}\rm{O}$ && $7.16\,\rm{MeV}$\\
+    \hline
+    $4 \alpha $&$\rightarrow$ & $ ^{16}\rm{O}$ && $14.44\,\rm{MeV} 
+    = 5.44 \times 10^{23}$\,MeV/gram \O{16}
+  \end{tabular}
+  
+  Assume equal mass fractions of \C{12} and \O{16}, so that
+  \begin{eqnarray}
+    \frac{1}{2} (3.65\times10^{23} + 5.44\times10^{23}) 
+    &=& 4.55\times10^{23} \rm{MeV/g}\nonumber \\
+    &=& 7.29\times10^{17} \rm{erg/g}\nonumber \\
+    &\approx& \frac{1}{10} \text{~ of that for H burning} \nonumber
+  \end{eqnarray}
+  
+
+\item {\bf Comparing radiative and convective cores}
+
+  \emph{Hand-in exercise.}
+
+
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+\item {\bf Comparing radiative and convective cores}
+
+%%% Answers to question 1 (inlever opgave)
+
+a) $dL_m/dm = \epsilon_{\rm nuc} \Rightarrow L_m =C + \int
+	\epsilon_{\rm nuc}dm$, from $L_m(0) = 0 \Rightarrow C=0$. 
+\[
+L_r = 
+\begin{cases}
+\epsilon_c\left(m - \frac{(m)^2}{0.2 M_*}\right) & \text{if $m/M_*<0.1$}\\
+\frac{0.1 \epsilon_c M_*}{2}& \text{if $0.1 <m/M_* <1$}\\
+\end{cases}
+\]
+From  
+\[
+L_m(M_*) = L_* \Rightarrow \epsilon_c = \frac{2}{0.1}\frac{80 \Lsun}{3 \Msun}
+\].  
+%Calculate and draw the luminosity profile, $l$, as a function of the
+%mass, $m$. Express $\epsilon_c$ in terms of the known quantities for the
+%star.\\
+\\ b) The hydrogen abundance at every point $m$ in the star ($m <
+0.1M_*$) will drop linearly with time from $0.7$ to $0$ in a time
+$t_{\rm exh}(m)$ depending on $m$ via $\epsilon_{\rm nuc}(m)$: $t_{\rm
+  exh}(m) = Q/\epsilon_{\rm nuc}(m)$.
+\[
+X(m,t) = 0.7\left(1 - \frac{t}{ Q/\epsilon_{\rm nuc}(m)}\right).
+\]
+X(0, 100Myr) = 0.33.\\
+
+  c) The hydrogen abundance profile becomes a step function. The amount
+of mass that can be used as fuel is 4 times larger (explain why!). The
+luminosity ( the rate at which fuel is burned) has not changed. The
+lifetime is therefor 4 times longer hwen the core is convective.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%END
+
+\item {\bf Gamow peak} The peak in $<\sigma\upsilon>$ occurs when
+$-E/kT-\bar\eta/E^{1/2}$ is at minimum. Take the derivative to find an
+expression for $E_0$ and compare with\footnote{Intermediate answer:
+$E_0 = 5.665 {\rm keV} (Z_1^2 Z_2^2 m)^{1/3}T_7^{2/3}$}.
+
+The coulomb energy $E_{\rm coul} = \frac{Z_1Z_2e^2}{r_0}$, where $r_0
+\approx A^{1/3} 1.44 . 10^{-13}$cm is of the order $E_{\rm coul}(r_0)
+\approx Z_1 Z_2$MeV.
+
+
+%Derive the energy $E_0$ of the {\it Gamow peak}
+%as a function of the temperature, assuming that the reaction rate is
+%proportional to
+%\begin{equation}
+%<\sigma\upsilon>=\left(\frac{8}{m\pi}\right)^{1/2}\frac{S_0}{(kT)^{3/2}}
+%\int_0^{\infty}e^{-E/kT-\bar\eta/E^{1/2}}dE,
+%\end{equation}
+%where the factor $\bar\eta=\pi(2m)^{1/2}\frac{Z_1Z_2e^2}{\hbar}$ and
+%$m=\frac{m_1m_2}{m_1+m_2}$ is the reduced mass. Calculate $E_0$ for the
+%reactions in the {\it pp1} chain, at temperature $T=10^7$ K, and compare
+%with the corresponding Coulomb barriers.
+%\footnote{Intermediate answer: $E_0 = 5.665 {\rm keV} (Z_1^2 Z_2^2
+%m)^{1/3}T_7^{2/3}$}
+
+\item {\bf Temperature sensitivity} Approximate
+$<\sigma\upsilon>=C\tau^2e^{-\tau}$, with $\tau=3E_0/kT$.  Calculate
+the sensitivity of the reaction rate to the temperature, expressed as
+$\nu(T)=\frac{\partial \ln<\sigma\upsilon>}{\partial \ln T}$, for the
+{\it pp1} chain and for the $^{14}N, p$ reaction.\footnote{Intermediate answer: $\nu = (\tau -2)/3 = 6.547 (Z_1^2 Z_2^2
+m)^{1/3}T_7^{1/3} - 2/3 $}
+
+
+
+\end{enumerate}
+
+\end{document}

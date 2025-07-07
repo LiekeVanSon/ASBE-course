@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper,fleqn]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{10}
+
+\begin{enumerate}
+  
+\item {\bf Conceptual questions}
+  \begin{enumerate}
+
+  \item See Section 9.3
+    
+  \item See Section 9.3.1
+    
+  \item See Section 9.3.4
+    
+  \item See Section 10.1
+    
+  \item See Section 10.1
+
+  \item See Section 10.2.1
+
+  \end{enumerate}
+
+
+\item {\bf Evolution of the abundace profiles}
+
+  \begin{enumerate}
+  \item Take into account: \\
+    - the central abundances that you can read from the figures, \\
+    - the location of the H-burning shell, \\
+    - the extent of a convection zone in the core (if present). \\
+    (Hint: look at Fig.~9.10 for an earlier evolution phase).
+
+  \item Idem.
+
+  \item They are modified by convective dredge-up at points E (for
+    5\,\Msun) and D (for 1\,\Msun).
+
+  \end{enumerate}
+
+
+\item {\bf Red giant branch stars}
+    
+  \begin{enumerate}
+  \item Use the virial theorem to calculate the total energy $E_{\rm
+      tot} = E_{\rm gr} + E_{\rm int} = \half E_{\rm gr}$.
+
+  \item $R \leq (0.45)^2 \Rsun$.
+       
+  \item Yes.
+
+  \end{enumerate}
+
+
+\item {\bf Core mass - luminosity relation for RGB stars}
+
+  \begin{enumerate}
+
+  \item The energy release $q$ per gram of H-burning is (see also
+    Ch.5)
+    \[
+    q = \frac{\der E}{\der M_\mathrm{H}} = \frac{26.73 \times 10^6 \times
+      1.6\times 10^{-12}\,\mathrm{erg}}{4 \times 1.67 \times 10^{-24}\,
+      \mathrm{g}} = 6.4 \times 10^{18} \text{erg/g}
+    \]
+    The envelope that provides fuel for the shel has a hydrogen mass
+    fraction $X_\mathrm{env} \approx 0.7$, so a core growth $\der M_c$
+    corresponds to a $\der M_\mathrm{H} = X_\mathrm{env}\, \der M_c$. \\
+    $ \Rightarrow \der E = X_\mathrm{env} q\, \der M_c \Rightarrow
+    \displaystyle \frac{\der E}{\der t} = L = X_\mathrm{env} q\,
+    \frac{\der M_c}{\der t} $.
+
+  \item Combine (a) with eq.~(9.2), ${L}/\Lsun= 2.3\times10^5
+    ({{M_c}/{\Msun}})^6$. Rewrite and integrate:
+    \[
+    \int_{M_c(t_0)}^{M_c(t)} \left( \frac{M_c}{\Msun} \right)^{-6} \der
+      \left( \frac{M_c}{\Msun} \right) 
+    = \int_{t_0}^{t} \frac{2.3\times 10^5\Lsun}{X_\mathrm{env} Q \Msun}\,
+      \der t
+    = \int_{t_0}^{t} 9.9\times10^{-14}\, \der t
+    \] 
+    with $\der t$ in seconds in the last expression. Integrate to obtain
+    an expression for $M_c(t)$.
+
+  \item
+    \[
+    (t - t_0) = 2.02\times 10^{12}\, \mathrm{sec}\, 
+    \Bigg[ \Bigg( \frac{0.15 M_i}{\Msun} \Bigg)^{-5} - (0.45)^{-5} \Bigg]
+    \] 
+    For a 1~\Msun~star: $\tau_{\rm RGB} \approx 8.4 \times 10^8$~yrs,
+    $\tau_{\rm RGB}/\tau_{\rm MS} \approx 0.08$.\\
+    For a 2~\Msun~star: $\tau_{\rm RGB} \approx 2.3 \times 10^7$~yrs,
+    $\tau_{\rm RGB}/\tau_{\rm MS} \approx 0.016$.
+  
+  \end{enumerate}
+
+
+\item {\bf Jump in the composition} 
+
+  \begin{enumerate}
+
+  \item A chemical profile like this can be the result of convection
+    in the core. High mass stars have convective cores.
+
+  \item The pressure and temperature are continuous functions of the
+    mass coordinate.  A jump in composition (i.e. in $\mu$) has to be
+    compensated by a jump in density, if we assume that the ideal gas
+    law holds. First express $\mu$ in terms of the discontinuous
+    variable $X$.
+    \[
+    \mu^{-1} = X \frac{2}{1} + Y \frac{3}{4} + Z \frac{A/2}{A} = ... =
+    \frac{5}{4}X - \frac{1}{4}Z +\frac{3}{4}
+    \]
+    Now consider the logarithm of the ideal gas $P = \rho k T/(m_u
+    \mu) $ law, which you can rewrite as:
+    \[
+    \ln \rho = \ln \mu + \ln \left( \frac{P m_u}{k T}\right).
+    \]
+    Now consider the difference $\Delta$ just above and below the jump
+    in composition.
+    \[
+    \Delta \ln \rho =  \Delta \ln \mu +  
+    \Delta \ln \left( \frac{P m_u}{k T}\right).
+    \]
+    The last term is zero, because $P$ and $T$ are continuous and
+    $m_u$ and $k$ are constants, so $\Delta \ln \rho = \Delta \ln
+    \mu$.
+
+    \[
+    \Delta \ln \rho = \frac{\Delta\rho}{\rho} = -\Delta \ln \left(
+      \frac{1}{\mu}\right) = - \ln \left(\frac{5\times 0.7 - 0.02
+        +3}{5\times 0.1 - 0.02 +3} \right) = -0.622
+    \]
+    
+
+  \item For {\bf kramers opacity}: $\kappa_{bf}\sim Z(1+X) \rho
+    T^{-3.5}$, then
+    \[
+    \Delta \ln \kappa = \Delta \ln Z + \Delta \ln (1+X) + \Delta \ln
+    \rho -3.5 \Delta \ln T.
+    \]
+    $T$ and $Z$ are continuous, therefore $\Delta \ln \kappa = \Delta
+    \ln (1+X) +\Delta \ln \rho $.
+      
+    For {\bf electron scattering} $\kappa_e=0.2(1+X)$ then $\Delta
+    \kappa / \kappa = \ln (1+0.7) - \ln (1+ 0.1)$
+      
+
+  \end{enumerate}
+  
+
+\end{enumerate}
+
+\end{document}
+
+
+\item {\bf The most massive star} Use $L/\Lsun = (M/\Msun)^3$ in
+combination with the expreesion for the eddington Luminosity.

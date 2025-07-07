@@ -1,0 +1,441 @@
+\documentclass[11pt,a4paper]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{5}
+
+\begin{enumerate}
+
+\item {\bf Radiation transport} 
+  \begin{enumerate}
+
+%How long does it take a typical photon to travel from the
+%    center of the Sun to the surface? How does this relate to the
+%    thermal timescale of the Sun? 
+
+  \item 
+
+    The mean free path of a photon is $\ell_\mathrm{ph} = 1/(\kappa \rho)$,
+    where $\kappa$ is the opacity coefficient. The photons escape in a random
+    walk fashion, so the distance $d$ travelled after $N$ scatterings is $d^2
+    \approx N \ell_{\rm ph}^2$. In order to travel from the center to the
+    surface of the Sun, $N \approx (R_{\odot}/\ell_{\rm ph})^2$ steps are
+    needed. 
+
+    To obtain an estimate of the time needed for this random-walk
+    process, take `typical' values $\kappa \approx
+    1\,\rm{cm}^{2}/\rm{g}$ and $\rho \approx \bar{\rho}_\odot = 1.4$
+    g\,cm$^{-3}$, so that $\ell_{ph} \approx 1 \rm{cm}$. The time $t$
+    needed is $t = N \ell_{\rm ph}/c \approx R_{\odot}^2/(c \ell_{\rm
+      ph}) \approx 1.5\times 10^{11} \rm{s} \approx 10^4 \rm{y}$.
+
+    (N.B. The actual time is much longer, because $\kappa \gg 1
+    \rm{cm}^2/\rm{g}$ in the outer layers, while $\rho > \bar{\rho}$
+    in the centre. Therefore the average $\ell_\mathrm{ph}$ is much
+    shorter than 1~cm, and $t \approx 10^7 \rm{yrs} \approx \tau_{\rm
+      KH}$).
+ 
+  \item $\ell_{ph} \approx 1 \rm{cm}$ and $dT/dr \approx
+    (T_{\rm eff} - T_c)/R_{\odot} \approx 10^{-4}$\,K/cm.
+    
+%Estimate a typical value for $\frac{dT}{dr}$ to
+%    show that the difference in temperature $\Delta T$ between to surfaces
+%    in the solar interior one photon mean free path $l_{ph}$ apart is
+    
+  \item The total flux emitted in all directions by a blackbody is $F
+    = \sigma T^4$, where $T \approx 10^7 K$ and $\sigma = 5.67\times
+    10^{-5}$~erg/K$^4$cm$^2$s.
+
+  \item $F \propto T^4 \Rightarrow \displaystyle \frac{\Delta F}{F}
+    \propto 4\frac{\Delta T}{T}$, where $\Delta T/T \approx 10^{-11}$.
+  
+    The net outward flux $\Delta F = 4 F \Delta T/T \approx
+    4\sigma\, (10^7)^4 \times 10^{-11}$~erg/cm$^2$s.  The
+    corresponding luminosity comes from multiplying by the surface of
+    sphere with radius $r\sim\Rsun/10$: $L = 4 \pi r^2\, \Delta F
+    \approx 1.4 \times 10^{34}$~erg/s. This is within one order of
+    magnitude of the solar surface luminosity.
+
+%Show that the minute deviation from isotropy between to
+%    surfaces in the solar interior one photon mean free path apart at
+%    $r\sim\Rsun/10$ and $T\sim10^7$ K, is sufficient for the transfer
+%    of energy that results in the luminosity of the sun. 
+    
+  \item The mean free path for photons becomes very long near the
+    surface, where they escape (we can see them on Earth). Then LTE is
+    no longer valid.
+
+%Why does the diffusion approximation for radiation transport
+%    break down when the surface (photosphere) of a star is approached?
+
+  \end{enumerate}
+
+
+\item {\bf Opacity}
+
+  \begin{enumerate}
+
+  \item Correlate Fig.~5.2 with Section~5.3.1. Electron scattering
+    gives constant $\kappa$ at high $T$ and low $\rho$. Free-free and
+    bound-free absorption give $\kappa \propto T^{-3.5}$ between
+    $10^4$\,K and $\sim10^7$\,K, depending on $\rho$. The H$^{-}$ ion
+    gives $\kappa \propto T^9$ between 3000\,K and $10^4$\,K. Molecules
+    are important for $T<4000$\,K and dust absorption dominates at
+    $T<1500$\,K.
+
+  \item Draw the relations (5.30), (5.32), (5.33) and (5.34) in
+    Fig.5.2a, putting in the right values for $X$, $Z$ and $\rho$.
+
+  \item Use $\ell_{\rm ph} = 1/(\kappa\rho)$ and estimate $\log\rho$
+    and $\log\kappa$ from the location of the 1\,\Msun\ model in
+    Fig.~5.2b: \\[1ex]
+    \begin{tabular}{llll}
+    $T = 10^7$ K: & $\log\rho \approx 2.0$ & $\log\kappa \approx 0.5$
+      & $\ell \approx 3\times 10^{-2}$\,cm \\
+    $T = 10^5$ K: & $\log\rho \approx -2.5$ & $\log\kappa \approx 4.5$
+      & $\ell \approx 10^{-2}$\,cm \\
+    $T = 10^4$ K: & $\log\rho \approx -6.0$& $\log\kappa \approx 2.0$
+      & $\ell \approx 10^4$\,cm \\
+    \end{tabular}
+
+  \item Take the derivative of eq.~(5.21) to obtain $\partial
+    U_\nu/\partial T$ and divide by $\kappa_\nu = \kappa_0
+    \nu^{-\alpha}$. This quantity should be integrated over $\nu$
+    according to eq.~(5.24). Hint: substitute $x = h\nu/kT$.
+
+  \end{enumerate}
+
+\item {\bf Mass-luminosity relation for stars in radiative equilibrium}
+
+  \emph{Hand-in exercise.}
+
+
+\item {\bf Conceptual questions about convection} 
+
+  \emph{Hand-in exercise.}
+
+
+\item {\bf Applying Schwarzschild's criterion} 
+
+  Assume $\nabla_{\rm ad} =\nabla_{\rm ad,ideal}= 0.4$. If
+  $\nabla_{\rm rad} > 0.4$ energy transport is by convection,
+  otherwise by radiation.
+  \[
+  \nabla_{\rm rad} = \frac{3}{16 \pi a c G} \frac{\kappa \lum P}{m
+    T^4}
+  \]
+
+  \begin{enumerate}
+  \item Low mass stars have low temperatures and therefore high
+    opacities, leading to $\nabla_{\rm rad} > 0.4$ everywhere.
+  \item Use the ideal gas law to calculate $P$ and use the numbers
+    from the table.
+  \end{enumerate}
+
+
+
+\item{\bf Eddington Luminosity}
+
+\begin{enumerate}
+%  The Eddington luminosity is the maximum luminosity a star (with
+%  radiative energy transport) can have, where radiation force equals
+%  gravity.
+
+  \item 
+    See Section~5.4.
+    
+    The outward acceleration $a_{\rm rad}$ due to the radiation
+    pressure gradient is
+    \[
+    a_{\rm rad} = \frac{1}{\rho}\,\frac{dP_{\rm rad}}{dr} = =
+    \frac{4aT^3}{3\rho}\frac{dT}{dr}
+    \]
+    which cannot be larger than the gravitational acceleration
+    $Gm^2/r$. Assuming radiation trasnport, $dT/dr$ is given by eq.~(5.16),
+    which after substitution gives 
+    \[
+    \lum < \frac{4 \pi c G m}{\kappa}.
+    \]
+
+%Show that
+%\[
+%L_{r, \max} = \frac{4 \pi c G m}{\kappa}.
+%\]
+
+  \item
+
+    Starting with $L/L_{\rm Edd}$, use the equation for the radiative
+    temperature gradient to substitute $L$, then use $4 a T^3 dT/dr =
+    dP_{\rm rad}/dr$, then use $P_{\rm rad} = P(1-\beta)$ and get rid
+    of $dP/dr$ using the HE equation.
+
+%Consider a star with a uniform opacity $\kappa$ and of uniform
+%  parameter $\beta = P_{\rm rad}/P$. Show that $L/L_{\rm Edd}=1-\beta$ for
+%  such a star.
+
+\item 
+
+  Rewrite \gradrad\ as
+  \[
+  \nabla_{\rm rad} = \frac{\kappa \lum}{4 \pi c G m}
+  \frac{P}{\frac{4}{3}a T^4 }
+  \]
+  Now simplify the expression by introducing $\lum_{\rm Edd}$ and $P_{\rm
+    rad}$. Then substitute into the Schwarz\-schild criterion.
+
+%Show that the Schwarzschild criterium for stability against
+%  convection $(\nabla_{\rm rad} < \nabla_{\rm ad})$ can be rewritten
+%  as:
+%\[
+%\frac{L_r}{L_{\rm Edd}} = 4 \frac{P_{\rm rad}}{P} \nabla_{\rm ad}
+%\]
+
+\item On the boundary of the core there is a transition from
+  convective to radiative energy transport. So, on the boundary the
+  Schwarzschild criterion can be written as an equality:
+  \[
+  \frac{\lum_\mathrm{core}}{\lum_{\rm Edd, core}} = 4 (1-\beta)\nabla_{\rm
+    ad}.
+  \]
+  Outside the core there is no energy generation, so $\lum_{\rm core}
+  = L$. From (b) you know that $L = (1-\beta) L_{\rm Edd}$.  From (a)
+  you know that $\lum_{\rm Edd, core} \propto M_{\rm core}$ and also
+  $L_{\rm Edd} \propto M$. Now combine all this knowledge.
+
+  \[
+  \begin{array}{lcl}
+    \lum_{\rm core} ~ = ~ L &=& (1-\beta)L_{\rm Edd} \\
+    \lum_{\rm Edd, core} &=& \displaystyle\frac{M_{\rm core}}{M} L_{\rm Edd} \\
+  \end{array} ~ \Bigg\} ~
+  \Rightarrow ~ \displaystyle
+  \frac{\lum_{\rm core}}{\lum_{\rm Edd, core}} = (1-\beta)\frac{M}{M_{\rm
+      core}}
+  \]
+  \[
+  \Rightarrow ~ 4(1-\beta)\nabla_{ad} =
+  (1-\beta)\frac{M}{M_{\rm core}}
+  \]
+  and there you are.
+
+%Consider again the star of question b). By assuming that
+%it has a convective core, and no nuclear energy generation outside the core,
+%show that the mass fraction of this core is given by
+%\[
+%\frac{1}{4\nabla_{ad}}.
+%\]
+
+    
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+
+
+%% Answers to hand-in exercise:
+
+\item {\bf Mass Luminosity relation}
+  \begin{enumerate}
+
+%  \item Derive how the central temperature, $T_c$, scales with the
+%    mass, $M$, radius, $R$, and luminosity, $L$, for a star in which the
+%    energy transport is by radiation. To do this, use
+%    \begin{equation}
+%      \frac{dT}{dr}=-\frac{3}{16\pi ac}\frac{\kappa\rho l}{T^3 r^2}
+%    \end{equation}
+%    at $r=R/2$ and assume the temperature is proportional to $T_c$, taking
+%    $l\sim L$ and estimating $\frac{dT}{dr}\sim-\frac{T_c}{R}$.
+    
+  \item Hint: use $\rho \sim M/R^3$
+%Derive how $T_c$ scales with $M$ and $R$, using the
+%    hydrostatic equilibrium equation, and assuming that the ideal gas law holds.
+  \item Hint: use $P \sim \rho T / \mu$
+  \item $L \propto \mu^4 M^3$
+%Combine the results obtained in (a) and (b), to derive how $L$
+%    scales with $M$ and $R$ for a star whose energy transport is
+%    radiative. 
+
+  \item The expression for $\frac{dT}{dr}$ used in a) is only valid
+  for radiative stars while low mass stars are fully
+  convective. Further you probably assumed an ideal gas law, which
+  breaks down for the high mass stars where the radiation pressure
+  becomes important. You also had to assume $\kappa$ constant which is
+  in reality a function of density and temperature.
+
+
+%Compare your answer to the relation between $M$ and $L$ which
+%    you derived from observations. Why does the derived powerlaw
+%    relation starts to deviate from observations for low mass stars?
+%    Why does it deviate for high mass stars?
+    
+  \end{enumerate}
+
+
+\item {\bf Conceptual Questions} 
+
+  \begin{itemize}
+  \item See Section 4.5.2.
+  \item See Figure 4.3.
+  \item See Section 4.5.2.
+  \end{itemize}  
+
+
+\item {\bf Comparing radiative and convective cores}
+
+%%% Answers to question 1 (inlever opgave)
+
+a) $dL_m/dm = \epsilon_{\rm nuc} \Rightarrow L_m =C + \int
+	\epsilon_{\rm nuc}dm$, from $L_m(0) = 0 \Rightarrow C=0$. 
+\[
+L_r = 
+\begin{cases}
+\epsilon_c\left(m - \frac{(m)^2}{0.2 M_*}\right) & \text{if $m/M_*<0.1$}\\
+\frac{0.1 \epsilon_c M_*}{2}& \text{if $0.1 <m/M_* <1$}\\
+\end{cases}
+\]
+From  
+\[
+L_m(M_*) = L_* \Rightarrow \epsilon_c = \frac{2}{0.1}\frac{80 \Lsun}{3 \Msun}
+\].  
+%Calculate and draw the luminosity profile, $l$, as a function of the
+%mass, $m$. Express $\epsilon_c$ in terms of the known quantities for the
+%star.\\
+\\ b) The hydrogen abundance at every point $m$ in the star ($m <
+0.1M_*$) will drop linearly with time from $0.7$ to $0$ in a time
+$t_{\rm exh}(m)$ depending on $m$ via $\epsilon_{\rm nuc}(m)$: $t_{\rm
+  exh}(m) = Q/\epsilon_{\rm nuc}(m)$.
+\[
+X(m,t) = 0.7\left(1 - \frac{t}{ Q/\epsilon_{\rm nuc}(m)}\right).
+\]
+X(0, 100Myr) = 0.33.\\
+
+  c) The hydrogen abundance profile becomes a step function. The amount
+of mass that can be used as fuel is 4 times larger (explain why!). The
+luminosity ( the rate at which fuel is burned) has not changed. The
+lifetime is therefor 4 times longer hwen the core is convective.
+
+
+\item {\bf Eddington Standard Model}
+%In order to model the Sun and more massive stars, the so-called
+%Standard Model of A. S. Eddington is used. Eddington derived stellar
+%models in which the radiation pressure is a constant fraction of the
+%total pressure, in other words: $\beta = P_\mathrm{gas}/P$ and $1-\beta=
+%P_\mathrm{rad}/P$ are constant throughout the star.
+\begin{enumerate}
+\item 
+
+The virial theorem in its general form is given by 
+\[
+E_{\rm gr} = - 3 \int P dV
+\]
+For an ideal gas $P_{\rm gas} = nkT$ and  the energy density
+$\frac{3}{2}nkT =\frac{3}{2}P_{\rm gas} =\frac{3}{2}\beta P$. For
+radiation $P_{\rm rad} = \frac{1}{3}aT^4 $ and  the energy density
+$aT^4 = 3 P_{\rm rad} = 3 (1-\beta) P$.
+
+So the total energy density is given by $ U = \frac{3}{2}\beta P + 3
+(1-\beta) P = (3 - \frac{3}{2}\beta) P$. Use this to rewrite $P$ in
+the virial theorem.
+\[
+E_{\rm gr} = - \frac{2}{2-\beta} \int uU dV = - \frac{2}{2-\beta} E
+_{\rm int}.
+\]
+Now derive the expression for the total energy yourself.
+
+
+
+%Show that the virial theorem leads to
+%\[
+%E_{tot}=\frac{\beta}{2}E_{gr}=-\frac{\beta}{2-\beta}E_{in},
+%\]
+%for a classical, non-relativistic gas. What happens in the limits
+%$\beta\rightarrow 1$ and $\beta\rightarrow 0$?
+
+\item 
+Using the radiation pressure write the temperature as a function of $P$
+and $\beta$.
+\[
+P_{\rm rad} = (1-\beta)P = aT^4 \Rightarrow T = T(\beta, P).
+\]
+Then insert this in the ideal gas law and you are left with an equation
+independent of T. Rewrite and find that 
+\[
+P \propto \rho^{4/3} \Rightarrow n =3
+\]
+
+
+%Show that the Eddington assumption leads to an equation of state
+%that can be written in polytropic form, with a polytropic index $n=3$.
+
+\item 
+
+%Also show that the corresponding constant $K$ is not fixed but depends
+%on $\beta$ and the mean molecular weight $\mu$ as
+%\[
+%K=\frac{2.67 \times
+%10^{15}}{\mu^{4/3}}\left(\frac{1-\beta}{\beta^4}\right)^{1/3}.
+%\]
+
+\item 
+%Show that for this $n$ the mass is uniquely determined by the value of $K$.
+(Use results of problem P.2.b).
+
+\item 
+%Now use the results from above to derive the relation $M=M(\beta,\mu)$.
+%This is useful for numerically solving the amount of radiation pressure
+%for a star with a given mass.
+
+\end{enumerate}
+%\item Find the connection between $c_p$ and $c_v$ for an ideal gas.
+
+%\item Neglecting the radiation pressure and assumming $\bar m$ is 0.7 amu,
+%determine if the energy transport is convective or radiative for the following
+%values:\\$r=0.1\Rsun;~ m=0.028\Msun;~ l=24.2\Lsun;~ T=2.2\times10^7{\rm~K};~
+%\rho=3.1\times10^{4}{\rm~kg~m^{-3}}$ and $\kappa=4\times10^{-2}
+%{\rm~m^2~kg{-1}}$.
+
+
+\end{enumerate}
+
+\end{document}
+
+
+\pagebreak
+
+  \item Compare two stars with the same luminosity but a different
+    interior opacity, e.g. because the composition is different. Which
+    star has the largest temperature gradient?
+
+\item How does the radiative temperature gradient scale with pressure for stars
+whose temperature is scaled by $T\sim P^{\frac{1}{1+n}}$? Assume energy
+generation is constant through the star (i.e., $l\sim m$) and that the
+opacity has
+a power law dependence of temperature and pressure, $\kappa\sim P^aT^b$.
+Generally, in the interiors, $a\sim1$ and $b\sim -4.5$, for high temperatures.
+Use n=1.5 and n=3 and indicate to what situation the results correspond to.
+
+\item Neglecting the radiation pressure and assuming that the average
+particle has a mass $\bar m=0.7$ amu,
+determine if the energy transport is convective or radiative for the following
+values at different radii in a model for a $5\Msun$ main sequence star and
+check if they are what is expected for such a star:
+
+%\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  {$r/\Rsun$}&{$m/\Msun$}&{$L_r/\Lsun$}&{$T{\rm~[K]}$}&
+  {$\rho{\rm~[g~cm^{-3}]}$}&{$\kappa{\rm~[g^{-1}~cm^{2}]}$}\\
+  \hline
+  0.242&0.199&$3.40\times10^{2}$&$2.52\times10^{7}$&18.77&0.435\\
+  0.670&2.487&$5.28\times10^{2}$&$1.45\times10^{7}$&6.91&0.585\\
+  \hline
+\end{tabular}
+\end{center}
+~\\
+
+
+\pagebreak
+

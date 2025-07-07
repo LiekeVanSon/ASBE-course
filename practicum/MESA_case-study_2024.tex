@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{epsfig}
+\usepackage{graphicx}
+%\usepackage{rotating}
+\usepackage{txfonts}
+%\usepackage{amsmath}
+\usepackage{amssymb}
+\IfFileExists{url.sty}{\usepackage{url}}
+                      {\newcommand{\url}{\texttt}}
+
+\providecommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
+
+\textheight=24.5cm
+\textwidth=16cm
+\oddsidemargin 0.0cm
+\evensidemargin 0.0cm
+\topmargin -1.5cm
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\msun}{\ensuremath{\mathrm{M}_\odot}}
+\newcommand{\rsun}{\ensuremath{\mathrm{R}_\odot}}
+\newcommand{\lsun}{\ensuremath{\mathrm{L}_\odot}}
+\newcommand{\dd}{\partial}
+
+\newcommand{\amuse}{\texttt{AMUSE}}
+\newcommand{\mesa}{\texttt{Mesa}}
+\newcommand{\evtwin}{\texttt{EVtwin}}
+\newcommand{\bse}{\texttt{BSE}}
+\newcommand{\seba}{\texttt{SeBa}}
+
+\def\mathstacksym#1#2#3#4#5{\def#1{\mathrel{\hbox to 0pt{\lower #5\hbox{#3}\hss}
+ \raise #4\hbox{#2}}}}
+\mathstacksym\lta{$<$}{$\sim$}{1.5pt}{3.5pt} % less than approximately
+\mathstacksym\gta{$>$}{$\sim$}{1.5pt}{3.5pt} % greater than approximately
+\mathstacksym\lrarrow{$\leftarrow$}{$\rightarrow$}{2pt}{1pt} % equilibrium
+\mathstacksym\lessgreat{$>$}{$<$}{3pt}{3pt} %% less or greater
+
+\setlength{\fboxsep}{2ex}
+
+\begin{document}
+
+\title{\textbf{MESA practical assignment}}
+\author{ASBE course 2024 -- 2025}
+\date{}
+\maketitle
+
+%\begin{center}
+%  \fbox{{\Large \textit{Advanced stellar and binary evolution} ---
+%      MESA practicum}}
+%\end{center}
+
+%\vspace*{5mm}
+%\noindent
+
+\section*{Assignment: a case study of stellar evolution}
+
+In this final assignment for the computer practicum you are asked to apply what you have learned during the course in a case study. During the first few pacticum sessions you have gained some experience in using MESA to compute the detailed evolution of  single and binary stars. Now you can use that experience in a free assignment, to explore a topic in (binary) stellar evolution of your choice in some more depth. 
+
+\medskip\noindent
+You are free to define the topic of your case study, in fact that is part of the assignment (see below). 
+Some examples are: How does the evolution of a star depend on the initial composition (metallicity)? Or on the rotation rate of the star? How does the evolution change with different assumptions about mixing, or mass loss? How does the evolution of a binary star depend on the mass ratio of the stars, or on the orbital period or eccentricity? Feel encouraged to come up with your own questions!
+
+\medskip\noindent
+The assignment consists of three steps.
+Note that \emph{collaboration} with your fellow students is strongly encouraged.
+%Also in the special circumstances of this semester, in which we have to work remotely. 
+You can do steps 1 and 2 (the proposal, and the execution of the project) in teams of two students. However, the report (step 3) should be written, and will be evaluated, individually.
+
+
+\begin{enumerate}
+\item \textbf{Write a brief research proposal}, no more than about half a page. It should consist of two parts:
+  \begin{enumerate}
+  \item A `science case', in which you briefly describe the (binary) stellar evolution question you want to answer using MESA, and you motivate in a few sentences why this is an interesting problem to study.
+  \item A `methodology', in which you briefly describe \emph{how} you plan to answer this question using MESA. That is to say: which models do you propose to run? For which set of masses and/or other parameters, and which set of assumptions within the code will you use?
+  \end{enumerate}
+Writing such a proposal encourages you to \emph{think} about what you want to do, and to \emph{plan} the calculations to be done, before you \emph{start} doing them. Also keep in mind that there is not much time for the project (four computer sessions in the second quarter), so don't be too ambitious in what you plan to do.
+
+Please submit your proposal in Brightspace by the end of the teaching break, i.e.\ before \textbf{Monday 4 November}. Then you will receive feedback well before the start of the next MESA practical session.
+
+\item \textbf{Perform the MESA calculations} needed for your case study. There will be four designated practical sessions in the second quarter, starting on Wednesday 13 November. Of course, you can also work on the project by yourselves outside the scheduled sessions.
+
+Here it is important to keep in mind that, whatever topic you choose to study with MESA, it should directly build on what you learn during the course. You should be able to \emph{explain your findings} and \emph{link them to the course contents} (e.g. the lecture notes). Therefore, good plots to concentrate on when you run your MESA models are:
+\newpage
+\begin{itemize}
+\item the evolution of your star(s) in a Hertzsprung-Russell diagram,
+\item the evolution of your star(s) in a $\log T_c$ versus $\log \rho_c$ diagram,
+\item a Kippenhahn plot of the convection zones and nuclear burning zones, and plots of the stellar mass(es) and core mass(es),
+\item plots of the abundance profiles at a few key stages of evolution,
+\end{itemize}
+and in the case of binary stars: 
+\begin{itemize}
+\item plots of how the orbital period and eccentricity evolve, and
+\item plots comparing the radius and Roche-lobe radius of each star,
+\item plots of the mass-loss rates and/or mass-transfer rates.
+\end{itemize}
+Not all of these will always be important, it depends on the topic you study and other diagrams may also be relevant. But at least several of these plots should be part of your report, and you should be able to \emph{explain them in your report} in terms of the physical processes we studied in the course.
+
+\item \textbf{Write a report} on your project, of no more than 10 pages in length. The report will be graded and it will determine 40\% of your final grade. The deadline for handing in the final version of your report is \textbf{Monday 27 January 2025}. See below for some guidelines for the report.
+
+\end{enumerate}
+
+%\noindent
+%Note that \emph{collaboration} with your fellow students is allowed, and even encouraged!  You can do steps 1 and 2 (the proposal, and the execution of the project) in teams of two students. However, the report should be written, and will be evaluated, individually.
+
+
+%\section{Report}
+
+%\subsection*{Grading and deadline}
+
+%You will receive a grade for your report, which will determine $1/3$ part of your final grade. We give you the opportunity to receive feedback on a concept version of your report. If you hand in your report by \textbf{Thursday 17 December 2015} you will receive suggestions on how to improve your report after the winter break.
+%
+%The final deadline for handing in your definitive report is \textbf{Monday 25 January 2015}.
+%; delays will not be accepted. 
+
+%Not handing in your report in time will result in a
+%grade of 1 (out of 10).
+
+\subsection*{Guidelines for the report}
+
+This section summarizes some general guidelines for your report.
+
+\begin{itemize}
+
+\item A good report has a \emph{clear structure}. It starts with an
+  \textbf{introduction}. Here you try to convince the reader to read
+  your report, you explain your research question and why your work is
+  relevant to other astronomers.  The report ends with a
+  \textbf{conclusion/discussion} section. Here you summarize briefly
+  your main points. You also discuss uncertainties. Read the
+  introduction to a real paper and see which elements you can use for
+  your report.  Try to subdivide the main body of your report in
+  coherent sections.  Think about a good outline. You can include a
+  section ``background theory'' or a section ``models'' but this is
+  not obligatory.
+
+\item A good report is \emph{concise}. Limit yourself to a maximum of
+  10 pages, including figures. This also means making a choice of
+  figures, showing those that best illustrate the information you want
+  to convey.
+
+\item A good report is one that can be understood by any master
+  student in astronomy that did not take this course. Explain specific
+  terms and introduce abbreviations. 
+  %Not many people know what ``wtts'' is.
+
+\item A good report is written in clear and proper English. Avoid very
+  long sentences. Try to write in the active form and in the present
+  tense. Avoid informal phrasing (e.g.\ not ``isn't'' but ``is
+  not'').  Be clear and quantitative whenever possible.
+
+\item Write your report using Latex.  Use the proper symbol for solar
+  mass, radius and luminosity, for example $M_\odot$ by
+  \verb|$M_\odot$|.  Make sure you use \verb|\ref| and \verb|\label|
+  to refer to your figures in the main text. Write captions for every
+  figure explaining the axes, lines, colors. A good caption is short
+  but self-explanatory. Latex decides where it places the figures in
+  the text, but you can influence the placements with e.g.\
+  \verb|\begin{figure}[hbtp]|, where \verb|h|=here, \verb|b|=bottom of
+    the page, \verb|t|=top of the page, and \verb|p|=on a separate
+    page. Using an exclamation mark you can override what Latex
+    considers as good, e.g.\ \verb|\begin{figure}[h!]|.
+
+\end{itemize}
+
+\end{document}

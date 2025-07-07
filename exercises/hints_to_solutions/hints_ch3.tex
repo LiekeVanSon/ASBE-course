@@ -1,0 +1,391 @@
+\documentclass[11pt,a4paper]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{3}
+
+\begin{enumerate}
+
+\item {\bf Conceptual questions}
+
+  \begin{enumerate}
+
+  \item
+
+    Read parahtaph 3.1 of the lecture notes.
+    
+  \item 
+
+    Degenareracy is very important in neutron stars, white dwarfs and
+    in the cores of red giants. It also plays a role in low-mass main
+    sequence stars.
+
+  \item
+
+    See the left panel of Figure~3.2 of the lecture notes. When the
+    density increases the electrons are `pushed' to higher $p$-states,
+    because of their higher momenta they exert more pressure.
+
+    
+  \item
+
+    $p_{\rm F}$ increases when the density increases.  As $\vel_{\max}
+    = p_{\rm F}/m_{\rm e}$ approaches $c$, the particles become
+    relativistic. Also read paragraph 3.3.5 of the lecture notes.
+
+  \item
+
+    Read the final section of paragraph 3.3.5: importance of electron
+    degeneracy in stars.
+    
+  \end{enumerate}
+
+\item {\bf Mean molecular weight} 
+
+  See Section~3.3.3.  The mean molecular weight $\mu$ is the average
+  mass (in \amu) per particle. Assume $m_e \approx 0$, and assume full
+  ionization. The total number of particles contributed by an atom of
+  species $i$ is $N_i = Z_i + 1$. Let $n_i$ be the number/cm$^3$ of
+  nuclei of species $i$. Then
+
+  \[
+  \mu = \frac{\text{total mass/\amu}}{\text{number of particles}} =
+  \frac{\sum_i A_i n_i}{\sum N_i n_i} = \frac{\sum_i X_i}{\sum (1+Z_i)
+    X_i/A_i}
+  \]
+
+  which gives eq.~(3.23).
+
+\item  {\bf The {\boldmath$\rho-T$} plane }
+
+  Consider the equations of state for each of these regions: ideal gas
+  $P_\mathrm{i}$ eq.~(3.21), radiation \Prad\ eq.~(3.44), NR degeneracy
+  $P_\mathrm{NR}$ eq.~(3.35) and ER degeneracy $P_\mathrm{ER}$
+  eq.~(3.37).
+
+  For the transitions between the regions solve $P_\mathrm{i} =
+  \Prad$, $P_\mathrm{i} = P_\mathrm{NR}$, $P_\mathrm{i} =
+  P_\mathrm{ER}$ and $P_\mathrm{NR} = P_\mathrm{ER}$.  The solutions
+  are given in Section~3.3.7.
+
+\item {\bf The pressure of a gas of free particles}
+
+  \begin{enumerate}
+
+  \item See the start of Section~3.3.
+
+  \item Follow the hints given in Section~3.3.2.
+
+  \item See Section~3.3.1.
+
+  \item See Section~3.3.4.
+
+  \item See Section~3.3.5.
+
+  \item See Section~3.3.5.
+
+  \item See Section~3.3.5.
+
+  \item Hint: use $\epsilon = pc$, $U = \int_0^\infty pc\, n(p)dp$ and
+    $\displaystyle \int_0^\infty \frac{x^3}{\exp(x) - 1}\,dp =
+    \frac{\pi^4}{15}$.
+
+  \end{enumerate}
+
+\newpage
+\item {\bf Adiabatic derivatives}
+
+  \begin{enumerate}
+
+  \item For an ideal gas $U =\frac{3}{2}NkT$ and $P = NkT/V$.  Insert
+    these in the first law of thermodynamics:
+
+    \[
+      dU = - PdV  \quad\Rightarrow\quad\
+      d(\frac{3}{2}N k T) = -\frac{N k T}{V}dV  \quad\Rightarrow\quad\
+      \frac{3}{2} \frac{dT}{T} = - \frac{dV}{V} \quad\Rightarrow\quad\
+    \]
+    \[
+      d\ln T = -\frac{2}{3} d \ln V   \quad\Rightarrow\quad\
+      T \propto V^{-\frac{2}{3}}   \quad\Rightarrow\quad\
+      P V \propto V^{-\frac{2}{3}}  \quad\Rightarrow\quad\
+      P \propto V^{-\frac{5}{3}}  \quad\Rightarrow\quad\
+    \]
+    \begin{equation}
+      P \propto \rho^{\frac{5}{3}}
+    \end{equation}
+   
+  \item 
+    \begin{equation}
+      P  \propto \rho^{\frac{5}{3}} \Rightarrow
+      P  \propto \frac{P}{T}^{\frac{5}{3}} \Rightarrow
+      T  \propto P^{\frac{2}{5}} \Rightarrow
+      d \ln T = \frac{2}{5} d \ln P \Rightarrow
+      \frac{d \ln T}{d \ln P} = \frac{2}{5}
+    \end{equation}
+
+  \item 
+
+    $\displaystyle \nabla_{\rm ad} = \left( \frac{d \log T}{d \log
+        P}\right)_{\rm ad}$ can be interpreted as a gradient because
+    $\log P$ increases monotonically inside a star in HE, so $P$ can
+    be considered as a coordinate, like $r$ or $m$.
+
+  \item Hints:
+    \begin{itemize}
+    \item Write down the equation of state for the mixture in
+      differential form, eq.~(3.48), and express $\chi_T$ and
+      $\chi_\rho$ in terms of $\beta$. This should give: ~ $d\log P =
+      \beta\,d\log\rho + (4-3\beta)\,d\log T$.
+    \item Write down the internal energy in differential form, and
+      again express this in terms of $\beta$. This should give: ~
+      $(\rho/P)\,du = (12 - \frac{21}{2}\beta)\,d\log T -
+      3(1-\beta)\,d\log\rho$.
+    \item Apply the first law of thermodynamics to derive the relation
+      between $d\log T$ and $d\log\rho$ for an adiabatic process,
+      again expressed in $\beta$.
+    \item Finally eliminate $d\log T$ from the two relations.
+    \end{itemize}
+    
+  \item $\beta = 0 \Rightarrow \gradad=\frac{4}{3}$ (radiation dominates) \\
+    $\beta = 1 \Rightarrow \gradad=\frac{5}{3}$ (ideal gas pressure dominates) \\
+
+  \end{enumerate}
+
+
+\item {\bf Ionization effects }
+  \begin{enumerate}
+        
+  \item The fraction $E_\mathrm{C}/kT$, eq.~(3.70) is $\ll 1$ for
+    normal stars. In planets it is substantial and can even dominate
+    (solidifaction). For a degenerate gas
+    \[
+    \frac{E_c}{p_{\rm F}^2/2m} \propto n^{-1/3}, 
+    \]
+    so the effect becomes less important for higher densities. Electrons
+    in stars behave like an ideal gas, but the ions can form a
+    crystallization in sufficiently cool WD.
+    
+    %The particles in an ionized gas are charged and therefore
+    %    undergo electrostatic (Coulomb) interactions. Why can can we
+    %    nevertheless make the ideal-gas assumption in most stars
+    %    (i.e. that the internal energy of the gas is just the sum of the
+    %    kinetic energies of the particles)? For which stars do Coulomb
+    %    interactions have a significant effect?
+    
+  \item The Saha equation (which gives that the ions start to
+    recombine at very high densities) is not valid for high densities.
+    For very high densities the `potential wells' of the ions start to
+    overlap, which leads to fewer bound states. Therefore the energy
+    needed to kick an electron from a bound to a free state becomes
+    lower and eventually zero.
+    %Why does the gas in the interior of a star become
+    %    pressure-ionized at high densities?
+	
+  \item See Section~3.5.1. By compressing an ideal gas adiabatically,
+    the work done is all converted into heat. If the gas is partially
+    ionized, a certain amount of the work done is used to ionize the
+    gas further and only a part is left for heating the gas. In other
+    words, a certain increase of pressure will lead to a larger
+    temperature increase for an ideal gas than for an partially
+    ionized gas.
+    
+    
+    %Explain qualitatively why partial ionization leads to
+    %    $\nabla_\mathrm{ad} < \nabla_\mathrm{ad,ideal} = 0.4$, in other
+    %    words: why does adiabatic compression lead to to much smaller
+    %    temperature increase when the gas is partly ionized, compared to a
+    %    completely ionized (or unionized) gas?
+    
+\end{enumerate}
+  
+
+
+ \end{enumerate}
+
+
+
+
+
+\end{document}
+
+
+
+
+\item {\bf Summary of the Lecture}
+
+ \begin{enumerate}
+
+  \item - 
+  \item You have to integrate an integral in the form $I_n(a) = \int
+  x^n exp(-a x^2)$.  For the standard integral one can show that
+  $I_0(a) = \sqrt{\pi a}$.  Show first that for $n \ge 1$
+  
+  \[
+  I_n(a) = -\frac{dI_{n-1}}{da}.
+  \]
+  From this you will find that $I_1(a) = \frac{1}{2}\sqrt{pi}a^{-3/2}$
+  and $I_2(a) = $....
+
+  When your done you should find a nice simple familiar expression for
+  the pressure.
+  
+  \item Use equation 3.5 $U = n <\epsilon_p>$ and 3.6 $P = \frac{1}{3}
+  n <p v_p>$, with $\epsilon_p = \frac{p^2}{2m}$ and $v =
+  \frac{p}{m}$.
+
+  \item
+
+
+  \item Imagine a volume $V$ which partioned in little cubes with size
+  $\Delta x\Delta y\Delta z$.  There are $V/\Delta x\Delta y\Delta z$
+  positions in this volume for an electron.  
+
+  We can do a similar thing for the ``momentum space'' $V_p$, which we
+  divide in cubes $\Delta p_x\Delta p_y\Delta p_z$.  We are interested
+  in electrons with momentum between $p$ and $p + dp$, where $ p =
+  \sqrt{p_x^2 +p_y^2+p_z^2 }$.  The volume $V_p$ is a spherical shell
+  with radius $p$ and thickness $dp$.  Therefore $V_p = 4 \pi p^2
+  dp$. The number of ``positions'' in the momentum space are
+  $V_p/\Delta p_x\Delta p_y\Delta p_z $.
+
+  The total number of postions is 
+  \[
+  \frac {V * V_p}{ \Delta x\Delta y\Delta z\Delta p_x\Delta p_y\Delta
+  p_z } = \\ \frac {V * 4 \pi p^2 dp } {(\Delta x \Delta p_x)* (\Delta z
+  \Delta p_z)*(\Delta z \Delta p_z) } = \\
+  \frac {V * 4 \pi p^2 }{h^3}
+  \]
+
+  As electrons are fermions two of them can occupy the same space,
+  therefore multiply by 2.
+
+ \item -
+ \item Read Equation 3.36 in the lecture notes.
+ \item Read Equation 3.38 in the lecture notes.
+
+ \item -
+ \item -
+
+\end{enumerate}
+
+
+ \end{enumerate}
+
+
+
+
+
+\newpage
+
+
+
+{\bf IMPORTANT}: The solutions of the following problems are required
+for understanding and carrying out Practicum 2 on Tuesday, the 20th of
+February 2007.
+ 
+\renewcommand{\labelenumi}{P.\arabic{enumi}}
+\begin{enumerate}
+
+\item {\bf Polytropes I} A number of interesting properties of
+stars can be derived from simple stellar models in which the pressure
+is a function of the density, the so-called polytropic models. For a
+polytropic equation of state we can write
+\[
+P=K\rho^{\gamma}
+\]
+with $K$ and $\gamma$ constant. $\gamma$ is related to the so-called
+polytropic index $n$, as $\gamma = 1+\frac{1}{n}$.
+
+If the equation of state can be written in polytropic form, the mechanical
+structure of a star is completely determined by the equations for mass
+continuity ($dm/dr$) and hydrostatic equilibrium ($dP/dr$).\\
+a) Show that the combination of these two differential equations
+together with the polytropic equation of state gives the following
+second-order differential equation for the density:
+\[
+\frac{1}{\rho r^2}\frac{d}{dr}\left(r^2\rho^{\gamma -
+2}\frac{d\rho}{dr}\right)=-\frac{4\pi G}{K\gamma}
+\]\\
+(Hint: multiply the hydrostatic equation by $r^2/\rho$ and take the
+derivative with respect to $r$). \\
+In order to construct a stellar model, this equation has to be solved
+together with two boundary conditions which are set at the center:
+$\rho(0)=\rho_c \qquad$ and $\qquad
+\left(d\rho/dr\right)_{r=0}=0$, where $\rho_c$ is a parameter
+to be chosen.\\
+b) What determines the second boundary condition, i.e., why does the
+density gradient have to vanish at the center?\\
+c) Derive $K$ and $\gamma$ for the equation of state of an ideal
+gas at a fixed temperature $T$, of a non-relativistic degenerate gas and
+of a relativistic degenerate gas.\\
+
+\item {\bf Polytropes II} In order to simplify the equation of
+derived in 3.3.a, we define two new dimensionless variables $w$
+(related to the density) and $z$ (related to the radius) and write
+\begin{eqnarray*}
+& & \rho = \rho_c w^n,\\
+& & r = \alpha z, \qquad \mathrm{with} \qquad
+\alpha = \left(\frac{n+1}{4\pi G}K\rho_c^{1/n-1}\right)^{1/2}
+\end{eqnarray*}
+This choice of $\alpha$ ensures that the constants $K$ and $4\pi G$ are
+eliminated after substituting $r$ and $\rho$ into the equation of problem
+2.a. The resulting second-order differential equation is called the
+Lane-Emden (L-E) equation:
+\[
+\frac{1}{z^2}\frac{d}{dz}\left(z^2\frac{dw}{dz}\right)+w^n=0.
+\]
+A stellar model can be constructed by integrating this equation outwards
+from the center. The boundary conditions imply that in the center ($z=0$)
+we have $w=1$ and $dw/dz=0$.  The integration is done until the surface is
+reached, which is determined by the condition $\rho = 0$ at $r=R$, or in
+terms of $w$ and $z$: $w(z_n) = 0$ at $z_n = R/\alpha$.\\
+Hence a polytrope is uniquely determined by three parameters: $n$ (or
+$\gamma$), $K$ and $\rho_c$.  These three parameters determine the radius
+$R$ and mass $M$ of the polytropic star.\\
+a) In general the L-E equation does not have an analytical solution,
+but has to be solved numerically. Exceptions are $n=0$ and $N=1$. Solve
+them analytically.\\
+b) Using the L-E equation, show that the mass and the radius of a
+polytropic star can be expressed as the following functions of $\rho_c$,
+for given values of $n$ and $K$:
+\begin{eqnarray*}
+& & M=4\pi a^3 \rho_c\theta_n=4\pi \left[\frac{(n+1)K}{4\pi G}\right]^{3/2}
+\rho_c^{\frac{3-n}{2n}}\theta_n\\
+& & R=\alpha z_n=\left[\frac{(n+1)K}{4\pi G}\right]^{1/2}
+\rho_c^{\frac{1-n}{2n}}z_n,
+\end{eqnarray*}
+where $\theta_n\equiv(-z^2dw/dz)_{z=z_n}$. The values of $\theta_n$ and
+$z_n$ depend only on $n$ and are tabulated in Table 19.1 of K\&W.\\
+c) Derive the central density $\rho_c$ and the central pressure $P_c$ as
+function of its mass and radius, assuming that the solution of the
+L-E equation is known (Table 19.1 of K\&W).\\
+
+\item {\bf White dwarfs} Stars that are so compact and dense that
+their interior pressure is dominated by degenerate electrons are known
+observationally as \emph{white dwarfs} (WDs).They are the remnants of
+stellar cores in which hydrogen has been completely converted into
+helium and, in most cases, also helium has been fused into carbon and
+oxygen.  To understand some of the properties of white dwarfs (WDs) we
+start by considering the equation of state for a degenerate,
+non-relativistic electron gas.\\ a) What is the value of $K$ for such
+a star? Remember to consider an appropriate value of the mean
+molecular weight per free electron $\mu_e$.\\ b) Derive how the
+central density $\rho_c$ depends on the mass of a WD. Using this with
+the result of problem 3.4.b, derive a radius-mass relation
+$R=R(M)$. Interpret this physically.\\
+
+The result above shows that more massive white dwarfs are more compact,
+and therefore have a higher density. Above a certain density the electrons
+become relativistic as they are pushed up to higher momenta by the Pauli
+exclusion principle. The degree of relativity increases with density, and
+therefore with the mass of the, until at a certain mass all the electrons
+become extremely relativistic, i.e., their speed $v_e\rightarrow c$.\\
+c) Use the result of exercise 3.5.b to estimate for which WD masses the
+relativistic effects would become important.\\
+d) Show that the derivation of a $R=R(M)$ relation for the extreme
+relativistic case leads to a unique mass. This mass is the so-called
+\emph{Chandrasekhar mass} ($M_{Ch}$). Calculate its value.
+\end{enumerate}

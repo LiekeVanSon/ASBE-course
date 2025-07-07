@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper,fleqn]{report}
+
+\input{preamble}
+
+\begin{document}
+
+\hints{8}
+
+\begin{enumerate}
+
+
+\item {\bf Homologous contraction(1)} 
+
+  Discuss your answers to this question with your fellow students or
+  with the teaching assistant. Also see the text of Chapter~8.
+
+\item {\bf Homologous contraction(2)} 
+
+  \begin{enumerate}
+
+  \item Combine the homology relation for the density, $\rho \propto
+    M/R^3$, and for the pressure, $P \propto G M^2/R^4$, and apply
+    them to the center of the star. See Section~7.4.
+    
+  \item     
+    \[
+    C G\, M^{2/3} \rho_c^{4/3} = \frac{\mathcal{R}\, \rho_c T_c}{\mu} +
+    K_\mathrm{NR}\, \Bigg( \frac{\rho_c}{\mu_e} \Bigg)^{5/3}
+    \] therefore
+    \[
+    T_c = \frac{\mu}{\mathcal{R}}\, \Bigg( C G\, M^{2/3} \rho_c^{1/3}
+    - \frac{K_\mathrm{NR}}{\mu_e^{5/3}}\, \rho_c^{2/3} \Bigg)
+    \]
+
+  \item The maximum is located where $\der T_c/\der x = 0$, taking $x
+    = \rho_c$. Subsititute the resulting $x$ back into the equation
+    for $T_c$. This yields the same result as eq.~(8.5).
+
+  \end {enumerate} 
+  
+
+\item {\bf Application: Minimum core mass for Helium burning}
+
+  \emph{Hand-in exercise.}
+
+  % See below.
+
+\end{enumerate}
+
+\end{document}
+
+
+
+%%%%%
+
+\item {\bf Application: Minimum core mass for Helium burning}
+
+  \begin{itemize}
+
+  \item \emph{Method 1:} Use $P_{\rm ideal\, gas} = P_{\rm deg\, NR}$
+    to obtain a value for $\rho_c$ by setting $T_c = 10^8$. ($\mu =
+    4/3, \mu_e = 2$)
+
+    Use $P = P_{\rm ideal\, gas}+ P_{\rm deg\, NR} = 2 P_{\rm deg\,
+      NR}$ to obtain the central pressure.
+
+    Use $P_\odot = 10^{17}$~g~cm$^{-1}$~s$^{-2}$ and $\rho_{\odot} =
+    60$~g~cm$^{-3}$ to express both in `solar units'.
+
+    Use the two homology relations for the pressure and the density to
+    show that $M \propto P_c^{3/2}\rho_c^{-2}$ and put in your
+    numbers.
+
+  \item \emph{Method 2:} Equating $P_{\rm ideal\, gas} = P_{\rm deg\,
+      NR}$ and setting $P_c = P_{c,\rm ideal\, gas}+ P_{c,\rm deg\,
+      NR}$ yields the same expression for $T_c$ as in Exercise~8.2c,
+    i.e., eq.~(8.5).
+
+    The value of $C$ to be used in eq.~(8.5) follows from the scaling
+    of eq.~(8.1) for the Sun, using $P_\odot =
+    10^{17}$~g~cm$^{-1}$~s$^{-2}$ and $\rho_{\odot} = 60$~g~cm$^{-3}$.
+    This gives $C=0.403$.
+
+  \end{itemize}
+
+  Both methods give $M_\mathrm{min} = 0.534 \Msun$.
+
