@@ -51,6 +51,31 @@
 }
 %%%
 
+%%%
+% For making pro-tip boxes
+\usepackage[most]{tcolorbox}
+% Define hex colors
+\definecolor{protipbg}{HTML}{F0F4F8}    % very light blue-gray
+\definecolor{protipborder}{HTML}{0077B6} % deep blue
+\definecolor{protiptext}{HTML}{003049}  % dark slate
+
+\tcbset{
+  protipbox/.style={
+    colback=protipbg,
+    colframe=protipborder,
+    coltext=protiptext,
+    fonttitle=\bfseries,
+    title=Pro Tip,
+    sharp corners,
+    boxrule=0.7pt,
+    left=6pt,
+    right=6pt,
+    top=5pt,
+    bottom=5pt
+  }
+}
+%%%
+
 
 \begin{document}
 
@@ -83,13 +108,16 @@ The advantages of \texttt{MESA} are listed on the website of the code and the ke
 
 %%%  Instructions for installation on computers in Huygens building are moved to end of this file. 
 \texttt{MESA} has already been installed on the Science Faculty computer system of Radboud University. This section will explain how to access this. The \texttt{MESA} installation is not the newest version, but an older one named \texttt{r12778} which is found at \url{https://zenodo.org/record/3698354#.Yyxmg3ZBxPZ}, because this release runs stably for the computer exercises you will perform during this course.
-\footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/stable/installation.html}). The corresponding \texttt{MESA SDK} (software development kit) can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}, making sure that your SDK matches the `MESA Version at Release' you just downloaded. }
+\footnote{If you want to install \texttt{MESA} on your own personal computer in your own time, follow the instructions on the \texttt{MESA} website (\url{https://docs.mesastar.org/en/stable/installation.html}). The corresponding \texttt{MESA SDK} (software development kit) can be downloaded from \url{http://user.astro.wisc.edu/~townsend/static.php?ref=mesasdk}, making sure that your SDK matches the `MESA Version at Release'. }
 
 \bigskip\noindent
 To access the \texttt{MESA} installation, you first need to log in on the Linux environment of the university computers at the Science Faculty. If you cannot manage to log in with your science account, you can find helpful information here: \url{https://wiki.cncz.science.ru.nl/Login}. 
 
 \bigskip\noindent
-Once logged in, open a terminal and run the following lines of code. 
+
+Once logged in, open a terminal and either run the following lines of code, or directly add them to your Linux shell start-up file (i.e., \verb|~/.bashrc|).\footnote{More information can be found in the subsection \texttt{Set your environment variables} at \url{https://docs.mesastar.org/en/release-r22.05.1/installation.html\#}.}
+%
+The latter approach avoids having to run these commands manually each time. Otherwise, \textbf{you will have to run them in every new terminal you open} to make \texttt{MESA} work.
 
 \begin{lstlisting}
 #This line defines the path where MESA is located 
@@ -101,36 +129,34 @@ export OMP_NUM_THREADS=4
 # path to the MESA SDK
 export MESASDK_ROOT=/vol/cursus/astro/ASBE/MESA/mesasdk
 source $MESASDK_ROOT/bin/mesasdk_init.sh
-\end{lstlisting}
-The first line specifies the installation path for \texttt{MESA}. 
-The second line sets the number of threads for \texttt{MESA} using the \texttt{OMP\_NUM\_THREADS} variable, related to OpenMP for parallel programming. 
-We set it to 4 to match university computers. 
-Use \texttt{lscpu} to check your machine's CPU count if unsure. 
-The last two lines define and initialize the \texttt{MESA SDK} path.
 
-
-These lines will \textbf{have to be run in every new terminal you open} to make \texttt{MESA} work. 
-To avoid having to do this every time, you can edit your Linux shell start-up file (i.e. \verb|~/.bashrc|) and add these lines to that file.\footnote{More information can be found in the subsection \texttt{Set your environment variables} on \url{https://docs.mesastar.org/en/release-r22.05.1/installation.html\#}.}
-
-
-\begin{lstlisting}
+# Change the MESA caches directory to a local scratch directory
+mkdir -p /scratch/$USER/MESA/caches
 export MESA_CACHES_DIR=/scratch/$USER/MESA/caches
 \end{lstlisting}
 
-\noindent
-This line defines the path where \texttt{MESA} will store its cache information, which in this case will be somewhere in the local \texttt{scratch} directory of the specific machine you are using. This directory is used instead of your own \texttt{home} directory (invoked with \texttt{\$HOME}) to make \texttt{MESA} run much faster due to it being run locally instead of in the computer system where your \texttt{home} directory resides. Furthermore, there is more space available on \texttt{scratch} than on your \texttt{home} directory. If you are using a machine you have not used before, or the local \texttt{scratch} directory has been wiped, or just to be on the safe side, run the following lines of code. 
+Line 2 specifies the installation path for \texttt{MESA}. 
+Line 5 sets the number of threads for \texttt{MESA} using the \texttt{OMP\_NUM\_THREADS} variable, related to OpenMP for parallel programming. We set it to 4 to match university computers. 
+Use \texttt{lscpu} to check your machine's CPU count if unsure. 
+Lines 8 and 9 define and initialize the \texttt{MESA SDK} path.
 
-\begin{lstlisting}
-mkdir /scratch/$USER
-mkdir /scratch/$USER/MESA
-mkdir /scratch/$USER/MESA/caches
-\end{lstlisting}
 
-\noindent
-These lines create a personal directory (using the \texttt{mkdir} command) named after your science account username (invoked with \texttt{\$USER}) on the \texttt{scratch} directory, a directory named \texttt{MESA} inside that directory, and a directory named \texttt{caches} where \texttt{MESA} will store its cache information as was defined in the previous line with the \texttt{MESA\_CACHES\_DIR} path variable.
+Lines 12 and 13 set the path where \texttt{MESA} stores its cache data. 
+The \texttt{mkdir -p} command creates a cache directory in the local \texttt{scratch} area (e.g., \texttt{/scratch/\$USER/MESA/caches}). The \texttt{-p} flag ensures that you will also create any missing parent directories, plus that command succeeds even if the directories already exist.
+%
+Note that using \texttt{scratch} instead of \texttt{\$HOME} significantly improves performance because it leverages fast, local storage. And there is more space available on \texttt{scratch} than on your \texttt{home} directory. This path may vary per machine and may not persist, which is why it is good practice to run these lines on any new system or after a wipe of the local \texttt{scratch} directory.
+
 
 \bigskip\noindent
-The 8 lines of code mentioned above have been put for your convenience in a text file titled \texttt{MESA\_startup\_script}, which is on Brightspace with this document. You can copy the entire contents of that text file and paste it in the terminal (by right clicking the terminal window and selecting paste) for it to run. This will make your terminal window ready to run \texttt{MESA}. The possible errors from the \texttt{mkdir} commands which say that the file already exists are no problem. You need to run these lines for every new terminal window you want to run \texttt{MESA} in.
+The block of code mentioned above have been put for your convenience in a text file titled \texttt{MESA\_startup\_script}, which is on Brightspace with this document. 
+However, we strongly recommend to add these lines to your \texttt{~/.bashrc} file, so that they are automatically run every time you open a new terminal window.
+% You can copy the entire contents of that text file and paste it in the terminal (by right clicking the terminal window and selecting paste) for it to run. This will make your terminal window ready to run \texttt{MESA}. The possible errors from the \texttt{mkdir} commands which say that the file already exists are no problem. You need to run these lines for every new terminal window you want to run \texttt{MESA} in.
+
+\begin{tcolorbox}[protipbox]
+You can speed up \texttt{MESA} by storing its cache on a local scratch disk, rather than your home directory.
+\end{tcolorbox}
+
+
 
 \subsection{Using \texttt{MESA}}
 

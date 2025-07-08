@@ -1,0 +1,13 @@
+#This line defines the path where MESA is located 
+export MESA_DIR=/vol/cursus/astro/ASBE/MESA/mesa-r12778
+
+# Number of cores the computer has for MESA to use
+export OMP_NUM_THREADS=4
+
+# path to the MESA SDK
+export MESASDK_ROOT=/vol/cursus/astro/ASBE/MESA/mesasdk
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+
+# Change the MESA caches directory to a local scratch directory
+mkdir -p /scratch/$USER/MESA/caches
+export MESA_CACHES_DIR=/scratch/$USER/MESA/caches
