@@ -54,9 +54,12 @@
 %%%
 % For making pro-tip boxes
 \usepackage[most]{tcolorbox}
+
 % Define hex colors
-\definecolor{protipbg}{HTML}{F0F4F8}    % very light blue-gray
-\definecolor{protipborder}{HTML}{0077B6} % deep blue
+% \definecolor{protipbg}{HTML}{faf1f0}    % 
+% \definecolor{protipborder}{HTML}{E9A098} % 
+\definecolor{protipbg}{HTML}{ebf0f2}    % 
+\definecolor{protipborder}{HTML}{B0CAD4} % 
 \definecolor{protiptext}{HTML}{003049}  % dark slate
 
 \tcbset{
@@ -66,14 +69,15 @@
     coltext=protiptext,
     fonttitle=\bfseries,
     title=Pro Tip,
-    sharp corners,
-    boxrule=0.7pt,
+    rounded corners,
+    boxrule=0.1pt,
     left=6pt,
     right=6pt,
     top=5pt,
     bottom=5pt
   }
 }
+
 %%%
 
 
@@ -85,7 +89,8 @@
 \maketitle
 
 
-%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{What is \texttt{MESA}?}
 
 \texttt{MESA} stands for Modules for Experiments in Stellar Astrophysics. It is an open-source stellar astrophysics code consisting of different modules. Each module is responsible for a different aspect of the numerics or physics required to construct computational models for stellar astrophysics. At the core of it all is the most important module: \texttt{MESA star}. \texttt{MESA star} is a one-dimensional stellar evolution code and is designed for a wide range of stellar physics applications. You can find more information on the website \url{https://docs.mesastar.org/}, and also in the first \texttt{MESA} instrument paper by  \cite{Paxton2011} %2011ApJS..192....3P}
@@ -103,6 +108,10 @@ The advantages of \texttt{MESA} are listed on the website of the code and the ke
 \item Comprehensive microphysics
 \end{itemize}
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Getting started}
 
@@ -149,12 +158,13 @@ Note that using \texttt{scratch} instead of \texttt{\$HOME} significantly improv
 
 \bigskip\noindent
 The block of code mentioned above have been put for your convenience in a text file titled \texttt{MESA\_startup\_script}, which is on Brightspace with this document. 
-However, we strongly recommend to add these lines to your \texttt{~/.bashrc} file, so that they are automatically run every time you open a new terminal window.
+However, we strongly recommend to add these lines to your \verb|~/.bashrc| file, so that they are automatically run every time you open a new terminal window.
 % You can copy the entire contents of that text file and paste it in the terminal (by right clicking the terminal window and selecting paste) for it to run. This will make your terminal window ready to run \texttt{MESA}. The possible errors from the \texttt{mkdir} commands which say that the file already exists are no problem. You need to run these lines for every new terminal window you want to run \texttt{MESA} in.
 
 \begin{tcolorbox}[protipbox]
-You can speed up \texttt{MESA} by storing its cache on a local scratch disk, rather than your home directory.
+If (or when) you have multiple versions of \texttt{MESA} installed, you can use \href{https://www.gnu.org/software/bash/manual/html_node/Shell-Functions.html}{shell functions} to easily switch between them. For example, you can create a function in your \verb|~/.bashrc| for each version.
 \end{tcolorbox}
+
 
 
 
@@ -214,6 +224,8 @@ cp -R /scratch/$USER/MESA/project1 $HOME/MESA/project1
 Note that you will have to make a copy for \emph{every} project directory you have worked on during the session! It is also important to note that you only have limited space in your \texttt{home} directory (about 7 Gb). Thus, it will be useful to migrate your \texttt{MESA} projects to a personal external storage device or to cloud storage (e.g. the OneDrive that comes with your Radboud e-mail, or a Google Drive). 
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolving a 1 \texorpdfstring{M$_\odot$}{Msun} star}
 
 \begin{enumerate}
