@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex latex_output/MESA_session1"] 1751936995 "latex_output/MESA_session1.aux" "latex_output/MESA_session1.bbl" "latex_output/MESA_session1" 1751936997 0
+["bibtex latex_output/MESA_session1"] 1752250273 "latex_output/MESA_session1.aux" "latex_output/MESA_session1.bbl" "latex_output/MESA_session1" 1752251259 0
   "./gmlib.bib" 1751921726 1877 3f6e042b468325a5b90cd318539f718d ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "latex_output/MESA_session1.aux" 1751936996 1422 7d081785959b9ec5e0cf9b666c6a05e6 "pdflatex"
+  "latex_output/MESA_session1.aux" 1752251258 1556 02a0c4f7c43c17a55211bfa00b7d13c8 "pdflatex"
   (generated)
   "latex_output/MESA_session1.bbl"
   "latex_output/MESA_session1.blg"
   (rewritten before read)
-["pdflatex"] 1751936996 "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session1.tex" "latex_output/MESA_session1.pdf" "MESA_session1" 1751936997 0
-  "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session1.tex" 1751936994 20988 7e26ae5ad288e3a43063e9fa6a2217fa ""
+["pdflatex"] 1752251257 "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session1.tex" "latex_output/MESA_session1.pdf" "MESA_session1" 1752251259 0
+  "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session1.tex" 1752251258 23468 b60fef6b20a29b62b17bbb4ead472dd2 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -242,10 +242,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1695992093 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1695992025 7883454 92bdac864c75e6de7bc219e0137c578e ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "MESA_session1.tex" 1751936994 20988 7e26ae5ad288e3a43063e9fa6a2217fa ""
-  "latex_output/MESA_session1.aux" 1751936996 1422 7d081785959b9ec5e0cf9b666c6a05e6 "pdflatex"
-  "latex_output/MESA_session1.bbl" 1751936996 705 3770b48e83ff73d2d876536ecfe04bde "bibtex latex_output/MESA_session1"
-  "latex_output/MESA_session1.out" 1751936996 653 bb072f1584d52d68cd68ad8d4a04d08a "pdflatex"
+  "MESA_session1.tex" 1752251258 23468 b60fef6b20a29b62b17bbb4ead472dd2 ""
+  "latex_output/MESA_session1.aux" 1752251258 1556 02a0c4f7c43c17a55211bfa00b7d13c8 "pdflatex"
+  "latex_output/MESA_session1.bbl" 1752250273 705 3770b48e83ff73d2d876536ecfe04bde "bibtex latex_output/MESA_session1"
+  "latex_output/MESA_session1.out" 1752251258 832 29a55fca0b774f7726d9c53a996f6fa9 "pdflatex"
   (generated)
   "latex_output/MESA_session1.aux"
   "latex_output/MESA_session1.log"
