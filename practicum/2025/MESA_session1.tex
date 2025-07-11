@@ -1,33 +1,14 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{authblk}
-\usepackage{natbib} 
-\usepackage[english]{babel}
+
 \pagenumbering{arabic}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{bigints}
-\usepackage{float}
-%\usepackage{indentfirst}
-\usepackage{tabularx,ragged2e,booktabs,caption}
-\usepackage{longtable}
-%\graphicspath{{C:/Users/glenn-michael/Documents/ExercisesAstronomy/}}
 \usepackage[margin=1.0in]{geometry}
-\usepackage{textcomp}
-\usepackage{listings}
-\usepackage{multirow}
-\usepackage{caption}
-\usepackage{pbox}
+\usepackage{natbib} 
 \usepackage{hyperref}
-\usepackage{upquote}
-\usepackage{xcolor}  % for coloring
 \usepackage{enumitem}
 
-% For pretty code blocks
-\usepackage{listings}
-\usepackage{xcolor}
-
+% define a bunch of colors for pretty bash code blocks
+\usepackage{xcolor}  % for coloring
 \definecolor{bgdark}{rgb}{0.27,0.27,0.27}
 \definecolor{lighttext}{rgb}{0.95,0.95,0.95}
 \definecolor{bashgreen}{rgb}{0.5,1.0,0.5}
@@ -35,6 +16,8 @@
 \definecolor{bashcomment}{rgb}{0.6,0.6,0.6}
 \definecolor{bashstring}{rgb}{1.0,0.6,0.6}
 
+% For pretty code blocks
+\usepackage{listings}
 \lstset{
   language=bash,
   basicstyle=\ttfamily\small\color{lighttext},
@@ -49,19 +32,13 @@
   breaklines=true,
   showstringspaces=false
 }
-%%%
 
-%%%
-% For making pro-tip boxes
+% For making the pro-tip boxes
 \usepackage[most]{tcolorbox}
-
-% Define hex colors
-% \definecolor{protipbg}{HTML}{faf1f0}    % 
-% \definecolor{protipborder}{HTML}{E9A098} % 
+% define colors for the pro-tip boxes
 \definecolor{protipbg}{HTML}{ebf0f2}    % 
 \definecolor{protipborder}{HTML}{B0CAD4} % 
 \definecolor{protiptext}{HTML}{003049}  % dark slate
-
 \tcbset{
   protipbox/.style={
     colback=protipbg,
@@ -80,14 +57,13 @@
 
 %%%
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \title{\textbf{\texttt{MESA} tutorial: session 1}}
 \author{}
 \date{}
 \maketitle
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -107,7 +83,6 @@
 % \item Modern techniques
 % \item Comprehensive microphysics
 % \end{itemize}
-
 MESA is one of (if not the most) the most widely used stellar evolutionary codes today, with applications ranging from binary systems to planet structure, nuclear burning in the accretion layers of neutron stars, and asteroseismology. 
 In this course, we will learn some of the basics of using \texttt{MESA}, as well as how to set up your own numerical experiment. By the end of the course, you will be able to set up and run your own stars! 
 
