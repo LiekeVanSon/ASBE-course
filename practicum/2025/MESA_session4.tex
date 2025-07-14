@@ -1,0 +1,130 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\pagenumbering{arabic}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{natbib} 
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+
+% define a bunch of colors for pretty bash code blocks
+\usepackage{xcolor}  % for coloring
+\definecolor{bgdark}{rgb}{0.27,0.27,0.27}
+\definecolor{lighttext}{rgb}{0.95,0.95,0.95}
+\definecolor{bashgreen}{rgb}{0.5,1.0,0.5}
+\definecolor{bashblue}{rgb}{0.5,0.8,1.0}
+\definecolor{bashcomment}{rgb}{0.6,0.6,0.6}
+\definecolor{bashstring}{rgb}{1.0,0.6,0.6}
+
+% For pretty code blocks
+\usepackage{listings}
+% Bash style 
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small\color{lighttext},
+  backgroundcolor=\color{bgdark},
+  keywordstyle=\color{bashblue},
+  commentstyle=\color{bashcomment},
+  stringstyle=\color{bashstring},
+  numbers=left,
+  numberstyle=\tiny\color{bashcomment},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+% Python style
+\definecolor{pylightbg}{RGB}{250,250,250}
+\definecolor{pyblue}{RGB}{0,0,180}      % keywords
+\definecolor{pygreen}{RGB}{0,150,0}     % comments
+\definecolor{pyred}{RGB}{180,0,0}       % strings
+\definecolor{gray}{gray}{0.5}           % line numbers
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  basicstyle=\ttfamily\small\color{black},
+  backgroundcolor=\color{pylightbg},
+  keywordstyle=\color{pyblue}\bfseries,
+  commentstyle=\color{pygreen}\itshape,
+  stringstyle=\color{pyred},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+
+
+% For making the pro-tip boxes
+\usepackage[most]{tcolorbox}
+% define colors for the pro-tip boxes
+\definecolor{protipbg}{HTML}{ebf0f2}    % 
+\definecolor{protipborder}{HTML}{B0CAD4} % 
+\definecolor{protiptext}{HTML}{003049}  % dark slate
+\tcbset{
+  protipbox/.style={
+    colback=protipbg,
+    colframe=protipborder,
+    coltext=protiptext,
+    fonttitle=\bfseries,
+    title=Pro Tip,
+    rounded corners,
+    boxrule=0.pt,
+    left=6pt,
+    right=6pt,
+    top=5pt,
+    bottom=5pt
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{
+    \textbf{\texttt{MESA} tutorial: Session 4} \\
+    \textbf{\Large Binary mass transfer and tides}
+}
+\date{}
+\maketitle
+\vspace{-1cm}
+
+\noindent
+This tutorial is based on the \texttt{MESA} summer school labs by Selma De Mink (\url{http://cococubed.asu.edu/mesa_summer_school_2017/agenda.html}). It introduces you to the evolution of binaries, and to concepts that will be treated in more detail in part 2 of the course. In order to answer some of the questions, refer to Chapter 15 of the lecture notes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Radius evolution of massive stars}
+
+This exercise is a continuation on the second exercise of the previous \texttt{MESA} session. In the last session, you evolved a massive star between 15 and 100 M$_\odot$ up to the end of core helium burning. If you have not done this part yet, then modify the inlist from last week to evolve a star between 15 and 100 M$_\odot$ and change the \verb|Dutch_scaling_factor| to 1.0. Next, compile and run the model. Use the output of this model (stored in \verb|LOGS/history.data|) and compute the following:
+\begin{enumerate}
+\item Make a plot of the radius of the star versus the age. What are the fast and slow phases of evolution? When does the star expand, and when does it contract? By how much does the star expand during its evolution?
+\item If the star is in a binary system, in which phase in its evolution is it most likely that the star fills its Roche lobe?\\
+\textit{Note}: Observations show that the distribution of the orbits of binary stars is roughly uniform in $\log(a)$. For example, the number of binary stars with separations in the range 10--100 R$_\odot$ is similar to that in the range 100--1000 R$_\odot$.
+\item Find the values of the radius of this star that delimit Case A, Case B and Case C of mass transfer. (See p.\ 225 in Chapter 15 of the lecture notes for a definition of these different cases.)
+%\item Find the radius of star at (\textit{i}) the ZAMS, (\textit{ii}) the TAMS, (\textit{iii}) the maximum radius before central helium ignition, (\textit{iv}) the maximum radius before the end of the evolution run but after central helium ignition.
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Simultaneous evolution of two massive stars in a binary}
+
+Instead of treating the secondary star as a point mass, we can evolve both stars at the same time in \texttt{MESA}. In this exercise, we will simulate the evolution of two massive stars in a close binary system, starting from the ZAMS.
+
+\begin{enumerate}
+\item Copy the work folder from the previous exercise and adapt \verb|inlist_project| to evolve a 15 M$_\odot$ primary star with a 13 M$_\odot$ secondary star in a 15 day orbit. Make sure to tell \texttt{MESA} to evolve both stars. Look for the setting \verb|evolve_both_stars| in the binary controls and switch it on. Furthermore, we will assume that the accreting star accretes only half of the mass transferred by Roche-lobe overflow. Check your inlist and make sure that the mass transfer efficiency is equal to 0.5\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}. Finally, turn the Eddington accretion limit off again, as this inherently assumes the companion star to be a black hole.
+\item Run your model and look at the plots from \texttt{PGSTAR}.
+\begin{enumerate}
+\item First have a look at the diagram that shows the central hydrogen abundance versus time. Which star is running out of hydrogen first? Is this what you expect? Does the surface hydrogen abundance change? Is this what you expect?
+\item Take a look at the tracks in the HR diagram. How does the evolution of the donor star differ from that of the accretor star? What happens to the evolutionary tracks of the two stars when mass transfer starts?
+\item Inspect the Kippenhahn diagram. How do the masses of the stars change? How much mass does the donor star lose, and how much of this mass does the other star accrete? Is this what you expected? 
+\item What happens to the convective core of the secondary star as it accretes more mass? How does this change the abundances in the core? Explain why it is appropriate to say that mass accretion `rejuvenates' a star. Could such a star appear as a `blue straggler'?
+\end{enumerate}
+\end{enumerate}
+
+
+% \bibliographystyle{aa}
+% \bibliography{gmlib.bib}
+\end{document}

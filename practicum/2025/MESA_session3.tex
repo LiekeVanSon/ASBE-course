@@ -1,111 +1,191 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{authblk}
-\usepackage{natbib} 
-\usepackage[english]{babel}
+
 \pagenumbering{arabic}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{bigints}
-\usepackage{float}
-%\usepackage{indentfirst}
-\usepackage{tabularx,ragged2e,booktabs,caption}
-\usepackage{longtable}
-%\graphicspath{{C:/Users/glenn-michael/Documents/ExercisesAstronomy/}}
 \usepackage[margin=1.0in]{geometry}
-\usepackage{textcomp}
-\usepackage{listings}
-\usepackage{multirow}
-\usepackage{caption}
-\usepackage{pbox}
-\usepackage{url}
+\usepackage{natbib} 
 \usepackage{hyperref}
-\usepackage{upquote}
+\usepackage{enumitem}
+\usepackage{xcolor}  % for coloring
 
-\newcommand*\widefbox[1]{\fbox{\hspace{8em}#1\hspace{8em}}}
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-%\renewcommand{\labelenumi}{\alph{enumi})}
-\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
-\newcommand\mnras{MNRAS}
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
 
+% For pretty code blocks
+\usepackage{listings}
+% Bash style 
+\definecolor{bgdark}{rgb}{0.27,0.27,0.27}
+\definecolor{lighttext}{rgb}{0.95,0.95,0.95}
+\definecolor{bashgreen}{rgb}{0.5,1.0,0.5}
+\definecolor{bashblue}{rgb}{0.5,0.8,1.0}
+\definecolor{bashcomment}{rgb}{0.6,0.6,0.6}
+\definecolor{bashstring}{rgb}{1.0,0.6,0.6}
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small\color{lighttext},
+  backgroundcolor=\color{bgdark},
+  keywordstyle=\color{bashblue},
+  commentstyle=\color{bashcomment},
+  stringstyle=\color{bashstring},
+  numbers=left,
+  numberstyle=\tiny\color{bashcomment},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+% Python style
+\definecolor{pylightbg}{RGB}{250,250,250}
+\definecolor{pyblue}{RGB}{0,0,180}      % keywords
+\definecolor{pygreen}{RGB}{0,150,0}     % comments
+\definecolor{pyred}{RGB}{180,0,0}       % strings
+\definecolor{gray}{gray}{0.5}           % line numbers
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  basicstyle=\ttfamily\small\color{black},
+  backgroundcolor=\color{pylightbg},
+  keywordstyle=\color{pyblue}\bfseries,
+  commentstyle=\color{pygreen}\itshape,
+  stringstyle=\color{pyred},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+
+
+% For making the pro-tip boxes
+\usepackage[most]{tcolorbox}
+% define colors for the pro-tip boxes
+\definecolor{protipbg}{HTML}{ebf0f2}    % 
+\definecolor{protipborder}{HTML}{B0CAD4} % 
+\definecolor{protiptext}{HTML}{003049}  % dark slate
+\tcbset{
+  protipbox/.style={
+    colback=protipbg,
+    colframe=protipborder,
+    coltext=protiptext,
+    fonttitle=\bfseries,
+    title=Pro Tip,
+    rounded corners,
+    boxrule=0.pt,
+    left=6pt,
+    right=6pt,
+    top=5pt,
+    bottom=5pt
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{\textbf{\texttt{MESA} tutorial: session 3}}
-\author{}
+\title{
+    \textbf{\texttt{MESA} tutorial: Session 3} \\
+    \textbf{\Large Late Evolution of Massive Stars}
+}
 \date{}
 \maketitle
+\vspace{-1cm}
+
 
 \noindent
 This tutorial is based on the \texttt{MESA} summer school labs by Selma De Mink (\url{http://cococubed.asu.edu/mesa_summer_school_2017/agenda.html}). It introduces you to the evolution of binaries, and to concepts that will be treated in more detail in part 2 of the course. In order to answer some of the questions, refer to Chapter 15 of the lecture notes.
 
-\section{Radius evolution of massive stars}
 
-This exercise is a continuation on the second exercise of the previous \texttt{MESA} session. In the last session, you evolved a massive star between 15 and 100 M$_\odot$ up to the end of core helium burning. If you have not done this part yet, then modify the inlist from last week to evolve a star between 15 and 100 M$_\odot$ and change the \verb|Dutch_scaling_factor| to 1.0. Next, compile and run the model. Use the output of this model (stored in \verb|LOGS/history.data|) and compute the following:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Energy Production in Massive Stars}
+
+Let's explore the contributions of various nuclear reaction chains to the bolometric luminosities of massive stars.
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central carbon exhaustion.
+    \item To achieve this, set:
+
+    \begin{lstlisting}
+xa_central_lower_limit_species(1) = 'c12'
+xa_central_lower_limit(1) = 1d-5
+    \end{lstlisting}
+
+    \item Plot the evolutionary tracks of all five stars on a single HR diagram.
+    \item Clip the first $\sim 10^3$ years of evolution for clarity.
+    \item Color-code the tracks by the dominant source of nuclear burning. The three output quantities of interest are:
+    \begin{itemize}
+        \item \texttt{log\_LH}: H-burning luminosity
+        \item \texttt{log\_LHe}: He-burning luminosity
+        \item \texttt{log\_LZ}: Luminosity from burning heavier elements
+    \end{itemize}
+    \item Explore different ways of visualizing this data:
+    \begin{enumerate}[label=(\alph*)]
+        \item Create three panels, each color-coded by $\log (L_i/L_{\text{bol}})$ where $i = $ H, He, Z.
+        \item Assign unique colors based on which burning source dominates the luminosity, and color the tracks accordingly.
+        \item Identify and mark regions where no single source dominates the total luminosity.
+    \end{enumerate}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stellar Winds}
+
+Mass-loss plays a critical role in the late evolution of massive stars. This problem focuses on the effects of including stellar winds in your MESA models.
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Use the same models as in Problem 1, but re-run them with the Dutch mass-loss scheme by setting:
+    
+    \begin{lstlisting}
+    hot_wind_scheme = 'Dutch'
+    cool_wind_RGB_scheme = 'Dutch'
+    cool_wind_AGB_scheme = 'Dutch'
+    \end{lstlisting}
+
+    \item Analyze the following:
+    \begin{enumerate}[label=(\alph*)]
+        \item Compare HR tracks with and without mass-loss (one panel per mass). Color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
+        
+        Describe how the tracks differ as a function of stellar mass. Is there a threshold mass above which mass-loss effects qualitatively change the evolutionary path?
+
+        \item Investigate surface abundance changes due to mass-loss. 
+        \begin{itemize}
+            \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
+            \item Color-code HR tracks by:
+            \begin{enumerate}
+                \item Surface helium abundance
+                \item Surface N/C ratio
+            \end{enumerate}
+            \item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
+        \end{itemize}
+    \end{enumerate}
+\end{itemize}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Evolution of massive stars with mass loss}
+
+\todo{It takes me pretty long to run a 50 Msol star, IDK if this can be achieved within a tutorial session?}
+% Completing this whole session was multiple hours for me, --> will be much longer for students
+In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
 \begin{enumerate}
-\item Make a plot of the radius of the star versus the age. What are the fast and slow phases of evolution? When does the star expand, and when does it contract? By how much does the star expand during its evolution?
-\item If the star is in a binary system, in which phase in its evolution is it most likely that the star fills its Roche lobe?\\
-\textit{Note}: Observations show that the distribution of the orbits of binary stars is roughly uniform in $\log(a)$. For example, the number of binary stars with separations in the range 10--100 R$_\odot$ is similar to that in the range 100--1000 R$_\odot$.
-\item Find the values of the radius of this star that delimit Case A, Case B and Case C of mass transfer. (See p.\ 225 in Chapter 15 of the lecture notes for a definition of these different cases.)
-%\item Find the radius of star at (\textit{i}) the ZAMS, (\textit{ii}) the TAMS, (\textit{iii}) the maximum radius before central helium ignition, (\textit{iv}) the maximum radius before the end of the evolution run but after central helium ignition.
+\item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
+\item Make a \texttt{Python} script to plot all 3 evolutionary tracks on an HR diagram. Can you explain the difference in the tracks? Discuss again with your neighbours to compare stars of different mass.
+\item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
+\item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+
+\item EXTRA: After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
+% This is already a sub panel in the grid in inlist_pgstar
+% Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
+Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
 \end{enumerate}
 
-\section{X-ray binaries in MESA}
-
-For this exercise, we will model the well-known X-ray binary SS433, which is described in \href{https://ui.adsabs.harvard.edu/abs/2017MNRAS.471.4256V/abstract}{van den Heuvel et al. (2017)}. This binary consists of a blue supergiant ($M \approx 12.3 \pm 3.3$ M$_\odot$) and a stellar mass black hole ($M \approx 4.3 \pm 0.8$ M$_\odot$). The orbital period of the X-ray binary is approximately 13 days, and the blue supergiant appears to be losing mass to the black hole, creating the X-ray luminosity in the system.
-
-We will model the evolution of this binary in the \texttt{binary} module in \texttt{MESA}, treating the black hole as a point mass. This is a good approximation if you are interested in the evolution of the donor star and the binary system when the companion is a compact object. 
-
-\begin{enumerate}
-\item Download the work folder from Brightspace (\verb|session3.tar|) and inspect the inlists (which are the settings for the binary system and for the donor star?). Get familiar with all the controls that are available. If necessary, go to the website and get more information under the tab \verb|binary_controls defaults|\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html}}. 
-\item Modify the physical parameters of the system to approximately match the X-ray binary SS433. While you can choose values for the mass of the donor star and of the black hole within the observed error bars, \texttt{MESA} has a tendency to get stuck for a lot of mass configurations. Configurations that do run are for example $M_1=12$  M$_\odot$ and $M_2=3.5$  M$_\odot$, or $M_1=9$  M$_\odot$ and $M_2=4$  M$_\odot$. Set the initial period to 15 days. Do you expect the system to undergo Case A, B, or C mass transfer?
-%Take the mass of the donor to be 15 M$_\odot$ and the mass of the black hole to be 5 M$_\odot$. 
-\end{enumerate}
-
-\noindent
-Note that a black hole cannot accrete material at an arbitrarily high rate. It is limited by the Eddington accretion rate, which is the rate at which the radiation pressure of the luminosity created by the accreted material pushes away any new material transferred onto the companion. The Eddington accretion rate is given by
-\begin{equation*}
-\dot{M}_{\mathrm{Edd}} = \frac{4\pi cR_{\mathrm{acc}}}{\kappa} \approx 3.3 \times 10^{-4} M_\odot/\mathrm{yr}\, \bigg(\frac{R_{\mathrm{acc}}}{R_\odot}\bigg),
-\end{equation*}
-where $R_{\mathrm{acc}}$ is the radius at which material is accreted. Fortunately, you do not have to implement this formula in \texttt{MESA} yourself. Instead, look for a control that limits the accretion rate to the Eddington accretion rate\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}.
-
-\begin{enumerate}
-\addtocounter{enumi}{2}
-\item Now compile (\verb|./mk|) and run (\verb|./rn|) the code. While your model is running, inspect the plots that appear.
-\begin{enumerate}
-\item Examine the HR diagram. How does it differ from the single massive star track you computed in the previous exercise? At what point in the HR diagram does the donor star fill its Roche lobe? At what point does the donor star stop transferring mass? What are the properties of the donor star after the mass-transfer phase stops?
-\item What happens with the orbital separation during mass transfer? Does the orbit shrink or widen?
-\item How high is the mass transfer rate? Is it higher or lower than the rate at which the black hole can accrete?
-\item How much mass did the donor star lose? What fraction of this mass is accreted by the black hole and how much is lost from the system?
-\end{enumerate}
-\item \textit{EXTRA:} at the end of your simulation you formed a helium star in an orbit around a black hole. The fate of such a helium star is not well known, but let's speculate:
-\begin{enumerate}
-\item If the helium star directly collapses to a black hole, it will form a binary black hole system. What will be the masses of the black holes and what will be their separation?
-\item Eventually these two black holes will merge due to the loss of angular momentum in the form of gravitational waves. The time it takes for a double black hole system to merge is given by:
-\begin{equation*}
-\tau_{\mathrm{merge}} = 1.503 \times 10^8\,\mathrm{yr} \times \frac{1}{q(1+q)}\bigg(\frac{a}{R_\odot}\bigg)^4\bigg(\frac{M_1}{M_\odot}\bigg)^{-3},
-\end{equation*}
-where $M_1$ is the mass of one of the black holes and the mass ratio is defined as $q=M_2/M_1$.\\[1ex]
-How long will it take for your black hole binary system to spiral in? Would LIGO and VIRGO be able to detect this?
-\end{enumerate}
-\end{enumerate}
-
-\section{Simultaneous evolution of two massive stars in a binary}
-
-Instead of treating the secondary star as a point mass, we can evolve both stars at the same time in \texttt{MESA}. In this exercise, we will simulate the evolution of two massive stars in a close binary system, starting from the ZAMS.
-
-\begin{enumerate}
-\item Copy the work folder from the previous exercise and adapt \verb|inlist_project| to evolve a 15 M$_\odot$ primary star with a 13 M$_\odot$ secondary star in a 15 day orbit. Make sure to tell \texttt{MESA} to evolve both stars. Look for the setting \verb|evolve_both_stars| in the binary controls and switch it on. Furthermore, we will assume that the accreting star accretes only half of the mass transferred by Roche-lobe overflow. Check your inlist and make sure that the mass transfer efficiency is equal to 0.5\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}. Finally, turn the Eddington accretion limit off again, as this inherently assumes the companion star to be a black hole.
-\item Run your model and look at the plots from \texttt{PGSTAR}.
-\begin{enumerate}
-\item First have a look at the diagram that shows the central hydrogen abundance versus time. Which star is running out of hydrogen first? Is this what you expect? Does the surface hydrogen abundance change? Is this what you expect?
-\item Take a look at the tracks in the HR diagram. How does the evolution of the donor star differ from that of the accretor star? What happens to the evolutionary tracks of the two stars when mass transfer starts?
-\item Inspect the Kippenhahn diagram. How do the masses of the stars change? How much mass does the donor star lose, and how much of this mass does the other star accrete? Is this what you expected? 
-\item What happens to the convective core of the secondary star as it accretes more mass? How does this change the abundances in the core? Explain why it is appropriate to say that mass accretion `rejuvenates' a star. Could such a star appear as a `blue straggler'?
-\end{enumerate}
-\end{enumerate}
 
 
-\bibliographystyle{aa}
-\bibliography{gmlib.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\todo{Preferably something on supernovae/PPISN}}
+
+
+
+% \bibliographystyle{aa}
+% \bibliography{gmlib.bib}
+
 \end{document}

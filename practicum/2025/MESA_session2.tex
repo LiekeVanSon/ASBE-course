@@ -83,10 +83,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{\textbf{\texttt{MESA} tutorial: session 2}}
-\author{}
+
+\title{
+    \textbf{\texttt{MESA} tutorial: Session 2} \\
+    \textbf{\Large Intermediate mass stars and rotation}
+}
 \date{}
 \maketitle
+\vspace{-2cm}
+
 
 \section{Overshooting in an intermediate-mass star}
 
@@ -168,7 +173,7 @@ As explained in section 2.2 of the first tutorial, it is a very good idea to cop
 \emph{\textbf{Note:}} 
 It is also a good idea to organise your \texttt{MESA} work folders in a logical directory structure, in order to not make your home directory a mess. Just make sure you change the path in your \texttt{Python} script, such that it points to the right file. \\
 
-To invoke the columns you want from the read-in data, in this case \texttt{f0}, you use \texttt{f0.X}, where X is the name of one of the columns of data inside \texttt{history.data}. The names of the columns can be found inside \texttt{history.data}, or you can print the available column names by typing: 
+To invoke the columns you want from the read-in data, in this case \texttt{f0\_hist\_data}, you use \texttt{f0\_hist\_data.X}, where X is the name of one of the columns of data inside \texttt{history.data}. The names of the columns can be found inside \texttt{history.data}, or you can print the available column names by typing: 
 
 \begin{lstlisting}[style=pythonstyle]
 print(f0_hist_data.bulk_names)
@@ -188,22 +193,17 @@ print(f0_hist_data.bulk_names)
 
 \end{enumerate}
 
-\section{Evolution of massive stars with mass loss}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\todo{Rotation}}
+\todo{add a (short) exercise on rotation based on my hackathon from last year}
 
-\todo{It takes me pretty long to run a 50 Msol star, IDK if this can be achieved within a tutorial session?}
-% Completing this whole session was multiple hours for me, --> will be much longer for students
-In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
-\begin{enumerate}
-\item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
-\item Make a \texttt{Python} script to plot all 3 evolutionary tracks on an HR diagram. Can you explain the difference in the tracks? Discuss again with your neighbours to compare stars of different mass.
-\item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
-\item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+Note how in some way rotation can mimic the effects of overshooting, as it also leads to mixing beyond the convective core.
 
-\item EXTRA: After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
-% This is already a sub panel in the grid in inlist_pgstar
-% Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
-Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
-\end{enumerate}
+\begin{itemize}
+    \item Investigate the effects of rotation on the evolution of intermediate-mass stars.
+    \item Compare the evolutionary tracks of non-rotating and rotating models in the HR diagram.
+    \item Analyze how rotation affects the main-sequence lifetime and the subsequent evolution of the star.
+\end{itemize}
 
 
 
