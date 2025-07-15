@@ -99,64 +99,72 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Working with MESA output}
 
-The below closely follows the official \href{https://docs.mesastar.org/en/latest/using_mesa/output.html}{MESA documentation}.
-You might have noticed that \texttt{MESA} stores its output in the \texttt{LOGS} directory. 
-The data files are plain-text files, suitable for parsing with your own scripts or plotting tools. 
+The following is a summary of the official \href{https://docs.mesastar.org/en/latest/using_mesa/output.html}{MESA documentation}. For a more comprehensive overview of available output options, please refer directly to the documentation.
 %
-There are two types of main output files:
+You might have noticed that \texttt{MESA} stores its output as plain text files in the \texttt{LOGS} directory. 
+%
+There are two main types of output:
 
 \begin{itemize}
   \item \textbf{history.data:} logs each model's evolution in one line per model. The first line contains column indices, the second column names, and the remainder the data. Note: in case of a restart, older models are not removed—new data is appended. As a result \textit{the model\_numbers are not guaranteed to be monotonically increasing!} Existing tools (like \texttt{MESA Reader} below) automatically take care of this, but if you write your own parser, be aware of this.
   
-  \item Each \textbf{profiles.data:} file contains a snapshot of a single model's structure. Global properties and per-zone quantities are listed with headers and column names.
+  \item Each \textbf{profile**.data:} file contains a snapshot of a single model's structure. Each profile includes both global properties of the star, such as its age, and a large set of properties for each point in the model of the star given one line per point. In each case, the lines of data are preceded by a line with column numbers and a line with column names. 
 
 \end{itemize}
 
+\noindent Lastly, you might also notice a \textbf{profiles.index} file. This maps profile filenames to model numbers. MESA saves profiles only at selected steps. Each line lists a model number, its priority (1 or 2), and the corresponding profile number.
 
-Lastly, you might also notice a \textbf{profile*.data} file.
-  This file maps profile filenames to model numbers. MESA saves profiles only at selected steps. Each line lists a model number, its priority (1 or 2), and the profile number.
+You can customize the output through the \texttt{history\_columns.list} and \texttt{profile\_columns.list} files. In order to customize the output, just copy these files to your work directory, and uncomment the variables you want to include in the output. You can find default variations of these files in the \texttt{\$MESA\_DIR/star/defaults/} directory. 
 
-% \subsection{Customizing Output Quantities}
 
-% MESA determines output columns using:
-% \begin{verbatim}
-% $MESA_DIR/star/defaults/history_columns.list
-% $MESA_DIR/star/defaults/profile_columns.list
-% \end{verbatim}
 
-% To customize, copy these files into your work directory:
-% \begin{verbatim}
-% cp $MESA_DIR/star/defaults/history_columns.list .
-% cp $MESA_DIR/star/defaults/profile_columns.list .
-% \end{verbatim}
+\paragraph{Using MESA Reader}
+\texttt{MESA Reader} is a \texttt{Python} framework with which one can easily plot data from the history and profile files. Read through the section on \href{https://docs.mesastar.org/en/latest/using_mesa/output.html#plotting-mesa-output}{MESA Reader} on the website to get familiar with its capabilities. 
 
-% Edit them to comment or uncomment variables of interest (lines starting with \texttt{!} are ignored). For advanced output, use the \texttt{run\_star\_extras.f} file, discussed in Part 2.
+We want to install \texttt{MESA Reader}, but in such a way that we can always activate/access it, regardless of which computer we are using in the Faculty. 
+Turns out that python \href{https://virtualenv.pypa.io/en/latest/user_guide.html}{\texttt{virtual environments}} are exactly what we are looking for!
 
-% \section{Plotting MESA Output with \texttt{mesa\_reader}}
+\begin{enumerate}
+  \item Create a virtual environment by running the following command in your terminal:
+\begin{lstlisting}
+  mkdir -p ~/venvs     # make dir to store your virtual environments
+  cd ~/venvs           # go to that directory
+  python -m venv myenv # create a virtual environment called myenv
+  source myenv/bin/activate  # activate the virtual environment
+\end{lstlisting}
+    You will notice that your terminal prompt changes, indicating that you are now working inside the virtual environment. To deactivate the virtual environment, simply run: \texttt{deactivate}.
 
-% For high-quality plots, post-processing with Python is recommended. The \texttt{mesa\_reader} module is a lightweight Python tool requiring only \texttt{numpy}.
+    \item Install Mesa Reader in your virtual environment by running:
+\begin{lstlisting}
+  pip install mesa_reader
+\end{lstlisting}
+    Or directly download the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} by clicking on the green \texttt{Code} button and choosing \texttt{Download ZIP}.
+    Extract the folder titled \texttt{mesa\_reader} from the zip file and place it somewhere in your \texttt{home} directory where you will keep your course-related plots (e.g. \verb|~/codes|)\footnote{Note that the symbol \texttt{\~} points to your home directory.}.  and then run \texttt{python setup.py install}
+% git clone https://github.com/wmwolf/py_mesa_reader.git and then python setup.py install
 
-% \subsection*{Installation}
+\item
+  We will use \texttt{Jupyter Notebook} to analyse our results. This is accessed via \url{https://jupyterhub.science.ru.nl/} and logging in with your science account.
+  When you are logged in, activate your virtual environment by opening a terminal in Jupyter and running \texttt{source ~/venvs/myenv/bin/activate}. 
+  
+  % Make sure your notebook is inside your plotting folder as to be able to access \texttt{MESA Reader}.}, or \texttt{Spyder3}\footnote{When running scripts in \texttt{Spyder}, you need to change the working directory as to have access to \texttt{MESA Reader} by going to \texttt{Run}, \texttt{Configuration per file...}, and changing \texttt{Working Directory settings} by putting in the correct path to your plotting folder with the \texttt{The following directory} option.}. To read in the data, you need to move the \texttt{history.data} files from your \texttt{scratch} directory to somewhere in your plotting folder, for example inside a folder called \texttt{data} and there inside a folder called after its run (e.g. \texttt{M3.0ov0}).
+  For this example, you use the following line in your \texttt{Python} script:
+  
+  you can import \texttt{MESA Reader} in your \texttt{Python} script as follows:
+  \begin{lstlisting}[style=pythonstyle]
+  import mesa_reader as mr
+  \end{lstlisting}
 
-% \begin{verbatim}
-% git clone https://github.com/wmwolf/py_mesa_reader.git
-% cd py_mesa_reader
-% python setup.py install
-% \end{verbatim}
+  Note some other useful imports for calculating and plotting purposes could be:
+  \begin{lstlisting}[style=pythonstyle]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import astropy.units as u
+    import astropy.constants as const
+  \end{lstlisting}
 
-% \subsection*{Basic Usage}
+  What \texttt{pip install} commands do you need to run to get all the aforementioned packages? Note that the packages will only be installed in your venv when it is activated!
 
-% \begin{verbatim}
-% import mesa_reader as mr
-
-% # Load history data
-% h = mr.MesaData('LOGS/history.data')
-% ages = h.star_age
-
-% # Load profile data
-% p = mr.MesaData('LOGS/profile1.data')
-% temperatures = 10**p.logT
-% \end{verbatim}
+\end{enumerate}
 
 % \subsection*{Using \texttt{MesaLogDir}}
 
@@ -170,39 +178,6 @@ Lastly, you might also notice a \textbf{profile*.data} file.
 % # Load the most recent profile
 % p_last = l.profile_data()
 % \end{verbatim}
-
-% \subsection{Example: HR Diagram}
-
-% \begin{verbatim}
-% import matplotlib.pyplot as plt
-% h = mr.MesaData('LOGS/history.data')
-% plt.plot(h.log_Teff, h.log_L)
-% plt.xlabel('log Effective Temperature')
-% plt.ylabel('log Luminosity')
-% plt.gca().invert_xaxis()
-% plt.show()
-% \end{verbatim}
-
-% \subsection{Example: Temperature–Density Profile}
-
-% \begin{verbatim}
-% l = mr.MesaLogDir('./LOGS')
-% p = l.profile_data()
-% plt.loglog(p.Rho, p.T)
-% plt.xlabel("Density")
-% plt.ylabel("Temperature")
-% plt.show()
-% \end{verbatim}
-
-% \subsection{Beyond Basic Plotting}
-
-% \texttt{mesa\_reader} supports powerful data querying and filtering. Advanced plots such as Kippenhahn diagrams can be constructed using filtered profiles based on physical criteria (e.g., burning stages or HR diagram position).
-
-% Documentation and source code: \url{https://github.com/wmwolf/py_mesa_reader}
-
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -238,52 +213,22 @@ Instead of starting from the beginning and copying the model work directory like
 \end{enumerate}
 
 
+\begin{tcolorbox}[protipbox]
+It is a good idea to organise your \texttt{MESA} work folders in a logical directory structure, in order to not make your home directory a mess. Just make sure you change the path in your \texttt{Python} script, such that it points to the right file. 
+\end{tcolorbox}
+
 % \begin{tcolorbox}[protipbox]
 % Can you get the same behaviour as above but using the \texttt{log\_directory = `LOGS'} control option?
 % \end{tcolorbox}
 
-\item \textbf{Inspecting the results. }
-We can now analyse the data in the 3 history files. To do this, go to the website under the tab `using \texttt{MESA} output'. Go to the section on \href{https://docs.mesastar.org/en/latest/using_mesa/output.html#plotting-mesa-output}{MESA Reader}. 
-%
-You can either pip install Mesa Reader by running: \todo{discuss virtual envs?}
-  \begin{lstlisting}
-  pip install mesa_reader
-  \end{lstlisting}
-Or directly download the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} by clicking on the green \texttt{Code} button and choosing \texttt{Download ZIP}. 
-%
-\texttt{MESA Reader} is a \texttt{Python} framework with which one can easily plot data from the history and profile files. Read through the section on \texttt{MESA Reader} on the website to get familiar with its capabilities. 
-Extract the folder titled \texttt{mesa\_reader} from the zip file and place it somewhere in your \texttt{home} directory where you will keep your course-related plots (e.g. \verb|~/MESA/codes|)\footnote{Note that the symbol \texttt{\~} points to your home directory.}. 
-In this plotting folder, create your own \texttt{Python} script and import \texttt{MESA Reader} as follows:
-\begin{lstlisting}[style=pythonstyle]
- import mesa_reader as mr
-\end{lstlisting}
+\item \textbf{Inspecting the results. } We can now analyse the data in the 3 history files. For this import \texttt{MESA Reader} into your python notebook, as explained above.
 
-Note some other useful imports for calculating and plotting purposes:
-\begin{lstlisting}[style=pythonstyle]
-  import numpy as np
-  import matplotlib.pyplot as plt
-\end{lstlisting}
-
-\todo{come back to this when I have proper jupyterhub access}
-You can use \href{{https://jupyterhub.science.ru.nl/}}{Jupyter Notebook}, which you can access via and logging in with your science account. 
-Make sure your notebook is inside your plotting folder as to be able to access \texttt{MESA Reader}.
-%
-% , or \texttt{Spyder3}\footnote{When running scripts in \texttt{Spyder}, you need to change the working directory as to have access to \texttt{MESA Reader} by going to \texttt{Run}, \texttt{Configuration per file...}, and changing \texttt{Working Directory settings} by putting in the correct path to your plotting folder with the \texttt{The following directory} option.}. 
-%
 To read in the data, you need to move the \texttt{history.data} files from your \texttt{scratch} directory to somewhere in your plotting folder, for example inside a folder called \texttt{data} and there inside a folder called after its run (e.g. \texttt{M3.0ov0}). For this example, you use the following line in your \texttt{Python} script:
 
 \begin{lstlisting}[style=pythonstyle]
 f0_hist_data = mr.MesaData('data/M3.0ov0/LOGS/history.data')
 \end{lstlisting}
 
-
-\begin{tcolorbox}[protipbox]
-As explained in section 2.2 of the first tutorial, it is a very good idea to copy your work folder from the \verb|/scratch| directory to your home directory, after the \texttt{MESA} run has finished. This allows you to analyse your results using \texttt{MESA Reader} from any computer in the Faculty, not just the computer you ran your \texttt{MESA} models on! 
-\end{tcolorbox}
-
-
-\emph{\textbf{Note:}} 
-It is also a good idea to organise your \texttt{MESA} work folders in a logical directory structure, in order to not make your home directory a mess. Just make sure you change the path in your \texttt{Python} script, such that it points to the right file. \\
 
 To invoke the columns you want from the read-in data, in this case \texttt{f0\_hist\_data}, you use \texttt{f0\_hist\_data.X}, where X is the name of one of the columns of data inside \texttt{history.data}. The names of the columns can be found inside \texttt{history.data}, or you can print the available column names by typing: 
 
@@ -304,6 +249,20 @@ print(f0_hist_data.bulk_names)
 \end{enumerate}
 
 \end{enumerate}
+
+
+\begin{tcolorbox}[protipbox]
+As explained in section 2.2 of the first tutorial, it is a very good idea to copy your work folder from the \verb|/scratch| directory to your home directory, after the \texttt{MESA} run has finished. This allows you to analyse your results using \texttt{MESA Reader} from any computer in the Faculty, not just the computer you ran your \texttt{MESA} models on! 
+\end{tcolorbox}
+
+
+
+
+% \subsection{Beyond Basic Plotting}
+
+% \texttt{mesa\_reader} supports powerful data querying and filtering. Advanced plots such as Kippenhahn diagrams can be constructed using filtered profiles based on physical criteria (e.g., burning stages or HR diagram position).
+
+% Documentation and source code: \url{https://github.com/wmwolf/py_mesa_reader}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
