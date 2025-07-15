@@ -93,6 +93,119 @@
 \vspace{-2cm}
 
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Working with MESA output}
+
+The below closely follows the official \href{https://docs.mesastar.org/en/latest/using_mesa/output.html}{MESA documentation}.
+You might have noticed that \texttt{MESA} stores its output in the \texttt{LOGS} directory. 
+The data files are plain-text files, suitable for parsing with your own scripts or plotting tools. 
+%
+There are two types of main output files:
+
+\begin{itemize}
+  \item \textbf{history.data:} logs each model's evolution in one line per model. The first line contains column indices, the second column names, and the remainder the data. Note: in case of a restart, older models are not removed—new data is appended. As a result \textit{the model\_numbers are not guaranteed to be monotonically increasing!} Existing tools (like \texttt{MESA Reader} below) automatically take care of this, but if you write your own parser, be aware of this.
+  
+  \item Each \textbf{profiles.data:} file contains a snapshot of a single model's structure. Global properties and per-zone quantities are listed with headers and column names.
+
+\end{itemize}
+
+
+Lastly, you might also notice a \textbf{profile*.data} file.
+  This file maps profile filenames to model numbers. MESA saves profiles only at selected steps. Each line lists a model number, its priority (1 or 2), and the profile number.
+
+% \subsection{Customizing Output Quantities}
+
+% MESA determines output columns using:
+% \begin{verbatim}
+% $MESA_DIR/star/defaults/history_columns.list
+% $MESA_DIR/star/defaults/profile_columns.list
+% \end{verbatim}
+
+% To customize, copy these files into your work directory:
+% \begin{verbatim}
+% cp $MESA_DIR/star/defaults/history_columns.list .
+% cp $MESA_DIR/star/defaults/profile_columns.list .
+% \end{verbatim}
+
+% Edit them to comment or uncomment variables of interest (lines starting with \texttt{!} are ignored). For advanced output, use the \texttt{run\_star\_extras.f} file, discussed in Part 2.
+
+% \section{Plotting MESA Output with \texttt{mesa\_reader}}
+
+% For high-quality plots, post-processing with Python is recommended. The \texttt{mesa\_reader} module is a lightweight Python tool requiring only \texttt{numpy}.
+
+% \subsection*{Installation}
+
+% \begin{verbatim}
+% git clone https://github.com/wmwolf/py_mesa_reader.git
+% cd py_mesa_reader
+% python setup.py install
+% \end{verbatim}
+
+% \subsection*{Basic Usage}
+
+% \begin{verbatim}
+% import mesa_reader as mr
+
+% # Load history data
+% h = mr.MesaData('LOGS/history.data')
+% ages = h.star_age
+
+% # Load profile data
+% p = mr.MesaData('LOGS/profile1.data')
+% temperatures = 10**p.logT
+% \end{verbatim}
+
+% \subsection*{Using \texttt{MesaLogDir}}
+
+% \begin{verbatim}
+% l = mr.MesaLogDir('./LOGS')
+
+% # Load by model or profile number
+% p_300 = l.profile_data(300)
+% p_12 = l.profile_data(profile_number=12)
+
+% # Load the most recent profile
+% p_last = l.profile_data()
+% \end{verbatim}
+
+% \subsection{Example: HR Diagram}
+
+% \begin{verbatim}
+% import matplotlib.pyplot as plt
+% h = mr.MesaData('LOGS/history.data')
+% plt.plot(h.log_Teff, h.log_L)
+% plt.xlabel('log Effective Temperature')
+% plt.ylabel('log Luminosity')
+% plt.gca().invert_xaxis()
+% plt.show()
+% \end{verbatim}
+
+% \subsection{Example: Temperature–Density Profile}
+
+% \begin{verbatim}
+% l = mr.MesaLogDir('./LOGS')
+% p = l.profile_data()
+% plt.loglog(p.Rho, p.T)
+% plt.xlabel("Density")
+% plt.ylabel("Temperature")
+% plt.show()
+% \end{verbatim}
+
+% \subsection{Beyond Basic Plotting}
+
+% \texttt{mesa\_reader} supports powerful data querying and filtering. Advanced plots such as Kippenhahn diagrams can be constructed using filtered profiles based on physical criteria (e.g., burning stages or HR diagram position).
+
+% Documentation and source code: \url{https://github.com/wmwolf/py_mesa_reader}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overshooting in an intermediate-mass star}
 
 In this first exercise, we will investigate the effect of overshooting. In order to do this, we evolve an intermediate-mass star for different levels of convective overshooting.
@@ -128,7 +241,6 @@ Instead of starting from the beginning and copying the model work directory like
 % \begin{tcolorbox}[protipbox]
 % Can you get the same behaviour as above but using the \texttt{log\_directory = `LOGS'} control option?
 % \end{tcolorbox}
-
 
 \item \textbf{Inspecting the results. }
 We can now analyse the data in the 3 history files. To do this, go to the website under the tab `using \texttt{MESA} output'. Go to the section on \href{https://docs.mesastar.org/en/latest/using_mesa/output.html#plotting-mesa-output}{MESA Reader}. 
@@ -192,6 +304,7 @@ print(f0_hist_data.bulk_names)
 \end{enumerate}
 
 \end{enumerate}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\todo{Rotation}}
