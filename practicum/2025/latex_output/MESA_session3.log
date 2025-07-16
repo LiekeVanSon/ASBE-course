@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.29)  15 JUL 2025 21:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.29)  15 JUL 2025 21:56
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -652,9 +652,14 @@ LaTeX Warning: No \author given.
 
 [1
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2] (latex_output/MESA_session3.aux)
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Overfull \hbox (0.63664pt too wide) in paragraph at lines 179--179
+[][]\OT1/cmr/bx/n/14.4 Preferably some-thing on rapid ro-ta-tion/ CHE/-su-per-novae/P-
+ []
+
+[2] (latex_output/MESA_session3.aux)
 Package rerunfilecheck Info: File `MESA_session3.out' has not changed.
-(rerunfilecheck)             Checksum: 85F9FCAC9A2BCF5548D058F10435AA11;854.
+(rerunfilecheck)             Checksum: 57CCC095FA0DD6EAF40CCD4355B662E1;960.
  ) 
 Here is how much of TeX's memory you used:
  27780 strings out of 476025
@@ -665,7 +670,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  101i,6n,104p,867b,1338s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on latex_output/MESA_session3.pdf (2 pages, 155204 bytes).
+Output written on latex_output/MESA_session3.pdf (2 pages, 155794 bytes).
 PDF statistics:
  164 PDF objects out of 1000 (max. 8388607)
  108 compressed objects within 2 object streams
