@@ -86,7 +86,7 @@
 
 \title{
     \textbf{\texttt{MESA} tutorial: Session 2} \\
-    \textbf{\Large Intermediate mass stars and rotation}
+    \textbf{\Large MESA output + Intermediate mass stars}
 }
 \date{}
 \maketitle
@@ -113,8 +113,9 @@ There are two main types of output:
 \end{itemize}
 
 \noindent Lastly, you might also notice a \textbf{profiles.index} file. This maps profile filenames to model numbers. MESA saves profiles only at selected steps. Each line lists a model number, its priority (1 or 2), and the corresponding profile number.
+%
+We will control some of the output of your \texttt{MESA} models in section \ref{sec:make_kippenhahn}.
 
-You can customize the output through the \texttt{history\_columns.list} and \texttt{profile\_columns.list} files. In order to customize the output, just copy these files to your work directory, and uncomment the variables you want to include in the output. You can find default variations of these files in the \texttt{\$MESA\_DIR/star/defaults/} directory. 
 
 
 
@@ -125,12 +126,12 @@ We want to install \texttt{MESA Reader}, but in such a way that we can always ac
 Turns out that python \href{https://virtualenv.pypa.io/en/latest/user_guide.html}{\texttt{virtual environments}} are exactly what we are looking for!
 
 \begin{enumerate}
-  \item Create a virtual environment by running the following command in your terminal:
+  \item \textbf{Create a virtual environment} by running the following command in your terminal:
 \begin{lstlisting}
-  mkdir -p ~/venvs     # make dir to store your virtual environments
+  mkdir -p ~/venvs     # make dir to store venvs
   cd ~/venvs           # go to that directory
-  python -m venv myenv # create a virtual environment called myenv
-  source myenv/bin/activate  # activate the virtual environment
+  python -m venv myenv # create a venv called myenv
+  source ~/venvs/myenv/bin/activate  # activate venv
 \end{lstlisting}
     You will notice that your terminal prompt changes, indicating that you are now working inside the virtual environment. To deactivate the virtual environment, simply run: \texttt{deactivate}.
 
@@ -138,18 +139,33 @@ Turns out that python \href{https://virtualenv.pypa.io/en/latest/user_guide.html
 \begin{lstlisting}
   pip install mesa_reader
 \end{lstlisting}
-    Or directly download the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} by clicking on the green \texttt{Code} button and choosing \texttt{Download ZIP}.
-    Extract the folder titled \texttt{mesa\_reader} from the zip file and place it somewhere in your \texttt{home} directory where you will keep your course-related plots (e.g. \verb|~/codes|)\footnote{Note that the symbol \texttt{\~} points to your home directory.}.  and then run \texttt{python setup.py install}
-% git clone https://github.com/wmwolf/py_mesa_reader.git and then python setup.py install
+    You can install all kinds of useful python packages like this in your venv using \texttt{pip install <package\_name>}. Though note that you can only install packages in your venv when it is activated!
+
+    Alternatively, you can directly git clone (download) the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} somewhere in your \texttt{home} directory (e.g. \verb|~/codes|)\footnote{Note that the symbol \texttt{\~} points to your home directory.} by running:
+\begin{lstlisting}
+  git clone https://github.com/wmwolf/py_mesa_reader.git
+\end{lstlisting}
+    Then run \texttt{python setup.py install} inside the cloned directory.
 
 \item
-  We will use \texttt{Jupyter Notebook} to analyse our results. This is accessed via \url{https://jupyterhub.science.ru.nl/} and logging in with your science account.
-  When you are logged in, activate your virtual environment by opening a terminal in Jupyter and running \texttt{source ~/venvs/myenv/bin/activate}. 
-  
+  Throughout this course, we will use \texttt{Jupyter Notebook} to analyse our results. This is accessed via \url{https://jupyterhub.science.ru.nl/} and logging in with your science account.
+  When you are logged in, activate your virtual environment by opening a terminal in Jupyter and running 
+\begin{lstlisting}
+source ~/venvs/myenv/bin/activate 
+\end{lstlisting}
+
+  Next, we need to register our venv as a kernel in the Jupyter hub, you only have to do this once. Run the following command in a \textit{Jupyter Hub} terminal:
+
+\begin{lstlisting}
+ pip install ipykernel     # to run notebooks in your venv 
+ python -m ipykernel install --user --name=myenv --display-name "Python (myenv)"
+\end{lstlisting}
+
   % Make sure your notebook is inside your plotting folder as to be able to access \texttt{MESA Reader}.}, or \texttt{Spyder3}\footnote{When running scripts in \texttt{Spyder}, you need to change the working directory as to have access to \texttt{MESA Reader} by going to \texttt{Run}, \texttt{Configuration per file...}, and changing \texttt{Working Directory settings} by putting in the correct path to your plotting folder with the \texttt{The following directory} option.}. To read in the data, you need to move the \texttt{history.data} files from your \texttt{scratch} directory to somewhere in your plotting folder, for example inside a folder called \texttt{data} and there inside a folder called after its run (e.g. \texttt{M3.0ov0}).
-  For this example, you use the following line in your \texttt{Python} script:
+  % For this example, you use the following line in your \texttt{Python} script:
   
-  you can import \texttt{MESA Reader} in your \texttt{Python} script as follows:
+  \item Open a new notebook in Jupyter by clicking on the plus sign in the top right, anf from the new launcher select under Notebook: \texttt{Python (myenv)}.
+  In this notebook you should now be able to import \texttt{MESA Reader} without any errors:
   \begin{lstlisting}[style=pythonstyle]
   import mesa_reader as mr
   \end{lstlisting}
@@ -162,7 +178,7 @@ Turns out that python \href{https://virtualenv.pypa.io/en/latest/user_guide.html
     import astropy.constants as const
   \end{lstlisting}
 
-  What \texttt{pip install} commands do you need to run to get all the aforementioned packages? Note that the packages will only be installed in your venv when it is activated!
+  What \texttt{pip install} commands do you need to run to get all the aforementioned packages? 
 
 \end{enumerate}
 
@@ -183,7 +199,7 @@ Turns out that python \href{https://virtualenv.pypa.io/en/latest/user_guide.html
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overshooting in an intermediate-mass star}
 
-In this first exercise, we will investigate the effect of overshooting. In order to do this, we evolve an intermediate-mass star for different levels of convective overshooting.
+We will now investigate the effect of overshooting. In order to do this, we evolve an intermediate-mass star for different levels of convective overshooting.
 
 
 \begin{enumerate}
@@ -265,21 +281,94 @@ As explained in section 2.2 of the first tutorial, it is a very good idea to cop
 % Documentation and source code: \url{https://github.com/wmwolf/py_mesa_reader}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\todo{Rotation}}
-\todo{add a (short) exercise on rotation based on my hackathon from last year}
 
-Note how in some way rotation can mimic the effects of overshooting, as it also leads to mixing beyond the convective core.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Make your own Kippenhahn diagram}\label{sec:make_kippenhahn}
 
-\begin{itemize}
-    \item Investigate the effects of rotation on the evolution of intermediate-mass stars.
-    \item Compare the evolutionary tracks of non-rotating and rotating models in the HR diagram.
-    \item Analyze how rotation affects the main-sequence lifetime and the subsequent evolution of the star.
-\end{itemize}
+Kippenhahn diagrams (KHDs) show a star’s internal structure over time and are useful for your final \texttt{MESA} project reports. Rather than taking screenshots from \texttt{PGSTAR}, you can use the Python script \texttt{mkipp}\footnote{\url{https://github.com/orlox/mkipp}} to generate clearer, customizable plots. 
+Here we will enable the necessary \texttt{MESA} output columns,  help you set up \texttt{mkipp}, and get started with the scripts.
 
+\subsection{Setting \texttt{MESA} output}
+
+You can customize the \texttt{MESA} output through the \texttt{history\_columns.list} and \texttt{profile\_columns.list} files. In order to customize the output, just copy these files to your work directory, and uncomment the variables you want to include in the output. You can find default variations of these files in the \texttt{\$MESA\_DIR/star/defaults/} directory. 
 
 
-% just to cite something \cite{Paxton2011}
+We will use the \texttt{mkipp}. tool from \url{https://github.com/orlox/mkipp}.
+As you can read on the github page, to use \texttt{mkipp} you need to have the following \texttt{MESA} output available:\\
+%
+``IMPORTANT!! your \texttt{history\_columns.list} needs to have \texttt{mixing\_regions} and \\
+ \texttt{mix\_relr\_regions} specified for MESA to output the neccesary data of the mixing regions in terms of mass and radius respectively. Also, newer versions of MESA include significantly less output in the profile files, so values such as \texttt{eps\_nuc} need to be added to \texttt{profile\_columns.list} as well."
+
+% \begin{lstlisting}
+%   mixing_regions
+% % Requirements: history.data and profiles.data containing 
+%               % History (star_age,model_number,star_mass,photosphere_r,
+%               % mixing_regions,mix_relr_regions)
+%               % Profile (mass,radius,eps_nuc)
+% \end{lstlisting}
+
+\begin{enumerate}
+
+  \item Pick one star that you like, and make sure that all these variables are uncommented. \\
+   (i.e., remove the `!' in front of the variable) for both \texttt{history\_columns.list} and \\ 
+   \texttt{profile\_columns.list} files of that star's work folder.
+  \item 
+When you uncomment \texttt{mix\_relr\_regions}, it will most likely say \texttt{<integer>} after it. You should change this to 10, so that it has the same value as for \texttt{mixing\_regions}.
+
+
+For \texttt{MESA} to use the columns you have specified in these 2 files instead of the default set of columns, we have to make sure \texttt{MESA} knows that it needs to read these 2 files. To do this, we have to open \texttt{inlist\_project} and include the following under \texttt{\&star\_job}:
+\begin{lstlisting}
+! to specify which output columns we want in history.data and profile.data
+    history_columns_file = 'history_columns.list'
+    profile_columns_file = 'profile_columns.list'
+\end{lstlisting}
+
+Now recompile and rerun your model.
+
+
+
+  \item Next, actually cloning the \texttt{mkipp} repository:
+
+\begin{lstlisting}
+  cd ~/codes  # or wherever you want to store the code
+  git clone git@github.com:orlox/mkipp.git
+\end{lstlisting}
+
+
+  \item Unfortunately, \texttt{mkipp} is not available via \texttt{pip install}, so we have to make sure Python can find it. 
+  You can do this by adding the path to \texttt{mkipp} to your \texttt{PYTHONPATH} environment variable. 
+  To make your Jupyter notebook recognize and import a script or module from , you need to add that path to Python’s search path at runtime.
+
+\begin{lstlisting}[style=pythonstyle]
+import sys
+import os
+sys.path.append(os.path.expanduser("~/codes/mkipp"))
+\end{lstlisting}
+
+  Your notebook will now look for python functions in the \texttt{~/codes/mkipp} directory as well, and so you can import the three python modules that live in there:
+
+\begin{lstlisting}[style=pythonstyle]
+import mkipp
+import kipp_data
+import mesa_data
+\end{lstlisting}
+
+\item To run a Kippenhahn diagram, you need to define the \texttt{logs\_dir} argument of the \texttt{KippArgs} function as a list containing the path to your MESA output directory. For example, you can create a Kippenhahn diagram using the following command:
+
+\begin{lstlisting}[style=pythonstyle]
+  mkipp.kipp_plot(mkipp.Kipp_Args(logs_dirs = ['data/M3.0ov0/LOG']))
+\end{lstlisting}
+
+Do you understand what all the colors and hatching in the KHD mean? 
+
+\item Play around with the various options of \texttt{KippArgs} to customize your KHD. Have a look at the \texttt{mkipp/example.py} script for inspiration. 
+
+\end{enumerate}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{\todo{Rotation?}}
+
 % \bibliographystyle{plainnat}
 % \bibliography{gmlib.bib}
 

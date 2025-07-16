@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1752608240 "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session2.tex" "latex_output/MESA_session2.pdf" "MESA_session2" 1752608241 0
-  "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session2.tex" 1752608240 15485 70e4a3fa8b2b53c344198f0a3e60ae6c ""
+["pdflatex"] 1752630314 "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session2.tex" "latex_output/MESA_session2.pdf" "MESA_session2" 1752630315 0
+  "/Users/lvanson/Documents/Teaching/ASBE25/ASBE-course/practicum/2025/MESA_session2.tex" 1752630314 19693 e1c3b74fbe9d698340c82cd95652da10 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -202,9 +202,9 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1695992093 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1695992025 7883454 92bdac864c75e6de7bc219e0137c578e ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "MESA_session2.tex" 1752608240 15485 70e4a3fa8b2b53c344198f0a3e60ae6c ""
-  "latex_output/MESA_session2.aux" 1752608241 1049 beb87425a953083a4d6331c560c96595 "pdflatex"
-  "latex_output/MESA_session2.out" 1752608241 515 ab8c65d2b42a5ce03f706417691745dd "pdflatex"
+  "MESA_session2.tex" 1752630314 19693 e1c3b74fbe9d698340c82cd95652da10 ""
+  "latex_output/MESA_session2.aux" 1752630314 1267 9414dcf2bffd38f990f3f76c81de69c8 "pdflatex"
+  "latex_output/MESA_session2.out" 1752630314 805 4ce9b08ea5c56b34b6d3e163ea09c5d1 "pdflatex"
   (generated)
   "latex_output/MESA_session2.aux"
   "latex_output/MESA_session2.log"
