@@ -1,0 +1,187 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\pagenumbering{arabic}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{natbib} 
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}  % for coloring
+
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+
+% For pretty code blocks
+\usepackage{listings}
+% Bash style 
+\definecolor{bgdark}{rgb}{0.27,0.27,0.27}
+\definecolor{lighttext}{rgb}{0.95,0.95,0.95}
+\definecolor{bashgreen}{rgb}{0.5,1.0,0.5}
+\definecolor{bashblue}{rgb}{0.5,0.8,1.0}
+\definecolor{bashcomment}{rgb}{0.6,0.6,0.6}
+\definecolor{bashstring}{rgb}{1.0,0.6,0.6}
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small\color{lighttext},
+  backgroundcolor=\color{bgdark},
+  keywordstyle=\color{bashblue},
+  commentstyle=\color{bashcomment},
+  stringstyle=\color{bashstring},
+  numbers=left,
+  numberstyle=\tiny\color{bashcomment},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+% Python style
+\definecolor{pylightbg}{RGB}{250,250,250}
+\definecolor{pyblue}{RGB}{0,0,180}      % keywords
+\definecolor{pygreen}{RGB}{0,150,0}     % comments
+\definecolor{pyred}{RGB}{180,0,0}       % strings
+\definecolor{gray}{gray}{0.5}           % line numbers
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  basicstyle=\ttfamily\small\color{black},
+  backgroundcolor=\color{pylightbg},
+  keywordstyle=\color{pyblue}\bfseries,
+  commentstyle=\color{pygreen}\itshape,
+  stringstyle=\color{pyred},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+
+
+% For making the pro-tip boxes
+\usepackage[most]{tcolorbox}
+% define colors for the pro-tip boxes
+\definecolor{protipbg}{HTML}{ebf0f2}    % 
+\definecolor{protipborder}{HTML}{B0CAD4} % 
+\definecolor{protiptext}{HTML}{003049}  % dark slate
+\tcbset{
+  protipbox/.style={
+    colback=protipbg,
+    colframe=protipborder,
+    coltext=protiptext,
+    fonttitle=\bfseries,
+    title=Pro Tip,
+    rounded corners,
+    boxrule=0.pt,
+    left=6pt,
+    right=6pt,
+    top=5pt,
+    bottom=5pt
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{
+    \textbf{\texttt{MESA} tutorial:  Session 3} \\
+    \textbf{\Large Late Evolution of Massive Stars}
+}
+\date{}
+\maketitle
+\vspace{-1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Energy Production in Massive Stars}
+
+Let's explore the contributions of various nuclear reaction chains to the bolometric luminosities of massive stars.
+
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central carbon exhaustion.
+    \item To achieve this, set:
+
+    \begin{lstlisting}
+xa_central_lower_limit_species(1) = 'c12'
+xa_central_lower_limit(1) = 1d-5
+    \end{lstlisting}
+
+    \item Plot the evolutionary tracks of all five stars on a single HR diagram.
+    \item Clip the first $\sim 10^3$ years of evolution for clarity.
+    \item Color-code the tracks by the dominant source of nuclear burning. The three output quantities of interest are:
+    \begin{itemize}
+        \item \texttt{log\_LH}: H-burning luminosity
+        \item \texttt{log\_LHe}: He-burning luminosity
+        \item \texttt{log\_LZ}: Luminosity from burning heavier elements
+    \end{itemize}
+    \item Explore different ways of visualizing this data:
+    \begin{enumerate}[label=(\alph*)]
+        \item Create three panels, each color-coded by $\log (L_i/L_{\text{bol}})$ where $i = $ H, He, Z.
+        \item Assign unique colors based on which burning source dominates the luminosity, and color the tracks accordingly.
+        \item Identify and mark regions where no single source dominates the total luminosity.
+    \end{enumerate}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stellar Winds}
+
+Mass-loss plays a critical role in the late evolution of massive stars. This problem focuses on the effects of including stellar winds in your MESA models.
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Use the same models as in Problem 1, but re-run them with the Dutch mass-loss scheme by setting:
+    
+    \begin{lstlisting}
+    hot_wind_scheme = 'Dutch'
+    cool_wind_RGB_scheme = 'Dutch'
+    cool_wind_AGB_scheme = 'Dutch'
+    \end{lstlisting}
+
+    \item Analyze the following:
+    \begin{enumerate}[label=(\alph*)]
+        \item Compare HR tracks with and without mass-loss (one panel per mass). Color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
+        
+        Describe how the tracks differ as a function of stellar mass. Is there a threshold mass above which mass-loss effects qualitatively change the evolutionary path?
+
+        \item Investigate surface abundance changes due to mass-loss. 
+        \begin{itemize}
+            \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
+            \item Color-code HR tracks by:
+            \begin{enumerate}
+                \item Surface helium abundance
+                \item Surface N/C ratio
+            \end{enumerate}
+            \item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
+        \end{itemize}
+    \end{enumerate}
+\end{itemize}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Evolution of massive stars with mass loss}
+
+\todo{It takes me pretty long to run a 50 Msol star, IDK if this can be achieved within a tutorial session?}
+% Completing this whole session was multiple hours for me, --> will be much longer for students
+In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
+\begin{enumerate}
+\item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
+\item Make a \texttt{Python} script to plot all 3 evolutionary tracks on an HR diagram. Can you explain the difference in the tracks? Discuss again with your neighbours to compare stars of different mass.
+\item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
+\item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+
+\item EXTRA: After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
+% This is already a sub panel in the grid in inlist_pgstar
+% Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
+Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\todo{Preferably something on rapid rotation/ CHE/supernovae/PPISN}}
+
+
+
+% \bibliographystyle{aa}
+% \bibliography{gmlib.bib}
+
+\end{document}

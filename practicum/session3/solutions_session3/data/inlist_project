@@ -1,0 +1,59 @@
+
+&binary_job
+
+   inlist_names(1) = 'inlist1' 
+   inlist_names(2) = 'inlist2'
+
+   evolve_both_stars = .false.
+
+/ ! end of binary_job namelist
+
+&binary_controls
+   
+
+ ! Physical parameters for the system      
+   m1 = 1.0d0  ! donor mass in Msun
+   m2 = 1.0d0 ! companion mass in Msun
+   initial_period_in_days = 1.0d0
+
+ ! Mass transfer efficiency controls
+   mass_transfer_alpha = 0d0      ! fraction of mass lost from the vicinity of donor as fast wind 
+   mass_transfer_beta = 0d0       ! fraction of mass lost from the vicinity of accretor as fast wind
+   mass_transfer_delta = 0d0      ! fraction of mass lost from circumbinary coplanar toroid
+
+ ! Orbital angular momentum controls
+   do_jdot_mb = .false.     ! Magnetic braking around accretor
+   do_jdot_gr = .false.     ! Gravitational radiation taken into account
+   do_jdot_ml = .true.      ! Mass loss, see mechanisms applied in mass_transfer_*
+
+ ! Mass transfer scheme
+   mdot_scheme = "Kolb"
+
+ ! Timestep controls
+ ! fr is related to Roche lobe
+   fr = 0.02             ! change of relative Roche lobe gap (default 0.01)
+   fr_limit = 1d-3      ! Limit change
+   fr_dt_limit = 5d2     ! Mimumum timestep limit allowed for fr in years
+ ! fj is related to orbital angular momentum
+   fj = 0.002            ! change of orbital angular momentum
+
+   varcontrol_ms = 1d-4
+   varcontrol_post_ms = 1d-4
+   varcontrol_case_b = 2d-4
+
+
+   max_tries_to_achieve = 150      ! If this is <= 0 then explicit mass transfer scheme is used.
+   implicit_scheme_tolerance = 1d-3
+   min_change_factor = 1.01d0
+   max_change_factor = 1.25d0
+   initial_change_factor = 1.25d0
+   change_factor_fraction = 0.8d0
+   implicit_lambda = 0.4d0
+
+   min_mdot_for_implicit = 1d-10
+   starting_mdot = 1d-10
+
+   terminal_interval = 1
+   report_rlo_solver_progress = .true.
+         
+/ ! end of binary_controls namelist
