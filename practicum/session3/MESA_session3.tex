@@ -88,6 +88,26 @@
 \maketitle
 \vspace{-1cm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Population III stars}
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item We’re now going to consider the effect of the CNO cycle on the structure of a $5M_{\odot}$ star. Recall from class that stars above $> 2M_{\odot}$ undergo H burning via the CNO cycle, whereas lower mass stars undergo H burning via the pp chain. 
+
+  You’ve already computed a ``standard'' $5M_{\odot}$ model in Problem 1, so now lets explore a few modifications (make sure that you reset the stopping conditions to be the same as in Problem 1). First, compute a model in which the metallicity is $Z=0.0$ (set \texttt{initial\_z=0.0}). There will be no CNO elements in the star, so it must undergo pp chain H burning.
+
+  Next, lets keep the metallicity at the default value ($Z=0.02$) and simply turn off the CNO reaction networks in \texttt{MESA}, thereby forcing the star to undergo pp chain reactions. This experiment provides a more direct test of the effect of CNO cycle vs.\ pp chain burning because the opacities, mean molecular weight, etc.\ remain the same. To do this, copy over \verb|\$MESA_DIR/data/net_data/nets/basic.net| to your work directory, name it \texttt{basic\_no\_cno.net}, comment out the four cno reactions (with \texttt{!} as the comment character), and point your inlist to the new file (using the \texttt{new\_net\_name} variable).
+
+  \begin{enumerate}
+    \item For these three models, plot \texttt{gradr\_sub\_grada} vs.\ $m/M$ for the models at the stopping criterion (the last one printed to file). This quantity is $> 0.0$ in regions where the star is convectively unstable. What do you notice? Next, plot $\log T$ vs.\ $\log \rho$ profiles for these three models. Comment on what you observe. Why does CNO burning produce such a different core structure compared to pp burning?
+
+    \item Next, plot the evolution in $L-T_{\mathrm{eff}}$. Comment on what you see. Why are the differences more pronounced between the default model and the $Z=0.0$ model, compared to the model in which CNO burning is turned off? Consider the other effects that the composition has besides the nuclear reaction rates. 
+  \end{enumerate}
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Energy Production in Massive Stars}
@@ -163,8 +183,6 @@ Mass-loss plays a critical role in the late evolution of massive stars. This pro
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolution of massive stars with mass loss}
 
-\todo{It takes me pretty long to run a 50 Msol star, IDK if this can be achieved within a tutorial session?}
-% Completing this whole session was multiple hours for me, --> will be much longer for students
 In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
 \begin{enumerate}
 \item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
@@ -181,7 +199,7 @@ Now follow the evolution and try to identify the different burning stages in the
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\todo{Preferably something on rapid rotation/ CHE/supernovae/PPISN}}
+% \section{\todo{Preferably something on rapid rotation/ CHE/supernovae/PPISN}}
 
 
 

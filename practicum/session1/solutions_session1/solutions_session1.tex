@@ -1,0 +1,179 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\pagenumbering{arabic}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{natbib} 
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\MESA}{\texttt{MESA}\,}
+
+% define a bunch of colors for pretty bash code blocks
+\usepackage{xcolor}  % for coloring
+\definecolor{bgdark}{rgb}{0.27,0.27,0.27}
+\definecolor{lighttext}{rgb}{0.95,0.95,0.95}
+\definecolor{bashgreen}{rgb}{0.5,1.0,0.5}
+\definecolor{bashblue}{rgb}{0.5,0.8,1.0}
+\definecolor{bashcomment}{rgb}{0.6,0.6,0.6}
+\definecolor{bashstring}{rgb}{1.0,0.6,0.6}
+
+% For pretty code blocks
+\usepackage{listings}
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small\color{lighttext},
+  backgroundcolor=\color{bgdark},
+  keywordstyle=\color{bashblue},
+  commentstyle=\color{bashcomment},
+  stringstyle=\color{bashstring},
+  numbers=left,
+  numberstyle=\tiny\color{bashcomment},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
+
+% For making the pro-tip boxes
+\usepackage[most]{tcolorbox}
+% define colors for the pro-tip boxes
+\definecolor{protipbg}{HTML}{ebf0f2}    % 
+\definecolor{protipborder}{HTML}{B0CAD4} % 
+\definecolor{protiptext}{HTML}{003049}  % dark slate
+\tcbset{
+  protipbox/.style={
+    colback=protipbg,
+    colframe=protipborder,
+    coltext=protiptext,
+    fonttitle=\bfseries,
+    title=Pro Tip,
+    rounded corners,
+    boxrule=0.1pt,
+    left=6pt,
+    right=6pt,
+    top=5pt,
+    bottom=5pt
+  }
+}
+
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{
+    \textbf{Solutions \texttt{MESA} practicum 1} \\
+    \textbf{\Large Getting started with \texttt{MESA}}
+}
+\date{}
+\maketitle
+\vspace{-1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Evolving a 1 \texorpdfstring{M$_\odot$}{Msun} star}
+
+
+\begin{enumerate}
+
+\item[\bf{3.1}] 
+\begin{enumerate}
+
+\item After adjusting the HR plot, try to understand what happens. Can you explain the movement (i.e. the evolution history) of the star in the HR diagram? Is the star expanding or contracting? (remember the relation between $L$, $R$, and $T$ from the Stefan–Boltzmann law) And how do you explain this behaviour? (Note: ignore the first horizontal part in the HR diagram where the star is still relaxing into hydrostatic equilibrium.)
+
+\item The \verb|TRho_Profile| plot shows the entire stellar model, from centre to surface, as it evolves. Can you identify the centre and the surface? What is the meaning of the other (dashed) lines in the plot? Does the ideal gas law hold everywhere in the star?
+
+\item Colours indicate in which regions of the star convection (or some other mixing processes) occurs, and where nuclear energy is produced. Initially, almost the entire model is light blue, i.e. convective. Can you explain why? And how is this related to the star's location in the HR diagram?
+\item At later times, the central portion of the star becomes green, i.e. radiative. At the same time the effective temperature in the HR diagram increases. Can you explain this? Consult section 9.1 in the lecture notes to answer these questions, if necessary.
+
+\item When the model stops after 4.6 Gyrs, the star is undergoing hydrogen fusion in its core. How can you identify this from the plots? Also compare the location in the HR diagram to the current parameters of the Sun. Do they agree?
+
+\end{enumerate}
+
+You will have noticed it takes several hundreds of steps to reach the main sequence (start of hydrogen fusion), while subsequently it takes much fewer steps to reach the current age of the Sun. 
+The reason is that the structure of the star changes rapidly when the star contracts to the main sequence, so many small time steps are needed for \MESA to resolve these changes. Once the star is on the main sequence, its structure hardly changes, so the code can take much longer time steps to evolve the star through the main sequence phase.
+
+\begin{enumerate}[start =6]
+  \item What would you have expected if the number of steps is proportional to the actual time the star takes to evolve? (i.e. compare to the appropriate stellar time scales.)
+\end{enumerate}
+
+
+\item[\bf{3.2}] Now let's evolve the model further to the red giant branch phase. Remove the stopping condition for the age in \verb|inlist_project| and instead add the lines:
+\begin{lstlisting}
+! stop when helium core reaches this limit
+he_core_mass_limit = 0.25
+\end{lstlisting}
+
+Do not forget to remove (or comment out) all other stopping condition that we do not need!
+ We can also examine some other \texttt{PGSTAR} plots. Edit \verb|inlist_pgstar| and add:
+\begin{lstlisting}
+Summary_Burn_win_flag = .true.
+Abundance_win_flag = .true.
+\end{lstlisting}
+
+Now restart the model from a saved `photo' from the previous run:
+\begin{lstlisting}
+./re 
+\end{lstlisting}%x***|, 
+to start form the last saved photo in the \texttt{photos} directory. 
+You can start from any saved photo inside your \MESA model by running \verb|./re x***|, where \verb|***| are the final three digits of the photo of your choice.
+
+\begin{enumerate}
+\item Take some time to understand what is plotted in these two new panels, and identify each line in the plots. Note that the vertical scales are logarithmic in both panels, and that they represent many orders of magnitude, especially in \verb|Summary_Burn|. You can correlate the $T$ and $\rho$ profiles in \verb|Summary_Burn| with the curve plotted in the \verb|TRho_profile| panel.  The blue and green colours along the bottom of these panels correspond to those plotted in \verb|TRho_profile|, and can be used to identify convective regions. Note that most of the change in density and temperature occurs in the outer few percent of mass of the star.
+
+\item As the star evolves through the main sequence, the abundance profiles change. Which processes cause these abundance changes? Consult/refresh chapter 6.4 of the lecture notes if necessary. Can you explain all the changes from the nuclear reactions taking place? (Take into account the logarithmic scale: the changes in the bottom part of the plot look dramatic but only involve small values of the mass fraction.)
+
+\item At what age (approximately) does the star reach the end of the main sequence? How can you tell from the \texttt{PGSTAR} panels? (Several plots show an indicator of this!)
+\item Observe the changes in the $T$ and $\rho$ profiles as the star moves from the main sequence to the giant branch. Can you explain these changes? Does the core become degenerate, and if so, in which point in the evolution? 
+% Can you explain why the temperature profile in the core becomes flat?
+
+\item As the star evolves along the red giant branch, convection reaches deeper and deeper in the envelope of the star. Note how this affects the abundance profiles. Which elements/isotopes are most affected? Do their surface abundances increase or decrease? This process of convection changing the surface abundances is called `dredge-up'.
+\end{enumerate}
+As the helium core mass increases, notice how the burning shell becomes thinner in mass. This requires \MESA to take smaller time steps, so that it will take thousands of steps to reach the end of the RGB. The observable changes between each time step become smaller and smaller. That is why we stop the model at a core mass of 0.25 M$_\odot$.
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exploring \texttt{PGSTAR} options} 
+
+Many other details of the models can be shown using \texttt{PGSTAR}. Read the \texttt{MESA} website page \texttt{Using PGSTAR} (\url{https://docs.mesastar.org/en/release-r22.05.1/using_mesa/using_pgstar.html#}) to get an idea of the possibilities, and experiment with different options. Simply run the same model again, or try a different stellar mass. (In the latter case, create a new work folder for your stellar models, as in step 1 above.)
+
+ In order to be able to easily inspect the plots created in
+real-time by the \texttt{PGSTAR} module \emph{after} the end of the simulation you can
+opt to save every $N$'th plot to a file in a separate directory. This can
+be done by adding several controls to the \verb|inlist_pgstar| file, for
+example:
+\begin{lstlisting}
+HR_file_flag = .true.
+HR_file_dir =  'png'
+HR_file_prefix = 'hr_'
+HR_file_interval = 5
+HR_file_width = 16
+HR_file_aspect_ratio = 1
+\end{lstlisting}
+
+This will save a HR diagram every 5 steps into a directory \verb'png' giving
+it a name starting with \verb"hr_".
+
+
+\begin{enumerate}
+  \item[\bf{4.1}] 
+ Create a movie from the saved plots. Combine the PNG images into a short video with ffmpeg by running the following command in a terminal from the \verb'png' directory (enter it as a single line):
+\end{enumerate}
+
+\begin{lstlisting}
+ffmpeg -f image2 -pattern_type glob -framerate 5 -i "*.png" -filter:v scale=1680*1080 -preset:v slow -pix_fmt yuv420p -c:v libx264 -b:v 4M -f mp4 movie.mp4
+\end{lstlisting}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plainnat}
+\bibliography{gmlib}
+
+\end{document}
+
