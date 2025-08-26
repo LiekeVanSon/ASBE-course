@@ -125,29 +125,31 @@ We want to install \texttt{MESA Reader}, but in such a way that we can always ac
 Turns out that python \href{https://virtualenv.pypa.io/en/latest/user_guide.html}{\texttt{virtual environments}} are exactly what we are looking for!
 
 \begin{enumerate}
-  \item \textbf{Create a virtual environment} by running the following command in your terminal:
+  \item \textbf{Create a virtual environment} by running the following command in your home directory using the terminal:
 \begin{lstlisting}
   mkdir -p ~/venvs     # make dir to store venvs
   cd ~/venvs           # go to that directory
   python -m venv myenv # create a venv called myenv
   source ~/venvs/myenv/bin/activate  # activate venv
 \end{lstlisting}
-    You will notice that your terminal prompt changes, indicating that you are now working inside the virtual environment. To deactivate the virtual environment, simply run: \texttt{deactivate}.
+    You will notice that your terminal prompt changes adding \texttt{(myenv)} to the stars, indicating that you are now working inside the virtual environment. To deactivate the virtual environment, simply run: \texttt{deactivate}.
 
-    \item Install Mesa Reader in your virtual environment by running:
+    \item While inside your virtual environment, you can install Mesa Reader by running:
 \begin{lstlisting}
   pip install mesa_reader
 \end{lstlisting}
     You can install all kinds of useful python packages like this in your venv using \texttt{pip install <package\_name>}. Though note that you can only install packages in your venv when it is activated!
 
-    Alternatively, you can directly git clone (download) the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} somewhere in your \texttt{home} directory (e.g. \verb|~/codes|)\footnote{Note that the symbol \texttt{\~} points to your home directory.} by running:
+    If for some reason you encounter trouble with the pip install, you can alternatively directly git clone (download) the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} somewhere in your \texttt{home} directory (e.g. \verb|~/codes|)\footnote{Note that the symbol \texttt{\~} points to your home directory.} by running:
 \begin{lstlisting}
-  git clone https://github.com/wmwolf/py_mesa_reader.git
+  git clone https://github.com/wmwolf/py_mesa_reader.git ~/codes/py_mesa_reader
 \end{lstlisting}
     Then run \texttt{python setup.py install} inside the cloned directory.
 
 \item
-  Throughout this course, we will use \texttt{Jupyter Notebook} to analyse our results. This is accessed via \url{https://jupyterhub.science.ru.nl/} and logging in with your science account.
+  Throughout this course, we will use \texttt{Jupyter Notebook} to analyse our results. 
+  If you have correctly copied your 
+  This is accessed via \url{https://jupyterhub.science.ru.nl/} and logging in with your science account.
   When you are logged in, activate your virtual environment by opening a terminal in Jupyter and running 
 \begin{lstlisting}
 source ~/venvs/myenv/bin/activate 
