@@ -126,6 +126,63 @@ Instead of treating the secondary star as a point mass, we can evolve both stars
 \end{enumerate}
 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{X-ray binaries in MESA}
+
+For this exercise, we will model the well-known X-ray binary SS433, which is described in \href{https://ui.adsabs.harvard.edu/abs/2017MNRAS.471.4256V/abstract}{van den Heuvel et al. (2017)}. This binary consists of a blue supergiant ($M \approx 12.3 \pm 3.3$ M$_\odot$) and a stellar mass black hole ($M \approx 4.3 \pm 0.8$ M$_\odot$). The orbital period of the X-ray binary is approximately 13 days, and the blue supergiant appears to be losing mass to the black hole, creating the X-ray luminosity in the system.
+
+We will model the evolution of this binary in the \texttt{binary} module in \texttt{MESA}, treating the black hole as a point mass. This is a good approximation if you are interested in the evolution of the donor star and the binary system when the companion is a compact object. 
+
+\begin{enumerate}
+  \item Download the work folder from Brightspace (\verb|session3.tar|) and inspect the inlists (which are the settings for the binary system and for the donor star?). Get familiar with all the controls that are available. If necessary, go to the website and get more information under the tab \verb|binary_controls defaults|\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html}}. 
+  \item Modify the physical parameters of the system to approximately match the X-ray binary SS433. While you can choose values for the mass of the donor star and of the black hole within the observed error bars, \texttt{MESA} has a tendency to get stuck for a lot of mass configurations. Configurations that do run are for example $M_1=12$  M$_\odot$ and $M_2=3.5$  M$_\odot$, or $M_1=9$  M$_\odot$ and $M_2=4$  M$_\odot$. Set the initial period to 15 days. Do you expect the system to undergo Case A, B, or C mass transfer?
+  %Take the mass of the donor to be 15 M$_\odot$ and the mass of the black hole to be 5 M$_\odot$. 
+  \end{enumerate}
+
+  \noindent
+  Note that a black hole cannot accrete material at an arbitrarily high rate. It is limited by the Eddington accretion rate, which is the rate at which the radiation pressure of the luminosity created by the accreted material pushes away any new material transferred onto the companion. The Eddington accretion rate is given by
+  \begin{equation*}
+  \dot{M}_{\mathrm{Edd}} = \frac{4\pi cR_{\mathrm{acc}}}{\kappa} \approx 3.3 \times 10^{-4} M_\odot/\mathrm{yr}\, \bigg(\frac{R_{\mathrm{acc}}}{R_\odot}\bigg),
+  \end{equation*}
+  where $R_{\mathrm{acc}}$ is the radius at which material is accreted. Fortunately, you do not have to implement this formula in \texttt{MESA} yourself. Instead, look for a control that limits the accretion rate to the Eddington accretion rate\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}.
+
+  \begin{enumerate}
+  \addtocounter{enumi}{2}
+  \item Now compile (\verb|./mk|) and run (\verb|./rn|) the code. While your model is running, inspect the plots that appear.
+  \begin{enumerate}
+  \item Examine the HR diagram. How does it differ from the single massive star track you computed in the previous exercise? At what point in the HR diagram does the donor star fill its Roche lobe? At what point does the donor star stop transferring mass? What are the properties of the donor star after the mass-transfer phase stops?
+  \item What happens with the orbital separation during mass transfer? Does the orbit shrink or widen?
+  \item How high is the mass transfer rate? Is it higher or lower than the rate at which the black hole can accrete?
+  \item How much mass did the donor star lose? What fraction of this mass is accreted by the black hole and how much is lost from the system?
+  \end{enumerate}
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gravitational-wave progenitors?}
+
+At the end of your simulation you formed a helium star in an orbit around a black hole. The fate of such a helium star is not well known, but let's speculate:
+
+\begin{enumerate}
+  \item If the helium star directly collapses to a black hole, it will form a binary black hole system. What will be the masses of the black holes and what will be their separation?
+
+  \item Eventually these two black holes will merge due to the loss of angular momentum in the form of gravitational waves. The time it takes for a double black hole system to merge is given by:
+  
+  \begin{equation*}
+  \tau_{\mathrm{merge}} = 1.503 \times 10^8\,\mathrm{yr} \times \frac{1}{q(1+q)}\bigg(\frac{a}{R_\odot}\bigg)^4\bigg(\frac{M_1}{M_\odot}\bigg)^{-3},
+  \end{equation*}
+  
+  where $M_1$ is the mass of one of the black holes and the mass ratio is defined as $q=M_2/M_1$.\\[1ex]
+  How long will it take for your black hole binary system to spiral in? Would LIGO and VIRGO be able to detect this?
+
+\end{enumerate}
+
+
+
 % \bibliographystyle{aa}
 % \bibliography{gmlib.bib}
 \end{document}

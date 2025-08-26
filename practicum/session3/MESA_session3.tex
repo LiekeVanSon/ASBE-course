@@ -94,19 +94,20 @@
 
 Let's explore the contributions of various nuclear reaction chains to the bolometric luminosities of massive stars.
 
-
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}
     \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central carbon exhaustion.
-    \item To achieve this, set:
-
+    To achieve this, set:
+\end{itemize}
     \begin{lstlisting}
 xa_central_lower_limit_species(1) = 'c12'
 xa_central_lower_limit(1) = 1d-5
     \end{lstlisting}
 
+\begin{enumerate}
     \item Plot the evolutionary tracks of all five stars on a single HR diagram. 
-    \item Clip the first $\sim 10^3$ years of evolution for clarity.
-    \item Color-code the tracks by the dominant source of nuclear burning. The three output quantities of interest are:
+    Clip the first $\sim 10^3$ years of evolution for clarity.
+
+    Color-code the tracks by the dominant source of nuclear burning. The three output quantities of interest are:
     \begin{itemize}
         \item \texttt{log\_LH}: H-burning luminosity
         \item \texttt{log\_LHe}: He-burning luminosity
@@ -118,7 +119,10 @@ xa_central_lower_limit(1) = 1d-5
         \item Assign unique colors based on which burning source dominates the luminosity, and color the tracks accordingly.
         \item Identify and mark regions where no single source dominates the total luminosity.
     \end{enumerate}
-\end{itemize}
+
+    \item Interpret your results: 
+
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Stellar Winds}
