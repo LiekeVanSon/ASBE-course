@@ -83,12 +83,29 @@
 
 \item After adjusting the HR plot, try to understand what happens. Can you explain the movement (i.e. the evolution history) of the star in the HR diagram? Is the star expanding or contracting? (remember the relation between $L$, $R$, and $T$ from the Stefan–Boltzmann law) And how do you explain this behaviour? (Note: ignore the first horizontal part in the HR diagram where the star is still relaxing into hydrostatic equilibrium.)
 
+{\color{blue} In the HR diagram, after the star has settled on the main sequence, the star expands, moving up and right (almost constant $T_{\mathrm{eff}}$, but higher $L$, following $L = 4\pi R^2\sigma T^4$ ). Post main sequence the star becomes much brighter and much lower effective temperature. This is because the star expands its radius: the star becomes a Red Giant}
+
+
 \item The \verb|TRho_Profile| plot shows the entire stellar model, from centre to surface, as it evolves. Can you identify the centre and the surface? What is the meaning of the other (dashed) lines in the plot? Does the ideal gas law hold everywhere in the star?
 
+{\color{blue} In the $T$–$\rho$ plot, the centre of the star corresponds to the high–$T$, high–$\rho$ end of the curve, while the surface is at low $T$ and $\rho$. The dashed lines delinate regions where different equations of state dominate, i.e., ideal–gas pressure, radiation pressure and (non-relativistic or extremely relativistic) degeneracy pressure. }
+\todo{Check: The ideal gas law holds approximately in most of the star.}
+
+
 \item Colours indicate in which regions of the star convection (or some other mixing processes) occurs, and where nuclear energy is produced. Initially, almost the entire model is light blue, i.e. convective. Can you explain why? And how is this related to the star's location in the HR diagram?
+
+{\color{blue} The protostar is fully convective (light blue), because the entire star is very cool, so radiative transport is inefficient. Because the whole star is convective, even a tiny superadiabaticitycan carry a very large energy flux and the star is essentially ediabatic, and the luminosity of the fully convective star is practically independent of its structure, leading to the nearly vertical path at low $T_{\mathrm{eff}}$.}
+
+
 \item At later times, the central portion of the star becomes green, i.e. radiative. At the same time the effective temperature in the HR diagram increases. Can you explain this? Consult section 9.1 in the lecture notes to answer these questions, if necessary.
 
+{\color{blue} As the core heats up and hydrogen burning begins, opacity decreases in the core, making radiative transport becomes more efficient. The core therefore transitions to being radiative (green region). }
+
+
 \item When the model stops after 4.6 Gyrs, the star is undergoing hydrogen fusion in its core. How can you identify this from the plots? Also compare the location in the HR diagram to the current parameters of the Sun. Do they agree?
+
+\todo{Check what the plots show here}
+{\color{blue} At 4.6 Gyr the plots show sustained nuclear energy generation in the centre (highlighted in the colour maps), which signals ongoing hydrogen fusion in the core. In the HR diagram the model lies on the main sequence, close to the observed $L$ and $T_{\mathrm{eff}}$ of the Sun today, so the agreement is good.}
 
 \end{enumerate}
 
@@ -97,75 +114,53 @@ The reason is that the structure of the star changes rapidly when the star contr
 
 \begin{enumerate}[start =6]
   \item What would you have expected if the number of steps is proportional to the actual time the star takes to evolve? (i.e. compare to the appropriate stellar time scales.)
+  
+{\color{blue} A: If the number of steps were proportional to the actual evolutionary timescale, we would expect far more steps on the main sequence, because the main sequence occurs on the H-burning nuclear timescale ($\sim$ Gyr) which is orders of magnitude longer than Kelvin–Helmholtz contraction timescales. In \MESA the opposite occurs, because the timestep control is set by how fast the stellar structure changes, not by the absolute physical time elapsed.}
+
 \end{enumerate}
 
 
-\item[\bf{3.2}] Now let's evolve the model further to the red giant branch phase. Remove the stopping condition for the age in \verb|inlist_project| and instead add the lines:
-\begin{lstlisting}
-! stop when helium core reaches this limit
-he_core_mass_limit = 0.25
-\end{lstlisting}
-
-Do not forget to remove (or comment out) all other stopping condition that we do not need!
- We can also examine some other \texttt{PGSTAR} plots. Edit \verb|inlist_pgstar| and add:
-\begin{lstlisting}
-Summary_Burn_win_flag = .true.
-Abundance_win_flag = .true.
-\end{lstlisting}
-
-Now restart the model from a saved `photo' from the previous run:
-\begin{lstlisting}
-./re 
-\end{lstlisting}%x***|, 
-to start form the last saved photo in the \texttt{photos} directory. 
-You can start from any saved photo inside your \MESA model by running \verb|./re x***|, where \verb|***| are the final three digits of the photo of your choice.
-
+\item[\bf{3.2}] 
 \begin{enumerate}
 \item Take some time to understand what is plotted in these two new panels, and identify each line in the plots. Note that the vertical scales are logarithmic in both panels, and that they represent many orders of magnitude, especially in \verb|Summary_Burn|. You can correlate the $T$ and $\rho$ profiles in \verb|Summary_Burn| with the curve plotted in the \verb|TRho_profile| panel.  The blue and green colours along the bottom of these panels correspond to those plotted in \verb|TRho_profile|, and can be used to identify convective regions. Note that most of the change in density and temperature occurs in the outer few percent of mass of the star.
 
+{\color{blue} A: The \texttt{Summary\_Burn} panel shows the locations and strengths of nuclear burning shells as functions of mass coordinate, with lines for energy generation, temperature, and density. The \texttt{Abundance} panel shows the composition profiles for different isotopes across the star. Both panels use logarithmic scales, so changes spanning many orders of magnitude appear compressed. The coloured strips at the bottom (blue = convective, green = radiative) match the convective regions seen in the \texttt{TRho\_profile}. Most structural changes are confined to the outer few percent of the stellar mass, where density and temperature drop steeply.}
+
 \item As the star evolves through the main sequence, the abundance profiles change. Which processes cause these abundance changes? Consult/refresh chapter 6.4 of the lecture notes if necessary. Can you explain all the changes from the nuclear reactions taking place? (Take into account the logarithmic scale: the changes in the bottom part of the plot look dramatic but only involve small values of the mass fraction.)
 
+{\color{blue} A: Abundance changes are caused by nuclear fusion in the core and later in shell-burning regions. On the main sequence, hydrogen is converted into helium via the pp chain and CNO cycle. As hydrogen is depleted, the helium mass fraction rises in the core. At the same time, trace isotopes such as $^{13}$C, $^{14}$N, and $^{15}$O are produced and altered by the CNO cycle. The apparent dramatic changes at the bottom of the logarithmic scale correspond to very small absolute abundances, but still trace the reaction flow.}
+
+
 \item At what age (approximately) does the star reach the end of the main sequence? How can you tell from the \texttt{PGSTAR} panels? (Several plots show an indicator of this!)
+
+{\color{blue} A: The star reaches the end of the main sequence at about $\sim 10$ Gyr for a solar-type model. In the \texttt{PGSTAR} plots, this is seen when central hydrogen ($X_c$) falls nearly to zero in the abundance panel, and when the Summary\_Burn panel shows the disappearance of core hydrogen burning and the onset of a hydrogen-burning shell around the helium core. The HR diagram simultaneously shows the star moving off the main sequence.}
+
+
 \item Observe the changes in the $T$ and $\rho$ profiles as the star moves from the main sequence to the giant branch. Can you explain these changes? Does the core become degenerate, and if so, in which point in the evolution? 
 % Can you explain why the temperature profile in the core becomes flat?
 
+{\color{blue} A: As the star leaves the main sequence, the core contracts and heats while the envelope expands and cools, shifting the star to the red giant branch. The $T$–$\rho$ profiles reflect this: central density rises, and the temperature increases in the contracting core. Eventually the core becomes electron-degenerate before helium ignition: this is seen as a steep rise in $\rho$ without a proportional rise in $T$, since degeneracy pressure supports the core independently of temperature.}
+
+
 \item As the star evolves along the red giant branch, convection reaches deeper and deeper in the envelope of the star. Note how this affects the abundance profiles. Which elements/isotopes are most affected? Do their surface abundances increase or decrease? This process of convection changing the surface abundances is called `dredge-up'.
+ 
+\item {\color{blue} A: During red giant evolution, the outer convective envelope deepens and dredges up material from regions previously processed by nuclear burning. This changes the surface abundances: hydrogen decreases slightly, helium increases, and isotopes such as $^{13}$C and $^{14}$N become more abundant at the surface. This first dredge-up is an observable chemical signature of red giant stars.}
+
+
 \end{enumerate}
-As the helium core mass increases, notice how the burning shell becomes thinner in mass. This requires \MESA to take smaller time steps, so that it will take thousands of steps to reach the end of the RGB. The observable changes between each time step become smaller and smaller. That is why we stop the model at a core mass of 0.25 M$_\odot$.
+
 
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exploring \texttt{PGSTAR} options} 
 
-Many other details of the models can be shown using \texttt{PGSTAR}. Read the \texttt{MESA} website page \texttt{Using PGSTAR} (\url{https://docs.mesastar.org/en/release-r22.05.1/using_mesa/using_pgstar.html#}) to get an idea of the possibilities, and experiment with different options. Simply run the same model again, or try a different stellar mass. (In the latter case, create a new work folder for your stellar models, as in step 1 above.)
-
- In order to be able to easily inspect the plots created in
-real-time by the \texttt{PGSTAR} module \emph{after} the end of the simulation you can
-opt to save every $N$'th plot to a file in a separate directory. This can
-be done by adding several controls to the \verb|inlist_pgstar| file, for
-example:
-\begin{lstlisting}
-HR_file_flag = .true.
-HR_file_dir =  'png'
-HR_file_prefix = 'hr_'
-HR_file_interval = 5
-HR_file_width = 16
-HR_file_aspect_ratio = 1
-\end{lstlisting}
-
-This will save a HR diagram every 5 steps into a directory \verb'png' giving
-it a name starting with \verb"hr_".
-
-
 \begin{enumerate}
   \item[\bf{4.1}] 
  Create a movie from the saved plots. Combine the PNG images into a short video with ffmpeg by running the following command in a terminal from the \verb'png' directory (enter it as a single line):
 \end{enumerate}
 
-\begin{lstlisting}
-ffmpeg -f image2 -pattern_type glob -framerate 5 -i "*.png" -filter:v scale=1680*1080 -preset:v slow -pix_fmt yuv420p -c:v libx264 -b:v 4M -f mp4 movie.mp4
-\end{lstlisting}
+{\color{blue} If you started from your restart, the movie will porbably show the star bouncing up and down a bit due to pulses on the AGB (see chapter 11). }
 
 
 
