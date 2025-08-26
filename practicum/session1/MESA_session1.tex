@@ -174,10 +174,6 @@ You will see a bunch of text appearing in the terminal window, which is the outp
 There is no need to complete this simulation for now, so you can stop it by pressing \texttt{Ctrl + C} in the terminal window.
 
 
-
-\noindent
-Note that adding the \texttt{\&} symbol at the end allows you to keep the editor window open while typing further Linux commands in the terminal.
-
 \bigskip\noindent
 For more on how to use \texttt{MESA}, you can find information here: \url{https://docs.mesastar.org/en/release-r22.05.1/using_mesa.html}. Furthermore, more information on simulating different stellar evolution problems in \texttt{MESA} can be found here: \url{https://docs.mesastar.org/en/release-r22.05.1/test_suite.html#}.
 
@@ -195,20 +191,10 @@ rsync -avu --progress /scratch/$USER/MESA/project1/ $HOME/MESA/project1
 \end{lstlisting}
 
 \noindent
-The \texttt{rsync} command is preferred over \texttt{cp -R} because it only copies files that are new or have changed, which saves time when you have large output files. If you would like to know what the option flags \texttt{-avu --progress} mean, you can check the \texttt{rsync} manual by typing \texttt{man rsync} in the terminal.
+The \texttt{rsync} command is preferred over \texttt{cp -R} because \texttt{rsync -u} only copies files that are new or have changed, which saves time when you have large output files. If you would like to know what the option flags \texttt{-avu --progress} mean, you can check the \texttt{rsync} manual by typing \texttt{man rsync} in the terminal.
 
 Note that you will have to make a copy for \emph{every} project directory you have worked on during the session! It is also important to note that you only have limited space in your \texttt{home} directory (about 7 Gb). Thus, it will be useful to migrate your \texttt{MESA} projects to a personal external storage device or to cloud storage (e.g. the OneDrive that comes with your Radboud e-mail, or a Google Drive). 
 % TODO: is there no better location for long-term storage on the university system?
-
-
-
-
-\begin{tcolorbox}[protipbox]
-When you do research it is generally \textit{very} good practice separating your code from your data. 
-When you start bigger projects you will want to keep track of your code using a \texttt{git} repository for your project folders, but to keep your data (i.e. the output files) excluded from the repository (git cannot handle large data files).
-You can do this by adding a \texttt{.gitignore} file to your project folder that ignores the \texttt{LOGS}, \texttt{photos}, and \texttt{png} directories, as well as any other large output files you do not want to track with \texttt{git}.
-\end{tcolorbox}
-
 
 
 

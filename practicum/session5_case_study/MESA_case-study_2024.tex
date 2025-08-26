@@ -1,42 +1,104 @@
+% \documentclass[11pt,a4paper]{article}
+
+% % \usepackage{epsfig}
+% \usepackage{graphicx}
+% %\usepackage{rotating}
+% \usepackage{txfonts}
+% %\usepackage{amsmath}
+% \usepackage{amssymb}
+% \IfFileExists{url.sty}{\usepackage{url}}
+%                       {\newcommand{\url}{\texttt}}
+
+% \providecommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
+
+% \textheight=24.5cm
+% \textwidth=16cm
+% \oddsidemargin 0.0cm
+% \evensidemargin 0.0cm
+% \topmargin -1.5cm
+% \newcommand{\be}{\begin{eqnarray}}
+% \newcommand{\ee}{\end{eqnarray}}
+% \newcommand{\msun}{\ensuremath{\mathrm{M}_\odot}}
+% \newcommand{\rsun}{\ensuremath{\mathrm{R}_\odot}}
+% \newcommand{\lsun}{\ensuremath{\mathrm{L}_\odot}}
+% \newcommand{\dd}{\partial}
+
+% \newcommand{\amuse}{\texttt{AMUSE}}
+% \newcommand{\mesa}{\texttt{Mesa}}
+% \newcommand{\evtwin}{\texttt{EVtwin}}
+% \newcommand{\bse}{\texttt{BSE}}
+% \newcommand{\seba}{\texttt{SeBa}}
+
 \documentclass[11pt,a4paper]{article}
-\usepackage{epsfig}
-\usepackage{graphicx}
-%\usepackage{rotating}
-\usepackage{txfonts}
-%\usepackage{amsmath}
-\usepackage{amssymb}
-\IfFileExists{url.sty}{\usepackage{url}}
-                      {\newcommand{\url}{\texttt}}
+\usepackage[utf8]{inputenc}
 
-\providecommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
+\pagenumbering{arabic}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{natbib} 
+\usepackage{hyperref}
+\usepackage{enumitem}
 
-\textheight=24.5cm
-\textwidth=16cm
-\oddsidemargin 0.0cm
-\evensidemargin 0.0cm
-\topmargin -1.5cm
-\newcommand{\be}{\begin{eqnarray}}
-\newcommand{\ee}{\end{eqnarray}}
-\newcommand{\msun}{\ensuremath{\mathrm{M}_\odot}}
-\newcommand{\rsun}{\ensuremath{\mathrm{R}_\odot}}
-\newcommand{\lsun}{\ensuremath{\mathrm{L}_\odot}}
-\newcommand{\dd}{\partial}
+% define a bunch of colors for pretty bash code blocks
+\usepackage{xcolor}  % for coloring
+\definecolor{bgdark}{rgb}{0.27,0.27,0.27}
+\definecolor{lighttext}{rgb}{0.95,0.95,0.95}
+\definecolor{bashgreen}{rgb}{0.5,1.0,0.5}
+\definecolor{bashblue}{rgb}{0.5,0.8,1.0}
+\definecolor{bashcomment}{rgb}{0.6,0.6,0.6}
+\definecolor{bashstring}{rgb}{1.0,0.6,0.6}
 
-\newcommand{\amuse}{\texttt{AMUSE}}
-\newcommand{\mesa}{\texttt{Mesa}}
-\newcommand{\evtwin}{\texttt{EVtwin}}
-\newcommand{\bse}{\texttt{BSE}}
-\newcommand{\seba}{\texttt{SeBa}}
+% For pretty code blocks
+\usepackage{listings}
+\lstset{
+  language=bash,
+  basicstyle=\ttfamily\small\color{lighttext},
+  backgroundcolor=\color{bgdark},
+  keywordstyle=\color{bashblue},
+  commentstyle=\color{bashcomment},
+  stringstyle=\color{bashstring},
+  numbers=left,
+  numberstyle=\tiny\color{bashcomment},
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false
+}
 
-\def\mathstacksym#1#2#3#4#5{\def#1{\mathrel{\hbox to 0pt{\lower #5\hbox{#3}\hss}
- \raise #4\hbox{#2}}}}
-\mathstacksym\lta{$<$}{$\sim$}{1.5pt}{3.5pt} % less than approximately
-\mathstacksym\gta{$>$}{$\sim$}{1.5pt}{3.5pt} % greater than approximately
-\mathstacksym\lrarrow{$\leftarrow$}{$\rightarrow$}{2pt}{1pt} % equilibrium
-\mathstacksym\lessgreat{$>$}{$<$}{3pt}{3pt} %% less or greater
+% For making the pro-tip boxes
+\usepackage[most]{tcolorbox}
+% define colors for the pro-tip boxes
+\definecolor{protipbg}{HTML}{ebf0f2}    % 
+\definecolor{protipborder}{HTML}{B0CAD4} % 
+\definecolor{protiptext}{HTML}{003049}  % dark slate
+\tcbset{
+  protipbox/.style={
+    colback=protipbg,
+    colframe=protipborder,
+    coltext=protiptext,
+    fonttitle=\bfseries,
+    title=Pro Tip,
+    rounded corners,
+    boxrule=0.1pt,
+    left=6pt,
+    right=6pt,
+    top=5pt,
+    bottom=5pt
+  }
+}
 
-\setlength{\fboxsep}{2ex}
 
+
+% \def\mathstacksym#1#2#3#4#5{\def#1{\mathrel{\hbox to 0pt{\lower #5\hbox{#3}\hss}
+%  \raise #4\hbox{#2}}}}
+% \mathstacksym\lta{$<$}{$\sim$}{1.5pt}{3.5pt} % less than approximately
+% \mathstacksym\gta{$>$}{$\sim$}{1.5pt}{3.5pt} % greater than approximately
+% \mathstacksym\lrarrow{$\leftarrow$}{$\rightarrow$}{2pt}{1pt} % equilibrium
+% \mathstacksym\lessgreat{$>$}{$<$}{3pt}{3pt} %% less or greater
+
+% \setlength{\fboxsep}{2ex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \title{\textbf{MESA practical assignment}}
@@ -116,6 +178,15 @@ Not all of these will always be important, it depends on the topic you study and
 %Not handing in your report in time will result in a
 %grade of 1 (out of 10).
 
+
+\begin{tcolorbox}[protipbox]
+When you do research it is generally \textit{very} good practice separating your code from your data. 
+When you start bigger projects you will want to keep track of your code using a \texttt{git} repository for your project folders, but to keep your data (i.e. the output files) excluded from the repository (git cannot handle large data files).
+You can do this by adding a \texttt{.gitignore} file to your project folder that ignores the \texttt{LOGS}, \texttt{photos}, and \texttt{png} directories, as well as any other large output files you do not want to track with \texttt{git}.
+\end{tcolorbox}
+
+
+
 \subsection*{Guidelines for the report}
 
 This section summarizes some general guidelines for your report.
@@ -162,5 +233,9 @@ This section summarizes some general guidelines for your report.
     considers as good, e.g.\ \verb|\begin{figure}[h!]|.
 
 \end{itemize}
+
+
+
+
 
 \end{document}
