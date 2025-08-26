@@ -3,7 +3,7 @@
 lecture notes
 lectures
 *.tar
-practicum/test_practica/session1/data
-practicum/test_practica/session2/data
-practicum/test_practica/session3/data
+
+.venv
+practicum/session*/solutions_session*/data/
 practicum/.DS_Store
