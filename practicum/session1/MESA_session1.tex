@@ -7,6 +7,10 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\MESA}[1]{\texttt{{#1}}}
+
+
 % define a bunch of colors for pretty bash code blocks
 \usepackage{xcolor}  % for coloring
 \definecolor{bgdark}{rgb}{0.27,0.27,0.27}
@@ -66,26 +70,18 @@
 }
 \date{}
 \maketitle
-\vspace{-2cm}
+\vspace{-1cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent {\color{red}Hand in your answers to all the numbered questions (i.e. 3.1 a, b, c etc.), they will make up your grade for the MESA practicum part of the course.}
+
 
 \section{What is \texttt{MESA}?}
 
 \texttt{MESA} stands for Modules for Experiments in Stellar Astrophysics. It is an open-source stellar astrophysics code consisting of different modules. Each module is responsible for a different aspect of the numerics or physics required to construct computational models for stellar astrophysics. At the core of it all is the most important module: \texttt{MESA star}. \texttt{MESA star} is a one-dimensional stellar evolution code and is designed for a wide range of stellar physics applications. You can find more information on the website \url{https://docs.mesastar.org/}, and also in the first \texttt{MESA} instrument paper by  \cite{Paxton2011} %2011ApJS..192....3P}
 % \href{https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P/abstract}{Paxton et al. (2011)}. 
 
-% %\subsection*{What are the advantages?}
-% \bigskip\noindent
-% The advantages of \texttt{MESA} are listed on the website of the code and the key points are given below:
-% \begin{itemize}[noitemsep]
-% \item Open source
-% \item Independent modules
-% \item Wide applicability
-% \item High performance
-% \item Modern techniques
-% \item Comprehensive microphysics
-% \end{itemize}
+
 MESA is one of (if not the most) the most widely used stellar evolutionary codes today, with applications ranging from binary systems to planet structure, nuclear burning in the accretion layers of neutron stars, and asteroseismology. 
 In this course, we will learn some of the basics of using \texttt{MESA}, as well as how to set up your own numerical experiment. By the end of the course, you will be able to set up and run your own stars! 
 
@@ -201,7 +197,7 @@ Note that you will have to make a copy for \emph{every} project directory you ha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolving a 1 \texorpdfstring{M$_\odot$}{Msun} star}
 
-\begin{enumerate}
+\begin{itemize}
 
 \item \textbf{Create a copy of the work folder} and give it a suitable name, then compile the code. For example:
 \begin{lstlisting}
@@ -219,7 +215,7 @@ xdg-open inlist_project &
 \end{lstlisting}
 \texttt{xdg-open} command opens a file with the machine's preferred application, and the \texttt{\&} symbol at the end allows you to run further Linux commands in the terminal.
 
-\begin{enumerate}
+\begin{itemize}
   \item Edit the \verb|inlist_project| file to evolve a 1 M$_\odot$ model by setting:
   \begin{lstlisting}
   initial_mass = 1 ! in Msun units
@@ -244,17 +240,20 @@ xdg-open inlist_project &
   \end{lstlisting}
   When adding new lines to your inlist files, make a habit out of also adding a comment (by using the !-sign) to explain what the parameter setting does. This will help you in the future.
 
-\end{enumerate}
+\end{itemize}
+
+\end{itemize}
 
 
-
-\item Now compile again (\verb|./mk|) and run the model (\verb|./rn|). 
 \begin{enumerate}
+
+\item[\bf{3.1}] Now compile again (\verb|./mk|) and run the model (\verb|./rn|). 
+\begin{itemize}
   \item First concentrate on the HR plot. You will notice the model (red circle) starts at the bottom of the plot and quickly disappears out of sight. 
   To remedy this, change the limits of the plot window by editing the file \verb|inlist_pgstar|. Good values for this model are $\log L$ between $-$1 and 3, and $\log T$ between 3.5 and 4. Save the changes to \verb|inlist_pgstar| and you should see the changes taking effect immediately!
   %  Of course, if the model has already finished, simply run it again. \\[1ex]
 
-\end{enumerate}
+\end{itemize}
 
 
 \begin{tcolorbox}[protipbox]
@@ -262,7 +261,7 @@ If you want to temporarily pause your model to have more time to look at a plot,
 \end{tcolorbox}
 
 
-\begin{enumerate}[start=2]
+\begin{enumerate}
 
 \item After adjusting the HR plot, try to understand what happens. Can you explain the movement (i.e. the evolution history) of the star in the HR diagram? Is the star expanding or contracting? (remember the relation between $L$, $R$, and $T$ from the Stefan–Boltzmann law) And how do you explain this behaviour? (Note: ignore the first horizontal part in the HR diagram where the star is still relaxing into hydrostatic equilibrium.)
 
@@ -278,9 +277,12 @@ If you want to temporarily pause your model to have more time to look at a plot,
 You will have noticed it takes several hundreds of steps to reach the main sequence (start of hydrogen fusion), while subsequently it takes much fewer steps to reach the current age of the Sun. 
 The reason is that the structure of the star changes rapidly when the star contracts to the main sequence, so many small time steps are needed for \texttt{MESA} to resolve these changes. Once the star is on the main sequence, its structure hardly changes, so the code can take much longer time steps to evolve the star through the main sequence phase.
 
-What would you have expected if the number of steps is proportional to the actual time the star takes to evolve? (i.e. compare to the appropriate stellar time scales.)
+\begin{enumerate}[start =6]
+  \item What would you have expected if the number of steps is proportional to the actual time the star takes to evolve? (i.e. compare to the appropriate stellar time scales.)
+\end{enumerate}
 
-\item Now let's evolve the model further to the red giant branch phase. Remove the stopping condition for the age in \verb|inlist_project| and instead add the lines:
+
+\item[\bf{3.2}] Now let's evolve the model further to the red giant branch phase. Remove the stopping condition for the age in \verb|inlist_project| and instead add the lines:
 \begin{lstlisting}
 ! stop when helium core reaches this limit
 he_core_mass_limit = 0.25
@@ -336,15 +338,23 @@ HR_file_aspect_ratio = 1
 
 This will save a HR diagram every 5 steps into a directory \verb'png' giving
 it a name starting with \verb"hr_".
-You can then combine a series of png images into a short movie using
-ffmpeg, for instance by executing the following in terminal when in the
-\verb'png' directory (make sure this is 1 long line in the terminal):
+
+
+\begin{enumerate}
+  \item[\bf{4.1}] 
+ Create a movie from the saved plots. Combine the PNG images into a short video with ffmpeg by running the following command in a terminal from the \verb'png' directory (enter it as a single line):
+\end{enumerate}
+
 \begin{lstlisting}
 ffmpeg -f image2 -pattern_type glob -framerate 5 -i "*.png" -filter:v scale=1680*1080 -preset:v slow -pix_fmt yuv420p -c:v libx264 -b:v 4M -f mp4 movie.mp4
 \end{lstlisting}
-Note that if you want to have several graphs in one png output file (e.g.
-not only the HR diagram but also \verb|TRho_profile| or a Kippenhahn plot) then
-you can make use of the \verb|Grid_*| controls of the \texttt{PGSTAR} module.
+
+
+
+\begin{tcolorbox}[protipbox]
+If you want to have several graphs in one png output file (e.g. not only the HR diagram but also \verb|TRho_profile| or a Kippenhahn plot) then you can make use of the \verb|Grid_*| controls of the \texttt{PGSTAR} module.
+\end{tcolorbox}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
