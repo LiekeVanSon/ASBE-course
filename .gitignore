@@ -6,6 +6,8 @@ lectures
 !practicum/session2/data_for_students/session2.tar
 !practicum/session3/data_for_students/session3.tar
 
+practicum/session2/solutions_session2/data/
+practicum/session3/solutions_session3/data/
 
 .venv
 practicum/session*/solutions_session*/data/*
