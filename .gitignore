@@ -11,4 +11,9 @@ practicum/session3/solutions_session3/data/
 
 .venv
 practicum/session*/solutions_session*/data/*
-practicum/.DS_Store
+!practicum/session3/solutions_session3/data/session3_workingdir/M15_HW3/
+!practicum/session3/solutions_session3/data/session3_workingdir/M20_HW3/
+!practicum/session3/solutions_session3/data/session3_workingdir/M30_HW3/
+!practicum/session3/solutions_session3/data/session3_workingdir/M40_HW3/
+!practicum/session3/solutions_session3/data/session3_workingdir/M60_HW3/
+
