@@ -244,11 +244,11 @@ We will now investigate the effect of overshooting. In order to do this, we evol
 \item[3.1] \textbf{Download and set up the work folder.} 
 Instead of starting from the beginning and copying the model work directory like last time to edit, a \texttt{MESA} model has largely been constructed for you already. 
 
-
-\begin{enumerate} 
-
+\begin{itemize}
     \item Download the tar file from Brightspace and unpack it. This can be done using the archive manager by extracting the contents to your desired location on the \texttt{scratch} disc, or using the terminal by typing \verb|tar -xvf session2.tar| in the directory where you downloaded the tar file and then moving the directory to your desired location on the \texttt{scratch} disc using a \texttt{cp -R} command. This file contains a \texttt{MESA} work folder in which we will work. 
-    
+
+
+
     \item Once you open the \verb|inlist_project| file, you will find a number of controls available for the model. First, choose a mass for the star between 2.5 M$_\odot$ and 10 M$_\odot$, and modify the inlist accordingly. Note that the stopping condition allows the star to evolve up to the end of core helium burning. You may further notice several lines commented out concerning Convective overshooting. We will run several models for different values of the overshooting parameter. 
 
     \item First, compile (\verb|./mk|) and run (\verb|./rn|) the model without any overshooting. 
@@ -263,7 +263,7 @@ Instead of starting from the beginning and copying the model work directory like
     \texttt{\$MESA\_DIR/star/defaults/controls.defaults} will always show the information for the correct version for your installation.}
     Then compile and run the code again.  Repeat this process for an overshooting parameter of 0.5.
 
-\end{enumerate}
+\end{itemize}
 
 
 \begin{tcolorbox}[protipbox]
@@ -276,14 +276,17 @@ It is a good idea to organise your \texttt{MESA} work folders in a logical direc
 
 \item[3.2] \textbf{Inspecting the results. } We can now analyse the data in the 3 history files. For this import \texttt{MESA Reader} into your python notebook, as explained above.
 
-To read in the data, you need to move the \texttt{history.data} files from your \texttt{scratch} directory to somewhere in your plotting folder, for example inside a folder called \texttt{data} and there inside a folder called after its run (e.g. \texttt{M3.0ov0}). For this example, you use the following line in your \texttt{Python} script:
+To read in the data, you need to move the \texttt{history.data} files from your \texttt{scratch} directory to somewhere in your \texttt{home} foler, for example inside a folder called \texttt{data} and there inside a folder called after its run (e.g. \texttt{M3.0ov0}). 
+
+For this example, you use the following line in your \texttt{Python} script:
 
 \begin{lstlisting}[style=pythonstyle]
 f0_hist_data = mr.MesaData('data/M3.0ov0/LOGS/history.data')
 \end{lstlisting}
 
 
-To invoke the columns you want from the read-in data, in this case \texttt{f0\_hist\_data}, you use \texttt{f0\_hist\_data.X}, where X is the name of one of the columns of data inside \texttt{history.data}. The names of the columns can be found inside \texttt{history.data}, or you can print the available column names by typing: 
+To read a specific columns you want from the \texttt{f0\_hist\_data}, use \texttt{f0\_hist\_data.X}, where X is the name of one of the columns inside \texttt{history.data}. 
+The names of the columns can be found inside \texttt{history.data}, or you can print the available column names by typing: 
 
 \begin{lstlisting}[style=pythonstyle]
 print(f0_hist_data.bulk_names)
