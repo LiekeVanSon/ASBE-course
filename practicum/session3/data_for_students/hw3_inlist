@@ -30,13 +30,14 @@
       initial_z = 0.02d0
  
     ! mass-loss prescription
-      cool_wind_RGB_scheme = '' ! 'Dutch'
-      cool_wind_AGB_scheme = '' ! 'Dutch'
-      hot_wind_scheme = '' ! 'Dutch'
-      Dutch_scaling_factor = 1.0
-      max_wind = 1d-3
-      hot_wind_full_on_T = 0d0
-      cool_wind_full_on_T = 0d0
+    cool_wind_RGB_scheme = 'Dutch'
+    cool_wind_AGB_scheme = 'Dutch'
+    hot_wind_scheme = 'Dutch'
+
+    Dutch_scaling_factor = 1.0
+    max_wind = 1d-3
+    hot_wind_full_on_T = 0d0
+    cool_wind_full_on_T = 0d0
 
 
     ! force the maximum timestep to be this value
@@ -93,23 +94,21 @@
       thermohaline_coeff = 666.0
       thermohaline_option = 'Kippenhahn'
 
-    ! overshoot params for top boundary of convective core, all core types
-    overshoot_scheme(2)   = 'exponential'
-    overshoot_zone_type(2)= 'any'
-    overshoot_zone_loc(2) = 'core'
-    overshoot_bdy_loc(2)  = 'top'
-    overshoot_f(2)        = 0.016
-    overshoot_f0(2)       = 0.008
+      ! overshoot params for top boundary of convective core, all core types
+      overshoot_scheme(2)   = 'exponential'
+      overshoot_zone_type(2)= 'any'
+      overshoot_zone_loc(2) = 'core'
+      overshoot_bdy_loc(2)  = 'top'
+      overshoot_f(2)        = 0.016
+      overshoot_f0(2)       = 0.008
 
-    ! Shells: same f/f0 at top & bottom, for nonburn + H/He/Z shells
-    overshoot_scheme(1)   = 'exponential'
-    overshoot_zone_type(1)= 'any'
-    overshoot_zone_loc(1) = 'shell'
-    overshoot_bdy_loc(1)  = 'any'
-    overshoot_f(1)        = 0.0174
-    overshoot_f0(1)       = 0.0087
-
-
+      ! Shells: same f/f0 at top & bottom, for nonburn + H/He/Z shells
+      overshoot_scheme(1)   = 'exponential'
+      overshoot_zone_type(1)= 'any'
+      overshoot_zone_loc(1) = 'shell'
+      overshoot_bdy_loc(1)  = 'any'
+      overshoot_f(1)        = 0.0174
+      overshoot_f0(1)       = 0.0087
 
 
 / ! end of controls namelist
