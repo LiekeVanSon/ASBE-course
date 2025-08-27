@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1756282398.07696 "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session2/MESA_session2.tex" "latex_output/MESA_session2.pdf" "MESA_session2" 1756282398.83449 0
-  "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session2/MESA_session2.tex" 1756282397.63024 21636 ffe76057848243da0990eb469331b37b ""
+["pdflatex"] 1756282530.03434 "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session2/MESA_session2.tex" "latex_output/MESA_session2.pdf" "MESA_session2" 1756282530.81815 0
+  "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session2/MESA_session2.tex" 1756282529.81134 21641 3e46a815c2dcb61cce4323c65b2e39d7 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -200,9 +200,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1756128671 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1756128662 3345738 823ac6b79ba5952b0671a616ebca262f ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "MESA_session2.tex" 1756282397.63024 21636 ffe76057848243da0990eb469331b37b ""
-  "latex_output/MESA_session2.aux" 1756282398.76873 1315 e6283a53bd8481e74dd650c2179717e0 "pdflatex"
-  "latex_output/MESA_session2.out" 1756282398.7691 1042 357450dbba623ad6f7041b67eadfdb24 "pdflatex"
+  "MESA_session2.tex" 1756282529.81134 21641 3e46a815c2dcb61cce4323c65b2e39d7 ""
+  "latex_output/MESA_session2.aux" 1756282530.75218 1315 e6283a53bd8481e74dd650c2179717e0 "pdflatex"
+  "latex_output/MESA_session2.out" 1756282530.75257 1042 357450dbba623ad6f7041b67eadfdb24 "pdflatex"
   "open_jupyternotebook.png" 1756274330.41768 201381 df084072a09ba601830edf55649ca3a2 ""
   (generated)
   "latex_output/MESA_session2.aux"
