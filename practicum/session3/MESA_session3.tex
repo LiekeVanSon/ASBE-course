@@ -93,28 +93,27 @@ For this problem set, make a new copy of the \texttt{\$MESA\_DIR/star/work}
 directory and place \texttt{hw3\_inlist} and \texttt{hw3\_history\_columns.list} in your new working directory.
 In the \texttt{inlist} file, change \texttt{inlist\_project} to \texttt{hw3\_inlist}.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Energy Production in Massive Stars}
 
 Let's explore the contributions of various nuclear reaction chains to the bolometric luminosities of massive stars.
-\todo{Rerun all with }
+\todo{Rerun all with \texttt{delta\_HR\_limit = 0.003d0} and probably just He exhaustion, because C exhaust takes too long and isnt good for anything }
 
 \begin{itemize}
-    \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central carbon exhaustion.
-    To achieve this, add to the \texttt{\&controls} :
+    \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central He exhaustion.
+    To achieve this add the right commands to the \texttt{\&controls} section in \texttt{inlist\_project}
+    %     \begin{lstlisting}
+    % xa_central_lower_limit_species(1) = 'c12'
+    % xa_central_lower_limit(1) = 1d-5
+    %     \end{lstlisting}
+    
+    Note the setting \texttt{log\_directory = 'M15\_HW3'}: will redirect your output to a new directory with this name, so you don't have to copy the whole work directory each time you want to run a new model.
+    
 \end{itemize}
-    \begin{lstlisting}
-xa_central_lower_limit_species(1) = 'c12'
-xa_central_lower_limit(1) = 1d-5
-    \end{lstlisting}
 
-Note the setting \texttt{log\_directory = 'M15\_HW3'}: will redirect your output to a new directory with this name, so you don't have to copy the whole work directory each time you want to run a new model.
-
-
-\begin{enumerate}
+\begin{enumerate}[label=(\alph*)]
     \item Plot the evolutionary tracks of all five stars on a single HR diagram. 
-    Clip the first $\sim 10^3$ years of evolution for clarity.
+    Clip the pre-main sequence evolution from your plot for clarity.
 
     Color-code the tracks by the dominant source of nuclear burning. The three output quantities of interest are:
     \begin{itemize}
@@ -129,57 +128,49 @@ Note the setting \texttt{log\_directory = 'M15\_HW3'}: will redirect your output
         \item Identify and mark regions where no single source dominates the total luminosity.
     \end{enumerate}
 
-    \item Interpret your results: 
+    \item Interpret your results. 
 
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolution of massive stars with mass loss}
 
-In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
+In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. 
+We will use the same inlist as in Problem 1. As before, \emph{change the \texttt{log\_directory}} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
 
-\begin{enumerate}
+\begin{enumerate}[label=(\alph*)]
 \item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
 
-\item Make a \texttt{Python} script to plot all 3 evolutionary tracks on an HR diagram. Can you explain the difference in the tracks? Discuss again with your neighbours to compare stars of different mass.
+\item Plot all 3 evolutionary tracks on an HR diagram, but now color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
+Can you explain the difference in the tracks? 
+Discuss with your neighbours to compare stars of different mass.
+
+%%%%%%%%%% surf ab questions
+\item Investigate surface abundance changes due to mass-loss. 
+\begin{itemize}
+    \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
+    \item Color-code HR tracks by:
+    \begin{enumerate}
+        \item Surface helium abundance
+        \item Surface N/C ratio
+    \end{enumerate}
+
+\end{itemize}
 
 \item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
 
 \item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+%%%%%%%%%% surf ab questions
 
-\item EXTRA: After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
+
+\item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
+
+\item After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
 % This is already a sub panel in the grid in inlist_pgstar
 % Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
 Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
+
 \end{enumerate}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Wolf–Rayet stars}
-
-We will use the same models as in Problem 1, but investigate the 
-
-\begin{itemize}[leftmargin=1.5em]
-
-    \item Analyze the following:
-    \begin{enumerate}[label=(\alph*)]
-        \item %Compare HR tracks with and without mass-loss (one panel per mass). 
-        Inspect the HR diagram again, but now color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
-        
-        Describe %how the tracks differ as a function of stellar mass. Is there a threshold mass above which mass-loss effects qualitatively change the evolutionary path?
-
-        \item Investigate surface abundance changes due to mass-loss. 
-        \begin{itemize}
-            \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
-            \item Color-code HR tracks by:
-            \begin{enumerate}
-                \item Surface helium abundance
-                \item Surface N/C ratio
-            \end{enumerate}
-            \item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
-        \end{itemize}
-    \end{enumerate}
-\end{itemize}
 
 
 
