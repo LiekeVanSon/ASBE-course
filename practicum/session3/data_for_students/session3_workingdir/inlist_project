@@ -77,7 +77,7 @@
     delta_lg_XHe_cntr_min = -6.0d0
 
   ! Resolve when the star goes off the Main sequence
-    delta_HR_limit = 0.003d0
+    delta_HR_limit = 0.001d0 ! 
 
 
 / ! end of controls namelist
