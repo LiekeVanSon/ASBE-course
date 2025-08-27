@@ -10,6 +10,10 @@
   ! stop before terminate so that you can see the plots 
     pause_before_terminate = .true.
 
+  ! to specify which output columns we want in history.data and profile.data
+  history_columns_file = 'history_columns.list'
+  profile_columns_file = 'profile_columns.list'
+
 / !end of star_job namelist
 
 

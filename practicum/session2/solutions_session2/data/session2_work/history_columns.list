@@ -153,7 +153,7 @@
          ! the smallest regions will be merged with neighbors for reporting purposes only.
 
 
-      !mix_relr_regions <integer>
+      mix_relr_regions 10
          ! same as above, but locations given as r/rstar instead of m/mstar.
          ! the columns in the log file will have names like 'mix_relr_type_1' and 'mix_relr_top_1'
 

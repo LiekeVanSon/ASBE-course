@@ -115,7 +115,10 @@ There are two main types of output:
 \end{itemize}
 
 \noindent Lastly, you might also notice a \textbf{profiles.index} file. This maps profile filenames to model numbers. MESA saves profiles only at selected steps. Each line lists a model number, its priority (1 or 2), and the corresponding profile number.
-%
+
+
+You can customize the \texttt{MESA} output through the \texttt{history\_columns.list} and \\
+\texttt{profile\_columns.list} files. In order to customize the output, just copy these files to your work directory, and uncomment the variables you want to include in the output. You can find default variations of these files in the \texttt{\$MESA\_DIR/star/defaults/} directory. 
 We will control some of the output of your \texttt{MESA} models in section \ref{sec:make_kippenhahn}.
 
 
@@ -330,14 +333,16 @@ Here we will enable the necessary \texttt{MESA} output columns,  help you set up
 
 \subsection{Setting \texttt{MESA} output}
 
-You can customize the \texttt{MESA} output through the \texttt{history\_columns.list} and \texttt{profile\_columns.list} files. In order to customize the output, just copy these files to your work directory, and uncomment the variables you want to include in the output. You can find default variations of these files in the \texttt{\$MESA\_DIR/star/defaults/} directory. 
+
 
 
 We will use the \texttt{mkipp}. tool from \url{https://github.com/orlox/mkipp}.
 As you can read on the github page, to use \texttt{mkipp} you need to have the following \texttt{MESA} output available:\\
 %
-``IMPORTANT!! your \texttt{history\_columns.list} needs to have \texttt{mixing\_regions} and \\
- \texttt{mix\_relr\_regions} specified for MESA to output the neccesary data of the mixing regions in terms of mass and radius respectively. Also, newer versions of MESA include significantly less output in the profile files, so values such as \texttt{eps\_nuc} need to be added to \texttt{profile\_columns.list} as well."
+\begin{quote}
+IMPORTANT!! your \texttt{history\_columns.list} needs to have \texttt{mixing\_regions} and \\
+ \texttt{mix\_relr\_regions} specified for MESA to output the neccesary data of the mixing regions in terms of mass and radius respectively. Also, newer versions of MESA include significantly less output in the profile files, so values such as \texttt{eps\_nuc} need to be added to \texttt{profile\_columns.list} as well.
+\end{quote}
 
 % \begin{lstlisting}
 %   mixing_regions
@@ -347,7 +352,7 @@ As you can read on the github page, to use \texttt{mkipp} you need to have the f
 %               % Profile (mass,radius,eps_nuc)
 % \end{lstlisting}
 
-\begin{enumerate}
+\begin{itemize}
 
   \item Pick one star that you like, and make sure that all these variables are uncommented. \\
    (i.e., remove the `!' in front of the variable) for both \texttt{history\_columns.list} and \\ 
@@ -403,7 +408,7 @@ Do you understand what all the colors and hatching in the KHD mean?
 
 \item Play around with the various options of \texttt{KippArgs} to customize your KHD. Have a look at the \texttt{mkipp/example.py} script for inspiration. 
 
-\end{enumerate}
+\end{itemize}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
