@@ -6,8 +6,11 @@
 \usepackage{natbib} 
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{graphicx} % needed for \includegraphics
+\usepackage{caption}
 
 \newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\MESA}{\texttt{MESA}\,}
 
 % define a bunch of colors for pretty bash code blocks
 \usepackage{xcolor}  % for coloring
@@ -96,11 +99,11 @@
 \noindent {\color{blue}Hand in your answers to all the numbered questions (i.e. 3.1 a, b, c etc.), they will make up your grade for the MESA practicum part of the course.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Working with MESA output}
+\section{Understanding MESA output}
 
 The following is a summary of the official \href{https://docs.mesastar.org/en/latest/using_mesa/output.html}{MESA documentation}. For a more comprehensive overview of available output options, please refer directly to the documentation.
 %
-You might have noticed that \texttt{MESA} stores its output as plain text files in the \texttt{LOGS} directory. 
+You might have noticed that \MESA stores its output as plain text files in the \texttt{LOGS} directory. 
 %
 There are two main types of output:
 
@@ -117,59 +120,92 @@ We will control some of the output of your \texttt{MESA} models in section \ref{
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Using MESA Reader}
-\texttt{MESA Reader} is a \texttt{Python} framework with which one can easily plot data from the history and profile files. Read through the section on \href{https://docs.mesastar.org/en/latest/using_mesa/output.html#plotting-mesa-output}{MESA Reader} on the website to get familiar with its capabilities. 
+\texttt{MESA Reader} is a \texttt{Python} tool for reading and plotting history and profile data; see \href{https://docs.mesastar.org/en/latest/using_mesa/output.html#plotting-mesa-output}{MESA Reader} for details. Although \MESA outputs text files, restarts can duplicate model numbers and large headers make manual parsing tedious—\texttt{MESA Reader} handles all of this for you!
 
 We want to install \texttt{MESA Reader}, but in such a way that we can always activate/access it, regardless of which computer we are using in the Faculty. 
 Turns out that python \href{https://virtualenv.pypa.io/en/latest/user_guide.html}{\texttt{virtual environments}} are exactly what we are looking for!
 
-\begin{enumerate}
-  \item \textbf{Create a virtual environment} by running the following command in your home directory using the terminal:
-\begin{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Jupyter Hub and virtual environments}
+
+Throughout this course, we will use \texttt{Jupyter Notebooks} to analyse our results. 
+If you have correctly copied your data to your home directory as explained in the previous session, you can access your this data via the RU JupyterHub: \url{https://jupyterhub.science.ru.nl/} and logging in with your science account.
+
+You can create a Jupyter Notebook by clicking \texttt{File>New>Notebook}. It ask you which kernel to use: \texttt{Python3 ipykernel} will work out of the box for general analysis, but it does not have \texttt{MESA Reader} installed. For this purpose we will create our own \texttt{virtual environment} (venv) in which we install \texttt{MESA Reader} and other useful packages.
+
+
+
+\paragraph{Creating a virtual environment}
+
+
+\begin{itemize}
+
+  \item When you are logged in, open a \textit{Jupyter Hub} terminal
+
+\begin{figure}[h] % [h] = here, [t] = top, [b] = bottom, [p] = separate page
+    \centering
+    \includegraphics[width=\textwidth]{open_jupyternotebook.png} % path to your figure
+    \caption*{ }
+    \label{fig:myplot}
+\end{figure}
+
+  \item Inside your JupyterHub terminal, \textbf{Create a virtual environment} by running the following:
+  \begin{lstlisting}
   mkdir -p ~/venvs     # make dir to store venvs
   cd ~/venvs           # go to that directory
   python -m venv myenv # create a venv called myenv
   source ~/venvs/myenv/bin/activate  # activate venv
-\end{lstlisting}
-    You will notice that your terminal prompt changes adding \texttt{(myenv)} to the stars, indicating that you are now working inside the virtual environment. To deactivate the virtual environment, simply run: \texttt{deactivate}.
+  \end{lstlisting}
 
-    \item While inside your virtual environment, you can install Mesa Reader by running:
+  You will notice that your terminal prompt changes adding \texttt{(myenv)} to the start, indicating that you are now working inside the virtual environment. To deactivate the virtual environment, simply run: \texttt{deactivate}.
+
+  We need to ensure the package manager 'pip install' is up to date and available in our venv: 
+  \begin{lstlisting}
+  python -m ensurepip --upgrade
+  python -m pip install --upgrade pip setuptools wheel ipykernel
+  \end{lstlisting}
+
+
+  \item While your venv is active, you can install Mesa Reader by running:
 \begin{lstlisting}
-  pip install mesa_reader
+  python -m pip install mesa-reader
 \end{lstlisting}
-    You can install all kinds of useful python packages like this in your venv using \texttt{pip install <package\_name>}. Though note that you can only install packages in your venv when it is activated!
 
-    If for some reason you encounter trouble with the pip install, you can alternatively directly git clone (download) the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} somewhere in your \texttt{home} directory (e.g. \verb|~/codes|)\footnote{Note that the symbol \texttt{\~} points to your home directory.} by running:
+    You can install all kinds of useful python packages like this in your venv using \texttt{python -m pip install <package\_name>}.\footnote{Note that normally you often use the slightly simpler \texttt{pip install <package\_name>}, but this can sometimes lead to some issues with the environment not being recognized due to PATH issues.}
+
+    If for some reason you encounter trouble with the pip install, you can alternatively directly git clone (download) the code from the project's \href{https://github.com/wmwolf/py_mesa_reader}{Github repository} somewhere in your \texttt{home} directory (e.g. \verb|~/codes|)\footnote{\texttt{ \~  } is an alias for your home directory.} by running:
 \begin{lstlisting}
   git clone https://github.com/wmwolf/py_mesa_reader.git ~/codes/py_mesa_reader
 \end{lstlisting}
     Then run \texttt{python setup.py install} inside the cloned directory.
 
-\item
-  Throughout this course, we will use \texttt{Jupyter Notebook} to analyse our results. 
-  If you have correctly copied your 
-  This is accessed via \url{https://jupyterhub.science.ru.nl/} and logging in with your science account.
-  When you are logged in, activate your virtual environment by opening a terminal in Jupyter and running 
-\begin{lstlisting}
-source ~/venvs/myenv/bin/activate 
-\end{lstlisting}
 
-  Next, we need to register our venv as a kernel in the Jupyter hub, you only have to do this once. Run the following command in a \textit{Jupyter Hub} terminal:
+  Next, we need to register our venv as a Jupyter kernel:
 
 \begin{lstlisting}
- pip install ipykernel     # to run notebooks in your venv 
+ pip install ipykernel     # makes venv able to run noteboooks
  python -m ipykernel install --user --name=myenv --display-name "Python (myenv)"
 \end{lstlisting}
+
+this should give you a message like: "Installed kernelspec myenv in ..."
+
 
   % Make sure your notebook is inside your plotting folder as to be able to access \texttt{MESA Reader}.}, or \texttt{Spyder3}\footnote{When running scripts in \texttt{Spyder}, you need to change the working directory as to have access to \texttt{MESA Reader} by going to \texttt{Run}, \texttt{Configuration per file...}, and changing \texttt{Working Directory settings} by putting in the correct path to your plotting folder with the \texttt{The following directory} option.}. To read in the data, you need to move the \texttt{history.data} files from your \texttt{scratch} directory to somewhere in your plotting folder, for example inside a folder called \texttt{data} and there inside a folder called after its run (e.g. \texttt{M3.0ov0}).
   % For this example, you use the following line in your \texttt{Python} script:
   
-  \item Open a new notebook in Jupyter by clicking on the plus sign in the top right, anf from the new launcher select under Notebook: \texttt{Python (myenv)}.
-  In this notebook you should now be able to import \texttt{MESA Reader} without any errors:
+  \item Open a new notebook, you should now see your newly created \texttt{Python (myenv)} as an option in the kernel dropdown menu. Note that you can always switch kernels by clicking on the kernel name in the top right of your notebook.
+  
+  \item You should now be able to import \texttt{MESA Reader} without any errors, type:
   \begin{lstlisting}[style=pythonstyle]
   import mesa_reader as mr
   \end{lstlisting}
+
+  and run your cell (\texttt{Shift + Enter})
 
   Note some other useful imports for calculating and plotting purposes could be:
   \begin{lstlisting}[style=pythonstyle]
@@ -179,9 +215,9 @@ source ~/venvs/myenv/bin/activate
     import astropy.constants as const
   \end{lstlisting}
 
-  What \texttt{pip install} commands do you need to run to get all the aforementioned packages? 
+  All of these packages can be installed in your venv using \texttt{pip install <package\_name>} in your jupyter terminal as explained above. We leave it to you to figure out which \texttt{pip install} commands do you need to run to get all the aforementioned packages. 
 
-\end{enumerate}
+\end{itemize}
 
 % \subsection*{Using \texttt{MesaLogDir}}
 
@@ -205,7 +241,7 @@ We will now investigate the effect of overshooting. In order to do this, we evol
 
 \begin{enumerate}
 
-\item \textbf{Download and set up the work folder.} 
+\item[3.1] \textbf{Download and set up the work folder.} 
 Instead of starting from the beginning and copying the model work directory like last time to edit, a \texttt{MESA} model has largely been constructed for you already. 
 
 
