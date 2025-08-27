@@ -16,7 +16,11 @@
 &controls
 
   ! Initial mass of the star
-    initial_mass = 3.0 ! in Msun units
+    initial_mass = 15.0 ! in Msun units
+
+  ! output directory for log files
+    log_directory = 'M15_HW3'
+
 
   ! options for energy conservation (see MESA V, Section 3)
     use_dedt_form_of_energy_eqn = .true.
@@ -54,8 +58,8 @@
   !   S T O P P I N G   C O N D I T I O N S
 
   ! stop when the center mass fraction of he4 drops below this limit
-    xa_central_lower_limit_species(1) = 'he4'
-    xa_central_lower_limit(1) = 1d-4
+    xa_central_lower_limit_species(1) = 'c12'
+    xa_central_lower_limit(1) = 1d-5
 
 
   !   T E C H N I C A L   S E T T I N G S
