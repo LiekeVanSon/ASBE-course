@@ -88,24 +88,9 @@
 \maketitle
 \vspace{-1cm}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Population III stars}
 
-% \begin{enumerate}
-%   \setcounter{enumi}{1}
-%   \item We’re now going to consider the effect of the CNO cycle on the structure of a $5M_{\odot}$ star. Recall from class that stars above $> 2M_{\odot}$ undergo H burning via the CNO cycle, whereas lower mass stars undergo H burning via the pp chain. 
-
-%   You’ve already computed a ``standard'' $5M_{\odot}$ model in Problem 1, so now lets explore a few modifications (make sure that you reset the stopping conditions to be the same as in Problem 1). First, compute a model in which the metallicity is $Z=0.0$ (set \texttt{initial\_z=0.0}). There will be no CNO elements in the star, so it must undergo pp chain H burning.
-
-%   Next, lets keep the metallicity at the default value ($Z=0.02$) and simply turn off the CNO reaction networks in \texttt{MESA}, thereby forcing the star to undergo pp chain reactions. This experiment provides a more direct test of the effect of CNO cycle vs.\ pp chain burning because the opacities, mean molecular weight, etc.\ remain the same. To do this, copy over \verb|\$MESA_DIR/data/net_data/nets/basic.net| to your work directory, name it \texttt{basic\_no\_cno.net}, comment out the four cno reactions (with \texttt{!} as the comment character), and point your inlist to the new file (using the \texttt{new\_net\_name} variable).
-
-%   \begin{enumerate}
-%     \item For these three models, plot \texttt{gradr\_sub\_grada} vs.\ $m/M$ for the models at the stopping criterion (the last one printed to file). This quantity is $> 0.0$ in regions where the star is convectively unstable. What do you notice? Next, plot $\log T$ vs.\ $\log \rho$ profiles for these three models. Comment on what you observe. Why does CNO burning produce such a different core structure compared to pp burning?
-
-%     \item Next, plot the evolution in $L-T_{\mathrm{eff}}$. Comment on what you see. Why are the differences more pronounced between the default model and the $Z=0.0$ model, compared to the model in which CNO burning is turned off? Consider the other effects that the composition has besides the nuclear reaction rates. 
-%   \end{enumerate}
-% \end{enumerate}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For this problem set, make a new copy of the \texttt{\$MESA\_DIR} 
+directory and place \texttt{hw3\_inlist} and \texttt{hw3\_history\_columns.list} in your new working directory.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,6 +180,26 @@ In this exercise, we will evolve a massive star and investigate the effect of wi
 Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
 \end{enumerate}
 
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Population III stars}
+
+% \begin{enumerate}
+%   \setcounter{enumi}{1}
+%   \item We’re now going to consider the effect of the CNO cycle on the structure of a $5M_{\odot}$ star. Recall from class that stars above $> 2M_{\odot}$ undergo H burning via the CNO cycle, whereas lower mass stars undergo H burning via the pp chain. 
+
+%   You’ve already computed a ``standard'' $5M_{\odot}$ model in Problem 1, so now lets explore a few modifications (make sure that you reset the stopping conditions to be the same as in Problem 1). First, compute a model in which the metallicity is $Z=0.0$ (set \texttt{initial\_z=0.0}). There will be no CNO elements in the star, so it must undergo pp chain H burning.
+
+%   Next, lets keep the metallicity at the default value ($Z=0.02$) and simply turn off the CNO reaction networks in \texttt{MESA}, thereby forcing the star to undergo pp chain reactions. This experiment provides a more direct test of the effect of CNO cycle vs.\ pp chain burning because the opacities, mean molecular weight, etc.\ remain the same. To do this, copy over \verb|\$MESA_DIR/data/net_data/nets/basic.net| to your work directory, name it \texttt{basic\_no\_cno.net}, comment out the four cno reactions (with \texttt{!} as the comment character), and point your inlist to the new file (using the \texttt{new\_net\_name} variable).
+
+%   \begin{enumerate}
+%     \item For these three models, plot \texttt{gradr\_sub\_grada} vs.\ $m/M$ for the models at the stopping criterion (the last one printed to file). This quantity is $> 0.0$ in regions where the star is convectively unstable. What do you notice? Next, plot $\log T$ vs.\ $\log \rho$ profiles for these three models. Comment on what you observe. Why does CNO burning produce such a different core structure compared to pp burning?
+
+%     \item Next, plot the evolution in $L-T_{\mathrm{eff}}$. Comment on what you see. Why are the differences more pronounced between the default model and the $Z=0.0$ model, compared to the model in which CNO burning is turned off? Consider the other effects that the composition has besides the nuclear reaction rates. 
+%   \end{enumerate}
+% \end{enumerate}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
