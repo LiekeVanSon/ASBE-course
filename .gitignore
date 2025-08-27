@@ -8,5 +8,5 @@ lectures
 
 
 .venv
-practicum/session*/solutions_session*/data/
+practicum/session*/solutions_session*/data/*
 practicum/.DS_Store
