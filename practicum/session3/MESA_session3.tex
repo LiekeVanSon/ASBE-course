@@ -133,24 +133,39 @@ Note the setting \texttt{log\_directory = 'M15\_HW3'}: will redirect your output
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stellar Winds}
+\section{Evolution of massive stars with mass loss}
 
-Mass-loss plays a critical role in the late evolution of massive stars. This problem focuses on the effects of including stellar winds in your MESA models.
+In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
+
+\begin{enumerate}
+\item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
+
+\item Make a \texttt{Python} script to plot all 3 evolutionary tracks on an HR diagram. Can you explain the difference in the tracks? Discuss again with your neighbours to compare stars of different mass.
+
+\item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
+
+\item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+
+\item EXTRA: After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
+% This is already a sub panel in the grid in inlist_pgstar
+% Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
+Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wolf–Rayet stars}
+
+We will use the same models as in Problem 1, but investigate the 
 
 \begin{itemize}[leftmargin=1.5em]
-    \item Use the same models as in Problem 1, but re-run them with the Dutch mass-loss scheme by setting:
-    
-    \begin{lstlisting}
-    hot_wind_scheme = 'Dutch'
-    cool_wind_RGB_scheme = 'Dutch'
-    cool_wind_AGB_scheme = 'Dutch'
-    \end{lstlisting}
 
     \item Analyze the following:
     \begin{enumerate}[label=(\alph*)]
-        \item Compare HR tracks with and without mass-loss (one panel per mass). Color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
+        \item %Compare HR tracks with and without mass-loss (one panel per mass). 
+        Inspect the HR diagram again, but now color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
         
-        Describe how the tracks differ as a function of stellar mass. Is there a threshold mass above which mass-loss effects qualitatively change the evolutionary path?
+        Describe %how the tracks differ as a function of stellar mass. Is there a threshold mass above which mass-loss effects qualitatively change the evolutionary path?
 
         \item Investigate surface abundance changes due to mass-loss. 
         \begin{itemize}
@@ -167,24 +182,52 @@ Mass-loss plays a critical role in the late evolution of massive stars. This pro
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Evolution of massive stars with mass loss}
+\section{Radius evolution of massive stars}
 
-In this exercise, we will evolve a massive star and investigate the effect of wind mass loss on the evolution of the star. As before, \emph{create a new work folder} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
+This exercise is a continuation on the second exercise of the previous \texttt{MESA} session. In the last session, you evolved a massive star between 15 and 100 M$_\odot$ up to the end of core helium burning. If you have not done this part yet, then modify the inlist from last week to evolve a star between 15 and 100 M$_\odot$ and change the \verb|Dutch_scaling_factor| to 1.0. Next, compile and run the model. Use the output of this model (stored in \verb|LOGS/history.data|) and compute the following:
+
 \begin{enumerate}
-\item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. Similar to the previous exercise, run several models with a different wind strength. To do this, uncomment all the lines relating to `wind mass loss' and vary the \verb|Dutch_scaling_factor| between 0 and 1. Run 3 models again with scaling factors of e.g. 0.1, 0.5, and 1.0. During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? %Do not forget to compile before each run and to save your history profile to a different name after each run!
-\item Make a \texttt{Python} script to plot all 3 evolutionary tracks on an HR diagram. Can you explain the difference in the tracks? Discuss again with your neighbours to compare stars of different mass.
-\item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
-\item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
-
-\item EXTRA: After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
-% This is already a sub panel in the grid in inlist_pgstar
-% Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
-Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
+\item Make a plot of the radius of the star versus the age. What are the fast and slow phases of evolution? When does the star expand, and when does it contract? By how much does the star expand during its evolution?
+\item If the star is in a binary system, in which phase in its evolution is it most likely that the star fills its Roche lobe?\\
+\textit{Note}: Observations show that the distribution of the orbits of binary stars is roughly uniform in $\log(a)$. For example, the number of binary stars with separations in the range 10--100 R$_\odot$ is similar to that in the range 100--1000 R$_\odot$.
+\item Find the values of the radius of this star that delimit Case A, Case B and Case C of mass transfer. (See p.\ 225 in Chapter 15 of the lecture notes for a definition of these different cases.)
+%\item Find the radius of star at (\textit{i}) the ZAMS, (\textit{ii}) the TAMS, (\textit{iii}) the maximum radius before central helium ignition, (\textit{iv}) the maximum radius before the end of the evolution run but after central helium ignition.
 \end{enumerate}
 
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Stellar Winds}
+
+% Mass-loss plays a critical role in the late evolution of massive stars. This problem focuses on the effects of including stellar winds in your MESA models.
+
+% \begin{itemize}[leftmargin=1.5em]
+%     \item Use the same models as in Problem 1, but re-run them with the Dutch mass-loss scheme by setting:
+    
+%     \begin{lstlisting}
+%     hot_wind_scheme = 'Dutch'
+%     cool_wind_RGB_scheme = 'Dutch'
+%     cool_wind_AGB_scheme = 'Dutch'
+%     \end{lstlisting}
+
+%     \item Analyze the following:
+%     \begin{enumerate}[label=(\alph*)]
+%         \item Compare HR tracks with and without mass-loss (one panel per mass). Color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
+        
+%         Describe how the tracks differ as a function of stellar mass. Is there a threshold mass above which mass-loss effects qualitatively change the evolutionary path?
+
+%         \item Investigate surface abundance changes due to mass-loss. 
+%         \begin{itemize}
+%             \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
+%             \item Color-code HR tracks by:
+%             \begin{enumerate}
+%                 \item Surface helium abundance
+%                 \item Surface N/C ratio
+%             \end{enumerate}
+%             \item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
+%         \end{itemize}
+%     \end{enumerate}
+% \end{itemize}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \section{Population III stars}
@@ -204,6 +247,11 @@ Now follow the evolution and try to identify the different burning stages in the
 %   \end{enumerate}
 % \end{enumerate}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
