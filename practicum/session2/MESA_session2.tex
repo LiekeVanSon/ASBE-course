@@ -398,21 +398,23 @@ import kipp_data
 import mesa_data
 \end{lstlisting}
 
+\end{itemize}
+
+\begin{enumerate}[label=\alph*)]
 \item To run a Kippenhahn diagram, you need to define the \texttt{logs\_dir} argument of the \texttt{KippArgs} function as a list containing the path to your MESA output directory. For example, you can create a Kippenhahn diagram using the following command:
 
 \begin{lstlisting}[style=pythonstyle]
 mkipp.kipp_plot(mkipp.Kipp_Args(logs_dirs = ['data/M3.0ov0/LOG']))
 \end{lstlisting}
 
-Do you understand what all the colors and hatching in the KHD mean? 
+Describe what you see in your Kippenhahn plot, please explain all the colors and hatching (hint: look inside \texttt{mkipp.py}).
 
 \item Play around with the various options of \texttt{KippArgs} to customize your KHD. Have a look at the \texttt{mkipp/example.py} script for inspiration. 
+Create at least one variation of the KHD that you like, and include it in your hand in.
 
-\end{itemize}
 
+\end{enumerate}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{\todo{Rotation?}}
 
 % \bibliographystyle{plainnat}
 % \bibliography{gmlib.bib}
