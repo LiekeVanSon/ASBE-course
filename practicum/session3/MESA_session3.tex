@@ -89,9 +89,9 @@
 \vspace{-1cm}
 
 
-For this problem set, make a new copy of the \texttt{\$MESA\_DIR} 
+For this problem set, make a new copy of the \texttt{\$MESA\_DIR/star/work} 
 directory and place \texttt{hw3\_inlist} and \texttt{hw3\_history\_columns.list} in your new working directory.
-In the \texttt{inlist} file, change \texttt{inlist\_project} to \texttt{hw3\_inlist}. In  \texttt{history\_columns\_file} to \texttt{hw3\_history\_columns.list}.
+In the \texttt{inlist} file, change \texttt{inlist\_project} to \texttt{hw3\_inlist}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,12 +101,15 @@ Let's explore the contributions of various nuclear reaction chains to the bolome
 
 \begin{itemize}
     \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central carbon exhaustion.
-    To achieve this, set:
+    To achieve this, add to the \texttt{\&controls} :
 \end{itemize}
     \begin{lstlisting}
 xa_central_lower_limit_species(1) = 'c12'
 xa_central_lower_limit(1) = 1d-5
     \end{lstlisting}
+
+Note the setting \texttt{log\_directory = 'M15\_HW3'}: will redirect your output to a new directory with this name, so you don't have to copy the whole work directory each time you want to run a new model.
+
 
 \begin{enumerate}
     \item Plot the evolutionary tracks of all five stars on a single HR diagram. 
