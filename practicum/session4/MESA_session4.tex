@@ -115,13 +115,20 @@ For this exercise, we will model the well-known X-ray binary SS433, (e.g., \href
 
 We will model the evolution of this binary in the \texttt{binary} module in \texttt{MESA}, treating the black hole as a point mass. This is a good approximation if you are interested in the evolution of the donor star and the binary system when the companion is a compact object. 
 
-\begin{enumerate}
-  \item Download the work folder from Brightspace (\verb|session4.tar|) and inspect the inlists (which are the settings for the binary system and for the donor star?). Get familiar with all the controls that are available. If necessary, go to the website and get more information under the tab \verb|binary_controls defaults|\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html}}. 
+\begin{enumerate}[label=(\alph*)]
+  \item Download the work folder from Brightspace (\verb|session4.tar|) and inspect the inlists (which are the settings for the binary system and for the donor star?). Briefly explain the structure and meaning of all the inlists. 
   
-  \item Modify the physical parameters of the system to approximately match the X-ray binary SS433. While you can choose values for the mass of the donor star and of the black hole within the observed error bars, \texttt{MESA} has a tendency to get stuck for a lot of mass configurations. Configurations that do run are for example $M_1=12$  M$_\odot$ and $M_2=3.5$  M$_\odot$, or $M_1=9$  M$_\odot$ and $M_2=4$  M$_\odot$. Set the initial period to 15 days. Do you expect the system to undergo Case A, B, or C mass transfer?
+  \item Get familiar with all the controls that are available. If necessary, go to the website and get more information under the tab \verb|binary_controls defaults|\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html}}, or check the files: \\
+   \texttt{\$MESA\_DIR/binary/defaults/binary\_controls.defaults} \\
+  \texttt{(...)binary\_history\_columns.list}, and \texttt{(...)binary\_job.defaults}.
   
+  \begin{itemize}    
+  \item Modify the physical parameters of the system to approximately match the X-ray binary SS433. While you can choose values for the mass of the donor star and of the black hole within the observed error bars, \texttt{MESA} has a tendency to get stuck for a lot of mass configurations. Configurations that do run are for example $M_1=12$  M$_\odot$ and $M_2=3.5$  M$_\odot$, or $M_1=9$  M$_\odot$ and $M_2=4$  M$_\odot$. Set the initial period to 15 days. 
+  \end{itemize}
+  % \item  Take the mass of the donor to be 15 M$_\odot$ and the mass of the black hole to be 5 M$_\odot$. 
+    
+  \item Do you expect the system to undergo Case A, B, or C mass transfer? Think of Keplers $3^{rd}$ law and the equation for the Roche radius. 
   
-  \item  Take the mass of the donor to be 15 M$_\odot$ and the mass of the black hole to be 5 M$_\odot$. 
 
   \end{enumerate}
 
@@ -136,10 +143,15 @@ We will model the evolution of this binary in the \texttt{binary} module in \tex
   \addtocounter{enumi}{2}
   \item Now compile (\verb|./mk|) and run (\verb|./rn|) the code. While your model is running, inspect the plots that appear.
   \begin{enumerate}
-  \item Examine the HR diagram. How does it differ from the single massive star track you computed in the previous exercise? At what point in the HR diagram does the donor star fill its Roche lobe? At what point does the donor star stop transferring mass? What are the properties of the donor star after the mass-transfer phase stops?
+
+  \item Plot and inspect the HR diagram of the donor. How does it differ from the single massive star track you computed in the previous exercise? At what point in the HR diagram does the donor star fill its Roche lobe? At what point does the donor star stop transferring mass? What are the properties of the donor star after the mass-transfer phase stops?
+
   \item What happens with the orbital separation during mass transfer? Does the orbit shrink or widen?
-  \item How high is the mass transfer rate? Is it higher or lower than the rate at which the black hole can accrete?
+
+  \item How high is the mass transfer rate? Is it higher or lower than the rate at which the black hole can accrete?  Make sure to use appropriate x and y lims when you plot the eddington accretion rate and donor mass transfer rate. 
+
   \item How much mass did the donor star lose? What fraction of this mass is accreted by the black hole and how much is lost from the system?
+
   \end{enumerate}
 
 \end{enumerate}
@@ -150,7 +162,7 @@ We will model the evolution of this binary in the \texttt{binary} module in \tex
 
 At the end of your simulation you formed a helium star in an orbit around a black hole. The fate of such a helium star is not well known, but let's speculate:
 
-\begin{enumerate}
+\begin{enumerate}[label=(\alph*)]
   \item If the helium star directly collapses to a black hole, it will form a binary black hole system. What will be the masses of the black holes and what will be their separation?
 
   \item Eventually these two black holes will merge due to the loss of angular momentum in the form of gravitational waves. The time it takes for a double black hole system to merge is given by:
