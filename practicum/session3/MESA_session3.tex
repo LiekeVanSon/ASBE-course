@@ -107,12 +107,12 @@ Let's explore the contributions of various nuclear reaction chains to the bolome
 (and maybe turn off winds? )}
 
 \begin{itemize}
-    \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central He exhaustion.
-    To achieve this add the right commands to the \texttt{\&controls} section in \texttt{inlist\_project}
-    %     \begin{lstlisting}
-    % xa_central_lower_limit_species(1) = 'c12'
-    % xa_central_lower_limit(1) = 1d-5
-    %     \end{lstlisting}
+    \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central C exhaustion.
+    To achieve this add to the \texttt{\&controls} section in \texttt{hw3\_inlist}
+        \begin{lstlisting}
+    xa_central_lower_limit_species(1) = 'c12'
+    xa_central_lower_limit(1) = 1d-5
+        \end{lstlisting}
     
     Note the setting \texttt{log\_directory = 'M15\_HW3'}: will redirect your output to a new directory with this name, so you don't have to copy the whole work directory each time you want to run a new model.
     
@@ -154,6 +154,7 @@ We will use the same inlist as in Problem 1. As before, \emph{change the \texttt
 
 \begin{enumerate}[label=(\alph*)]
 \item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. 
+We only want to run the stars until core He exhaustion (this will save you a lot of compute time).
 Run the same mass model with 3 different mass-loss rates. To do this vary the \verb|Dutch_scaling_factor| between 0 and 1, (for example 0.1, 0.5, and 1.0). 
 During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? 
 
