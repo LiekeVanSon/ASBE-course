@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1756394630 "/mnt/home/lvanson/ASBE-course/practicum/session4/MESA_session4.tex" "latex_output/MESA_session4.pdf" "MESA_session4" 1756394631
-  "/mnt/home/lvanson/ASBE-course/practicum/session4/MESA_session4.tex" 1756394629 12098 048150238a00e87eba2bcea3dcd21eff ""
+["pdflatex"] 1756398368 "/mnt/home/lvanson/ASBE-course/practicum/session4/MESA_session4.tex" "latex_output/MESA_session4.pdf" "MESA_session4" 1756398368
+  "/mnt/home/lvanson/ASBE-course/practicum/session4/MESA_session4.tex" 1756398367 12242 f371946b66f378697847d183f27f75de ""
   "/mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/map/fontname/texfonts.map" 1 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1 4385071 4481eb56d8dc7e3e247ed9a139c582cd ""
@@ -195,9 +195,9 @@
   "/mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/tex/latex/xcolor/xcolor.sty" 1 56029 3f7889dab51d620aa43177c391b7b190 ""
   "/mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/web2c/texmf.cnf" 1 40171 cdab547de63d26590bebb3baff566530 ""
   "/mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-var/web2c/pdftex/pdflatex.fmt" 1 2826737 581e3810ec8883c24a5ea1fb0a449eb7 ""
-  "MESA_session4.tex" 1756394629 12098 048150238a00e87eba2bcea3dcd21eff ""
-  "latex_output/MESA_session4.aux" 1756394631 1085 d050bb9a5a97f32f6fc3e21405ab5345 "pdflatex"
-  "latex_output/MESA_session4.out" 1756394631 705 565bc55751c982d95fed1561f330621e "pdflatex"
+  "MESA_session4.tex" 1756398367 12242 f371946b66f378697847d183f27f75de ""
+  "latex_output/MESA_session4.aux" 1756398368 1085 d050bb9a5a97f32f6fc3e21405ab5345 "pdflatex"
+  "latex_output/MESA_session4.out" 1756398368 705 565bc55751c982d95fed1561f330621e "pdflatex"
   (generated)
   "latex_output/MESA_session4.aux"
   "latex_output/MESA_session4.log"
