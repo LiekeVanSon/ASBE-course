@@ -84,7 +84,7 @@
 
 \title{
     \textbf{\texttt{MESA} tutorial: Session 4} \\
-    \textbf{\Large Binary mass transfer and tides}
+    \textbf{\Large The zoo of binary star products}
 }
 \date{}
 \maketitle
@@ -93,6 +93,7 @@
 \noindent
 % This tutorial is based on the \texttt{MESA} summer school labs by Selma De Mink (\url{http://cococubed.asu.edu/mesa_summer_school_2017/agenda.html}). It introduces you to the evolution of binaries, and to concepts that will be treated in more detail in part 2 of the course. In order to answer some of the questions, refer to Chapter 15 of the lecture notes.
 
+refer to Chapter 15 of the lecture notes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \section{Radius evolution of massive stars}
@@ -107,38 +108,21 @@
 % %\item Find the radius of star at (\textit{i}) the ZAMS, (\textit{ii}) the TAMS, (\textit{iii}) the maximum radius before central helium ignition, (\textit{iv}) the maximum radius before the end of the evolution run but after central helium ignition.
 % \end{enumerate}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Simultaneous evolution of two massive stars in a binary}
-
-Instead of treating the secondary star as a point mass, we can evolve both stars at the same time in \texttt{MESA}. In this exercise, we will simulate the evolution of two massive stars in a close binary system, starting from the ZAMS.
-
-\begin{enumerate}
-\item Copy the work folder from the previous exercise and adapt \verb|inlist_project| to evolve a 15 M$_\odot$ primary star with a 13 M$_\odot$ secondary star in a 15 day orbit. Make sure to tell \texttt{MESA} to evolve both stars. Look for the setting \verb|evolve_both_stars| in the binary controls and switch it on. Furthermore, we will assume that the accreting star accretes only half of the mass transferred by Roche-lobe overflow. Check your inlist and make sure that the mass transfer efficiency is equal to 0.5\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}. Finally, turn the Eddington accretion limit off again, as this inherently assumes the companion star to be a black hole.
-\item Run your model and look at the plots from \texttt{PGSTAR}.
-\begin{enumerate}
-\item First have a look at the diagram that shows the central hydrogen abundance versus time. Which star is running out of hydrogen first? Is this what you expect? Does the surface hydrogen abundance change? Is this what you expect?
-\item Take a look at the tracks in the HR diagram. How does the evolution of the donor star differ from that of the accretor star? What happens to the evolutionary tracks of the two stars when mass transfer starts?
-\item Inspect the Kippenhahn diagram. How do the masses of the stars change? How much mass does the donor star lose, and how much of this mass does the other star accrete? Is this what you expected? 
-\item What happens to the convective core of the secondary star as it accretes more mass? How does this change the abundances in the core? Explain why it is appropriate to say that mass accretion `rejuvenates' a star. Could such a star appear as a `blue straggler'?
-\end{enumerate}
-\end{enumerate}
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{X-ray binaries in MESA}
 
-For this exercise, we will model the well-known X-ray binary SS433, which is described in \href{https://ui.adsabs.harvard.edu/abs/2017MNRAS.471.4256V/abstract}{van den Heuvel et al. (2017)}. This binary consists of a blue supergiant ($M \approx 12.3 \pm 3.3$ M$_\odot$) and a stellar mass black hole ($M \approx 4.3 \pm 0.8$ M$_\odot$). The orbital period of the X-ray binary is approximately 13 days, and the blue supergiant appears to be losing mass to the black hole, creating the X-ray luminosity in the system.
+For this exercise, we will model the well-known X-ray binary SS433, (e.g., \href{https://ui.adsabs.harvard.edu/abs/2017MNRAS.471.4256V/abstract}{van den Heuvel et al. 2017)}. This binary consists of a blue supergiant ($M \approx 12.3 \pm 3.3$ M$_\odot$) and a stellar mass black hole ($M \approx 4.3 \pm 0.8$ M$_\odot$). The orbital period of the X-ray binary is approximately 13 days, and the blue supergiant appears to be losing mass to the black hole, creating the X-ray luminosity in the system.
 
 We will model the evolution of this binary in the \texttt{binary} module in \texttt{MESA}, treating the black hole as a point mass. This is a good approximation if you are interested in the evolution of the donor star and the binary system when the companion is a compact object. 
 
 \begin{enumerate}
-  \item Download the work folder from Brightspace (\verb|session3.tar|) and inspect the inlists (which are the settings for the binary system and for the donor star?). Get familiar with all the controls that are available. If necessary, go to the website and get more information under the tab \verb|binary_controls defaults|\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html}}. 
+  \item Download the work folder from Brightspace (\verb|session4.tar|) and inspect the inlists (which are the settings for the binary system and for the donor star?). Get familiar with all the controls that are available. If necessary, go to the website and get more information under the tab \verb|binary_controls defaults|\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html}}. 
+  
   \item Modify the physical parameters of the system to approximately match the X-ray binary SS433. While you can choose values for the mass of the donor star and of the black hole within the observed error bars, \texttt{MESA} has a tendency to get stuck for a lot of mass configurations. Configurations that do run are for example $M_1=12$  M$_\odot$ and $M_2=3.5$  M$_\odot$, or $M_1=9$  M$_\odot$ and $M_2=4$  M$_\odot$. Set the initial period to 15 days. Do you expect the system to undergo Case A, B, or C mass transfer?
-  %Take the mass of the donor to be 15 M$_\odot$ and the mass of the black hole to be 5 M$_\odot$. 
+  
+  
+  \item  Take the mass of the donor to be 15 M$_\odot$ and the mass of the black hole to be 5 M$_\odot$. 
+
   \end{enumerate}
 
   \noindent
@@ -161,7 +145,6 @@ We will model the evolution of this binary in the \texttt{binary} module in \tex
 \end{enumerate}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gravitational-wave progenitors?}
 
@@ -180,6 +163,37 @@ At the end of your simulation you formed a helium star in an orbit around a blac
   How long will it take for your black hole binary system to spiral in? Would LIGO and VIRGO be able to detect this?
 
 \end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Simultaneous evolution of two massive stars in a binary}
+
+Instead of treating the secondary star as a point mass, we can evolve both stars at the same time in \texttt{MESA}. In this exercise, we will simulate the evolution of two massive stars in a close binary system, starting from the ZAMS.
+
+
+\begin{itemize}
+\item Copy the work folder from the previous exercise and adapt \verb|inlist_project| to evolve a 15 M$_\odot$ primary star with a 13 M$_\odot$ secondary star in a 15 day orbit. 
+
+Make sure to tell \texttt{MESA} to evolve both stars. 
+Look for the setting \verb|evolve_both_stars| in the binary controls and switch it on. 
+
+Furthermore, we will assume that the accreting star accretes only half of the mass transferred by Roche-lobe overflow. Check your inlist and make sure that the mass transfer efficiency is equal to 0.5\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}. Finally, turn the Eddington accretion limit off again, as this inherently assumes the companion star to be a black hole.
+
+\item Run your model and look at the plots from \texttt{PGSTAR}.
+
+\begin{enumerate}
+\item First have a look at the diagram that shows the central hydrogen abundance versus time. Which star is running out of hydrogen first? Is this what you expect? Does the surface hydrogen abundance change? Is this what you expect?
+
+\item Take a look at the tracks in the HR diagram. How does the evolution of the donor star differ from that of the accretor star? What happens to the evolutionary tracks of the two stars when mass transfer starts?
+
+\item Inspect the Kippenhahn diagram. How do the masses of the stars change? How much mass does the donor star lose, and how much of this mass does the other star accrete? Is this what you expected? 
+\item What happens to the convective core of the secondary star as it accretes more mass? How does this change the abundances in the core? Explain why it is appropriate to say that mass accretion `rejuvenates' a star. Could such a star appear as a `blue straggler'?
+\end{enumerate}
+
+\end{itemize}
+
+
+
 
 
 
