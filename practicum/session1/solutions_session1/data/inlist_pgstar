@@ -3,7 +3,7 @@
   ! MESA uses PGPLOT for live plotting and gives the user a tremendous
   ! amount of control of the presentation of the information.
 
-  ! show HR diagram
+  ! !!! show HR diagram !!!
   ! this plots the history of L,Teff over many timesteps
     HR_win_flag = .true.
 
@@ -17,8 +17,16 @@
     HR_win_width = 6
     HR_win_aspect_ratio = 1.0
 
+  ! save HR diagram plots in png folder
+    HR_file_flag = .true.
+    HR_file_dir =  'png'
+    HR_file_prefix = 'hr_'
+    HR_file_interval = 5
+    HR_file_width = 16
+    HR_file_aspect_ratio = 1
 
-  ! show temperature/density profile
+
+  ! !!! show temperature/density profile !!!
   ! this plots the internal structure at single timestep
     TRho_Profile_win_flag = .true.
 
@@ -32,19 +40,30 @@
     TRho_Profile_win_width = 8
     TRho_Profile_win_aspect_ratio = 0.75
 
-  ! Add Summary Burn window
+  ! save TRho profile plots in png folder
+    TRho_Profile_file_flag = .true.
+    TRho_Profile_file_dir =  'png'
+    TRho_Profile_file_prefix = 'trho_'
+    TRho_Profile_file_interval = 5
+
+
+  ! !!! Add Summary Burn window !!!
     Summary_Burn_win_flag = .true.
 
-  ! Show current model abundance profiles
+  ! save summary burn plots in png folder
+    Summary_Burn_file_flag = .true.
+    Summary_Burn_file_dir =  'png'
+    Summary_Burn_file_prefix = 'burn_'
+    Summary_Burn_file_interval = 10
+
+  ! !!! Show current model abundance profiles !!!
     Abundance_win_flag = .true.
 
-  ! save HR diagram plots in png folder
-    HR_file_flag = .true.
-    HR_file_dir =  'png'
-    HR_file_prefix = 'hr_'
-    HR_file_interval = 5
-    HR_file_width = 16
-    HR_file_aspect_ratio = 1
+    ! save abundance profile plots in png folder
+    Abundance_file_flag = .true.
+    Abundance_file_dir =  'png'
+    Abundance_file_prefix = 'abundance_'
+    Abundance_file_interval = 10
 
 
 / ! end of pgstar namelist
