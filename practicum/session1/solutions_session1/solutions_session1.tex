@@ -80,17 +80,23 @@
 \begin{enumerate}
 
 \item[\bf{3.1}] 
+
+\begin{itemize}
+  
+  \item In the HR diagram, after the star has settled on the main sequence, the star expands slightly, moving up and right (almost constant $T_{\mathrm{eff}}$, but higher $L$, following $L = 4\pi R^2\sigma T^4$). 
+  
+  % Post main sequence the star becomes much brighter and much lower effective temperature. This is because of the H shell burning phase and the mirror principle as the star climbs the Red Giant branch.
+  
+  
+  \item In the $T$–$\rho$ plot, the centre of the star corresponds to the high–$T$, high–$\rho$ end of the curve, while the surface is at low $T$ and $\rho$. The dashed lines delinate regions where different equations of state dominate, i.e., ideal–gas pressure,  radiation pressure and (non-relativistic or extremely relativistic) degeneracy pressure. We further see the T, $\rho$ boundary lines for where certain burn conditions are met (i.e., H, He , C and O burning).
+  The star is supported by the ideal gas law.
+  % but ends up with a degenerate core.
+  
+  
+  \item The protostar is fully convective (light blue), because the entire star is very cool, so radiative transport is inefficient. Because the whole star is convective, even a tiny superadiabaticitycan carry a very large energy flux and the star is essentially ediabatic, and the luminosity of the fully convective star is practically independent of its structure, leading to the nearly vertical path in the HR diagram at low $T_{\mathrm{eff}}$.
+  
+\end{itemize}
 \begin{enumerate}
-
-\item In the HR diagram, after the star has settled on the main sequence, the star expands, moving up and right (almost constant $T_{\mathrm{eff}}$, but higher $L$, following $L = 4\pi R^2\sigma T^4$ ). Post main sequence the star becomes much brighter and much lower effective temperature. This is because of the H shell burning phase and the mirror principle as the star climbs the Red Giant branch.
-
-
-\item In the $T$–$\rho$ plot, the centre of the star corresponds to the high–$T$, high–$\rho$ end of the curve, while the surface is at low $T$ and $\rho$. The dashed lines delinate regions where different equations of state dominate, i.e., ideal–gas pressure,  radiation pressure and (non-relativistic or extremely relativistic) degeneracy pressure. We further see the T, $\rho$ boundary lines for where certain burn conditions are met (i.e., H, He , C and O burning).
-The star is mostly suported by the ideal gas law, but ends up with a degenerate core.
-
-
-\item The protostar is fully convective (light blue), because the entire star is very cool, so radiative transport is inefficient. Because the whole star is convective, even a tiny superadiabaticitycan carry a very large energy flux and the star is essentially ediabatic, and the luminosity of the fully convective star is practically independent of its structure, leading to the nearly vertical path in the HR diagram at low $T_{\mathrm{eff}}$.
-
 
 \item As the star keeps on contracting, the virial theorem dictates that the internal temperature will rise. 
 As the internal temperature rises, the opacity (and thus $\nabla_{rad}$) decreases, until radiative transport becomes more efficient: a radiative core develops (green region). This causes the star to move away from the Hayashi line, to hicher effective temperatures. 
@@ -100,36 +106,39 @@ As the internal temperature rises, the opacity (and thus $\nabla_{rad}$) decreas
 The $\rho-T$ plot shows that  the central part of the star has crossed the H burning limit. It is also highlighted with the nuclear energy production rate in yellow . 
 In the HR diagram the model lies on the main sequence, at about 1 $L_\odot$ and $\log T_{eff} = 3.76$, so the agreement is good. 
 
-\item If the number of steps were proportional to the actual evolutionary timescale, we would expect far more steps on the main sequence, because the main sequence occurs on the H-burning nuclear timescale ($\sim$ Gyr) which is orders of magnitude longer than Kelvin–Helmholtz contraction timescales. In \MESA the opposite occurs, because the timestep control is set by how fast the stellar structure changes, not by the absolute physical time elapsed.
-
 \end{enumerate}
+\begin{itemize}
+\item If the number of steps were proportional to the actual evolutionary timescale, we would expect far more steps on the main sequence, because the main sequence occurs on the H-burning nuclear timescale ($\sim$ Gyr) which is orders of magnitude longer than Kelvin–Helmholtz contraction timescales. In \MESA the opposite occurs, because the timestep control is set by how fast the stellar structure changes, not by the absolute physical time elapsed.
+\end{itemize}
 
 
 \item[\bf{3.2}] 
-\begin{enumerate}
+\begin{itemize}
 \item The \texttt{Summary\_Burn} panel shows the temperatur profile (yellow right axis) and burning properties, like the nuclear enery production rate and neutrino energy losses (2 shades of blue) as well as the density profile as functions of mass coordinate.
  The \texttt{Abundance} panel shows the composition profiles for different isotopes across the star. This clearly shows how core burning changes the abundances of different elements. 
 
 
 \item Abundance changes are caused by nuclear fusion in the core and later in shell-burning regions. On the main sequence, hydrogen is converted into helium via the pp chain. As hydrogen is depleted, the helium mass fraction rises in the core. 
 We can also see H shell burning occur. Although the pp chain dominates, there is some CNO cycle burning hapening, as evidenced by the change in C, N and O abundances. Note though that the apparent dramatic changes at the bottom of the logarithmic scale correspond to very small absolute abundances.
+\end{itemize}
 
-
-\item The star reaches the end of the main sequence at about $\sim 10$ Gyr for a solar-type model.
-You can see this in the $\rho-T$ diagram from the inner core of the star no longer producing energy (not highlighted). You can see it in the Abundance plot from the core being fully made of He, and in the HR diagram when the star starts to climb towards the giant branch.
-
-
-\item 
-As the star leaves the main sequence, the core contracts and heats while the envelope expands and cools, shifting the star to the red giant branch. The $T$–$\rho$ profiles reflect this: central density rises, and the temperature increases in the contracting core. 
-We also see that the core becomes inert: the nuclear enery and neutrino production drops in the core, but instead moves to a shell (spike in blue lines).
-Eventually the core becomes electron-degenerate before helium ignition: you can see this in the rho T profile where the core has crossed the degeneracy EOS line. 
-
-
-\item 
-During red giant evolution, the outer convective envelope deepens and dredges up material from regions previously processed by nuclear burning. This changes the surface abundances: We mostly see He$^3$ being moved to the surface, but the C/N ratio also changes on the surface. 
-
-
+\begin{enumerate}
+  \item The star reaches the end of the main sequence at about $\sim 10$ Gyr for a solar-type model.
+  You can see this in the $\rho-T$ diagram from the inner core of the star no longer producing energy (not highlighted). You can see it in the Abundance plot from the core being fully made of He, and in the HR diagram when the star starts to climb towards the giant branch.
+  
+  
+  \item 
+  As the star leaves the main sequence, the core contracts and heats while the envelope expands and cools, shifting the star to the red giant branch. The $T$–$\rho$ profiles reflect this: central density rises, and the temperature increases in the contracting core. 
+  We also see that the core becomes inert: the nuclear enery and neutrino production drops in the core, but instead moves to a shell (spike in blue lines).
+  Eventually the core becomes electron-degenerate before helium ignition: you can see this in the rho T profile where the core has crossed the degeneracy EOS line. 
+  
+  
+  \item 
+  During red giant evolution, the outer convective envelope deepens and dredges up material from regions previously processed by nuclear burning. This changes the surface abundances: We mostly see He$^3$ being moved to the surface, but the C/N ratio also changes on the surface. 
+  
 \end{enumerate}
+
+
 
 
 \end{enumerate}
@@ -139,7 +148,8 @@ During red giant evolution, the outer convective envelope deepens and dredges up
 
 \begin{enumerate}
   \item[\bf{4.1}] 
-Hand in your movie. Not that if you started from your restart, the movie will porbably show the star bouncing up and down a bit due to pulses on the AGB (see chapter 11). 
+Hand in your movie.
+%  Not that if you started from your restart, the movie will porbably show the star bouncing up and down a bit due to pulses on the AGB (see chapter 11). 
 \end{enumerate}
 
 

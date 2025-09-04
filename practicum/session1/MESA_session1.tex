@@ -260,13 +260,19 @@ If you want to temporarily pause your model to have more time to look at a plot,
 \end{tcolorbox}
 
 
-\begin{enumerate}
+
+\begin{itemize}
 
 \item After adjusting the HR plot, try to understand what happens. Can you explain the movement (i.e. the evolution history) of the star in the HR diagram? Is the star expanding or contracting? (remember the relation between $L$, $R$, and $T$ from the Stefan–Boltzmann law) And how do you explain this behaviour? (Note: ignore the first horizontal part in the HR diagram where the star is still relaxing into hydrostatic equilibrium.)
+
 
 \item The \verb|TRho_Profile| plot shows the entire stellar model, from centre to surface, as it evolves. Can you identify the centre and the surface? What is the meaning of the other (dashed) lines in the plot? Does the ideal gas law hold everywhere in the star?
 
 \item Colours indicate in which regions of the star convection (or some other mixing processes) occurs, and where nuclear energy is produced. Initially, almost the entire model is light blue, i.e. convective. Can you explain why? And how is this related to the star's location in the HR diagram?
+\end{itemize}
+
+
+\begin{enumerate}
 \item At later times, the central portion of the star becomes green, i.e. radiative. At the same time the effective temperature in the HR diagram increases. Can you explain this? Consult section 9.1 in the lecture notes to answer these questions, if necessary.
 
 \item When the model stops after 4.6 Gyrs, the star is undergoing hydrogen fusion in its core. How can you identify this from the plots? Also compare the location in the HR diagram to the current parameters of the Sun. Do they agree?
@@ -276,10 +282,15 @@ If you want to temporarily pause your model to have more time to look at a plot,
 You will have noticed it takes several hundreds of steps to reach the main sequence (start of hydrogen fusion), while subsequently it takes much fewer steps to reach the current age of the Sun. 
 The reason is that the structure of the star changes rapidly when the star contracts to the main sequence, so many small time steps are needed for \MESA to resolve these changes. Once the star is on the main sequence, its structure hardly changes, so the code can take much longer time steps to evolve the star through the main sequence phase.
 
-\begin{enumerate}[start =6]
+\begin{itemize}
   \item What would you have expected if the number of steps is proportional to the actual time the star takes to evolve? (i.e. compare to the appropriate stellar time scales.)
-\end{enumerate}
+\end{itemize}
 
+
+
+
+
+\begin{enumerate}
 
 \item[\bf{3.2}] Now let's evolve the model further to the red giant branch phase. Remove the stopping condition for the age in \verb|inlist_project| and instead add the lines:
 \begin{lstlisting}
@@ -301,14 +312,19 @@ Now restart the model from a saved `photo' from the previous run:
 to start form the last saved photo in the \texttt{photos} directory. 
 You can start from any saved photo inside your \MESA model by running \verb|./re x***|, where \verb|***| are the final three digits of the photo of your choice.
 
-\begin{enumerate}
-\item Take some time to understand what is plotted in these two new panels, and identify each line in the plots. Note that the vertical scales are logarithmic in both panels, and that they represent many orders of magnitude, especially in \verb|Summary_Burn|. You can correlate the $T$ and $\rho$ profiles in \verb|Summary_Burn| with the curve plotted in the \verb|TRho_profile| panel.  The blue and green colours along the bottom of these panels correspond to those plotted in \verb|TRho_profile|, and can be used to identify convective regions. Note that most of the change in density and temperature occurs in the outer few percent of mass of the star.
+\begin{itemize}
+  \item Take some time to understand what is plotted in these two new panels, and identify each line in the plots. Note that the vertical scales are logarithmic in both panels, and that they represent many orders of magnitude, especially in \verb|Summary_Burn|. You can correlate the $T$ and $\rho$ profiles in \verb|Summary_Burn| with the curve plotted in the \verb|TRho_profile| panel.  The blue and green colours along the bottom of these panels correspond to those plotted in \verb|TRho_profile|, and can be used to identify convective regions. Note that most of the change in density and temperature occurs in the outer few percent of mass of the star.
+  
+  \item As the star evolves through the main sequence, the abundance profiles change. Which processes cause these abundance changes? Consult/refresh chapter 6.4 of the lecture notes if necessary. Can you explain all the changes from the nuclear reactions taking place? (Take into account the logarithmic scale: the changes in the bottom part of the plot look dramatic but only involve small values of the mass fraction.)
+\end{itemize}
 
-\item As the star evolves through the main sequence, the abundance profiles change. Which processes cause these abundance changes? Consult/refresh chapter 6.4 of the lecture notes if necessary. Can you explain all the changes from the nuclear reactions taking place? (Take into account the logarithmic scale: the changes in the bottom part of the plot look dramatic but only involve small values of the mass fraction.)
 
-\item At what age (approximately) does the star reach the end of the main sequence? How can you tell from the \texttt{PGSTAR} panels? (Several plots show an indicator of this!)
-\item Observe the changes in the $T$ and $\rho$ profiles as the star moves from the main sequence to the giant branch. Can you explain these changes? Does the core become degenerate, and if so, in which point in the evolution? 
-% Can you explain why the temperature profile in the core becomes flat?
+ 
+  \item At what age (approximately) does the star reach the end of the main sequence? How can you tell from the \texttt{PGSTAR} panels? (Several plots show an indicator of this!)
+  
+  \item Observe the changes in the $T$ and $\rho$ profiles as the star moves from the main sequence to the giant branch. Can you explain these changes? Does the core become degenerate, and if so, in which point in the evolution? 
+  % Can you explain why the temperature profile in the core becomes flat?
+
 
 \item As the star evolves along the red giant branch, convection reaches deeper and deeper in the envelope of the star. Note how this affects the abundance profiles. Which elements/isotopes are most affected? Do their surface abundances increase or decrease? This process of convection changing the surface abundances is called `dredge-up'.
 \end{enumerate}
