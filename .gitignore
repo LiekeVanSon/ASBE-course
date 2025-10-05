@@ -1,7 +1,6 @@
 .DS_Store
 # these files are too large for git
 lecture notes
-lectures
 *.tar
 !practicum/session2/data_for_students/session2.tar
 !practicum/session3/data_for_students/session3.tar
