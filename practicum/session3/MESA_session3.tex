@@ -88,11 +88,9 @@
 \maketitle
 \vspace{-1cm}
 
-
 For this problem set, make a new copy of the \texttt{\$MESA\_DIR/star/work} 
 directory and place \texttt{hw3\_inlist}, \texttt{history\_columns.list}, and \texttt{profile\_columns.list} in your new working directory.
-In the \texttt{inlist} file, change \texttt{inlist\_project} to \texttt{hw3\_inlist}.
-
+In the \texttt{inlist} file, change \texttt{inlist\_project} to \texttt{hw3\_inlist}...
 
 \begin{tcolorbox}[protipbox]
 Some of the models you will run in this practicum may take a long time to complete.
@@ -102,9 +100,9 @@ There is no need to wait for \textit{all} models to finish before starting on th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Energy Production in Massive Stars}
 
-Let's explore the contributions of various nuclear reaction chains to the bolometric luminosities of massive stars.
-\todo{Rerun all with \texttt{delta\_HR\_limit = 0.003d0}, possibly think of ways to speed up
- C exhaust takes very long (maybe turn off winds?). Double check all exercises work with same inlist}
+Let's explore the contributions of various nuclear reaction chains to the bolometric luminosities of massive stars. 
+% \todo{Rerun all with \texttt{delta\_HR\_limit = 0.003d0}, possibly think of ways to speed up
+%  C exhaust takes very long (maybe turn off winds?). Double check all exercises work with same inlist}
 
 \begin{itemize}
     \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central C exhaustion.
@@ -183,13 +181,16 @@ Discuss with your neighbours to compare stars of different mass.
 
 \item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
 
+
+\end{enumerate}
+
+\begin{itemize}
 \item After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
 % This is already a sub panel in the grid in inlist_pgstar
 % Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
 Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
 
-\end{enumerate}
-
+\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
