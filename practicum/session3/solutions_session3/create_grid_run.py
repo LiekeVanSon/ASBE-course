@@ -16,7 +16,8 @@ taskfile = os.path.join(base_dir, "Taskfile")
 with open(taskfile, "w") as tf:
     # following line is effectively executed before each disBatch command
     # It sets up the environment for MESA runs
-    tf.write("#DISBATCH PREFIX ml openblas; export OMP_NUM_THREADS=32; mesa-12778;\n\n")
+    tf.write(f"#DISBATCH PREFIX ml openblas; export OMP_NUM_THREADS=32; mesa-12778; export MESA_BASE=\"{mesa_base}\"; export MESA_INLIST=\"$MESA_BASE/inlist\";\n\n")
+    # tf.write("#DISBATCH PREFIX ml openblas; export OMP_NUM_THREADS=32; mesa-12778;\n\n")
 
     # for every mass: set up a run directory and write disBatch command
     for m in masses:
@@ -55,5 +56,7 @@ with open(taskfile, "w") as tf:
 print(f"Taskfile created at: {taskfile}")
 print(f"Set up {len(masses)} runs in {output_dir}")
 print("You can now submit the jobs using disBatch: sbatch -p cca -n 10 -c 32 -t 0-04:00 disBatch Taskfile")
+print("!! Keep in mind inlists need to point to absolute paths for MESA to find the necessary files !!")
 # -n N = Number of parallel disBatch workers (each worker handles one task at a time).
 # -c C = Number of CPU cores allocated to each worker/task.
+# 
