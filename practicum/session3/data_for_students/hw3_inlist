@@ -7,6 +7,9 @@
   ! display on-screen plots
     pgstar_flag = .true.
 
+  ! specify the history columns to use
+    history_columns_file = 'history_columns.list'
+
   ! stop before terminate so that you can see the plots 
     pause_before_terminate = .true.
 
