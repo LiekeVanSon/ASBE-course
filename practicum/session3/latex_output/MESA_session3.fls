@@ -974,8 +974,8 @@ INPUT /mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-
 INPUT /mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
-INPUT /mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
 INPUT /mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/map/pdftex/updmap/pdftex.map
+INPUT /mnt/sw/nix/store/80wb60hk9c9hbi1rzbnr6kdbbjknp4ch-texlive-20220321/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
 INPUT latex_output/MESA_session3.aux
 INPUT latex_output/MESA_session3.out
 INPUT latex_output/MESA_session3.out

@@ -105,7 +105,11 @@ Let's explore the contributions of various nuclear reaction chains to the bolome
 %  C exhaust takes very long (maybe turn off winds?). Double check all exercises work with same inlist}
 
 \begin{itemize}
-    \item Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central C exhaustion.
+    \item  Create a new inlist \texttt{hw3\_inlist} based on the \texttt{inlist\_project} template.
+    Run MESA models at $M = 15, 20, 30, 40 M_\odot$, and run until about midway through central C burning.
+    \todo{Run 3 models with masses between 15 and 60 M$_\odot$ (higher masses are more interesing, but to ensure C burning finishes in reasonable time) }
+     Create a new inlist \texttt{hw3\_inlist} based on the \texttt{inlist\_project} template.
+    Run MESA models at $M = 15, 20, 30, 40, 60 M_\odot$ through central C exhaustion.
     To achieve this add to the \texttt{\&controls} section in \texttt{hw3\_inlist}
         \begin{lstlisting}
     xa_central_lower_limit_species(1) = 'c12'
