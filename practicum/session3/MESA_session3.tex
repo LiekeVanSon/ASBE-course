@@ -88,21 +88,26 @@
 \maketitle
 \vspace{-1cm}
 
+
+\begin{itemize}
+    \item[$\rightarrow$] Download the MESA inlists needed for this tutorial from Brightspace. \\
+    \texttt{hw3\_inlist\_to\_C\_exhaust} will be used for problem 1, while \texttt{hw3\_inlist\_massive\_stars} is for problem 2 (and 3).
+\end{itemize}
+
 \begin{tcolorbox}[protipbox]
-Some of the models you will run in this practicum may take a long time to complete.
+Some of the models you will run in this practicum may take a long time (5-10 min) to complete.
 There is no need to wait for \textit{all} models to finish before starting on the analysis and plotting code!
 \end{tcolorbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Energy Production in Massive Stars}
+\section{Luminosity in the late evolution of Massive Stars}
 
-Let's explore the contributions of various nuclear reaction chains to the bolometric luminosities of massive stars. 
-% \todo{Rerun all with \texttt{delta\_HR\_limit = 0.003d0}, possibly think of ways to speed up
-%  C exhaust takes very long (maybe turn off winds?). Double check all exercises work with same inlist}
+We have learned how stars spend their life balancing the energy they loose from their surface (aka Luminosity) with nuclear reactions from their core. 
+Let's explore the contributions of various nuclear reaction chains to the photon luminosity, and compare this to neutrino losses during the life of massive stars. 
 
 \begin{itemize}
-    \item  For this problem set, make a new copy of the \texttt{\$MESA\_DIR/star/work} directory and place \texttt{hw3\_inlist} and \texttt{history\_columns.list} in your new working directory. 
-    In the \texttt{inlist} file, change \texttt{inlist\_project} to point to \texttt{hw3\_inlist}.
+    \item  For this problem set, make a new copy of the \texttt{\$MESA\_DIR/star/work} directory and place \texttt{hw3\_inlist\_to\_C\_exhaust} and \texttt{history\_columns.list} in your new working directory. 
+    In the \texttt{inlist} file, change \texttt{inlist\_project} to point to \texttt{hw3\_inlist\_to\_C\_exhaust}.
     (for good measure you may want to remove \texttt{inlist\_project})
 
     \item Run MESA models at $M = 20, 30, 40 M_\odot$ through central C exhaustion.
@@ -116,46 +121,57 @@ Let's explore the contributions of various nuclear reaction chains to the bolome
     
 \end{itemize}
 
+\begin{tcolorbox}[protipbox]
+You will be making a lot of HR diagrams in this practicum. Consider creating a reusable Python function to streamline the plotting process + save you time.
+\end{tcolorbox}
+
 \begin{enumerate}[label=(\alph*)]
     \item Plot the evolutionary tracks of the three massive stars on a single HR diagram. 
-    Clip the pre-main sequence evolution from your plot for clarity.
+    Clip the pre-main sequence evolution from your plot for clarity. There are many ways you can do this, for example by finding the first time the central hydrogen abundance drops below 0.69
 
-    Color-code the tracks by the dominant source of nuclear burning. The three output quantities of interest are:
-    \begin{itemize}
-        \item \texttt{log\_LH}: H-burning luminosity
-        \item \texttt{log\_LHe}: He-burning luminosity
-        \item \texttt{log\_LZ}: Luminosity from burning heavier elements
-        \item \texttt{log\_Lneu}: Luminosity emitted in neutrinos, nuclear and thermal 
-    \end{itemize}
-    \item Explore different ways of visualizing this data:
-    \begin{itemize}[label=--]
-        \item Create three panels, each color-coded by $\log (L_i/L_{\text{bol}})$ where $i = $ H, He, Z.
-        \item Assign unique colors based on which burning source dominates the luminosity, and color the tracks accordingly.
-        \item Identify and mark regions where no single source dominates the total luminosity.
-    \end{itemize}
+    \begin{lstlisting}[style=pythonstyle]
+# find index of MS
+start = np.flatnonzero(np.asarray(hist.center_h1) < 0.69)[0]
+# select range of interest
+print(hist.star_age[start:])
+    \end{lstlisting}
 
-    \item Interpret your results. 
+    Create three scatter plots, each colored by a different Luminosity: $\log (L_i/L_{\text{bol}})$ where $i = $ H, He, Z.
+    The output quantities of interest are:
+    \texttt{log\_LH}, \texttt{log\_LHe}, and \texttt{log\_LZ}.
+
+    
+    \item Create a fourth plot. This will again be an HR diagram, but instead of phothon luminosity on the y-axis, use the luminosity emitted in neutrinos, nuclear and thermal combined (\texttt{log\_Lneu})
+
+
+    \item Interpret your results. It might be helpful to compare your results to Figure 2 from \href{https://ui.adsabs.harvard.edu/abs/2020ApJ...893..133F}{Farag et al. 2020}
+    
 
 \end{enumerate}
 
 
 
-\begin{tcolorbox}[protipbox]
-You will be making a lot of HR diagrams in this practicum. Consider creating a reusable Python function to streamline the plotting process.
-\end{tcolorbox}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolution of massive stars with mass loss}
 
-In this exercise, we will investigate the effect of wind mass loss on the evolution of the star. 
-We will use the same inlist as in Problem 1. As before, \emph{change the \texttt{log\_directory}} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
+We will next investigate the effect of wind mass loss on the evolution of massive stars. 
+%
+You need \texttt{hw3\_inlist\_massive\_stars} for this exercise. This inlist results in more properly resolved stars (note the difference in HR diagram). Because of this it will take much too long to run the late evolution, which is why we will only run the stars until core He exhaustion.
+
+\begin{itemize}
+    \item Choose a mass between 20 M$_\odot$ and 60 M$_\odot$, and change the inlist accordingly. 
+
+    
+    \item Run the same mass model with 3 different mass-loss rates. \\
+    To do this vary the \verb|Dutch_scaling_factor| between 0 and 2, (for example 0.1, 0.5, and 1.5). 
+    
+    \item 
+    As before, \emph{change the} \texttt{log\_directory = 'X'} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
+\end{itemize}
 
 \begin{enumerate}[label=(\alph*)]
-\item Choose a mass between 20 M$_\odot$ and 100 M$_\odot$, and change the inlist. 
-We only want to run the stars until core He exhaustion (this will save you a lot of compute time).
-Run the same mass model with 3 different mass-loss rates. To do this vary the \verb|Dutch_scaling_factor| between 0 and 1, (for example 0.1, 0.5, and 1.0). 
-During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? 
+% During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? 
 
 \item Plot all 3 evolutionary tracks on an HR diagram, but now color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
 Can you explain the difference in the tracks? 
