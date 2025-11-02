@@ -37,8 +37,8 @@
   !   S T O P P I N G   C O N D I T I O N S
 
   ! stop when the center mass fraction of he4 drops below this limit
-    xa_central_lower_limit_species(1) = 'c12'
-    xa_central_lower_limit(1) = 5d-5
+    xa_central_lower_limit_species(1) = 'he4'
+    xa_central_lower_limit(1) = 1d-1
 
 
   !   T E C H N I C A L   S E T T I N G S  

@@ -110,8 +110,7 @@ Let's explore the contributions of various nuclear reaction chains to the photon
     In the \texttt{inlist} file, change \texttt{inlist\_project} to point to \texttt{hw3\_inlist\_to\_C\_exhaust}.
     (for good measure you may want to remove \texttt{inlist\_project})
 
-    \item Run MESA models at $M = 20, 30, 40 M_\odot$ through central C exhaustion.
-    To achieve this add to the \texttt{\&controls} section in \texttt{hw3\_inlist}
+    \item ./clean; ./mk the directory, and ./rn  MESA models at $M = 20, 30, 40 M_\odot$ through central C exhaustion. That is, change in the \texttt{\&controls} section in \texttt{hw3\_inlist}:
         \begin{lstlisting}
     xa_central_lower_limit_species(1) = 'c12'
     xa_central_lower_limit(1) = 5d-5
@@ -155,16 +154,15 @@ print(hist.star_age[start:])
 
 We will next investigate the effect of wind mass loss on the evolution of massive stars. 
 %
-You need \texttt{hw3\_inlist\_massive\_stars} for this exercise. This inlist results in more properly resolved stars (note the difference in HR diagram). Because of this it will take much too long to run the late evolution, which is why we will only run the stars until core He exhaustion.
+You need \texttt{hw3\_inlist\_problem2} for this exercise. This inlist results in more properly resolved stars (note the difference in HR diagram). Because of this it will take much too long to run the late evolution, which is why we will only run the stars until core He exhaustion.
 
-\todo{finally: only run models between 15-40Msun and DW between 0 and 1!}
+% \todo{finally: only run models between 15-40Msun and DW between 0 and 1!}
 
 \begin{itemize}
-    \item Choose a mass between 20 M$_\odot$ and 40 M$_\odot$, and change the inlist accordingly. (Note that the inlist will work for higher masses, but will take an increasing amount of time).
-
+    \item Choose a mass between 15 M$_\odot$ and 40 M$_\odot$, and change the inlist accordingly. Don't forget to point the master inlist to \texttt{hw3\_inlist\_problem2} instead of \texttt{hw3\_inlist\_to\_C\_exhaust}
     
     \item Run the same mass model with 3 different mass-loss rates. \\
-    To do this vary the \verb|Dutch_scaling_factor| between 0 and 2, (for example 0.1, 0.5, and 1.5). 
+    To do this vary the \verb|Dutch_scaling_factor| between 0 and 1.5, (for example 0.1, 0.5, and 1.5). 
     
     \item 
     As before, \emph{change the} \texttt{log\_directory = 'X'} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
@@ -173,55 +171,56 @@ You need \texttt{hw3\_inlist\_massive\_stars} for this exercise. This inlist res
 \begin{enumerate}[label=(\alph*)]
 % During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? 
 
-\item Plot all 3 evolutionary tracks on an HR diagram, but now color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
-Can you explain the difference in the tracks? 
-Discuss with your neighbours to compare stars of different mass.
+% \item Plot all 3 evolutionary tracks on an HR diagram, but now color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
+% Can you explain the difference in the tracks? 
+% Discuss with your neighbours to compare stars of different mass.
 
 %%%%%%%%%% surf ab questions
-\item Investigate surface abundance changes due to mass-loss. 
-\begin{itemize}
-    \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
-    \item Color-code HR tracks by:
-    \begin{enumerate}
-        \item Surface helium abundance
-        \item Surface N/C ratio
-    \end{enumerate}
-
-\end{itemize}
-
 \item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
 
-\item Next, make separate plots of the \emph{surface abundances} of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+\item Investigate \emph{surface abundances} changes due to mass-loss: make separate plots of the surface abundances of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
 %%%%%%%%%% surf ab questions
 
+% \begin{itemize}
+%     \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
+%     % \item Color-code HR tracks by:
+%     % \begin{enumerate}
+%     %     \item Surface helium abundance
+%     %     \item Surface N/C ratio
+%     % \end{enumerate}
 
-\item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
+% \end{itemize}
+
+
+% \item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
 
 
 \end{enumerate}
 
-\begin{itemize}
-\item After analysing the effects of mass loss, choose one of the models you evolved and continue its evolution, by removing the stopping condition for the lower limit of the central helium abundance. 
-% This is already a sub panel in the grid in inlist_pgstar
-% Open a \texttt{PGSTAR} window for the abundance profiles by adding the appropriate line in \verb|inlist_pgstar|, as in \texttt{MESA} session 1. 
-Now follow the evolution and try to identify the different burning stages in the star and their effect on the abundances and the structure. 
-
-\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Radius evolution of massive stars}
 
-% This exercise is a continuation on the second exercise of the previous exercise. In the last session, you evolved a massive star between 15 and 100 M$_\odot$ up to the end of core helium burning. Use the output of this model (stored in \verb|LOGS/history.data|) and compute the following:
-Using your model for the star you picked with a mass between 15 and 100 M$_\odot$ from the previous exercise (with \verb|Dutch_scaling_factor| set to 1.0.) compute the following:
+Using your model for the star you picked with a mass between 15 and 100 M$_\odot$ from the previous exercise (with \verb|Dutch_scaling_factor| your middle value) :
 
 \begin{enumerate}[label=(\alph*)]
-\item Make a plot of the radius of the star versus the age. What are the fast and slow phases of evolution? When does the star expand, and when does it contract? By how much does the star expand during its evolution?
+\item Make a plot of the radius of the star versus the age. 
+\end{enumerate}
+
+\begin{itemize}
+    \item What are the fast and slow phases of evolution? When does the star expand, and when does it contract? By how much does the star expand during its evolution?
+\end{itemize}
+
+
+\begin{enumerate}[label=(\alph*), start =2]
 \item If the star is in a binary system, in which phase in its evolution is it most likely that the star fills its Roche lobe?\\
 \textit{Note}: Observations show that the distribution of the orbits of binary stars is roughly uniform in $\log(a)$. For example, the number of binary stars with separations in the range 10--100 R$_\odot$ is similar to that in the range 100--1000 R$_\odot$.
-\item Find the values of the radius of this star that delimit Case A, Case B and Case C of mass transfer. (See p.\ 225 in Chapter 15 of the lecture notes for a definition of these different cases.)
-%\item Find the radius of star at (\textit{i}) the ZAMS, (\textit{ii}) the TAMS, (\textit{iii}) the maximum radius before central helium ignition, (\textit{iv}) the maximum radius before the end of the evolution run but after central helium ignition.
 \end{enumerate}
+
+\begin{itemize}
+\item Find the values of the radius of this star that delimit Case A, Case B and Case C of mass transfer. (See p.\ 225 in Chapter 15 of the lecture notes for a definition of these different cases.)
+\end{itemize}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

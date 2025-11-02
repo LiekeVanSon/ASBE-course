@@ -82,11 +82,10 @@
   ! Resolve when the star goes off the Main sequence
     delta_HR_limit = 0.001d0 ! 
 
-
   !   O U T P U T  C O N T R O L
-      write_profiles_flag = .true.
-      profile_interval = 150 ! less often than default 50 to save space
+    write_profiles_flag = .true.
+    profile_interval = 150 ! less often than default 50 to save space
 
-      photo_interval = -1
+    photo_interval = -1
 
 / ! end of controls namelist
