@@ -100,7 +100,7 @@ There is no need to wait for \textit{all} models to finish before starting on th
 \end{tcolorbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Luminosity in the late evolution of Massive Stars}
+\section{Luminosity of Massive Stars at late stages}
 
 We have learned how stars spend their life balancing the energy they loose from their surface (aka Luminosity) with nuclear reactions from their core. 
 Let's explore the contributions of various nuclear reaction chains to the photon luminosity, and compare this to neutrino losses during the life of massive stars. 
@@ -122,12 +122,13 @@ Let's explore the contributions of various nuclear reaction chains to the photon
 \end{itemize}
 
 \begin{tcolorbox}[protipbox]
-You will be making a lot of HR diagrams in this practicum. Consider creating a reusable Python function to streamline the plotting process + save you time.
+You will be making quite a few HR diagrams in this exercise. Consider creating a reusable Python function to streamline the plotting process.
 \end{tcolorbox}
 
 \begin{enumerate}[label=(\alph*)]
-    \item Plot the evolutionary tracks of the three massive stars on a single HR diagram. 
-    Clip the pre-main sequence evolution from your plot for clarity. There are many ways you can do this, for example by finding the first time the central hydrogen abundance drops below 0.69
+    \item Plot the evolutionary tracks of the three massive stars on a single HR diagram as scatter plots, each colored by a different luminosity component: $\log(L_i / L)$ for $i =$ H, He, and Z.
+
+    Clip the pre-main sequence evolution from your plot for clarity. For example, start from the first step with central hydrogen abundance $<0.69$:
 
     \begin{lstlisting}[style=pythonstyle]
 # find index of MS
@@ -136,12 +137,9 @@ start = np.flatnonzero(np.asarray(hist.center_h1) < 0.69)[0]
 print(hist.star_age[start:])
     \end{lstlisting}
 
-    Create three scatter plots, each colored by a different Luminosity: $\log (L_i/L_{\text{bol}})$ where $i = $ H, He, Z.
-    The output quantities of interest are:
-    \texttt{log\_LH}, \texttt{log\_LHe}, and \texttt{log\_LZ}.
-
     
-    \item Create a fourth plot. This will again be an HR diagram, but instead of phothon luminosity on the y-axis, use the luminosity emitted in neutrinos, nuclear and thermal combined (\texttt{log\_Lneu})
+    \item Create a fourth plot. This will again be an HR diagram, but instead of phothon luminosity on the y-axis, use the luminosity emitted in neutrinos (\texttt{log\_Lneu})
+    Color this plot by \texttt{np.log10(center\_c12)}.
 
 
     \item Interpret your results. It might be helpful to compare your results to Figure 2 from \href{https://ui.adsabs.harvard.edu/abs/2020ApJ...893..133F}{Farag et al. 2020}
@@ -159,8 +157,10 @@ We will next investigate the effect of wind mass loss on the evolution of massiv
 %
 You need \texttt{hw3\_inlist\_massive\_stars} for this exercise. This inlist results in more properly resolved stars (note the difference in HR diagram). Because of this it will take much too long to run the late evolution, which is why we will only run the stars until core He exhaustion.
 
+\todo{finally: only run models between 15-40Msun and DW between 0 and 1!}
+
 \begin{itemize}
-    \item Choose a mass between 20 M$_\odot$ and 60 M$_\odot$, and change the inlist accordingly. 
+    \item Choose a mass between 20 M$_\odot$ and 40 M$_\odot$, and change the inlist accordingly. (Note that the inlist will work for higher masses, but will take an increasing amount of time).
 
     
     \item Run the same mass model with 3 different mass-loss rates. \\

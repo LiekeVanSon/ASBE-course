@@ -8,21 +8,24 @@
     pgstar_flag = .true.
 
   ! specify the history columns to use
-  history_columns_file = './history_columns.list'
+  history_columns_file = '/mnt/home/lvanson/ceph/MESAoutput/Teaching/ASBE2025/HW3_experiments/HW3_base/history_columns.list'
 
   ! stop before terminate so that you can see the plots 
-    pause_before_terminate = .true.
+    pause_before_terminate = .false.
 
 / !end of star_job namelist
 
 
 &controls
 
+    read_extra_controls_inlist1 = .true.
+    extra_controls_inlist1_name = 'inlist_gridrun' ! should be in run dir
+
   ! Initial mass of the star
-   initial_mass = 15.0 ! in Msun units
+  !  initial_mass = 15.0 ! in Msun units (happens in inlist_gridrun)
 
   ! output directory for log files
-   log_directory = 'LOGS/M15'
+  !  log_directory = 'LOGS/M15_HW3' (happens in inlist_gridrun)
 
 
   ! options for energy conservation (see MESA V, Section 3)
@@ -55,14 +58,14 @@
    RGB_to_AGB_wind_switch = 1d-4
 
    hot_wind_scheme = 'Dutch'
-   Dutch_scaling_factor = 0.8 
+   ! Dutch_scaling_factor = 1.0 (happens in inlist_gridrun)
 
 
   !   S T O P P I N G   C O N D I T I O N S
 
   ! stop when the center mass fraction of he4 drops below this limit
     xa_central_lower_limit_species(1) = 'he4'
-    xa_central_lower_limit(1) = 1d-1
+    xa_central_lower_limit(1) = 1d-5
 
 
   !   T E C H N I C A L   S E T T I N G S
@@ -80,7 +83,7 @@
     delta_lg_XHe_cntr_min = -6.0d0
 
   ! Resolve when the star goes off the Main sequence
-    delta_HR_limit = 0.001d0 ! 
+    delta_HR_limit = 0.003d0 ! 
 
 
   !   O U T P U T  C O N T R O L
