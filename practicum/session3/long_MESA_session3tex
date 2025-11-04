@@ -88,17 +88,15 @@
 \maketitle
 \vspace{-1cm}
 
-\noindent {\color{blue}Hand in your answers to all the numbered questions (i.e. 1 a, b, c etc.), they will make up your grade for the MESA practicum part of the course.}
-
 
 \begin{itemize}
-    \item[$\rightarrow$] Download the MESA inlists needed for this tutorial from Brightspace (\texttt{session3.zop}). \\
+    \item[$\rightarrow$] Download the MESA inlists needed for this tutorial from Brightspace. \\
     \texttt{hw3\_inlist\_to\_C\_exhaust} will be used for problem 1, while \texttt{hw3\_inlist\_problem2} is for problem 2 (and 3). 
 \end{itemize}
 
 \begin{tcolorbox}[protipbox]
 Some of the models you will run in this practicum may take a long time (5-10 min) to complete.
-There is no need to wait for models to finish before starting on the analysis and plotting code!
+There is no need to wait for \textit{all} models to finish before starting on the analysis and plotting code!
 \end{tcolorbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,18 +147,62 @@ print(hist.star_age[start:])
 \end{enumerate}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Radius evolution of massive stars}
 
-You need \texttt{hw3\_inlist\_problem2} for this exercise. This inlist results in more properly resolved stars (note the difference in HR diagram). Because of this it will take much longer run the late evolution, which is why we will only run the stars until core He exhaustion.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Evolution of massive stars with mass loss}
+
+We will next investigate the effect of wind mass loss on the evolution of massive stars. 
+%
+You need \texttt{hw3\_inlist\_problem2} for this exercise. This inlist results in more properly resolved stars (note the difference in HR diagram). Because of this it will take much too long to run the late evolution, which is why we will only run the stars until core He exhaustion.
+
+% \todo{finally: only run models between 15-40Msun and DW between 0 and 1!}
 
 \begin{itemize}
     \item Choose a mass between 15 M$_\odot$ and 40 M$_\odot$, and change the inlist accordingly. Don't forget to point the master inlist to \texttt{hw3\_inlist\_problem2} instead of \texttt{hw3\_inlist\_to\_C\_exhaust}
     
+    \item Run the same mass model with 3 different mass-loss rates. \\
+    To do this vary the \verb|Dutch_scaling_factor| between 0 and 1.5, (for example 0.1, 0.5, and 1.5). 
     
     \item 
     As before, \emph{change the} \texttt{log\_directory = 'X'} for each new model you evolve! (Otherwise the data from the previous models will be overwritten.)
 \end{itemize}
+
+\begin{enumerate}[label=(\alph*)]
+% During each run, take a close look at the \texttt{PGSTAR} plots. Analyse in detail both the motion of the star in the HR diagram and the changes in structure in the Kippenhahn diagram. Can you identify the different phases in the evolution of massive stars (e.g. RSG, LBV, WR, ...)? 
+
+% \item Plot all 3 evolutionary tracks on an HR diagram, but now color-code the tracks with mass-loss using $\log \dot{M}$ (e.g., range from $-6$ to $-4$).
+% Can you explain the difference in the tracks? 
+% Discuss with your neighbours to compare stars of different mass.
+
+%%%%%%%%%% surf ab questions
+\item Plot the He abundance versus age for all 3 models, and compare how the lifetimes of the MS and of the He-burning phase change with increasing mass loss.
+
+\item Investigate \emph{surface abundances} changes due to mass-loss: make separate plots of the surface abundances of H, He, C and O vs age, one for each stellar model. Can you explain the changes you see, and their dependence on the mass-loss rate?
+%%%%%%%%%% surf ab questions
+
+% \begin{itemize}
+%     \item Plot surface abundances of He, C, and N versus time (all masses, one panel per element).
+%     % \item Color-code HR tracks by:
+%     % \begin{enumerate}
+%     %     \item Surface helium abundance
+%     %     \item Surface N/C ratio
+%     % \end{enumerate}
+
+% \end{itemize}
+
+
+% \item Wolf–Rayet (WR) stars are generally defined by $X < 0.3$ (where $X$ is surface H abundance). WR subclasses are defined based on surface C and N composition (WN vs WC). Indicate where WR stars appear in the HR diagram.
+
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Radius evolution of massive stars}
+
+Using your model for the star you picked with a mass between 15 and 100 M$_\odot$ from the previous exercise (with \verb|Dutch_scaling_factor| your middle value) :
 
 \begin{enumerate}[label=(\alph*)]
 \item Make a plot of the radius of the star versus the age. 
