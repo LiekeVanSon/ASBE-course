@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1762822891.08937 "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session4/MESA_session4.tex" "latex_output/MESA_session4.pdf" "MESA_session4" 1762822891.66877 0
-  "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session4/MESA_session4.tex" 1762822890.99207 10400 3f684521f444dc0d0d4d4c112fa28afa ""
+["pdflatex"] 1762821747.40882 "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session4/long_MESA_session4.tex" "latex_output/long_MESA_session4.pdf" "long_MESA_session4" 1762821748.08343 0
+  "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session4/long_MESA_session4.tex" 1762821747.31643 10486 1d969fa5141bf1a4467035de3e45c4e2 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -193,12 +193,12 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1756128671 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1756128662 3345738 823ac6b79ba5952b0671a616ebca262f ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "MESA_session4.tex" 1762822890.99207 10400 3f684521f444dc0d0d4d4c112fa28afa ""
-  "latex_output/MESA_session4.aux" 1762822891.61552 462 df34db435f971c4f1b8e347573a74a93 "pdflatex"
-  "latex_output/MESA_session4.out" 1762822891.61609 655 1f1591ddd76ed92ca46ddb47262e607d "pdflatex"
+  "latex_output/long_MESA_session4.aux" 1762821748.02483 462 df34db435f971c4f1b8e347573a74a93 "pdflatex"
+  "latex_output/long_MESA_session4.out" 1762821748.02516 655 1f1591ddd76ed92ca46ddb47262e607d "pdflatex"
+  "long_MESA_session4.tex" 1762821747.31643 10486 1d969fa5141bf1a4467035de3e45c4e2 ""
   (generated)
-  "latex_output/MESA_session4.aux"
-  "latex_output/MESA_session4.log"
-  "latex_output/MESA_session4.out"
-  "latex_output/MESA_session4.pdf"
+  "latex_output/long_MESA_session4.aux"
+  "latex_output/long_MESA_session4.log"
+  "latex_output/long_MESA_session4.out"
+  "latex_output/long_MESA_session4.pdf"
   (rewritten before read)

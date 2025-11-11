@@ -134,7 +134,7 @@ We will model the evolution of this binary in the \texttt{binary} module in \tex
   Add this to \verb|&binary_controls| in \verb|inlist_project|.
 
     \item Now compile (\verb|./mk|) and run (\verb|./rn|) the code. 
-    % While your model is running, inspect the plots that appear.
+    While your model is running, inspect the plots that appear.
     
   \end{itemize}
   
@@ -146,18 +146,19 @@ We will model the evolution of this binary in the \texttt{binary} module in \tex
    
   % What type of start is the donor star after the mass-transfer phase stops?
 
-  \item Plot the donor's mass transfer rate versus the stellar age. Zoom in on the mass transfer phase.\footnote{Make sure to use appropriate x and y lims when you plot the eddington accretion rate and donor mass transfer rate.} Is the donor mass transfer rate higher or lower than the Eddington rate? (Assume $R_{\mathrm{acc}}$ is equal to the Schwarzschild radius of the black hole).  
+  \item Plot the donor's mass transfer rate versus the stellar age. Zoom in on the mass transfer phase.\footnote{Make sure to use appropriate x and y lims when you plot the eddington accretion rate and donor mass transfer rate.} Is the donor mass transfer rate higher or lower than the Eddington rate?  
   Is the black hole is accreting all the material lost by the donor star?
 
+  \item How much mass did the donor star lose? What fraction of this mass is accreted by the black hole and how much is lost from the system?
+
+  \item What happens with the orbital separation during mass transfer? Does the orbit shrink or widen?
 
   \end{enumerate}
 
 At the end of your simulation you formed a helium star in an orbit around a black hole. The fate of such a helium star is not well known, but let's speculate:
 
 \begin{enumerate}[label=(\alph*)]
-    \setcounter{enumi}{2}
-
-  \item If the helium star directly collapses to a black hole, it will form a binary black hole system. What would be the final black hole masses and their orbital separation?
+  \item If the helium star directly collapses to a black hole, it will form a binary black hole system. What will be the masses of the black holes and what will be their separation?
 
   \item Eventually these two black holes will merge due to the loss of angular momentum in the form of gravitational waves. The time it takes for a double black hole system to merge is given by:
   
@@ -184,18 +185,14 @@ Instead of treating the secondary star as a point mass, we can evolve both stars
 Make sure to tell \texttt{MESA} to evolve both stars. 
 Look for the setting \verb|evolve_both_stars| in the binary controls and switch it on. 
 
-\item Furthermore, we will assume that the accreting star accretes only half of the mass transferred by Roche-lobe overflow. Check your inlist and make sure that the mass transfer efficiency is equal to 0.5\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}. Finally, turn the Eddington accretion limit off again, as this inherently assumes the companion star to be a black hole.
+Furthermore, we will assume that the accreting star accretes only half of the mass transferred by Roche-lobe overflow. Check your inlist and make sure that the mass transfer efficiency is equal to 0.5\footnote{\url{https://docs.mesastar.org/en/release-r22.05.1/reference/binary_controls.html\#mass-transfer-controls}}. Finally, turn the Eddington accretion limit off again, as this inherently assumes the companion star to be a black hole.
 
-\item \verb|./clean|, make \verb|./mk|, and run \verb|./rn| 
-
-\item Look at the plots from \texttt{PGSTAR}.
-Specifically have a look at the diagram that shows the central hydrogen abundance versus time. Which star is running out of hydrogen first? Is this what you expect? Does the surface hydrogen abundance change? Is this what you expect?
-
-\end{itemize}
+\item Run your model and look at the plots from \texttt{PGSTAR}.
 
 \begin{enumerate}[label=(\alph*)]
+\item First have a look at the diagram that shows the central hydrogen abundance versus time. Which star is running out of hydrogen first? Is this what you expect? Does the surface hydrogen abundance change? Is this what you expect?
 
-% \item Take a look at the tracks in the HR diagram. How does the evolution of the donor star differ from that of the accretor star? What happens to the evolutionary tracks of the two stars when mass transfer starts?
+\item Take a look at the tracks in the HR diagram. How does the evolution of the donor star differ from that of the accretor star? What happens to the evolutionary tracks of the two stars when mass transfer starts?
 
 \item Load the \texttt{binary\_history.data} and plot the masses of the donor and accretor star over time.  
 How do the masses of the stars change? How much mass does the donor star lose, and how much of this mass does the other star accrete? Is this what you expected? 
@@ -205,6 +202,7 @@ How do the masses of the stars change? How much mass does the donor star lose, a
 What happens to the convective core of the secondary star as it accretes more mass? How does this change the abundances in the core? Explain why it is appropriate to say that mass accretion `rejuvenates' a star. Could such a star appear as a `blue straggler'?
 \end{enumerate}
 
+\end{itemize}
 
 
 
