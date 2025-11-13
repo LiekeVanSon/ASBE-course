@@ -201,11 +201,24 @@ Specifically have a look at the diagram that shows the central hydrogen abundanc
 How do the masses of the stars change? How much mass does the donor star lose, and how much of this mass does the other star accrete? Is this what you expected? 
 
 
-\item Look at the Kippenhahn diagram (or plot your own!). 
-What happens to the convective core of the secondary star as it accretes more mass? How does this change the abundances in the core? Explain why it is appropriate to say that mass accretion `rejuvenates' a star. Could such a star appear as a `blue straggler'?
+\item Look at the Kippenhahn diagram for the accretor star (or plot your own, see example code below!). 
+What happens to the convective core of the secondary star as it accretes more mass?\footnote{If you use mkipp to plot the kippenhahn diagram, remember that you can find the meanings of the different hatch colors here \url{https://github.com/orlox/mkipp/blob/master/mkipp.py}} 
+% How does this change the abundances in the core? 
+Explain why it is appropriate to say that mass accretion `rejuvenates' a star. Could such a star appear as a `blue straggler'?
 \end{enumerate}
 
 
+
+\begin{lstlisting}[style=pythonstyle]
+sys.path.append("path/to/your/Programs/mkipp")
+import mkipp
+import kipp_data
+
+# Accretor Kippenhahn
+mkipp.kipp_plot(mkipp.Kipp_Args(
+    logs_dirs = ['data/session4_work_2/LOGS2'], 
+    save_filename = "plots/Kippenhahn.png",))
+\end{lstlisting}
 
 
 
