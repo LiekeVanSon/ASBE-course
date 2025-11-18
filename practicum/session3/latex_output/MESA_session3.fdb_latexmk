@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1762210236.72141 "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session3/MESA_session3.tex" "latex_output/MESA_session3.pdf" "MESA_session3" 1762210237.36282 0
-  "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session3/MESA_session3.tex" 1762210236.61106 11384 d9a8509f20832ddd6215ff59bbe5e373 ""
+["pdflatex"] 1763494580.46628 "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session3/MESA_session3.tex" "latex_output/MESA_session3.pdf" "MESA_session3" 1763494581.09277 0
+  "/Users/liekevanson/Documents/Teaching/ASBE25/ASBE-course/practicum/session3/MESA_session3.tex" 1763494580.86495 11399 0e332ad740b98a461aaab77a99df233b ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -191,9 +191,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1756128671 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1756128662 3345738 823ac6b79ba5952b0671a616ebca262f ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "MESA_session3.tex" 1762210236.61106 11384 d9a8509f20832ddd6215ff59bbe5e373 ""
-  "latex_output/MESA_session3.aux" 1762210237.30622 431 b10cde3a1b5435bbc938cf887dc3248a "pdflatex"
-  "latex_output/MESA_session3.out" 1762210237.30652 491 69acaefcbf5eeb8908133d1b7c09cc68 "pdflatex"
+  "MESA_session3.tex" 1763494580.86495 11399 0e332ad740b98a461aaab77a99df233b ""
+  "latex_output/MESA_session3.aux" 1763494581.03934 431 b10cde3a1b5435bbc938cf887dc3248a "pdflatex"
+  "latex_output/MESA_session3.out" 1763494581.03968 491 69acaefcbf5eeb8908133d1b7c09cc68 "pdflatex"
   (generated)
   "latex_output/MESA_session3.aux"
   "latex_output/MESA_session3.log"
