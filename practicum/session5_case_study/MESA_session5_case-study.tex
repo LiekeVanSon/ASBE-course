@@ -1,33 +1,5 @@
-% \documentclass[11pt,a4paper]{article}
-
-% % \usepackage{epsfig}
-% \usepackage{graphicx}
-% %\usepackage{rotating}
-% \usepackage{txfonts}
-% %\usepackage{amsmath}
-% \usepackage{amssymb}
-% \IfFileExists{url.sty}{\usepackage{url}}
-%                       {\newcommand{\url}{\texttt}}
-
-% \providecommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
-
-% \textheight=24.5cm
-% \textwidth=16cm
-% \oddsidemargin 0.0cm
-% \evensidemargin 0.0cm
-% \topmargin -1.5cm
-% \newcommand{\be}{\begin{eqnarray}}
-% \newcommand{\ee}{\end{eqnarray}}
-% \newcommand{\msun}{\ensuremath{\mathrm{M}_\odot}}
-% \newcommand{\rsun}{\ensuremath{\mathrm{R}_\odot}}
-% \newcommand{\lsun}{\ensuremath{\mathrm{L}_\odot}}
-% \newcommand{\dd}{\partial}
-
 % \newcommand{\amuse}{\texttt{AMUSE}}
 % \newcommand{\mesa}{\texttt{Mesa}}
-% \newcommand{\evtwin}{\texttt{EVtwin}}
-% \newcommand{\bse}{\texttt{BSE}}
-% \newcommand{\seba}{\texttt{SeBa}}
 
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
@@ -89,72 +61,162 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{\textbf{MESA practical assignment}}
+\title{\textbf{MESA mini case study}}
 \author{ASBE course 2025 -- 2026}
 \date{}
 \maketitle
 
-%\begin{center}
-%  \fbox{{\Large \textit{Advanced stellar and binary evolution} ---
-%      MESA practicum}}
-%\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section*{Assignment: a stellar evolution case study}
 
+In this final assignment, you will apply what you learned during the practicum by exploring one of MESA’s test suites and using it to answer a self-defined question about (binary) stellar evolution.
 
-%\vspace*{5mm}
-%\noindent
+\noindent You have gained experience running single and binary stellar models. In this assignment, you will build on that experience by selecting and analysing an existing MESA test suite, investigating what physical question it allows you to address, and presenting your findings in a short written report
 
-\section*{Assignment: a case study of stellar evolution}
-
-In this final assignment for the computer practicum you are asked to apply what you have learned during the course in a case study. During the first few pacticum sessions you have gained some experience in using MESA to compute the detailed evolution of  single and binary stars. Now you can use that experience in a free assignment, to explore a topic in (binary) stellar evolution of your choice in some more depth. 
 
 \medskip\noindent
-You are free to define the topic of your case study, in fact that is part of the assignment (see below). 
-Some examples are: How does the evolution of a star depend on the initial composition (metallicity)? Or on the rotation rate of the star? How does the evolution change with different assumptions about mixing, or mass loss? How does the evolution of a binary star depend on the mass ratio of the stars, or on the orbital period or eccentricity? Feel encouraged to come up with your own questions!
+Collaboration with your fellow students is strongly encouraged.
+You can do steps 1 (the execution of the project) in teams of two students. However, the report (step 2) should be written, and will be evaluated, individually.
 
-\medskip\noindent
-The assignment consists of three steps.
-Note that \emph{collaboration} with your fellow students is strongly encouraged.
-%Also in the special circumstances of this semester, in which we have to work remotely. 
-You can do steps 1 and 2 (the proposal, and the execution of the project) in teams of two students. However, the report (step 3) should be written, and will be evaluated, individually.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{1. Choose a MESA Test Suite and Formulate a Question}
+Browse the list of available test suites in MESA. \\
+The test suites are located in \texttt{\$MESA\_DIR/star/test\_suite} (single-star evolution) and \\
+\texttt{\$MESA\_DIR/binary/test\_suite} (binary evolution).
+You can also consult the documentation at
+\url{https://docs.mesastar.org/en/r15140/test_suite.html}
+; note that some test suites may not yet be fully documented in this version, even though more complete descriptions exist for newer releases of MESA.\\
 
 
-\begin{enumerate}
-\item \textbf{Write a brief abstract/research proposal}, no more than about half a page. It should consist of two parts:
-  \begin{enumerate}
-  \item A `science case', in which you briefly describe the (binary) stellar evolution question you want to answer using MESA, and you motivate in a few sentences why this is an interesting problem to study.
-  \item A `methodology', in which you briefly describe \emph{how} you plan to answer this question using MESA. That is to say: which models do you propose to run? For which set of masses and/or other parameters, and which set of assumptions within the code will you use?
-  \end{enumerate}
-Writing such a proposal encourages you to \emph{think} about what you want to do, and to \emph{plan} the calculations to be done, before you \emph{start} doing them. Also keep in mind that there is not much time for the project (only 2 computer sessions in the second quarter), so keep it to a simple question.
-
-Please submit your proposal in Brightspace by the end of the teaching break, i.e.\ before \textbf{01 December}. Then you will receive feedback well before the start of the next MESA practical session.
-
-\item \textbf{Perform the MESA calculations} needed for your case study. There will be two designated practical sessions in the second quarter, starting on December 10. Of course, you can also work on the project by yourselves outside the scheduled sessions.
-
-Here it is important to keep in mind that, whatever topic you choose to study with MESA, it should directly build on what you learn during the course. You should be able to \emph{explain your findings} and \emph{link them to the course contents} (e.g. the lecture notes). Therefore, good plots to concentrate on when you run your MESA models are:
-\newpage
-\begin{itemize}
-\item the evolution of your star(s) in a Hertzsprung-Russell diagram,
-\item the evolution of your star(s) in a $\log T_c$ versus $\log \rho_c$ diagram,
-\item a Kippenhahn plot of the convection zones and nuclear burning zones, and plots of the stellar mass(es) and core mass(es),
-\item plots of the abundance profiles at a few key stages of evolution,
+Your task is to formulate a clear, concise scientific question that can be answered using this test suite. Examples include:
+\begin{itemize}[nolistsep]
+  \item How does the evolution of a star depend on the initial composition (metallicity)?
+  \item How does the evolution change with different assumptions about mixing?
+  \item How does the evolution of a binary star depend on the mass ratio of the stars, or on the orbital period? 
 \end{itemize}
-and in the case of binary stars: 
+Feel encouraged to come up with your own questions!
+Think about what you want to do, and to \emph{plan} the calculations to be done, before you \emph{start} doing them. Also keep in mind that there is not much time for the calculations (only 2 computer sessions), so keep it simple!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{2. Run and Analyse the Test Suite}
+Run the chosen test suite and perform the analysis needed to answer your question. You may work together in pairs for this part of the assignment.
+
+To understand how to use a test suite to address your science question, read through the instructions at: \url{https://docs.mesastar.org/en/r15140/test_suite.html}
+
+\begin{tcolorbox}[protipbox]
+\textbf{Carefully read how to use test-suite examples!}
+In particular, to use them outside the \texttt{test\_suite} directory.
+\end{tcolorbox}
+
 \begin{itemize}
-\item plots of how the orbital period and eccentricity evolve, and
-\item plots comparing the radius and Roche-lobe radius of each star,
-\item plots of the mass-loss rates and/or mass-transfer rates.
+  \item \textbf{Copy the entire test-suite directory} to a local working directory (in the same way you worked with the provided session3 and session4 folders from Brightspace). You should never run or modify the test suites directly inside the MESA installation.
 \end{itemize}
-Not all of these will always be important, it depends on the topic you study and other diagrams may also be relevant. But at least several of these plots should be part of your report, and you should be able to \emph{explain them in your report} in terms of the physical processes we studied in the course.
 
-\item \textbf{Write a report} on your project, of no more than 10 pages in length. The report will be graded and it will determine 40\% of your final grade. The deadline for handing in the final version of your report is \textbf{Monday 27 January 2025}. See below for some guidelines for the report.
+\noindent Once you copy the test suite to your own directory, you must remove any hard-coded references to the MESA installation. I.e., delete all lines containing  
+\begin{itemize}[nolistsep]
+    \item \texttt{MESA\_DIR = ../../../..}
+    \item \texttt{mesa\_dir = '../../..'}
+    \item \texttt{MESA\_DIR=../../..}
+\end{itemize}
 
-\end{enumerate}
+from the \texttt{make/makefile}, the \texttt{rn} script, and in all the inlist files. After removing these lines, your setup should run correctly use the \texttt{MESA\_DIR} defined in your shell environment. 
 
-%\noindent
-%Note that \emph{collaboration} with your fellow students is allowed, and even encouraged!  You can do steps 1 and 2 (the proposal, and the execution of the project) in teams of two students. However, the report should be written, and will be evaluated, individually.
+\begin{itemize}
+  \item \textbf{Perform the MESA calculations} needed for your case study. There will be two designated practical sessions in the second quarter, starting on December 10. Of course, you can also work on the project by yourselves outside the scheduled sessions.
+\end{itemize}
+
+\noindent Your analysis should connect clearly to the course material. Depending on the test suite you choose, relevant figures may include:
+\begin{itemize}[nolistsep]
+    \item evolution in the Hertzsprung--Russell diagram,
+    \item the central temperature--density diagram,
+    \item Kippenhahn diagrams 
+    \item abundance profiles at key evolutionary stages,
+\end{itemize}
+or for binary test suites additionally:
+\begin{itemize}[nolistsep]
+    \item the evolution of the orbital period and eccentricity,
+    \item the comparison between stellar radii and Roche-lobe radii,
+    \item mass-loss or mass-transfer rates.
+\end{itemize}
+
+\noindent Select the plots that best support the question you aim to answer; not all diagrams are relevant for every suite, but at least several of these plots should be in your report. The more important aspect is that your plots contribute to answering your scientific question, and that you can explain them in terms of the physical processes covered in the course.
 
 
-%\section{Report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{3. Write a Short Report}
+
+Each student submits an individual report. The report should contain approximately 3--4 pages of text and 3--4 figures (we care more about quality over lenght). 
+If it is clear that your writing relied heavily on chat-GPT or other AI tools you will of course lose points.
+
+\paragraph{Guidelines for the Report}
+-- a good report is:
+\begin{itemize}[nolistsep]
+    \item \textbf{Well structured.} Include a brief introduction (your question and its relevance), a short description of the chosen test suite and how you used it, and a concise conclusion.
+    
+    \item \textbf{Concise.} Focus only on what is necessary to answer your question.
+    
+    \item \textbf{Accessible.} Write for an astronomy master student who did not take this course. Introduce specific terminology where needed.
+
+    \item \textbf{Clear and quantitative.} Use proper English, avoid overly long sentences, and define abbreviations. (e.g. \textit{not} ``isn't'' but ``is
+  not'')
+
+    \item \textbf{Properly formatted.} Write the report in \LaTeX. Use standard notation (e.g.\ M$_\odot$). Refer to figures with \verb|\label| and \verb|\ref|. Each figure must have a clear, informative caption.
+    
+\end{itemize} 
+
+\vspace{0.6cm}
+
+\noindent\textbf{\color{red}Deadline: Monday 27 January 2026.}
+
+
+% \begin{itemize}
+% \item A good report has a \emph{clear structure}. It starts with an
+%   \textbf{introduction}. Here you try to convince the reader to read
+%   your report, you explain your research question and why your work is
+%   relevant to other astronomers.  The report ends with a
+%   \textbf{conclusion/discussion} section. Here you summarize briefly
+%   your main points. You also discuss uncertainties. Read the
+%   introduction to a real paper and see which elements you can use for
+%   your report.  Try to subdivide the main body of your report in
+%   coherent sections.  Think about a good outline. You can include a
+%   section ``background theory'' or a section ``models'' but this is
+%   not obligatory.
+
+% \item A good report is \emph{concise}. Limit yourself to a maximum of
+%   10 pages, including figures. This also means making a choice of
+%   figures, showing those that best illustrate the information you want
+%   to convey.
+
+% \item A good report is one that can be understood by any master
+%   student in astronomy that did not take this course. Explain specific
+%   terms and introduce abbreviations. 
+%   %Not many people know what ``wtts'' is.
+
+% \item A good report is written in clear and proper English. Avoid very
+%   long sentences. Try to write in the active form and in the present
+%   tense. Avoid informal phrasing (e.g.\ not ``isn't'' but ``is
+%   not'').  Be clear and quantitative whenever possible.
+
+% \item Write your report using Latex.  Use the proper symbol for solar
+%   mass, radius and luminosity, for example $M_\odot$ by
+%   \verb|$M_\odot$|.  Make sure you use \verb|\ref| and \verb|\label|
+%   to refer to your figures in the main text. Write captions for every
+%   figure explaining the axes, lines, colors. A good caption is short
+%   but self-explanatory. Latex decides where it places the figures in
+%   the text, but you can influence the placements with e.g.\
+%   \verb|\begin{figure}[hbtp]|, where \verb|h|=here, \verb|b|=bottom of
+%     the page, \verb|t|=top of the page, and \verb|p|=on a separate
+%     page. Using an exclamation mark you can override what Latex
+%     considers as good, e.g.\ \verb|\begin{figure}[h!]|.
+
+% \end{itemize}
+
+% \begin{tcolorbox}[protipbox]
+% When working on research projects, it is good practice to separate your code from your data.  
+% Use a \texttt{git} repository to track your inlists and analysis scripts, but exclude large output folders such as \texttt{LOGS}, \texttt{photos}, and \texttt{png} using a \texttt{.gitignore} file.
+% \end{tcolorbox}
+
 
 %\subsection*{Grading and deadline}
 
@@ -167,63 +229,10 @@ Not all of these will always be important, it depends on the topic you study and
 %grade of 1 (out of 10).
 
 
-\begin{tcolorbox}[protipbox]
-When you do research it is generally \textit{very} good practice separating your code from your data. 
-When you start bigger projects you will want to keep track of your code using a \texttt{git} repository for your project folders, but to keep your data (i.e. the output files) excluded from the repository (git cannot handle large data files).
-You can do this by adding a \texttt{.gitignore} file to your project folder that ignores the \texttt{LOGS}, \texttt{photos}, and \texttt{png} directories, as well as any other large output files you do not want to track with \texttt{git}.
-\end{tcolorbox}
-
-
-
-\subsection*{Guidelines for the report}
-
-This section summarizes some general guidelines for your report.
-
-\begin{itemize}
-
-\item A good report has a \emph{clear structure}. It starts with an
-  \textbf{introduction}. Here you try to convince the reader to read
-  your report, you explain your research question and why your work is
-  relevant to other astronomers.  The report ends with a
-  \textbf{conclusion/discussion} section. Here you summarize briefly
-  your main points. You also discuss uncertainties. Read the
-  introduction to a real paper and see which elements you can use for
-  your report.  Try to subdivide the main body of your report in
-  coherent sections.  Think about a good outline. You can include a
-  section ``background theory'' or a section ``models'' but this is
-  not obligatory.
-
-\item A good report is \emph{concise}. Limit yourself to a maximum of
-  10 pages, including figures. This also means making a choice of
-  figures, showing those that best illustrate the information you want
-  to convey.
-
-\item A good report is one that can be understood by any master
-  student in astronomy that did not take this course. Explain specific
-  terms and introduce abbreviations. 
-  %Not many people know what ``wtts'' is.
-
-\item A good report is written in clear and proper English. Avoid very
-  long sentences. Try to write in the active form and in the present
-  tense. Avoid informal phrasing (e.g.\ not ``isn't'' but ``is
-  not'').  Be clear and quantitative whenever possible.
-
-\item Write your report using Latex.  Use the proper symbol for solar
-  mass, radius and luminosity, for example $M_\odot$ by
-  \verb|$M_\odot$|.  Make sure you use \verb|\ref| and \verb|\label|
-  to refer to your figures in the main text. Write captions for every
-  figure explaining the axes, lines, colors. A good caption is short
-  but self-explanatory. Latex decides where it places the figures in
-  the text, but you can influence the placements with e.g.\
-  \verb|\begin{figure}[hbtp]|, where \verb|h|=here, \verb|b|=bottom of
-    the page, \verb|t|=top of the page, and \verb|p|=on a separate
-    page. Using an exclamation mark you can override what Latex
-    considers as good, e.g.\ \verb|\begin{figure}[h!]|.
-
-\end{itemize}
-
-
-
-
+% \begin{tcolorbox}[protipbox]
+% When you do research it is generally \textit{very} good practice separating your code from your data. 
+% When you start bigger projects you will want to keep track of your code using a \texttt{git} repository for your project folders, but to keep your data (i.e. the output files) excluded from the repository (git cannot handle large data files).
+% You can do this by adding a \texttt{.gitignore} file to your project folder that ignores the \texttt{LOGS}, \texttt{photos}, and \texttt{png} directories, as well as any other large output files you do not want to track with \texttt{git}.
+% \end{tcolorbox}
 
 \end{document}
