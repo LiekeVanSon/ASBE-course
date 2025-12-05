@@ -69,25 +69,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \section*{Assignment: a stellar evolution case study}
 
-In this final assignment, you will apply what you learned during the practicum by exploring one of MESA’s test suites and using it to answer a self-defined question about (binary) stellar evolution.
+\noindent In this final assignment, you will apply what you learned during the tutorials by exploring one of MESA’s test suites and using it to answer a self-defined question about (binary) stellar evolution.
 
-\noindent You have gained experience running single and binary stellar models. In this assignment, you will build on that experience by selecting and analysing an existing MESA test suite, investigating what physical question it allows you to address, and presenting your findings in a short written report
+\medskip\noindent You have gained experience running single and binary stellar models. In this assignment, you will build on that experience by selecting and analysing an existing MESA test suite, investigating what physical question it allows you to address, and presenting your findings in a short written report
 
 
 \medskip\noindent
 Collaboration with your fellow students is strongly encouraged.
-You can do steps 1 (the execution of the project) in teams of two students. However, the report (step 2) should be written, and will be evaluated, individually.
+You can do steps 1 and 2 (the execution of the project) in teams of two students. However, the report (step 3) should be written, and will be evaluated, individually.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{1. Choose a MESA Test Suite and Formulate a Question}
-Browse the list of available test suites in MESA. \\
-The test suites are located in \texttt{\$MESA\_DIR/star/test\_suite} (single-star evolution) and \\
+
+Browse the list of available test suites in MESA, %\\
+which are located in \texttt{\$MESA\_DIR/star/test\_suite} (single-star evolution) and %\\
 \texttt{\$MESA\_DIR/binary/test\_suite} (binary evolution).
 You can also consult the documentation at
 \url{https://docs.mesastar.org/en/r15140/test_suite.html}
-; note that some test suites may not yet be fully documented in this version, even though more complete descriptions exist for newer releases of MESA.\\
+; note that some test suites may not yet be fully documented in this version, even though more complete descriptions exist for newer releases of MESA.%\\
 
-
+\medskip\noindent
 Your task is to formulate a clear, concise scientific question that can be answered using this test suite. Examples include:
 \begin{itemize}[nolistsep]
   \item How does the evolution of a star depend on the initial composition (metallicity)?
@@ -111,7 +112,7 @@ In particular, to use them outside the \texttt{test\_suite} directory.
 
 \begin{itemize}
   \item \textbf{Copy the entire test-suite directory} to a local working directory (in the same way you worked with the provided session3 and session4 folders from Brightspace). You should never run or modify the test suites directly inside the MESA installation.
-\end{itemize}
+%\end{itemize}
 
 \noindent Once you copy the test suite to your own directory, you must remove any hard-coded references to the MESA installation. I.e., delete all lines containing  
 \begin{itemize}[nolistsep]
@@ -122,7 +123,7 @@ In particular, to use them outside the \texttt{test\_suite} directory.
 
 from the \texttt{make/makefile}, the \texttt{rn} script, and in all the inlist files. After removing these lines, your setup should run correctly use the \texttt{MESA\_DIR} defined in your shell environment. 
 
-\begin{itemize}
+%\begin{itemize}
   \item \textbf{Perform the MESA calculations} needed for your case study. There will be two designated practical sessions in the second quarter, starting on December 10. Of course, you can also work on the project by yourselves outside the scheduled sessions.
 \end{itemize}
 
@@ -146,11 +147,13 @@ or for binary test suites additionally:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{3. Write a Short Report}
 
-Each student submits an individual report. The report should contain approximately 3--4 pages of text and 3--4 figures (we care more about quality over lenght). 
-If it is clear that your writing relied heavily on chat-GPT or other AI tools you will of course lose points.
+Each student submits an individual report. The report should contain approximately 3--4 pages of text and 3--4 figures (we care more about quality over length). 
+If it is clear that your writing relied heavily on chat-GPT or other AI tools you will lose points.
 
-\paragraph{Guidelines for the Report}
--- a good report is:
+\subsubsection*{Guidelines for the Report}
+A good report is:
+
+\medskip
 \begin{itemize}[nolistsep]
     \item \textbf{Well structured.} Include a brief introduction (your question and its relevance), a short description of the chosen test suite and how you used it, and a concise conclusion.
     
@@ -158,8 +161,7 @@ If it is clear that your writing relied heavily on chat-GPT or other AI tools yo
     
     \item \textbf{Accessible.} Write for an astronomy master student who did not take this course. Introduce specific terminology where needed.
 
-    \item \textbf{Clear and quantitative.} Use proper English, avoid overly long sentences, and define abbreviations. (e.g. \textit{not} ``isn't'' but ``is
-  not'')
+    \item \textbf{Clear and quantitative.} Use proper English, avoid overly long sentences, and define abbreviations. Avoid informal phrasing (e.g.\ ``is not'' instead of ``isn't'').
 
     \item \textbf{Properly formatted.} Write the report in \LaTeX. Use standard notation (e.g.\ M$_\odot$). Refer to figures with \verb|\label| and \verb|\ref|. Each figure must have a clear, informative caption.
     
@@ -167,7 +169,7 @@ If it is clear that your writing relied heavily on chat-GPT or other AI tools yo
 
 \vspace{0.6cm}
 
-\noindent\textbf{\color{red}Deadline: Monday 27 January 2026.}
+\noindent\textbf{\color{red}Deadline: Monday 26 January 2026.}
 
 
 % \begin{itemize}
